@@ -1,11 +1,11 @@
 import {
     createBrowserRouter,
   } from "react-router-dom";
-import Main from "../Component/Main";
+import EditImg from "../Component/EditImg";
 
   export const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main/>
+      element: <EditImg></EditImg>
     },
   ]);

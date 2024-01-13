@@ -6,7 +6,7 @@ import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
 import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 import storeData from "./LinkedList";
 // import ReactCrop, { type Crop } from 'react-image-crop'
-const Main = () => {
+const EditImg = () => {
   const [event, setEvent] = useState("brightness");
   const filterElement = [
     {
@@ -302,4 +302,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default EditImg;
