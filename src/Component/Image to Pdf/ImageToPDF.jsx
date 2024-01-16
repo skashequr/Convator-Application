@@ -1,6 +1,6 @@
-import jsPDF from 'jspdf';
-import { useState } from 'react';
-
+import jsPDF from "jspdf";
+import { useState } from "react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 const Pdfimg = () => {
   const [photos, setPhotos] = useState([]);
 
@@ -12,7 +12,7 @@ const Pdfimg = () => {
   console.log(photos);
 
   const pdfGenerate = () => {
-    var doc = new jsPDF('p', 'pt', 'a4');
+    var doc = new jsPDF("p", "pt", "a4");
 
     photos.forEach((photo, index) => {
       if (index !== 0) {
@@ -22,10 +22,10 @@ const Pdfimg = () => {
       var width = doc.internal.pageSize.getWidth();
       var height = doc.internal.pageSize.getHeight();
       var img = URL.createObjectURL(photo);
-      doc.addImage(img, null, 0, 0, width, height, null, 'FAST');
+      doc.addImage(img, null, 0, 0, width, height, null, "FAST");
     });
 
-    doc.save('images.pdf');
+    doc.save("images.pdf");
   };
 
   return (
@@ -46,7 +46,7 @@ const Pdfimg = () => {
           )}
         </div>
         <div className="col-lg-4">
-          {' '}
+          {" "}
           <div className="form-group mt-5">
             <input
               type="file"
@@ -54,19 +54,23 @@ const Pdfimg = () => {
               className="form-control"
               onChange={onChangePhotos}
               accept="image/png, image/png, image/jpeg, image/jpg"
-              multiple 
+              multiple
             />
           </div>
         </div>
         <div className="col-lg">
-          {' '}
+          {" "}
           <button
             className="btn btn-outline-primary mt-5"
-            onClick={pdfGenerate}
-            disabled={!photos}
+            
           >
             Download pdf
           </button>
+          <ButtonGroup variant="outline" spacing="6">
+            <Button colorScheme="blue" onClick={pdfGenerate}
+            disabled={!photos} >Save</Button>
+           { console.log(photos)}
+          </ButtonGroup>
         </div>
       </div>
       <div>
@@ -74,21 +78,23 @@ const Pdfimg = () => {
           <img
             src="https://img.icons8.com/external-others-justicon/48/000000/external-image-photography-others-justicon-2.png"
             alt="icon"
-          />{' '}
+          />{" "}
           Image to Pdf
-         
         </h2>
-       <div className='grid grid-cols-6 gap-7 p-6 border border-cyan-950'>
-       {photos.map(photo => ( <img className='h-60 ' key={photo.id} src={URL.createObjectURL(photo)} alt={photo.altText} />))}
-       </div>
+        <div className="grid grid-cols-6 gap-7 p-6">
+          {photos.map((photo) => (
+            <img
+              className="h-60 border w-60 p-3 bg-black rounded-sm border-red-900"
+              key={photo.id}
+              src={URL.createObjectURL(photo)}
+              alt={photo.altText}
+            />
+          ))}
+        </div>
       </div>
 
-      
       <footer>
-        <p className="text-center">
-           
-          
-        </p>
+        <p className="text-center"></p>
       </footer>
     </div>
   );
