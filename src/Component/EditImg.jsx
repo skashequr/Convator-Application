@@ -298,6 +298,9 @@ const EditImg = () => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center mt-5">
+        <button className="px-8 py-3 bg-orange-600 rounded">Add This Img</button>
+      </div>
     </div>
   );
 };
