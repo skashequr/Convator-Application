@@ -14,6 +14,8 @@
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "antd": "^5.12.8",
     "firebase": "^10.7.1",
+    "flowbite": "^2.2.1",
+    "flowbite-react": "^0.7.2",
     "keep-react": "^1.1.0",
     "lottie-react": "^2.4.0",
     "pdf-image": "^2.0.0",

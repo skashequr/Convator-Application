@@ -71,10 +71,7 @@ const Pdfimg = () => {
       </div>
       <div>
         <h2 className="text-center">
-          <img
-            src="https://img.icons8.com/external-others-justicon/48/000000/external-image-photography-others-justicon-2.png"
-            alt="icon"
-          />{" "}
+         
           Image to Pdf
         </h2>
         <div className="grid grid-cols-6 gap-7 p-6">
