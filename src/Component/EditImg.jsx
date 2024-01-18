@@ -189,10 +189,13 @@ const EditImg = () => {
     link.click();
   };
   return (
-    <div >
+    <div>
       <div className="">
-        <div >
-          <h2 className="text-center font-extralight text-6xl mb-6"> Image Editor </h2>
+        <div>
+          <h2 className="text-center font-extralight text-6xl mb-6">
+            {" "}
+            Image Editor{" "}
+          </h2>
         </div>
         <div className="flex items-center justify-center gap-6">
           <div className="">
@@ -234,26 +237,41 @@ const EditImg = () => {
                   className="w-full"
                 />
               </div>
-              <div >
+              <div>
                 <label className="font-bold text-lg mt-6">Rotate & Filp</label>
                 <div className="flex justify-between items-center">
-                  <div className="px-5 py-3 border border-orange-300" onClick={leftRotate}>
+                  <div
+                    className="px-5 py-3 border border-orange-300"
+                    onClick={leftRotate}
+                  >
                     <GrRotateLeft />
                   </div>
-                  <div className="px-5 py-3 border border-orange-300" onClick={rightRotate}>
+                  <div
+                    className="px-5 py-3 border border-orange-300"
+                    onClick={rightRotate}
+                  >
                     <GrRotateRight />
                   </div>
-                  <div className="px-5 py-3 border border-orange-300" onClick={varticalFlip}>
+                  <div
+                    className="px-5 py-3 border border-orange-300"
+                    onClick={varticalFlip}
+                  >
                     <CgMergeVertical />
                   </div>
-                  <div className="px-5 py-3 border border-orange-300" onClick={horizentalFlip}>
+                  <div
+                    className="px-5 py-3 border border-orange-300"
+                    onClick={horizentalFlip}
+                  >
                     <CgMergeHorizontal />
                   </div>
                 </div>
               </div>
             </div>
             <div className="flex justify-center items-center ">
-              <button onClick={saveImage} className="px-6 py-3 bg-orange-200 mt-4">
+              <button
+                onClick={saveImage}
+                className="px-6 py-3 bg-orange-200 mt-4"
+              >
                 Save Image
               </button>
             </div>
@@ -274,9 +292,14 @@ const EditImg = () => {
                   />
                 </ReactCrop>
               ) : (
-                <label htmlFor="choose" className="flex justify-center items-center flex-col">
+                <label
+                  htmlFor="choose"
+                  className="flex justify-center items-center flex-col"
+                >
                   <IoIosImage size={120} />
-                  <label htmlFor="choose" className="">Choose Image</label>
+                  <label htmlFor="choose" className="">
+                    Choose Image
+                  </label>
                 </label>
               )}
             </div>
@@ -292,8 +315,15 @@ const EditImg = () => {
                   Crop Image
                 </button>
               )}
-              <label htmlFor="choose" className="px-4 py-2 bg-slate-500">Choose Image</label>
-              <input className="hidden" onChange={imageHandle} type="file" id="choose" />
+              <label htmlFor="choose" className="px-4 py-2 bg-slate-500">
+                Choose Image
+              </label>
+              <input
+                className="hidden"
+                onChange={imageHandle}
+                type="file"
+                id="choose"
+              />
             </div>
           </div>
         </div>

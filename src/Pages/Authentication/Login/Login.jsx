@@ -1,0 +1,172 @@
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Card } from "keep-react";
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
+import { useState } from "react";
+import Googlelogin from "../GoogleLogin/Googlelogin";
+import { Link } from "react-router-dom";
+import GithubAuth from "../GithubAuth/GithubAuth";
+const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const { signIn } = useAuth();
+  const HandeLogin = (e) => {
+    // -----------------loading off-----------------------------//
+    e.preventDefault();
+
+    console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+
+        if (result.user.email) {
+          Swal.fire("Login success!", "Welcome to my Website", "success");
+        }
+      })
+
+      .catch((error) => {
+        console.error(error);
+        Swal.fire("Login failed", "Email or password is incorrect", "error");
+      });
+  };
+  return (
+    <div>
+      <div className="min-w-screen min-h-screen bg-[#FFFFFF] flex items-center justify-center px-5 py-5">
+        <div
+          className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
+          style={{ maxWidth: "1000px" }}
+        >
+          <div className="md:flex w-full">
+            {/* ------------image part------------ */}
+            <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
+              {/* --------- lottie animatim add ------------------*/}
+              <Player
+                autoplay
+                loop
+                src="https://lottie.host/9bc9c81e-9fad-4452-86d4-6bbe388678cb/ech29NQ22U.json"
+                style={{ height: "450px", width: "350px" }}
+              >
+                <Controls
+                  visible={false}
+                  buttons={["play", "repeat", "frame", "debug"]}
+                />
+              </Player>
+            </div>
+            {/* ------login part------- */}
+            <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
+              <div className="text-center mb-10">
+                <h1 className="font-bold text-3xl text-gray-900">
+                  Login now our conveter
+                </h1>
+              </div>
+              {/*----------------- social login---------- */}
+              <Card.Container className="circled mx-auto flex max-w-[220px] items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                <Googlelogin />
+                <GithubAuth />
+              </Card.Container>
+
+              {/* ------------ form----------*/}
+              <form onSubmit={HandeLogin}>
+                <div>
+                  {/* ----------Name------ */}
+                  <div className="flex -mx-3">
+                    <div className="w-full px-3 mb-5">
+                      <label htmlFor="" className="text-xs font-semibold px-1">
+                        Name
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          type="name"
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                          placeholder="Name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  {/* ----------- email ------------- */}
+                  <div className="flex -mx-3">
+                    <div className="w-full px-3 mb-5">
+                      <label htmlFor="" className="text-xs font-semibold px-1">
+                        Email
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          type="email"
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                          placeholder="ssjoy@example.com"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  {/*------------- password------ */}
+                  <div className="flex -mx-3">
+                    <div className="w-full px-3 mb-12">
+                      <label htmlFor="" className="text-xs font-semibold px-1">
+                        Password
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-lock-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                          placeholder="************"
+                        ></input>
+                        <span
+                          className="mt-3 relative -ml-10"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? (
+                            <BsEyeSlashFill></BsEyeSlashFill>
+                          ) : (
+                            <BsEyeFill></BsEyeFill>
+                          )}
+                        </span>
+                      </div>
+                      {/*--------- forgot password--------- */}
+                      <label className="label">
+                        <a href="#" className="label-text-alt link link-hover">
+                          Forgot password?
+                        </a>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="flex -mx-3">
+                    {/* --------button------- */}
+                    <div className="w-full px-3 mb-5">
+                      <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                        Login NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              {/* form end */}
+              <p className="px-6">
+                <small>
+                  Already have not an account Please {""}
+                  <Link className="text-blue-800" to="/signup">
+                    Signup
+                  </Link>
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
