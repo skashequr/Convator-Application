@@ -34,11 +34,11 @@ export const router = createBrowserRouter([
         element: <Pdfimg></Pdfimg>
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login></Login>,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <Signup></Signup>,
       },
       {

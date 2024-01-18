@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaCaretDown } from "react-icons/fa";
 import { IoReorderThree } from "react-icons/io5";
@@ -153,10 +153,12 @@ const NavBar = () => {
           <CiSearch className="absolute hidden sm:inline-block text-2xl left-4" />
         </div>
         <CiSearch className="inline-block sm:hidden text-2xl left-4" />
-        <button className="hidden lg:inline-block">Login</button>
+        <button className="hidden lg:inline-block"><Link to="/signup">Login</Link></button>
+        <Link to="/login">
         <button className="bg-black hover:bg-zinc-700 text-nowrap text-white text-sm rounded-full px-5 py-2 ">
           Sign Up
         </button>
+        </Link>
       </div>
     </nav>
   );
