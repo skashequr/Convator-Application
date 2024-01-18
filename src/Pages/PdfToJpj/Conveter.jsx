@@ -1,29 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import pdfjsLib from "pdfjs-dist";
 
-const PdfViewer = (props) => {
+const Converterimg = (props) => {
   const [loading, setLoading] = useState(false);
   const [numOfPages, setNumOfPages] = useState(0);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const UrlUploader = (url) => {
-    fetch(url)
-      .then((response) => response.blob())
-      .then((blob) => {
-        let reader = new FileReader();
-        reader.onload = (e) => {
-          const data = atob(e.target.result.replace(/.*base64,/, ""));
-          renderPage(data);
-        };
-        reader.readAsDataURL(blob);
-      });
-  };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const renderPage = async (data) => {
     setLoading(true);
     const imagesList = [];
     const canvas = document.createElement("canvas");
-    canvas.setAttribute("className", "canv");
+    canvas.setAttribute("class", "canv");
     const pdf = await pdfjsLib.getDocument({ data }).promise;
 
     for (let i = 1; i <= pdf.numPages; i++) {
@@ -46,14 +35,28 @@ const PdfViewer = (props) => {
     setLoading(false);
   };
 
-  // useEffect to call UrlUploader when the component mounts
+  const UrlUploader = useCallback(
+    (url) => {
+      fetch(url)
+        .then((response) => response.blob())
+        .then((blob) => {
+          let reader = new FileReader();
+          reader.onload = (e) => {
+            const data = atob(e.target.result.replace(/.*base64,/, ""));
+            renderPage(data);
+          };
+          reader.readAsDataURL(blob);
+        });
+    },
+    [renderPage]
+  );
+
   useEffect(() => {
     UrlUploader(props.pdfUrl);
-  }, [props.pdfUrl]);
+  }, [props.pdfUrl, UrlUploader]);
 
   return (
     <div>
-      {/* Your rendering logic goes here */}
       {loading && <p>Loading...</p>}
       {!loading && <p>Number of Pages: {numOfPages}</p>}
       {!loading &&
@@ -64,4 +67,8 @@ const PdfViewer = (props) => {
   );
 };
 
-export default PdfViewer;
+Converterimg.propTypes = {
+  pdfUrl: PropTypes.string.isRequired,
+};
+
+export default Converterimg;

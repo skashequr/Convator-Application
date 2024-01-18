@@ -1,3 +1,4 @@
+import PdfViewer from "../Pages/PdfToJpj/Conveter";
 import App from "../Pages/PdfToJpj/PdftoImage";
 
 const Homepage = () => {
@@ -6,6 +7,7 @@ const Homepage = () => {
       <div>
         <App></App>
       </div>
+      <PdfViewer></PdfViewer>
     </div>
   );
 };

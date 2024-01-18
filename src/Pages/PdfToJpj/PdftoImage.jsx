@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import FileInput from "./Inputfile";
 
-import PdfViewer from "./Conveter";
+// import PdfViewer from "./Conveter";
 
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -15,10 +15,10 @@ function App() {
       {pdfFile && (
         <div className="w-full mt-4xl">
           <div>
-            <PdfViewer
+            {/* <PdfViewer
               pdfUrl={URL.createObjectURL(pdfFile)}
               fileName={pdfFile.name}
-            ></PdfViewer>
+            ></PdfViewer> */}
           </div>
         </div>
       )}
