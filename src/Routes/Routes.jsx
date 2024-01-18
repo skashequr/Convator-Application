@@ -13,6 +13,7 @@ import MainLayout from "../MainLayout/MainLayout";
       children:[
         {
           path: "/",
+          element: <h1>frtyurtfy</h1>
           
         },
         {
