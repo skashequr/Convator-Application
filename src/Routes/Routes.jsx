@@ -5,6 +5,7 @@ import EditImg from "../Component/EditImg";
 import Login from "../Pages/Authentication/Login/Login";
 import Signup from "../Pages/Authentication/SignIn/Signup";
 import ErrorPage from "../Pages/Errorpage/Errorpage";
+import Pdfimg from "../Component/Image to Pdf/ImageToPDF";
 
 export const router = createBrowserRouter([
   {
@@ -13,8 +14,12 @@ export const router = createBrowserRouter([
     element: <Homepage></Homepage>,
   },
   {
-    path: "editimg",
+    path: "/editimg",
     element: <EditImg></EditImg>,
+  },
+  {
+    path: "/imgtopdf",
+    element: <Pdfimg></Pdfimg>
   },
   {
     path: "login",
