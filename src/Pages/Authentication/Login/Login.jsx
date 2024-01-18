@@ -34,8 +34,8 @@ const Login = () => {
       });
   };
   return (
-    <div>
-      <div className="min-w-screen min-h-screen bg-[#FFFFFF] flex items-center justify-center px-5 py-5">
+    <div className="">
+      <div className="min-w-screen min-h-screen bg-gradient-to-br from-rose-100 to-teal-100 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
           style={{ maxWidth: "1000px" }}

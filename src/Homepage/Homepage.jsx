@@ -1,3 +1,4 @@
+import Testimonials from "../Component/Testemonial/Testimonials";
 import PdfViewer from "../Pages/PdfToJpj/Conveter";
 import App from "../Pages/PdfToJpj/PdftoImage";
 
@@ -8,6 +9,7 @@ const Homepage = () => {
         <App></App>
       </div>
       <PdfViewer></PdfViewer>
+      <Testimonials></Testimonials>
     </div>
   );
 };

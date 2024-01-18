@@ -6,6 +6,7 @@ import Login from "../Pages/Authentication/Login/Login";
 import Signup from "../Pages/Authentication/SignIn/Signup";
 import ErrorPage from "../Pages/Errorpage/Errorpage";
 import Pdfimg from "../Component/Image to Pdf/ImageToPDF";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -29,4 +30,8 @@ export const router = createBrowserRouter([
     path: "signup",
     element: <Signup></Signup>,
   },
+  {
+    path: "/aboutUs",
+    element: <AboutUs></AboutUs>
+  }
 ]);
