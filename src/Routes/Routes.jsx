@@ -28,5 +28,9 @@ import MainLayout from "../MainLayout/MainLayout";
     {
       path: "img",
       element: <Pdfimg></Pdfimg>
+    },
+    {
+      path: "imgsome",
+      element: <Pdfimg></Pdfimg>
     }
   ]);
