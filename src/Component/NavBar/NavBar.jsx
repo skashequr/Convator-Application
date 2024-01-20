@@ -156,7 +156,7 @@ const NavBar = () => {
         <button className="hidden lg:inline-block"><Link to="/signup">Login</Link></button>
         <Link to="/login">
         <button className="bg-black hover:bg-zinc-700 text-nowrap text-white text-sm rounded-full px-5 py-2 ">
-          Sign Up
+          Sign Up file
         </button>
         </Link>
       </div>
