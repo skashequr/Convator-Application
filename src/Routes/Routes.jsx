@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "addsomeone",
-        element: <p>hello branch</p>,
+        element: <h1>hello branch</h1>,
       },
     ],
   },
