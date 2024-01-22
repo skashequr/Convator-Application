@@ -10,6 +10,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
+import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 
 export const router = createBrowserRouter([
   {
@@ -50,8 +51,8 @@ export const router = createBrowserRouter([
         element: <Features></Features>,
       },
       {
-        path: "addsomeone",
-        element: <p>hello branch</p>,
+        path: "watermark",
+        element: <PdfWatermark></PdfWatermark>,
       },
     ],
   },
