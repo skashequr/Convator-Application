@@ -10,6 +10,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
+import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 
 export const router = createBrowserRouter([
   {
@@ -19,11 +20,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
         path: "/aboutUs",
-        element: <AboutUs></AboutUs>
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "/editimg",
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/imgtopdf",
-        element: <Pdfimg></Pdfimg>
+        element: <Pdfimg></Pdfimg>,
       },
       {
         path: "/login",
@@ -43,17 +44,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/aboutUs",
-        element: <AboutUs></AboutUs>
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "/feateres",
-        element: <Features></Features>
-      }
+        element: <Features></Features>,
+      },
+      {
+        path: "/watermark",
+        element: <PdfWatermark></PdfWatermark>,
+      },
     ],
   },
- 
 ]);
-
-
-
-

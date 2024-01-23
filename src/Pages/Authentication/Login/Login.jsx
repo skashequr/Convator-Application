@@ -7,6 +7,7 @@ import { useState } from "react";
 import Googlelogin from "../GoogleLogin/Googlelogin";
 import { Link } from "react-router-dom";
 import GithubAuth from "../GithubAuth/GithubAuth";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuth();
@@ -35,6 +36,9 @@ const Login = () => {
   };
   return (
     <div className="">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="min-w-screen min-h-screen bg-gradient-to-br from-rose-100 to-teal-100 flex items-center justify-center px-5 py-5">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"

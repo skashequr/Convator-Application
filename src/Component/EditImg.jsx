@@ -5,6 +5,7 @@ import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
 import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
 import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 import storeData from "./LinkedList";
+import { Helmet } from "react-helmet-async";
 // import ReactCrop, { type Crop } from 'react-image-crop'
 const EditImg = () => {
   const [event, setEvent] = useState("brightness");
@@ -190,6 +191,9 @@ const EditImg = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>image-Edit</title>
+      </Helmet>
       <div className="">
         <div>
           <h2 className="text-center font-extralight text-6xl mb-6">

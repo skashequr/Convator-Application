@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Card } from "keep-react";
 
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
@@ -8,9 +8,11 @@ import Googlelogin from "../GoogleLogin/Googlelogin";
 import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 import { useState } from "react";
 import GithubAuth from "../GithubAuth/GithubAuth";
+import { Helmet } from "react-helmet-async";
 const Signup = () => {
   const { createUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -20,7 +22,7 @@ const Signup = () => {
     const password = form.get("password");
     console.log(email, password, name);
 
-    // cheak length 6 character
+    //------------ cheak length 6 character-----------------
     if (password.length < 6) {
       Swal.fire({
         icon: "error",
@@ -54,26 +56,36 @@ const Signup = () => {
         if (result.user) {
           Swal.fire(
             "Register  successfull",
-            "Welcome to my Hotel membership ",
+            "Welcome to my Our Conveter ",
             "success"
           );
+          navigate("/");
         }
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: error,
+          text: "Something worng please try again ",
+        });
       });
+    navigate();
   };
   return (
     <div>
+      <Helmet>
+        <title>Signup</title>
+      </Helmet>
       <div className="bg-gradient-to-br from-rose-100 to-teal-100 relative lg:py-20">
         <div
           className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
       xl:px-5 lg:flex-row"
         >
           <div className="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
-            <div className="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
+            {/* ----------lottie---- */}
+            <div className="w-full sm:w- bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
               <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
-                {/*------- <img className="h-[600px]" src={Signupgif} alt="" /> */}
                 <Player
                   autoplay
                   loop
@@ -87,17 +99,17 @@ const Signup = () => {
                 </Player>
               </div>
             </div>
-            <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
+            <div className="w-full mt-20 mr-0  mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
               {/* ------------------card login------------- */}
               <div
-                className="flex flex-col sm:mx-auto items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
+                className="flex flex-col sm:mx-auto sm:w-[560px] items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
             relative z-10"
               >
                 <p className="w-full text-4xl font-medium text-center leading-snug font-serif">
                   Sign up for an account
                 </p>
                 {/*----------------- social login---------- */}
-                <Card.Container className="circled mx-auto flex max-w-[220px] items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                <Card.Container className="circled  mx-auto flex max-w-[220px] items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
                   <Googlelogin />
                   <GithubAuth />
                 </Card.Container>
@@ -184,6 +196,7 @@ const Signup = () => {
                   </p>
                 </div>
               </div>
+              {/* ----------------svg---------------- */}
               <svg
                 viewBox="0 0 91 91"
                 className="absolute top-0 left-0 z-0 w-32 h-32 -mt-12 -ml-12 text-yellow-300
