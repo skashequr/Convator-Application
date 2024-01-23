@@ -1,6 +1,7 @@
 import jsPDF from "jspdf";
 import { useState } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Helmet } from "react-helmet-async";
 const Pdfimg = () => {
   const [photos, setPhotos] = useState([]);
 
@@ -16,7 +17,7 @@ const Pdfimg = () => {
 
     photos.forEach((photo, index) => {
       if (index !== 0) {
-        doc.addPage(); // Add a new page for each additional image
+        doc.addPage();
       }
 
       var width = doc.internal.pageSize.getWidth();
@@ -30,6 +31,9 @@ const Pdfimg = () => {
 
   return (
     <div className="container mt-5">
+      <Helmet>
+        <title>Image-pdf</title>
+      </Helmet>
       <h2 className="text-center">Image to Pdf</h2>
       <div className="row mt-5">
         <div className="col-lg-3">
@@ -49,39 +53,35 @@ const Pdfimg = () => {
                   name="photo"
                   id="img"
                   className="form-control"
-                 
                   multiple
                   hidden
                 />
-               
-              <div className="flex justify-center items-center">
-              <div>
-               <input
-                  className="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                  id="img"
-                  type="file"
-                  onChange={onChangePhotos}
-                  accept="image/png, image/png, image/jpeg, image/jpg"
-                ></input>
-               </div>
-               <div>
-               <div className="col-lg">
-              {" "}
-              <button
-                className="btn btn-outline-primary mt-5 bg-orange-500 p-3 m-2 rounded"
-                onClick={pdfGenerate}
-                disabled={!photos}
-              >
-                Download pdf
-              </button>
-            </div>
-               </div>
-              </div>
 
-
+                <div className="flex justify-center items-center">
+                  <div>
+                    <input
+                      className="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                      id="img"
+                      type="file"
+                      onChange={onChangePhotos}
+                      accept="image/png, image/png, image/jpeg, image/jpg"
+                    ></input>
+                  </div>
+                  <div>
+                    <div className="col-lg">
+                      {" "}
+                      <button
+                        className="btn btn-outline-primary mt-5 bg-orange-500 p-3 m-2 rounded"
+                        onClick={pdfGenerate}
+                        disabled={!photos}
+                      >
+                        Download pdf
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            
 
             <div className="hidden md:block w-96 w-96 bg-indigo-500 py-10 px-10">
               <img
@@ -93,8 +93,6 @@ const Pdfimg = () => {
         </div>
       </div>
       <div>
-        
-
         <h2 className="text-center ">Output</h2>
         <div className="grid grid-cols-6 gap-7 p-6">
           {photos.map((photo) => (

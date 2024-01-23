@@ -3,6 +3,13 @@ import { Document, Page, pdfjs } from "react-pdf";
 import jsPDF from "jspdf";
 import { Button } from "keep-react";
 import { TextInput } from "keep-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./Style.css";
+import { Pagination, Navigation } from "swiper/modules";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const PdfWatermarkApp = () => {
@@ -21,32 +28,41 @@ const PdfWatermarkApp = () => {
     setPageNumber(1);
   };
 
-  const addWatermark = () => {
-    if (!file || !watermarkText) return;
+  const addWatermark = async () => {
+    try {
+      if (!file || !watermarkText) {
+        throw new Error("File and watermarkText are required.");
+      }
 
-    const pdfDoc = new jsPDF();
+      const pdfDoc = new jsPDF();
 
-    for (let i = 1; i <= numPages; i++) {
-      pdfDoc.setPage(i);
-      pdfDoc.text(20, pdfDoc.internal.pageSize.height - 20, watermarkText);
+      for (let i = 1; i <= numPages; i++) {
+        pdfDoc.setPage(i);
+        pdfDoc.text(20, pdfDoc.internal.pageSize.height - 20, watermarkText);
+      }
+
+      const blob = await pdfDoc.output("blob");
+
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "watermarked.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error adding watermark:", error.message);
     }
-
-    const blob = pdfDoc.output("blob");
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "watermarked.pdf";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
   };
 
   return (
     <div>
-      {/* ------------file upload----------- */}
-      <div className="flex items-center justify-center bg-grey-lighter w-full h-screen">
-        <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+      <div className="flex items-center justify-center bg-grey-lighter w-full mt-6">
+        <label
+          className="w-96  h-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg 
+        shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white"
+        >
           <svg
             className="w-8 h-8"
             fill="currentColor"
@@ -59,11 +75,10 @@ const PdfWatermarkApp = () => {
           <input type="file" onChange={onFileChange} className="hidden" />
         </label>
       </div>
-      {/* -------------file ----- */}
+
       {file && (
         <div className="mt-2">
-          {/* --------------- */}
-          <div className="flex items-center gap-4 justify-center ">
+          <div className="flex items-center gap-4 justify-center">
             <TextInput
               type="text"
               placeholder="Enter Watermark Text"
@@ -76,16 +91,24 @@ const PdfWatermarkApp = () => {
               Add Watermark
             </Button>
           </div>
-          {/* ---------------document------------ */}
-          <Document
-            className="mt-6 p-3 grid grid-cols-2 items-center"
-            file={file}
-            onLoadSuccess={onDocumentLoadSuccess}
-          >
-            {[...Array(numPages)].map((_, index) => (
-              <Page key={index + 1} pageNumber={index + 1} />
-            ))}
-          </Document>
+          {/*------------  swiper slider ---------- */}
+          <div className=" mt-10 ">
+            {/* ------------- */}
+            <Swiper
+              pagination={{ clickable: true }}
+              navigation={true}
+              modules={[Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {[...Array(numPages)].map((_, index) => (
+                <SwiperSlide key={index + 1}>
+                  <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+                    <Page pageNumber={index + 1} />
+                  </Document>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       )}
     </div>

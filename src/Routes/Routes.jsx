@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         element: <Features></Features>,
       },
       {
-        path: "watermark",
+        path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
       },
     ],
