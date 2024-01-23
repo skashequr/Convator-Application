@@ -3,7 +3,7 @@ export const Faq = () => {
   const [isOpen, setIsOpen] = useState(null);
   const accordions = [
     {
-      title: "How do I create an account?",
+      title: "How do I create account?",
       description:
         'To create an account, click on the "Sign Up" button and fill out the required information. Once done, you can enjoy the benefits of being a registered member.',
     },
