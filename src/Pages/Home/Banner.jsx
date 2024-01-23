@@ -1,12 +1,8 @@
 import { Carousel } from "keep-react";
-import { Helmet } from "react-helmet-async";
 
 const Banner = () => {
   return (
-    <div className=" ">
-      <Helmet>
-        <title>Banner</title>
-      </Helmet>
+    <div className="rounded-xl mt-4 mb-4 bg-white bg-clip-border shadow-md">
       <section className="w-1/2"></section>
       <div className="grid grid-cols-2 gap-4">
         <Carousel
