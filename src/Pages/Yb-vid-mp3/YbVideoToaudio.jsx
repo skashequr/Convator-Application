@@ -46,9 +46,9 @@ const YbVideoToaudio = () => {
               A small business is only as good as its tools.
             </h2>
             <p className="lg:text-xl md:text-lg text-[#8896AB] mt-5 max-w-[600px] text-center mx-auto text-sm">
-              We’re different. Flex is the only saas business platform that lets
-              you run your business on one platform, seamlessly across all
-              digital channels.
+              We’re different. value Flex is the only youtube saas business
+              platform that lets you run your business on one platform,
+              seamlessly across all digital channels.
             </p>
             {/*----------- Banner action-----------  */}
             <form onSubmit={handleSubmit}>
