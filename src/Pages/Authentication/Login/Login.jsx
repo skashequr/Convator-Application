@@ -5,12 +5,16 @@ import Swal from "sweetalert2";
 import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 import { useState } from "react";
 import Googlelogin from "../GoogleLogin/Googlelogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GithubAuth from "../GithubAuth/GithubAuth";
 import { Helmet } from "react-helmet-async";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuth();
+  // -----location state-------
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  console.log("state in the location login page", location.state);
   const HandeLogin = (e) => {
     // -----------------loading off-----------------------------//
     e.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
 
         if (result.user.email) {
           Swal.fire("Login success!", "Welcome to my Website", "success");
+          navigate(from, { replace: true });
         }
       })
 
