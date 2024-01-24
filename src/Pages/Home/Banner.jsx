@@ -2,7 +2,7 @@ import { Carousel } from "keep-react";
 
 const Banner = () => {
   return (
-    <div className="rounded-xl mt-4 mb-4 bg-white bg-clip-border shadow-md">
+    <div className="">
       <section className="w-1/2"></section>
       <div className="grid grid-cols-2 gap-4">
         <Carousel
