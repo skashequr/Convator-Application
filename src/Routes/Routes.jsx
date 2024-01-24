@@ -11,6 +11,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
+import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
+      },
+      {
+        path: "/ybaudio",
+        element: <YbVideoToaudio></YbVideoToaudio>,
       },
     ],
   },
