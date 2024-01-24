@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Testimonials from "../../Component/Testemonial/Testimonials";
-import Banner from "./Banner";
+// import Banner from "./Banner";
 import { Statistic } from "./UserStatics";
 import { Faq } from "../../Component/FAQ/Faq";
 // import Feedback from "../../Component/Feedback/Feedback";
@@ -11,7 +11,7 @@ const Home = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <Banner></Banner>
+      {/* <Banner></Banner> */}
       <Statistic></Statistic>
       <Testimonials></Testimonials>
       <Faq></Faq>

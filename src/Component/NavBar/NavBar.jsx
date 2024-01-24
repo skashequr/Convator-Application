@@ -11,16 +11,7 @@ const NavBar = () => {
 
   const navLinks = (
     <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#bd6363] underline" : ""
-          }
-        >
-          Home2
-        </NavLink>
-      </li>
+      
       <li>
         <NavLink
           to="/"
@@ -43,12 +34,12 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink
-          to="/Page1"
+          to="/feateres"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
           }
         >
-          Page1
+          Feateres
         </NavLink>
       </li>
       <li>
@@ -124,6 +115,16 @@ const NavBar = () => {
           }
         >
           Edit Image
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/massage"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
+          }
+        >
+          Massage
         </NavLink>
       </li>
     </>

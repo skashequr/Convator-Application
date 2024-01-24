@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import { useState } from "react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+// import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { Helmet } from "react-helmet-async";
 const Pdfimg = () => {
   const [photos, setPhotos] = useState([]);
@@ -64,6 +64,7 @@ const Pdfimg = () => {
                       id="img"
                       type="file"
                       onChange={onChangePhotos}
+                      multiple
                       accept="image/png, image/png, image/jpeg, image/jpg"
                     ></input>
                   </div>
