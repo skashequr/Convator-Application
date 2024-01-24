@@ -55,6 +55,10 @@ export const router = createBrowserRouter([
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
       },
+      {
+        path: "/ybvidtoaudio",
+        element: <YbVideoToaudio></YbVideoToaudio>,
+      },
     ],
   },
 ]);
