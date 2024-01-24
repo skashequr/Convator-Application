@@ -10,6 +10,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
+import ImageOptmiz from "../Component/ImageOptimiz/ImageOptmiz";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "/feateres",
         element: <Features></Features>
+      },
+      {
+        path: '/imageOptimiz',
+        element: <ImageOptmiz/>
       }
     ],
   },

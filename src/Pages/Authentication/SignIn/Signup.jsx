@@ -73,7 +73,7 @@ const Signup = () => {
           <div className="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
             <div className="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
               <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
-                {/* <img className="h-[600px]" src={Signupgif} alt="" /> */}
+                {/*------- <img className="h-[600px]" src={Signupgif} alt="" /> */}
                 <Player
                   autoplay
                   loop
@@ -88,8 +88,9 @@ const Signup = () => {
               </div>
             </div>
             <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
+              {/* ------------------card login------------- */}
               <div
-                className="flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
+                className="flex flex-col sm:mx-auto items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl
             relative z-10"
               >
                 <p className="w-full text-4xl font-medium text-center leading-snug font-serif">
