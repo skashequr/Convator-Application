@@ -10,7 +10,7 @@ const NavBar = () => {
   const [drawer, setDrawer] = useState(false);
 
   const navLinks = (
-   
+   <>
       <li>
         <NavLink
           to="/"
