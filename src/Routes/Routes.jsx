@@ -11,6 +11,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
+import Massage from "../Pages/Massage/Massage";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
+      },
+      {
+        path: "/massage",
+        element: <Massage></Massage>
       },
     ],
   },
