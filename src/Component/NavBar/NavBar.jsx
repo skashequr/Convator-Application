@@ -10,17 +10,7 @@ const NavBar = () => {
   const [drawer, setDrawer] = useState(false);
 
   const navLinks = (
-    <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#bd6363] underline" : ""
-          }
-        >
-          Home2
-        </NavLink>
-      </li>
+   <>
       <li>
         <NavLink
           to="/"
@@ -43,12 +33,12 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink
-          to="/Page1"
+          to="/feateres"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
           }
         >
-          Page1
+          Feateres
         </NavLink>
       </li>
       <li>
@@ -126,6 +116,16 @@ const NavBar = () => {
           Edit Image
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/massage"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
+          }
+        >
+          Massage
+        </NavLink>
+      </li>
     </>
   );
 
@@ -149,7 +149,9 @@ const NavBar = () => {
       <div className="hidden xl:inline-block">
         <ul className="flex items-center gap-10 ">{navLinks}</ul>
       </div>
-      <div className="text-3xl hidden xl:inline-block"> Logo</div>
+      <div className=" text-3xl hidden xl:inline-block">
+        <img src="https://i.ibb.co/9v8RZsr/Logo.png" alt="" />
+      </div>
       <div className="relative flex items-center gap-5 w-fit h-fit">
         <div className="relative flex flex-1 items-center ">
           <input
