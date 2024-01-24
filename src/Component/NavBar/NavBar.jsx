@@ -97,7 +97,7 @@ const NavBar = () => {
                           : ""
                       }
                     >
-                      Youtube-Video-Into-Audio
+                      Youtube-Video-Into-mp3
                     </NavLink>
                   </li>
                 </div>
