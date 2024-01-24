@@ -38,12 +38,12 @@ const YbVideoToaudio = () => {
             <span className="bg-[#1B4DFF] sm:px-3 px-2 sm:py-1 py-[3px] sm:text-base text-sm rounded-full">
               YB
             </span>
-            Youtube to Mp3 Conveter
+            Youtube video Mp3
           </div>
           {/* -------- Banner Content ----------------*/}
           <div className="mt-10 ">
             <h2 className="text-white lg:text-5xl md:text-4xl sm:text-3xl text-2xl max-w-[600px] mx-auto text-center font-extrabold ">
-              A small business is only as good as its tools.
+              Please provide youtube video link and Download mp3 file
             </h2>
             <p className="lg:text-xl md:text-lg text-[#8896AB] mt-5 max-w-[600px] text-center mx-auto text-sm">
               We’re different. value Flex is the only youtube saas business
