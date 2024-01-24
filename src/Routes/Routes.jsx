@@ -11,7 +11,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
-import Massage from "../Pages/Massage/Massage";
+import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 
 export const router = createBrowserRouter([
   {
@@ -56,8 +56,8 @@ export const router = createBrowserRouter([
         element: <PdfWatermark></PdfWatermark>,
       },
       {
-        path: "/massage",
-        element: <Massage></Massage>
+        path: "/ybvidtoaudio",
+        element: <YbVideoToaudio></YbVideoToaudio>,
       },
     ],
   },
