@@ -42,8 +42,8 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative">
-      <ul className=" slider w-full overflow-hidden">
+    <div className="banner-div">
+      <ul className="slider">
         {items.map((item, index) => (
           <li
             key={index}
