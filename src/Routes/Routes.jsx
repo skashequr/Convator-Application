@@ -15,6 +15,7 @@ import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import Massage from "../Pages/Massage/Massage";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import OpenChat from "../Pages/Massage/OpenChat";
+import MassageLogin from "../Pages/Massage/MassageLogin";
 
 export const router = createBrowserRouter([
   {
@@ -67,15 +68,20 @@ export const router = createBrowserRouter([
   },
   {
     path: "/massage",
-    element: <WelcomeMassage></WelcomeMassage>,
+    // element: <Massage></Massage>,
+    element: <MassageLogin></MassageLogin>,
     children: [
       {
-        path: "/massage" ,
+        path: "ok" ,
         element: <OpenChat></OpenChat>
       },
       {
-        path: "/massagestart",
+        path: "/massage/massagestart",
         element: <Massage></Massage>,
+      },
+      {
+        path: "/massage/massagelogin",
+
       }
      
     ]
