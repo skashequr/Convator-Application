@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Testimonials from "../../Component/Testemonial/Testimonials";
 import Banner from "./Banner";
-import { Statistic } from "./UserStatics";
+import UserStatics from "./UserStatics";
 import { Faq } from "../../Component/FAQ/Faq";
 // import Feedback from "../../Component/Feedback/Feedback";
 
@@ -12,7 +12,7 @@ const Home = () => {
         <title>Home</title>
       </Helmet>
       <Banner></Banner>
-      <Statistic></Statistic>
+      <UserStatics></UserStatics>
       <Testimonials></Testimonials>
       <Faq></Faq>
     </div>
