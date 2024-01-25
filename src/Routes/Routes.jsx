@@ -11,7 +11,10 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
+import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import Massage from "../Pages/Massage/Massage";
+import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
+import OpenChat from "../Pages/Massage/OpenChat";
 
 export const router = createBrowserRouter([
   {
@@ -56,9 +59,25 @@ export const router = createBrowserRouter([
         element: <PdfWatermark></PdfWatermark>,
       },
       {
-        path: "/massage",
-        element: <Massage></Massage>
+        path: "/ybvidtoaudio",
+        element: <YbVideoToaudio></YbVideoToaudio>,
       },
+      
     ],
   },
+  {
+    path: "/massage",
+    element: <WelcomeMassage></WelcomeMassage>,
+    children: [
+      {
+        path: "/massage" ,
+        element: <OpenChat></OpenChat>
+      },
+      {
+        path: "/massagestart",
+        element: <Massage></Massage>,
+      }
+     
+    ]
+  }
 ]);

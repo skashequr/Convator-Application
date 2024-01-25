@@ -88,7 +88,7 @@ const NavBar = () => {
                 <div>
                   <li>
                     <NavLink
-                      to="/Page2"
+                      to="/ybvidtoaudio"
                       className={({ isActive, isPending }) =>
                         isPending
                           ? "pending"
@@ -97,7 +97,7 @@ const NavBar = () => {
                           : ""
                       }
                     >
-                      Page2.3
+                      Youtube-Video-Into-mp3
                     </NavLink>
                   </li>
                 </div>
