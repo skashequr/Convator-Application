@@ -5,8 +5,8 @@ import FetcherHoverItem from "./FetcherHoverItem/FetcherHoverItem";
 
 const Features = () => {
     return (
-        <section className="bg-white dark:bg-gray-900">
-       <FetcherHoverItem></FetcherHoverItem>
+        <section className="bg-white dark:bg-gray-900 ">
+       <FetcherHoverItem ></FetcherHoverItem>
 
         <div>
         <div className="max-w-xl mb-10 sm:mx-auto">
