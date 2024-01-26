@@ -12,10 +12,12 @@ function WelcomeMassage() {
   //   }
 
   return (
-    <div>
-      <img src={logo} alt="Logo" className="welcome-logo" />
-      <b>Hi , 👋</b>
-      <p>View and text directly to people present in the chat Rooms.</p>
+    <div className="grid">
+      <div>
+        <img src={logo} alt="Logo" className="welcome-logo" />
+        <b>Hi , there 👋</b>
+        <p>View and text directly to people present in the chat Rooms.</p>
+      </div>
       <div>
         {/* --------- lottie animatim add ------------------*/}
         <Player
