@@ -15,9 +15,10 @@ import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import Massage from "../Pages/Massage/Massage";
 import OpenChat from "../Pages/Massage/OpenChat";
 import MassageLogin from "../Pages/Massage/MassageLogin";
-import { path } from "d3-path";
+// import { path } from "d3-path";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
+// import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -57,11 +59,11 @@ export const router = createBrowserRouter([
         path: "/feateres",
         element: <Features></Features>,
       },
-
       {
         path: "/ybvidtoaudio",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
+     
       {
         path: "/massage/welcome",
         element: <WelcomeMassage></WelcomeMassage>,
