@@ -12,6 +12,7 @@ import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
+import Mp4ToMp3Converter from "../Pages/Mp4-mp3/videoToAudio";
 
 export const router = createBrowserRouter([
   {
@@ -51,13 +52,19 @@ export const router = createBrowserRouter([
         path: "/feateres",
         element: <Features></Features>,
       },
+
+      {
+        path: "/ybvidtoaudio",
+        element: <YbVideoToaudio></YbVideoToaudio>,
+      },
+      {
+        path: "/video",
+        element: <Mp4ToMp3Converter></Mp4ToMp3Converter>,
+      },
+
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
-      },
-      {
-        path: "/ybvidtoaudio",
-        // element: <YbVideoToaudio></YbVideoToaudio>,
       },
     ],
   },
