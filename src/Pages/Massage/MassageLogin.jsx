@@ -28,23 +28,29 @@ function MassageLogin() {
           "Content-type": "application/json",
         },
       };
-    
-      const response = await axios.post("http://localhost:5000/user/login/", data, config);
-      
+
+      const response = await axios.post(
+        "https://file-convator-backend.vercel.app/user/login/",
+        data,
+        config
+      );
+
       console.log("Login : ", response);
-      
+
       setLogInStatus({ msg: "Success", key: Math.random() });
       setLoading(false);
-      
+
       localStorage.setItem("userData", JSON.stringify(response));
       navigate("/app/welcome");
     } catch (error) {
-      setLogInStatus({ msg: "Invalid User name or Password", key: Math.random() });
+      setLogInStatus({
+        msg: "Invalid User name or Password",
+        key: Math.random(),
+      });
     }
-    
+
     setLoading(false);
   };
-
 
   const signUpHandler = async () => {
     setLoading(true);
@@ -56,7 +62,7 @@ function MassageLogin() {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/user/register",
+        "https://file-convator-backend.vercel.app/user/register",
         data,
         config
       );
@@ -198,23 +204,23 @@ function MassageLogin() {
             />
 
             <input
-                onChange={changeHandler}
-                id="outlined-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-                color="secondary"
-                name="password"
-                onKeyDown={(event) => {
-                  if (event.code == "Enter") {
-                    // console.log(event);
-                    signUpHandler();
-                  }
-                }}
+              onChange={changeHandler}
+              id="outlined-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              color="secondary"
+              name="password"
+              onKeyDown={(event) => {
+                if (event.code == "Enter") {
+                  // console.log(event);
+                  signUpHandler();
+                }
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="enter your passwword"
             />
-            
+
             <Button
               variant="outlined"
               color="secondary"
