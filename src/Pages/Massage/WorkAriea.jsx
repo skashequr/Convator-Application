@@ -1,6 +1,8 @@
 import { MdDelete } from "react-icons/md";
 import ChatComponent from "./ChatBabbule";
+import { useState } from "react";
 const WorkAriea = () => {
+  
   return (
     <div>
       
@@ -13,3 +15,7 @@ const WorkAriea = () => {
 };
 
 export default WorkAriea;
+
+
+// Assuming req.body contains the necessary data (content, chatId)
+
