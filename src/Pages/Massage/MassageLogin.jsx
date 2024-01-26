@@ -41,7 +41,7 @@ function MassageLogin() {
       setLoading(false);
 
       localStorage.setItem("userData", JSON.stringify(response));
-      navigate("/app/welcome");
+      navigate("/massage/welcome");
     } catch (error) {
       setLogInStatus({
         msg: "Invalid User name or Password",
@@ -68,7 +68,7 @@ function MassageLogin() {
       );
       console.log(response);
       setSignInStatus({ msg: "Success", key: Math.random() });
-      navigate("/app/welcome");
+      navigate("/massage/welcome");
       localStorage.setItem("userData", JSON.stringify(response));
       setLoading(false);
     } catch (error) {

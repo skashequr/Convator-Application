@@ -6,7 +6,7 @@ const SideBar = () => {
     <div>
       <div className="flex justify-between bg-slate-300 rounded-full">
         <CgProfile className="w-9 h-8 m-6" />
-        <div className="flex justify-between">
+        <div className="flex justify-around">
           <IoPersonAddSharp className="w-9 h-8 m-6"></IoPersonAddSharp>
           <FaUserFriends className="w-9 h-8 m-6"></FaUserFriends>
           <IoAddCircleOutline className="w-9 h-8 m-6"></IoAddCircleOutline>
@@ -29,9 +29,9 @@ const SideBar = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -46,19 +46,40 @@ const SideBar = () => {
             <FaSearch className=" absolute end-2.5 h-8 w-8 bottom-2.5 rounded-lg "></FaSearch>
           </div>
         </form>
+        {/*---------------- user--------- */}
         <div>
-          <div className="flex items-center gap-4 w-full mt-3 p-8 hover:bg-gray-800">
-            <div className="h-10 w-10 hover:h-14 hover:w-14">
-              <img
-                className="h-full w-full rounded-full object-cover object-center ring ring-white"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
+          <div>
+            <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl  hover:bg-[#a2d1f7] bg-[#F1F2F3]">
+              <div className="h-10 w-10 hover:h-14 hover:w-14">
+                <img
+                  className="h-full w-full rounded-full object-cover object-center ring ring-white"
+                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </div>
+              <div className="font-medium dark:text-white">
+                <div className="hover:text-white">Jese Leos</div>
+                <div className="text-sm  dark:text-gray-400">
+                  Joined in August 2014
+                </div>
+              </div>
             </div>
-            <div className="font-medium dark:text-white">
-              <div className="hover:text-white">Jese Leos</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                Joined in August 2014
+          </div>
+          {/* 2 */}
+          <div>
+            <div className="flex items-center gap-4 w-full mt-3 p-8 hover:bg-[#a2d1f7] bg-[#F1F2F3]">
+              <div className="h-10 w-10 hover:h-14 hover:w-14">
+                <img
+                  className="h-full w-full rounded-full object-cover object-center ring ring-white"
+                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </div>
+              <div className="font-medium dark:text-white">
+                <div className="hover:text-white">Jese Leos</div>
+                <div className="text-sm  dark:text-gray-400">
+                  Joined in August 2014
+                </div>
               </div>
             </div>
           </div>

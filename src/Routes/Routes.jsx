@@ -16,6 +16,8 @@ import Massage from "../Pages/Massage/Massage";
 import OpenChat from "../Pages/Massage/OpenChat";
 import MassageLogin from "../Pages/Massage/MassageLogin";
 import { path } from "d3-path";
+import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
+import Pdfview from "../Pages/PdfViwer/PdfViwer";
 
 export const router = createBrowserRouter([
   {
@@ -60,7 +62,14 @@ export const router = createBrowserRouter([
         path: "/ybvidtoaudio",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
-
+      {
+        path: "/massage/welcome",
+        element: <WelcomeMassage></WelcomeMassage>,
+      },
+      {
+        path: "pdfview",
+        element: <Pdfview></Pdfview>,
+      },
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
@@ -86,6 +95,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/massage/massagelogin",
+      },
+      {
+        path: "/massage/welcome",
+        element: <WelcomeMassage></WelcomeMassage>,
       },
     ],
   },
