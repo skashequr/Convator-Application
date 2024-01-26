@@ -13,9 +13,9 @@ import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import Massage from "../Pages/Massage/Massage";
-import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import OpenChat from "../Pages/Massage/OpenChat";
 import MassageLogin from "../Pages/Massage/MassageLogin";
+import { path } from "d3-path";
 
 export const router = createBrowserRouter([
   {
@@ -55,15 +55,20 @@ export const router = createBrowserRouter([
         path: "/feateres",
         element: <Features></Features>,
       },
+
+      {
+        path: "/ybvidtoaudio",
+        element: <YbVideoToaudio></YbVideoToaudio>,
+      },
+
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
       },
       {
-        path: "/ybvidtoaudio",
+        path: "/youtubemp3",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
-      
     ],
   },
   {
@@ -72,8 +77,8 @@ export const router = createBrowserRouter([
     element: <MassageLogin></MassageLogin>,
     children: [
       {
-        path: "ok" ,
-        element: <OpenChat></OpenChat>
+        path: "ok",
+        element: <OpenChat></OpenChat>,
       },
       {
         path: "/massage/massagestart",
@@ -81,9 +86,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/massage/massagelogin",
-
-      }
-     
-    ]
-  }
+      },
+    ],
+  },
 ]);
