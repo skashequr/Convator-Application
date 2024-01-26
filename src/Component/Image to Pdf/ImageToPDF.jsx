@@ -34,8 +34,9 @@ const Pdfimg = () => {
       <Helmet>
         <title>Image-pdf</title>
       </Helmet>
-      <h2 className="text-center">Image to Pdf</h2>
-      <div className="row mt-5">
+      <div className="">
+      <h2 className="text-center pt-32">Image to Pdf</h2>
+      <div className="row ">
         <div className="col-lg-3">
           {photos && (
             <div>
@@ -84,7 +85,7 @@ const Pdfimg = () => {
               </div>
             </div>
 
-            <div className="hidden md:block w-96 w-96 bg-indigo-500 py-10 px-10">
+            <div className="hidden md:block w-96  bg-indigo-500 py-10 px-10">
               <img
                 src="https://cdn.dribbble.com/users/527271/screenshots/6090255/media/c8f4598d29e31001516bc06721fe4f49.gif"
                 alt=""
@@ -110,6 +111,7 @@ const Pdfimg = () => {
       <footer>
         <p className="text-center"></p>
       </footer>
+      </div>
     </div>
   );
 };
