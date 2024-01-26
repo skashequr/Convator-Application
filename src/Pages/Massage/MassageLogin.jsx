@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/Logo.png";
-import { Button } from "keep-react";
+// import { Button } from "keep-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import Toaster from "./Toaster";
@@ -30,7 +30,7 @@ function MassageLogin() {
       };
 
       const response = await axios.post(
-        "https://file-convator-backend.vercel.app/user/login/",
+        "http://localhost:5000/user/login/",
         data,
         config
       );
@@ -62,7 +62,7 @@ function MassageLogin() {
       };
 
       const response = await axios.post(
-        "https://file-convator-backend.vercel.app/user/register",
+        "http://localhost:5000/user/register",
         data,
         config
       );
@@ -103,6 +103,7 @@ function MassageLogin() {
             </p>
 
             <div className="space-y-5">
+              {/* ----------name------ */}
               <label htmlFor="email" className="block">
                 User-Name
               </label>
@@ -153,11 +154,12 @@ function MassageLogin() {
                   </svg>
                 </span>
               </div>
+              {/*------- password ------- */}
               <p className="mt-2 text-sm text-green-600 dark:text-green-500">
                 <span className="font-medium">Well done!</span> Some success
                 message.
               </p>
-              <label htmlFor="email" className="block">
+              <label htmlFor="password" className="block">
                 Password
               </label>
               <div className="relative">
@@ -167,6 +169,7 @@ function MassageLogin() {
                   id="outlined-password-input"
                   label="Password"
                   type="password"
+                  placeholder="enter your passwword"
                   autoComplete="current-password"
                   color="secondary"
                   name="password"
@@ -218,8 +221,6 @@ function MassageLogin() {
                 message.
               </p>
 
-              {/* pass end*/}
-
               <p>
                 Dont have an Account ?{" "}
                 <span
@@ -239,7 +240,7 @@ function MassageLogin() {
           </div>
         )}
 
-        {/*------------ -------signup--------- --------*/}
+        {/*------------ -------signup part--------- --------*/}
 
         {!showlogin && (
           <div className="login-box p-12 mx-auto lg:w-[500px] drop-shadow-lg bg-white">
@@ -249,7 +250,7 @@ function MassageLogin() {
 
             <div className="space-y-5">
               {/* ------------Name----------- */}
-              <label htmlFor="email" className="block">
+              <label htmlFor="name" className="block">
                 User-Name
               </label>
               <div className="relative">
@@ -346,7 +347,7 @@ function MassageLogin() {
                 </span>
               </div>
               {/* -----------password---------- */}
-              <label htmlFor="email" className="block">
+              <label htmlFor="password" className="block">
                 Password
               </label>
               <div className="relative">
