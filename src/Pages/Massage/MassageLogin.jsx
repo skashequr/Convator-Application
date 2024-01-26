@@ -34,12 +34,11 @@ function MassageLogin() {
         data,
         config
       );
-
       console.log("Login : ", response);
-
+      
       setLogInStatus({ msg: "Success", key: Math.random() });
       setLoading(false);
-
+      
       localStorage.setItem("userData", JSON.stringify(response));
       navigate("/app/welcome");
     } catch (error) {
@@ -48,9 +47,10 @@ function MassageLogin() {
         key: Math.random(),
       });
     }
-
+    
     setLoading(false);
   };
+
 
   const signUpHandler = async () => {
     setLoading(true);
@@ -91,13 +91,13 @@ function MassageLogin() {
 
   return (
     <>
-      <div className="login-container mt-6 w-full mx-auto lg:w-[500px] drop-shadow-lg bg-white  ">
+      <div className="login-container mt-6 w-full mx-auto lg:w-[500px] drop-shadow-lg bg-slate-700  ">
         <div className="image-container  items-center justify-center ">
           <img src={logo} alt="Logo" className="welcome-logo ml-[40%]" />
         </div>
         {showlogin && (
           // ----------------login ----------------
-          <div className="login-box p-12 w-full mx-auto lg:w-[500px] drop-shadow-lg bg-white">
+          <div className="login-box p-12 w-full mx-auto lg:w-[500px] drop-shadow-lg bg-slate-700">
             <p className="login-text backdrop-blur-sm text-4xl pb-8">
               Login to your Account
             </p>
