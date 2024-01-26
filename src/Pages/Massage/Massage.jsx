@@ -1,4 +1,5 @@
 import SideBar from "./SideBar";
+import WorkAriea from "./WorkAriea";
 
 const Massage = () => {
   return (

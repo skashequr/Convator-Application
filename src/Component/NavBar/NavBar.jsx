@@ -71,7 +71,7 @@ const NavBar = () => {
                 <div>
                   <li className="">
                     <NavLink
-                      to="watermark"
+                      to="pdfview"
                       className={({ isActive, isPending }) =>
                         isPending
                           ? "pending"
@@ -80,7 +80,7 @@ const NavBar = () => {
                           : ""
                       }
                     >
-                      Watermark-Pdf
+                      Pdf-View
                     </NavLink>
                   </li>
                 </div>
@@ -88,7 +88,7 @@ const NavBar = () => {
                 <div>
                   <li>
                     <NavLink
-                      to="/ybvidtoaudio"
+                      to="/youtubemp3"
                       className={({ isActive, isPending }) =>
                         isPending
                           ? "pending"

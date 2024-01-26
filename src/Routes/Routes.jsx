@@ -12,7 +12,10 @@ import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
-import Mp4ToMp3Converter from "../Pages/Mp4-mp3/videoToAudio";
+import Massage from "../Pages/Massage/Massage";
+import OpenChat from "../Pages/Massage/OpenChat";
+import MassageLogin from "../Pages/Massage/MassageLogin";
+import { path } from "d3-path";
 
 export const router = createBrowserRouter([
   {
@@ -57,14 +60,32 @@ export const router = createBrowserRouter([
         path: "/ybvidtoaudio",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
-      {
-        path: "/video",
-        element: <Mp4ToMp3Converter></Mp4ToMp3Converter>,
-      },
 
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
+      },
+      {
+        path: "/youtubemp3",
+        element: <YbVideoToaudio></YbVideoToaudio>,
+      },
+    ],
+  },
+  {
+    path: "/massage",
+    // element: <Massage></Massage>,
+    element: <MassageLogin></MassageLogin>,
+    children: [
+      {
+        path: "ok",
+        element: <OpenChat></OpenChat>,
+      },
+      {
+        path: "/massage/massagestart",
+        element: <Massage></Massage>,
+      },
+      {
+        path: "/massage/massagelogin",
       },
     ],
   },
