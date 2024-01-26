@@ -28,22 +28,26 @@ function MassageLogin() {
           "Content-type": "application/json",
         },
       };
-    
-      const response = await axios.post("http://localhost:5000/user/login/", data, config);
-      
+
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        data,
+        config
+      );
       console.log("Login : ", response);
-      
       setLogInStatus({ msg: "Success", key: Math.random() });
       setLoading(false);
-      
       localStorage.setItem("userData", JSON.stringify(response));
       navigate("/app/welcome");
     } catch (error) {
-      setLogInStatus({ msg: "Invalid User name or Password", key: Math.random() });
+      setLogInStatus({
+        msg: "Invalid User name or Password",
+        key: Math.random(),
+      });
     }
-    
     setLoading(false);
   };
+
 
 
   const signUpHandler = async () => {
