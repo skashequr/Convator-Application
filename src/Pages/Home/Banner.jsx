@@ -23,12 +23,12 @@ const Banner = () => {
   }, []);
 
   const items = [
-    "https://cdn.mos.cms.futurecdn.net/dP3N4qnEZ4tCTCLq59iysd.jpg",
-    "https://i.redd.it/tc0aqpv92pn21.jpg",
-    "https://wharferj.files.wordpress.com/2015/11/bio_north.jpg",
-    "https://images7.alphacoders.com/878/878663.jpg",
-    "https://theawesomer.com/photos/2017/07/simon_stalenhag_the_electric_state_6.jpg",
-    "https://da.se/app/uploads/2015/09/simon-december1994.jpg",
+    "https://i.ibb.co/Ry15pgx/1.png",
+    "https://i.ibb.co/zr5qzhb/2.png",
+    "https://t4.ftcdn.net/jpg/02/06/64/81/240_F_206648117_2bHSehuQ9gDCq60BuM9ujl5kvXEMsNll.jpg",
+    "https://t3.ftcdn.net/jpg/04/30/39/68/240_F_430396841_qE2QHqxR4s0LYSDFaYw8NvPSFLG4gbbN.jpg",
+    "https://t3.ftcdn.net/jpg/04/55/67/38/240_F_455673821_cVqMvtRHEdc2OTyzgxMkwwv0mQ2s6TAq.jpg",
+    "https://t4.ftcdn.net/jpg/02/89/23/05/240_F_289230573_Zrx0qddb7Ll8h0sCuopUqSSYN9kbbhx0.jpg",
   ];
 
   const nextSlide = () => {
@@ -50,15 +50,15 @@ const Banner = () => {
             className={` ${index === currentIndex ? "active" : ""} item`}
             style={{ backgroundImage: `url('${item}')` }}
           >
-            <div className="content">
-              <h2 className="title">"The Migration"</h2>
-              <p className="description">
+            <div className="content text-black">
+              <h2 className="title text-black">"The Migration"</h2>
+              <p className="description text-black">
                 {" "}
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Tempore fuga voluptatum, iure corporis inventore praesentium
                 nisi. Id laboriosam ipsam enim.{" "}
               </p>
-              <button>Read More</button>
+              <button className="bg-[#F1E9D5] text-black">Read More</button>
             </div>
           </li>
         ))}
