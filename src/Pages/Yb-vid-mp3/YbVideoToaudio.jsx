@@ -30,10 +30,10 @@ const YbVideoToaudio = () => {
     inputUrlRef.current.value = "";
   };
   return (
-    <div className="mt-6">
+    <div className="mt-6 p-3 pt-28">
       <div className="min-h-[600px] sm:px-2 px-3 mx-3 max-h-[800px] py-20 rounded-t-2xl bg-[#2A3342]">
         <div className="flex justify-center flex-col">
-          {/* Beautiful announcement line */}
+          {/* ---------Beautiful announcement line -------*/}
           <div className="bg-[#1F2937] mx-auto max-w-[250px] pr-3 pl-1 py-[6px]  rounded-full gap-2 flex  items-center text-white">
             <span className="bg-[#1B4DFF] sm:px-3 px-2 sm:py-1 py-[3px] sm:text-base text-sm rounded-full">
               YB
@@ -73,12 +73,14 @@ const YbVideoToaudio = () => {
                   ></input>
                 </div>
                 <div className=" md:mr-auto md:ml-0 lg:w-[45%] ">
-                  {/* <Button type="primary" size="md">
+                  {/*------- 
+                  <Button type="primary" size="md">
                     Search Now
                     <span className="pl-2">
                       <SignIn size={24} />
                     </span>
-                  </Button> */}
+                  </Button> 
+                  -------------------*/}
                   <button
                     type="submit"
                     className="flex items-center relative w-36 border-2

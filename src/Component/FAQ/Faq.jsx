@@ -3,31 +3,36 @@ export const Faq = () => {
   const [isOpen, setIsOpen] = useState(null);
   const accordions = [
     {
-      title: "How do I create account?",
+      title: "What does the converter application do?",
       description:
-        'To create an account, click on the "Sign Up" button and fill out the required information. Once done, you can enjoy the benefits of being a registered member.',
+        "he converter application helps users convert one type of data or file format into another. This could include converting units of measurement, file formats, currencies, and more.",
     },
     {
-      title: "What is your return policy?",
+      title: "What types of conversions does the application support?",
       description:
-        "Our return policy allows you to return items within 30 days of purchase. Please visit our returns page for detailed instructions and to initiate a return.",
+        "The application may support various types of conversions, such as length, weight, temperature, currency, time, and file formats like PDF to Word, image to text, etc.",
     },
     {
-      title: "Can I change my shipping address?",
+      title: "How user-friendly is the application?",
       description:
-        "Yes, you can change your shipping address before your order is shipped. Go to your account settings and update the shipping information accordingly.",
+        "Users often want to know how easy it is to navigate and use the application. Look for an application with a simple and intuitive interface to enhance the user experience.",
     },
     {
-      title: "Are there any discounts for loyal customers?",
+      title: "Is there customer support available?",
       description:
-        "We appreciate our loyal customers! Stay tuned for exclusive discounts, promotions, and special offers available to members of our loyalty program.",
+        "Check if the converter application has customer support options in case you encounter issues or have questions. This could include email support, live chat, or a knowledge base.",
+    },
+    {
+      title: "How frequently is the application updated?",
+      description:
+        "Regular updates can indicate that the developers are actively maintaining and improving the application. Ensure that the converter application you choose receives updates to address bugs, add features, and stay current.",
     },
   ];
   const toggle = (idx) => {
     setIsOpen((prevIdx) => (prevIdx === idx ? null : idx));
   };
   return (
-    <div className="border  p-4 font-sans mx-4 rounded-xl mt-4 mb-6 bg-white bg-clip-border shadow-md">
+    <div className="border  p-6 font-sans mx-4 rounded-xl mt-4 mb-10 bg-white bg-clip-border shadow-md">
       {accordions.map((PerAccordion, idx) => (
         <div key={idx} className="p-4 border-b">
           <button
