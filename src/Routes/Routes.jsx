@@ -12,12 +12,12 @@ import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
-import Massage from "../Pages/Massage/Massage";
 import OpenChat from "../Pages/Massage/OpenChat";
-import MassageLogin from "../Pages/Massage/MassageLogin";
-// import { path } from "d3-path";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
+import MassageLogin from "../Pages/Massage/MassageLogin";
+import SideBar from "../Pages/Massage/SideBar";
+
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
 export const router = createBrowserRouter([
@@ -63,11 +63,6 @@ export const router = createBrowserRouter([
         path: "/ybvidtoaudio",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
-     
-      {
-        path: "/massage/welcome",
-        element: <WelcomeMassage></WelcomeMassage>,
-      },
       {
         path: "pdfview",
         element: <Pdfview></Pdfview>,
@@ -80,28 +75,38 @@ export const router = createBrowserRouter([
         path: "/youtubemp3",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
-    ],
-  },
-  {
-    path: "/massage",
-    // element: <Massage></Massage>,
-    element: <MassageLogin></MassageLogin>,
-    children: [
+
+      // Massageing routes
       {
-        path: "ok",
-        element: <OpenChat></OpenChat>,
-      },
-      {
-        path: "/massage/massagestart",
-        element: <Massage></Massage>,
-      },
-      {
-        path: "/massage/massagelogin",
+        path: "/massage",
+        element: <MassageLogin></MassageLogin>
       },
       {
         path: "/massage/welcome",
         element: <WelcomeMassage></WelcomeMassage>,
       },
+      {
+        path: "/massage/dehed/swgs",
+        element: <OpenChat></OpenChat>,
+      },
+      {
+        path: "/work",
+        element: <SideBar></SideBar>
+      },
+      {
+        path: "/massage/users",
+        element: " "
+      },
+      {
+        path: "massage/groups",
+        element: " "
+      },
+      {
+        path: "massage/create-groups",
+        element: ""
+      }
+      
     ],
   },
+  
 ]);
