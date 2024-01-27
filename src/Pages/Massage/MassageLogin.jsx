@@ -98,14 +98,12 @@ function MassageLogin() {
 
   return (
     <>
-      <div className="login-container mt-6 w-full mx-auto lg:w-[500px] drop-shadow-lg  ">
-        <div className="image-container  items-center justify-center ">
-          <img src={logo} alt="Logo" className="welcome-logo ml-[40%]" />
-        </div>
+      <div className="login-container  w-full mx-auto lg:w-[500px] drop-shadow-lg  ">
+        
         {showlogin && (
           // ----------------login ----------------
-          <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
-            <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
+          <div className="flex flex-col  w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+            <div className="self-centermb-6 mt-40 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
               Login your Account
             </div>
             <div className="mt-8">
@@ -190,7 +188,7 @@ function MassageLogin() {
         {/*------------ -------signup part--------- --------*/}
 
         {!showlogin && (
-          <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+          <div className="flex flex-col w-full   max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
             <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
               SignUp To New Account
             </div>
