@@ -17,6 +17,8 @@ import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
 import MassageLogin from "../Pages/Massage/MassageLogin";
 import SideBar from "../Pages/Massage/SideBar";
+import Users from "../Pages/Massage/Users";
+import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -75,6 +77,10 @@ export const router = createBrowserRouter([
         path: "/youtubemp3",
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
+      {
+        path: "/imgToWord",
+        element: <ImgToText></ImgToText>
+      },
 
       // Massageing routes
       {
@@ -90,12 +96,8 @@ export const router = createBrowserRouter([
         element: <OpenChat></OpenChat>,
       },
       {
-        path: "/work",
-        element: <SideBar></SideBar>
-      },
-      {
         path: "/massage/users",
-        element: " "
+        element: <Users></Users>
       },
       {
         path: "massage/groups",
