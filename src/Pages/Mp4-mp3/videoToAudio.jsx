@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Mp4ToMp3Converter = () => {
   // ------------
@@ -29,6 +30,9 @@ const Mp4ToMp3Converter = () => {
 
   return (
     <div className="pt-24">
+      <Helmet>
+        <title>Youtube vido mp3</title>
+      </Helmet>
       <form onSubmit={handleSubmit}>
         <input type="file" accept=".mp4" onChange={handleFileChange} />
         <button type="submit">Convert to MP3</button>

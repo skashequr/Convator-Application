@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./pdfview.css";
 import { Pagination, Navigation } from "swiper/modules";
+import { Helmet } from "react-helmet-async";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
@@ -30,6 +31,9 @@ const Pdfview = () => {
 
   return (
     <div className="pt-28 p-4 mt-6">
+      <Helmet>
+        <title>Pdf viewer</title>
+      </Helmet>
       <div className="flex items-center justify-center bg-grey-lighter w-full mt-6">
         <label
           className="w-96  h-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg 
