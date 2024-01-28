@@ -1,5 +1,11 @@
+import ChatBabbule from "../Massage/ChatBabbule"
+
 const OpenChat = () => {
-  return <div></div>;
+  return (
+    <div>
+      <ChatBabbule></ChatBabbule>
+    </div>
+  );
 };
 
 export default OpenChat;
