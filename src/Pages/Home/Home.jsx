@@ -9,14 +9,17 @@ import Hexagon from "../Hexagon-card/Hexagon";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-br from-rose-100 to-teal-100">
+    <div className="bg-gradient-to-br from-rose-100 to-teal-100 mx-auto">
       <Helmet>
         <title>Home</title>
       </Helmet>
       <Banner></Banner>
       <UserStatics></UserStatics>
-      <Hexagon></Hexagon>
+      <div className="mt-5">
+        <Hexagon></Hexagon>
+      </div>
       <Testimonials></Testimonials>
+
       <Faq></Faq>
     </div>
   );
