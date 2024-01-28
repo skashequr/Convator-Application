@@ -3,6 +3,8 @@ import Testimonials from "../../Component/Testemonial/Testimonials";
 import Banner from "./Banner";
 import UserStatics from "./UserStatics";
 import { Faq } from "../../Component/FAQ/Faq";
+import Hexagon from "../Hexagon-card/Hexagon";
+
 // import Feedback from "../../Component/Feedback/Feedback";
 
 const Home = () => {
@@ -13,6 +15,7 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <UserStatics></UserStatics>
+      <Hexagon></Hexagon>
       <Testimonials></Testimonials>
       <Faq></Faq>
     </div>

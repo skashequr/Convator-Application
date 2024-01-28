@@ -23,12 +23,19 @@ const Banner = () => {
   }, []);
 
   const items = [
-    "https://i.ibb.co/Ry15pgx/1.png",
-    "https://i.ibb.co/zr5qzhb/2.png",
-    "https://t4.ftcdn.net/jpg/02/06/64/81/240_F_206648117_2bHSehuQ9gDCq60BuM9ujl5kvXEMsNll.jpg",
-    "https://t3.ftcdn.net/jpg/04/30/39/68/240_F_430396841_qE2QHqxR4s0LYSDFaYw8NvPSFLG4gbbN.jpg",
-    "https://t3.ftcdn.net/jpg/04/55/67/38/240_F_455673821_cVqMvtRHEdc2OTyzgxMkwwv0mQ2s6TAq.jpg",
-    "https://t4.ftcdn.net/jpg/02/89/23/05/240_F_289230573_Zrx0qddb7Ll8h0sCuopUqSSYN9kbbhx0.jpg",
+    "https://i.ibb.co/X7bKFHn/2.png",
+    "https://i.ibb.co/K0Ysmyj/1.png",
+
+    " https://i.ibb.co/68zdyhc/our-team.gif",
+    "https://i.ibb.co/RgmjxFT/1.png",
+    "https://i.ibb.co/rmN8qjC/3.png",
+    "https://i.ibb.co/NjQmn7j/2.png",
+    "https://i.ibb.co/TwQCBgJ/4.png",
+    "https://i.ibb.co/0M0pFtS/5.png",
+
+    "https://i.ibb.co/HVTx3vY/7.png",
+    "https://i.ibb.co/gyHRSX4/8.png",
+    "https://i.ibb.co/Z1v61tT/6.png",
   ];
 
   const nextSlide = () => {
@@ -50,9 +57,9 @@ const Banner = () => {
             className={` ${index === currentIndex ? "active" : ""} item`}
             style={{ backgroundImage: `url('${item}')` }}
           >
-            <div className="content text-black">
-              <h2 className="title text-black">"The Migration"</h2>
-              <p className="description text-black">
+            <div className="content text-black bg-transparent">
+              <h2 className="title text-blue-600">Better Converter world</h2>
+              <p className="description text-white">
                 {" "}
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Tempore fuga voluptatum, iure corporis inventore praesentium

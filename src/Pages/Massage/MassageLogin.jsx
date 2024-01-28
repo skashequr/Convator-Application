@@ -15,15 +15,13 @@ function MassageLogin() {
 
   const navigate = useNavigate();
 
- 
-
   const loginHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     // console.log(data);
     const userName = e.target.userName.value;
     const password = e.target.password.value;
-    const data = {name: userName , password};
+    const data = { name: userName, password };
     try {
       const config = {
         headers: {
@@ -53,13 +51,13 @@ function MassageLogin() {
     setLoading(false);
   };
 
-  const signUpHandler = async (e) => {
+  const signUpHandler = async () => {
     setLoading(true);
     event.preventDefault();
     const userName = e.target.userName.value;
     const password = e.target.password.value;
     const email = e.target.email.value;
-    const data = {name: userName , password , email};
+    const data = { name: userName, password, email };
     console.log(data);
     try {
       const config = {
@@ -99,7 +97,6 @@ function MassageLogin() {
   return (
     <>
       <div className="login-container  w-full mx-auto lg:w-[500px] drop-shadow-lg  ">
-        
         {showlogin && (
           // ----------------login ----------------
           <div className="flex flex-col  w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
@@ -109,20 +106,19 @@ function MassageLogin() {
             <div className="mt-8">
               <form onSubmit={loginHandler}>
                 <div className="flex flex-col mb-2">
-                  
-                <div className="flex flex-col mb-2">
-                  <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                      <FaRegUserCircle></FaRegUserCircle>
-                    </span>
-                    <input
-                      type="text"
-                      name="userName"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                      placeholder="Your password"
-                    />
+                  <div className="flex flex-col mb-2">
+                    <div className="flex relative ">
+                      <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                        <FaRegUserCircle></FaRegUserCircle>
+                      </span>
+                      <input
+                        type="text"
+                        name="userName"
+                        className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        placeholder="Your password"
+                      />
+                    </div>
                   </div>
-                </div>
                 </div>
                 <div className="flex flex-col mb-6">
                   <div className="flex relative ">
@@ -146,22 +142,20 @@ function MassageLogin() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="flex items-center mb-6 -mt-4">
-                <p>
-              Dont have an Account ?{" "}
-              <span
-                className="hyper"
-                onClick={() => {
-                  setShowLogin(false);
-                }}
-              >
-                Sign Up
-              </span>
-            </p>
-            {logInStatus ? (
-              "react tost"
-            ) : null}
+                  <p>
+                    Dont have an Account ?{" "}
+                    <span
+                      className="hyper"
+                      onClick={() => {
+                        setShowLogin(false);
+                      }}
+                    >
+                      Sign Up
+                    </span>
+                  </p>
+                  {logInStatus ? "react tost" : null}
                 </div>
                 <div className="flex w-full">
                   <button
@@ -195,21 +189,20 @@ function MassageLogin() {
             <div className="mt-8">
               <form onSubmit={signUpHandler}>
                 <div className="flex flex-col mb-2">
-                  
-                <div className="flex flex-col mb-2">
-                  <div className="flex relative ">
-                    <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                      <FaRegUserCircle></FaRegUserCircle>
-                    </span>
-                    <input
-                      type="text"
-                      id="sign-in-email"
-                      name="userName"
-                      className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                      placeholder="Your password"
-                    />
+                  <div className="flex flex-col mb-2">
+                    <div className="flex relative ">
+                      <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                        <FaRegUserCircle></FaRegUserCircle>
+                      </span>
+                      <input
+                        type="text"
+                        id="sign-in-email"
+                        name="userName"
+                        className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        placeholder="Your password"
+                      />
+                    </div>
                   </div>
-                </div>
                   <div className="flex relative ">
                     <span className="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                       <svg
@@ -253,23 +246,20 @@ function MassageLogin() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="flex items-center mb-6 -mt-4">
-                <p>
-              Already have an Account ?
-              <span
-                className="hyper"
-                onClick={() => {
-                  setShowLogin(true);
-                }}
-              >
-                Log in
-              </span>
-            </p>
-            {signInStatus ? (
-              
-              " React tost"
-            ) : null}
+                  <p>
+                    Already have an Account ?
+                    <span
+                      className="hyper"
+                      onClick={() => {
+                        setShowLogin(true);
+                      }}
+                    >
+                      Log in
+                    </span>
+                  </p>
+                  {signInStatus ? " React tost" : null}
                 </div>
                 <div className="flex w-full">
                   <button
