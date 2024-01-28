@@ -35,10 +35,10 @@ function MassageLogin() {
         config
       );
       console.log("Login : ", response);
-      
+
       setLogInStatus({ msg: "Success", key: Math.random() });
       setLoading(false);
-      
+
       localStorage.setItem("userData", JSON.stringify(response));
       navigate("/massage/welcome");
     } catch (error) {
@@ -47,10 +47,9 @@ function MassageLogin() {
         key: Math.random(),
       });
     }
-    
+
     setLoading(false);
   };
-
 
   const signUpHandler = async () => {
     setLoading(true);

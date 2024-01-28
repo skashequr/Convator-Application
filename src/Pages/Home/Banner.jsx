@@ -23,8 +23,8 @@ const Banner = () => {
   }, []);
 
   const items = [
-    "https://i.ibb.co/Ry15pgx/1.png",
-    "https://i.ibb.co/zr5qzhb/2.png",
+    "https://i.ibb.co/X7bKFHn/2.png",
+    "https://i.ibb.co/RgmjxFT/1.png",
     "https://t4.ftcdn.net/jpg/02/06/64/81/240_F_206648117_2bHSehuQ9gDCq60BuM9ujl5kvXEMsNll.jpg",
     "https://t3.ftcdn.net/jpg/04/30/39/68/240_F_430396841_qE2QHqxR4s0LYSDFaYw8NvPSFLG4gbbN.jpg",
     "https://t3.ftcdn.net/jpg/04/55/67/38/240_F_455673821_cVqMvtRHEdc2OTyzgxMkwwv0mQ2s6TAq.jpg",
