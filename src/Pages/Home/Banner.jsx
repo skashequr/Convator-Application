@@ -51,8 +51,8 @@ const Banner = () => {
             style={{ backgroundImage: `url('${item}')` }}
           >
             <div className="content text-black">
-              <h2 className="title text-black">"The Migration"</h2>
-              <p className="description text-black">
+              <h2 className="title text-gray-400">Better Converter world</h2>
+              <p className="description text-white">
                 {" "}
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Tempore fuga voluptatum, iure corporis inventore praesentium
