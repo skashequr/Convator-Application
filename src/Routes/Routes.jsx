@@ -16,9 +16,10 @@ import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
 import MassageLogin from "../Pages/Massage/MassageLogin";
-import SideBar from "../Pages/Massage/SideBar";
+// import SideBar from "../Pages/Massage/SideBar";
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
+import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: "/imgToWord",
         element: <ImgToText></ImgToText>
+      },
+      {
+        path: "/edit",
+        element: <PdfEditor></PdfEditor>
       },
 
       // Massageing routes
