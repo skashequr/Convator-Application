@@ -1,4 +1,4 @@
-import ChatBabbule from "../Massage/ChatBabbule"
+import ChatBabbule from "../Massage/ChatBabbule";
 
 const OpenChat = () => {
   return (
