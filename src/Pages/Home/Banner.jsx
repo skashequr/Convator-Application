@@ -26,7 +26,6 @@ const Banner = () => {
     "https://i.ibb.co/X7bKFHn/2.png",
     "https://i.ibb.co/K0Ysmyj/1.png",
 
-    " https://i.ibb.co/68zdyhc/our-team.gif",
     "https://i.ibb.co/RgmjxFT/1.png",
     "https://i.ibb.co/rmN8qjC/3.png",
     "https://i.ibb.co/NjQmn7j/2.png",

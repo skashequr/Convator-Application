@@ -74,6 +74,66 @@ const Hexagon = () => {
             src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
           />
         </article>
+        <article>
+          <figure>
+            <h2>@Olgacarreras</h2>
+            <p>Consultora freelance. Accesibilidad web y PDF</p>
+          </figure>
+          <img
+            alt
+            src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
+          />
+        </article>
+        <article>
+          <figure>
+            <h2>@Olgacarreras</h2>
+            <p>Consultora freelance. Accesibilidad web y PDF</p>
+          </figure>
+          <img
+            alt
+            src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
+          />
+        </article>
+        <article>
+          <figure>
+            <h2>@Olgacarreras</h2>
+            <p>Consultora freelance. Accesibilidad web y PDF</p>
+          </figure>
+          <img
+            alt
+            src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
+          />
+        </article>
+        <article>
+          <figure>
+            <h2>@Olgacarreras</h2>
+            <p>Consultora freelance. Accesibilidad web y PDF</p>
+          </figure>
+          <img
+            alt
+            src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
+          />
+        </article>
+        <article>
+          <figure>
+            <h2>@Olgacarreras</h2>
+            <p>Consultora freelance. Accesibilidad web y PDF</p>
+          </figure>
+          <img
+            alt
+            src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
+          />
+        </article>
+        <article>
+          <figure>
+            <h2>@Olgacarreras</h2>
+            <p>Consultora freelance. Accesibilidad web y PDF</p>
+          </figure>
+          <img
+            alt
+            src="https://www.usableyaccesible.com/images/olga_carreras_montoto.jpg"
+          />
+        </article>
       </section>
     </>
   );

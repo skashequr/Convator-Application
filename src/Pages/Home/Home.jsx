@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import UserStatics from "./UserStatics";
 import { Faq } from "../../Component/FAQ/Faq";
 import Hexagon from "../Hexagon-card/Hexagon";
+import MultiHexon from "../Hexagon-card/multihexon/multicard";
 
 // import Feedback from "../../Component/Feedback/Feedback";
 
@@ -16,7 +17,7 @@ const Home = () => {
       <Banner></Banner>
       <UserStatics></UserStatics>
       <div className="mt-5">
-        <Hexagon></Hexagon>
+        <MultiHexon></MultiHexon>
       </div>
       <Testimonials></Testimonials>
 
