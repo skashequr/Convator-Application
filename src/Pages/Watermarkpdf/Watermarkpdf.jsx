@@ -39,6 +39,7 @@ const PdfWatermarkApp = () => {
       for (let i = 1; i <= numPages; i++) {
         pdfDoc.setPage(i);
         pdfDoc.text(20, pdfDoc.internal.pageSize.height - 20, watermarkText);
+        await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for a short time between pages
       }
 
       const blob = await pdfDoc.output("blob");
