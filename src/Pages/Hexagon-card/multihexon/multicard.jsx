@@ -25,15 +25,8 @@ const MultiHexon = () => {
               className="hexagon-avatar-img"
               src="https://randomuser.me/api/portraits/men/32.jpg"
             />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Pdf view</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-yellow">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-blue">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         {/* -----------------------3------------------------- */}
@@ -45,13 +38,6 @@ const MultiHexon = () => {
             />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-yellow">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-blue">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
 
@@ -64,15 +50,9 @@ const MultiHexon = () => {
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
             <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
-
+        {/* -----------------4-------------------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img
@@ -81,13 +61,6 @@ const MultiHexon = () => {
             />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
@@ -98,15 +71,9 @@ const MultiHexon = () => {
             />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
+        {/* ---------------5------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img
@@ -115,15 +82,9 @@ const MultiHexon = () => {
             />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
+        {/* ------------------6--------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img
@@ -132,15 +93,9 @@ const MultiHexon = () => {
             />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
+        {/* ---------------------7------------------ */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img
@@ -149,15 +104,9 @@ const MultiHexon = () => {
             />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
+        {/* --------------8----------------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img
