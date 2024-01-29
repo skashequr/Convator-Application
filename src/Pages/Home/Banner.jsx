@@ -30,8 +30,7 @@ const Banner = () => {
     "https://i.ibb.co/rmN8qjC/3.png",
     "https://i.ibb.co/NjQmn7j/2.png",
 
-
-     "https://i.ibb.co/TwQCBgJ/4.png",
+    "https://i.ibb.co/TwQCBgJ/4.png",
 
     // "https://i.ibb.co/0M0pFtS/5.png",
 
@@ -60,13 +59,6 @@ const Banner = () => {
             style={{ backgroundImage: `url('${item}')` }}
           >
             <div className="content text-black bg-transparent">
-              <h2 className="title text-green-50">Better Converter world</h2>
-              <p className="description text-white">
-                {" "}
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempore fuga voluptatum, iure corporis inventore praesentium
-                nisi. Id laboriosam ipsam enim.{" "}
-              </p>
               <button className="bg-[#F1E9D5] text-black">Read More</button>
             </div>
           </li>
