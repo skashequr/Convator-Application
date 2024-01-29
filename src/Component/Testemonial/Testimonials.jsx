@@ -120,7 +120,7 @@ const Testimonials = () => {
           omnis eligendi optio eos harum.
         </p>
 
-        <div className="container">
+        <div className="container ">
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
@@ -143,15 +143,21 @@ const Testimonials = () => {
             className="swiper_container"
           >
             {slideReviews.map((review, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide className="rounded-3xl" key={index}>
                 <div
-                  className={`text-yellow-200 img flex flex-col justify-center border-[5px] bg-cover bg-center bg-[url('${review.profile_picture}')] bg-black bg-opacity-50`}
+                  className={`text-yellow-200 img flex flex-col justify-center bg-cover bg-center  text-sz`}
+                  style={{
+                    backgroundImage: `url(${review.profile_picture})`,
+                  }}
                 >
-                  <h2>{review.client_name}</h2>
-                  <p>{review.comment}</p>
-                  <p>Rating: {review.rating}</p>
-                  <p>Likes: {review.likes}</p>
-                  <p>Dislikes: {review.dislikes}</p>
+                  <div className="z-10 text-body-1">
+                    <h2>{review.client_name}</h2>
+                    <p>{review.comment}</p>
+                    <p>Rating: {review.rating}</p>
+                    <p>Likes: {review.likes}</p>
+                    <p>Dislikes: {review.dislikes}</p>
+                  </div>
+                  <div className="bg-black w-full h-full absolute opacity-40"></div>
                 </div>
               </SwiperSlide>
             ))}
