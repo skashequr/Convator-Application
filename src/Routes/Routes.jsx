@@ -19,6 +19,7 @@ import MassageLogin from "../Pages/Massage/MassageLogin";
 // import SideBar from "../Pages/Massage/SideBar";
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
+import Hexagon from "../Pages/Hexagon-card/Hexagon";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      
+
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -80,17 +81,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "/imgToWord",
-        element: <ImgToText></ImgToText>
+        element: <ImgToText></ImgToText>,
       },
       {
         path: "/edit",
-        element: <PdfEditor></PdfEditor>
+        element: <PdfEditor></PdfEditor> 
+
       },
 
       // Massageing routes
       {
         path: "/massage",
-        element: <MassageLogin></MassageLogin>
+        element: <MassageLogin></MassageLogin>,
       },
       {
         path: "/massage/welcome",
@@ -102,18 +104,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/massage/users",
-        element: <Users></Users>
+        element: <Users></Users>,
       },
       {
         path: "massage/groups",
-        element: " "
+        element: " ",
       },
       {
         path: "massage/create-groups",
-        element: ""
-      }
-      
+        element: "",
+      },
     ],
   },
-  
 ]);
