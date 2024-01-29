@@ -16,10 +16,11 @@ import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
 import MassageLogin from "../Pages/Massage/MassageLogin";
-import SideBar from "../Pages/Massage/SideBar";
+
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
-import Hexagon from "../Pages/Hexagon-card/Hexagon";
+
+import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -83,7 +84,11 @@ export const router = createBrowserRouter([
         element: <ImgToText></ImgToText>,
       },
 
-      // Massageing routes
+      {
+        path: "/watermark",
+        element: <PdfWatermarkApp></PdfWatermarkApp>,
+      },
+      // ---------------- Massageing routes --------------------
       {
         path: "/massage",
         element: <MassageLogin></MassageLogin>,
