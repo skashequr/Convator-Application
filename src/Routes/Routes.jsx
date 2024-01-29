@@ -21,6 +21,7 @@ import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
+import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
       {
         path: "/watermark",
         element: <PdfWatermarkApp></PdfWatermarkApp>,
+      },
+      {
+        path: "/ee",
+        element: <MyComponent></MyComponent>
       },
       // ---------------- Massageing routes --------------------
       {
