@@ -9,9 +9,9 @@
 :root {
     --xv-secondary-light-gray: #c9c9c9;
     --xv-secondary-dark-gray: #9fa0a2;
-    --xv-secondary-green: rgba(133, 177, 58, 1);
-    --xv-secondary-ltgreen: #A9C875;
-    --xv-secondary-dkgreen: rgba(106, 141, 46, 1);
+    --xv-secondary-green: #EEEEEE;
+    --xv-secondary-ltgreen: #EEEEEE;
+    --xv-secondary-dkgreen: #EEEEEE;
     --xv-secondary-blue: rgba(47, 155, 167, 1);
     --xv-secondary-ltblue: #6DB9C1;
     --xv-secondary-dkblue: rgba(37, 124, 133, 1);

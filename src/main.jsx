@@ -9,9 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HelmetProvider>
       <Authprovider>
-        <div className="max-w-screen-xl mx-auto">
-          <RouterProvider router={router} />
-        </div>
+        <RouterProvider router={router} />
       </Authprovider>
     </HelmetProvider>
   </React.StrictMode>

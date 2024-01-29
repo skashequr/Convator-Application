@@ -19,7 +19,7 @@ import MassageLogin from "../Pages/Massage/MassageLogin";
 
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
-import Hexagon from "../Pages/Hexagon-card/Hexagon";
+
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
@@ -83,15 +83,12 @@ export const router = createBrowserRouter([
         path: "/imgToWord",
         element: <ImgToText></ImgToText>,
       },
-      {
-        path: "hexon",
-        element: <Hexagon></Hexagon>,
-      },
+
       {
         path: "/watermark",
         element: <PdfWatermarkApp></PdfWatermarkApp>,
       },
-      // Massageing routes
+      // ---------------- Massageing routes --------------------
       {
         path: "/massage",
         element: <MassageLogin></MassageLogin>,

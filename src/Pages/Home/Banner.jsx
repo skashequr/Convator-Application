@@ -30,11 +30,11 @@ const Banner = () => {
     "https://i.ibb.co/rmN8qjC/3.png",
     "https://i.ibb.co/NjQmn7j/2.png",
     "https://i.ibb.co/TwQCBgJ/4.png",
-    "https://i.ibb.co/0M0pFtS/5.png",
+    // "https://i.ibb.co/0M0pFtS/5.png",
 
-    "https://i.ibb.co/HVTx3vY/7.png",
-    "https://i.ibb.co/gyHRSX4/8.png",
-    "https://i.ibb.co/Z1v61tT/6.png",
+    // "https://i.ibb.co/HVTx3vY/7.png",
+    // "https://i.ibb.co/gyHRSX4/8.png",
+    // "https://i.ibb.co/Z1v61tT/6.png",
   ];
 
   const nextSlide = () => {
