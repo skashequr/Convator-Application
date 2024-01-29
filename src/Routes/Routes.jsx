@@ -21,7 +21,7 @@ import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
-import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
+import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -90,8 +90,8 @@ export const router = createBrowserRouter([
         element: <PdfWatermarkApp></PdfWatermarkApp>,
       },
       {
-        path: "/speech",
-        element: <SpeechToText></SpeechToText>,
+        path: "/ee",
+        element: <MyComponent></MyComponent>
       },
       // ---------------- Massageing routes --------------------
       {
