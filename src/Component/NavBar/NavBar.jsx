@@ -66,6 +66,21 @@ const NavBar = () => {
                       Img to Pdf
                     </NavLink>
                   </li>
+                  {/* ------speech to text------ */}
+                  <li>
+                    <NavLink
+                      to="/speech"
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "pending"
+                          : isActive
+                          ? "text-[#FFFFFF] underline"
+                          : ""
+                      }
+                    >
+                      Speech-to-text
+                    </NavLink>
+                  </li>
                 </div>
 
                 <div>
