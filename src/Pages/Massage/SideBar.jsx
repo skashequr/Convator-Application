@@ -107,23 +107,7 @@ const SideBar = () => {
           ))}
         </div>
         {/* 2  user*/}
-        <div>
-          {/* <div className="flex items-center gap-4 w-full mt-3 p-8 hover:bg-[#a2d1f7] bg-[#F1F2F3]">
-            <div className="h-10 w-10 hover:h-14 hover:w-14">
-              <img
-                className="h-full w-full rounded-full object-cover object-center ring ring-white"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-            </div>
-            <div className="font-medium dark:text-white">
-              <div className="hover:text-white">Jese Leos</div>
-              <div className="text-sm  dark:text-gray-400">
-                Joined in August 2014
-              </div>
-            </div>
-          </div> */}
-        </div>
+        <div></div>
       </div>
     </div>
   );
