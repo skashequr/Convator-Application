@@ -75,7 +75,7 @@ function ImgToText() {
   useEffect(() => { setText(text); }, [text])
 
   return (
-    <>
+    <div className='text-textColor'>
       <div className='pt-36'>
 
       </div>
@@ -117,7 +117,7 @@ function ImgToText() {
 
         {text && <Copy text={text} />}
       </div>
-    </>
+    </div>
   );
 }
 

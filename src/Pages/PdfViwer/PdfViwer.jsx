@@ -30,14 +30,14 @@ const Pdfview = () => {
   };
 
   return (
-    <div className="pt-28 p-4 mt-6">
+    <div className="py-32">
       <Helmet>
         <title>Pdf viewer</title>
       </Helmet>
-      <div className="flex items-center justify-center bg-grey-lighter w-full mt-6">
+      <div className="text-textColor flex items-center justify-center bg-grey-lighter w-full mt-6">
         <label
-          className="w-96  h-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg 
-        shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white"
+          className="w-96 te h-64 flex flex-col items-center px-4 py-6  rounded-lg 
+        shadow-lg tracking-wide uppercase border border-blue cursor-pointer"
         >
           <svg
             className="w-8 h-8"

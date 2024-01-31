@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ee",
-        element: <MyComponent></MyComponent>
+        element: <MyComponent></MyComponent>,
       },
       // ---------------- Massageing routes --------------------
       {
