@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import jsPDF from "jspdf";
 import { Button } from "keep-react";
-import { TextInput } from "keep-react";
+// import { TextInput } from "keep-react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Watermark from "react-awesome-watermark";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -30,10 +32,6 @@ const PdfWatermarkApp = () => {
 
   const addWatermark = async () => {
     try {
-      if (!file || !watermarkText) {
-        throw new Error("File and watermarkText are required.");
-      }
-
       const pdfDoc = new jsPDF();
 
       for (let i = 1; i <= numPages; i++) {
@@ -41,6 +39,13 @@ const PdfWatermarkApp = () => {
         pdfDoc.text(20, pdfDoc.internal.pageSize.height - 20, watermarkText);
         await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for a short time between pages
       }
+
+      // Log the number of pages and the watermark text
+      console.log("Number of Pages:", numPages);
+      console.log("Watermark Text:", watermarkText);
+
+      // Log the generated PDF content
+      console.log("Generated PDF Content:", pdfDoc.output());
 
       const blob = await pdfDoc.output("blob");
 
@@ -59,7 +64,7 @@ const PdfWatermarkApp = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center bg-grey-lighter w-full mt-6">
+      <div className="flex items-center justify-center bg-grey-lighter w-full pt-44 ">
         <label
           className="w-96  h-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg 
         shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white"
@@ -80,13 +85,12 @@ const PdfWatermarkApp = () => {
       {file && (
         <div className="mt-2">
           <div className="flex items-center gap-4 justify-center">
-            <TextInput
+            {/* <TextInput
               type="text"
               placeholder="Enter Watermark Text"
               value={watermarkText}
               onChange={(e) => setWatermarkText(e.target.value)}
-              required
-            />
+            /> */}
 
             <Button size="md" onClick={addWatermark} type="primary" pill={true}>
               Add Watermark
@@ -103,9 +107,11 @@ const PdfWatermarkApp = () => {
             >
               {[...Array(numPages)].map((_, index) => (
                 <SwiperSlide key={index + 1}>
-                  <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
-                    <Page pageNumber={index + 1} />
-                  </Document>
+                  <Watermark text={watermarkText}>
+                    <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+                      <Page pageNumber={index + 1} />
+                    </Document>
+                  </Watermark>
                 </SwiperSlide>
               ))}
             </Swiper>

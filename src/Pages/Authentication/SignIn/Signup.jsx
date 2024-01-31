@@ -109,7 +109,7 @@ const Signup = () => {
                   Sign up for an account
                 </p>
                 {/*----------------- social login---------- */}
-                <Card.Container className="circled  mx-auto flex max-w-[220px] items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                <Card.Container className="circled  mx-auto flex  items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
                   <Googlelogin />
                   <GithubAuth />
                 </Card.Container>

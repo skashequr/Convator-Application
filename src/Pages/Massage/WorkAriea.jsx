@@ -3,12 +3,10 @@ import ChatComponent from "./ChatBabbule";
 import { useState } from "react";
 import SideBar from "./SideBar";
 const WorkAriea = () => {
-  
   return (
     <div>
-      
       <SideBar></SideBar>
-      
+
       <hr />
       <ChatComponent></ChatComponent>
     </div>
@@ -17,6 +15,4 @@ const WorkAriea = () => {
 
 export default WorkAriea;
 
-
 // Assuming req.body contains the necessary data (content, chatId)
-
