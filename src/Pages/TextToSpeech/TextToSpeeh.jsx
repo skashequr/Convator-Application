@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 
+import Swal from "sweetalert2";
 import { Card } from "keep-react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -30,6 +31,11 @@ const SpeechToText = () => {
   // ----------copy text--------
   const copyToClipboard = () => {
     navigator.clipboard.writeText(transcript);
+    Swal.fire({
+      icon: "success",
+      title: "Text Copied!",
+      text: "The text has been copied to the clipboard.",
+    });
   };
 
   // ------------language ------
