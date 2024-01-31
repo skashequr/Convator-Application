@@ -58,10 +58,7 @@ const MultiHexon = () => {
         <Link to="/watermark">
           <li className="hexagon hexagon-yellow">
             <div className="hexagon-inner">
-              <img
-                className="hexagon-avatar-img"
-                src="https://randomuser.me/api/portraits/men/32.jpg"
-              />
+              <img className="hexagon-avatar-img" src="" />
               <span className="hexagon-name">watermarked-Pdf</span>
               <span className="hexagon-metric-label">Progress to Goal</span>
             </div>
@@ -71,10 +68,7 @@ const MultiHexon = () => {
         {/* ---------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
@@ -82,10 +76,7 @@ const MultiHexon = () => {
         {/* ---------------5------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
@@ -93,10 +84,7 @@ const MultiHexon = () => {
         {/* ------------------6--------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
@@ -104,10 +92,7 @@ const MultiHexon = () => {
         {/* ---------------------7------------------ */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
@@ -115,20 +100,14 @@ const MultiHexon = () => {
         {/* --------------8----------------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
@@ -136,40 +115,28 @@ const MultiHexon = () => {
 
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
@@ -177,60 +144,42 @@ const MultiHexon = () => {
 
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>

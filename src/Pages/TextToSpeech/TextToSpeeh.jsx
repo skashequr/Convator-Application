@@ -13,6 +13,7 @@ import {
 
 import { Button } from "keep-react";
 import {
+  FaCopy,
   FaMicrophone,
   FaMicrophoneSlash,
   FaWindowRestore,
@@ -24,20 +25,40 @@ const SpeechToText = () => {
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+  SpeechRecognition.startListening({ continuous: true });
 
+  // ----------copy text--------
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(transcript);
+  };
+
+  // ------------language ------
+  const handleChangeLanguage = (event) => {
+    const selectedLanguage = event.target.value;
+    // Set the language for speech recognition
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: selectedLanguage,
+    });
+  };
+
+  // ---------broswer support-----------
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesnt support speech recognition.</span>;
   }
 
   return (
-    <Card className="md:p-6 p-5 max-w-lg">
+    <Card className="md:p-6 p-5 max-w-lg ">
       <div className="pt-24 mt-14 ">
         <div className="text-center">
           <div className="mt-4">
             {/* Conditionally render microphone icon based on 'listening' state */}
-            <FontAwesomeIcon
-              icon={listening ? faMicrophone : faMicrophoneSlash}
-            />
+            <h1>
+              Micophone is{" "}
+              <FontAwesomeIcon
+                icon={listening ? faMicrophone : faMicrophoneSlash}
+              />
+            </h1>
           </div>
 
           {/* ---------------------------------button -area------------ */}
@@ -56,7 +77,7 @@ const SpeechToText = () => {
               </Button>
               {/* -------stop----------- */}
 
-              <Button
+              {/* <Button
                 onClick={SpeechRecognition.stopListening}
                 type="primary"
                 size="md"
@@ -65,7 +86,7 @@ const SpeechToText = () => {
                   <FaMicrophoneSlash size={16} />
                 </span>
                 Stop
-              </Button>
+              </Button> */}
 
               {/* --------------resert--------- */}
               <Button onClick={resetTranscript} type="primary" size="md">
@@ -83,28 +104,45 @@ const SpeechToText = () => {
           <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
             <div className="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
               <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600"></div>
-              <button
-                type="button"
-                data-tooltip-target="tooltip-fullscreen"
-                className="p-2 text-gray-500 rounded cursor-pointer sm:ms-auto hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
-              >
-                <svg
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 19 19"
+
+              {/* -------------language dropdown---------- */}
+              <div className="mb-4">
+                <label
+                  htmlFor="language"
+                  className="block text-sm font-medium text-gray-700"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 1h5m0 0v5m0-5-5 5M1.979 6V1H7m0 16.042H1.979V12M18 12v5.042h-5M13 12l5 5M2 1l5 5m0 6-5 5"
-                  />
-                </svg>
-                <span className="sr-only">Full screen</span>
-              </button>
+                  Select Language:
+                </label>
+                <select
+                  id="language"
+                  name="language"
+                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-white dark:bg-gray-800 dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  onChange={handleChangeLanguage}
+                >
+                  <option value="en-US">English (US)</option>
+                  <option value="bn-BD">বাংলা (Bangla)</option>
+                  <option value="es-ES">Español (España)</option>
+                  <option value="bn-BD">বাংলা (Bangla)</option>
+                  <option value="hi-IN">हिन्दी (Hindi)</option>
+                  <option value="ur-PK">اردو (Pakistan)</option>
+                  <option value="zh-CN">中文 (Chinese)</option>
+                  <option value="ru-RU">русский (Russian)</option>
+                  <option value="ja-JP">日本語 (Japanese)</option>
+                </select>
+              </div>
+              {/* ----------copy button------- */}
+
+              <Button
+                onClick={copyToClipboard}
+                size="md"
+                type="primary"
+                circle={true}
+              >
+                <span>
+                  <FaCopy size={24} />
+                </span>
+              </Button>
+
               <div
                 id="tooltip-fullscreen"
                 role="tooltip"
