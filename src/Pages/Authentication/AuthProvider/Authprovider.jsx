@@ -18,6 +18,7 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const Authprovider = ({ children }) => {
+  const [mode, setMode] = useState(true);
   const [user, setUser] = useState(null);
   const [load, setLoading] = useState(true);
   // --------------
@@ -80,6 +81,15 @@ const Authprovider = ({ children }) => {
       photoURL: photo,
     });
   };
+
+  //------------------ Dark Mode---------------------
+
+  const toggleMode = () => {
+    setMode(!mode);
+  };
+
+  console.log("mode", mode);
+
   //------------- user manage -----------------------
   useEffect(() => {
     const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
@@ -100,6 +110,9 @@ const Authprovider = ({ children }) => {
     signInWithGoogle,
     updateUserProfile,
     signInWithGitHub,
+    mode,
+    setMode,
+    toggleMode,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

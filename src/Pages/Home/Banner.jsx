@@ -58,8 +58,8 @@ const Banner = () => {
             className={` ${index === currentIndex ? "active" : ""} item`}
             style={{ backgroundImage: `url('${item}')` }}
           >
-            <div className="content text-black bg-transparent">
-              <button className="bg-[#F1E9D5] text-black">Read More</button>
+            <div className="content bg-transparent">
+              <button className="bg-[#F1E9D5]">Read More</button>
             </div>
           </li>
         ))}
