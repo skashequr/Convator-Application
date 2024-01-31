@@ -22,6 +22,7 @@ import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 import MyComponent from "../Pages/Features/PptToPdf/PptFile";
+import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
       {
+        path: "/speech",
+        element: <SpeechToText></SpeechToText>,
+      },
+      {
         path: "pdfview",
         element: <Pdfview></Pdfview>,
       },
@@ -91,7 +96,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ee",
-        element: <MyComponent></MyComponent>
+        element: <MyComponent></MyComponent>,
       },
       // ---------------- Massageing routes --------------------
       {
