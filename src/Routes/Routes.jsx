@@ -107,6 +107,10 @@ export const router = createBrowserRouter([
         element: <OpenChat></OpenChat>,
       },
       {
+        path: "massage/users/massage/shearefile/:_id",
+        element: <OpenChat></OpenChat>
+      },
+      {
         path: "/massage/users",
         element: <Users></Users>,
       },
