@@ -29,8 +29,6 @@ const Banner = () => {
 
     "https://i.ibb.co/ZLnKXbm/user-of-pdf-most.gif",
     "https://i.ibb.co/5hDPDpv/speech-document.png",
-    "https://i.ibb.co/Rh96FZ9/3.png",
-
     "https://i.ibb.co/MNYn3gF/5.png",
 
     // "https://i.ibb.co/0M0pFtS/5.png",
