@@ -13,12 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "keep-react";
-import {
-  FaCopy,
-  FaMicrophone,
-  FaMicrophoneSlash,
-  FaWindowRestore,
-} from "react-icons/fa";
+import { FaCopy, FaMicrophone, FaWindowRestore } from "react-icons/fa";
 const SpeechToText = () => {
   const {
     transcript,

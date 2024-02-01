@@ -35,7 +35,7 @@ const Pdfimg = () => {
         <title>Image-pdf</title>
       </Helmet>
       <div className="">
-      <h2 className="text-center pt-32">Image to Pdf</h2>
+      <h2 className="text-center pt-32 text-5xl text-titleColor font-extrabold">Image to Pdf</h2>
       <div className="row ">
         <div className="col-lg-3">
           {photos && (

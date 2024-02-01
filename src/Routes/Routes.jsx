@@ -22,7 +22,9 @@ import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 import MyComponent from "../Pages/Features/PptToPdf/PptFile";
-import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
+
+import TextToVoice from "../Pages/textToVoice/TextToVoice";
+import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
 import Converterimg from "../Pages/PdfToJpj/Conveter";
@@ -48,11 +50,11 @@ export const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
-        path: "/editimg",
+        path: "/editimg", //done
         element: <EditImg></EditImg>,
       },
       {
-        path: "/imgtopdf",
+        path: "/imgtopdf", //done
         element: <Pdfimg></Pdfimg>,
       },
       {
@@ -68,19 +70,19 @@ export const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
-        path: "/feateres",
+        path: "/feateres",  
         element: <Features></Features>,
       },
       {
-        path: "/ybvidtoaudio",
+        path: "/ybvidtoaudio",   //done 
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
       {
-        path: "/speech",
+        path: "/speech",  //done
         element: <SpeechToText></SpeechToText>,
       },
       {
-        path: "pdfview",
+        path: "pdfview",  //done
         element: <Pdfview></Pdfview>,
       },
       {
@@ -88,28 +90,27 @@ export const router = createBrowserRouter([
         element: <PdfWatermark></PdfWatermark>,
       },
       {
-        path: "/youtubemp3",
+        path: "/text",
+        element: <TextToVoice></TextToVoice>,
+      },
+      {
+        path: "/youtubemp3", //done
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
       {
-        path: "/imgToWord",
+        path: "/imgToWord", //done
         element: <ImgToText></ImgToText>,
       },
-
       {
-        path: "/watermark",
-        element: <PdfWatermarkApp></PdfWatermarkApp>,
-      },
-      {
-        path: "/ee",
+        path: "/ee", //
         element: <MyComponent></MyComponent>,
       },
       {
-        path: "/pdfToText",
+        path: "/pdfToText",  //
         element: <PdfEditor></PdfEditor>
       },
       {
-        path: "/pdfToImg",
+        path: "/pdfToImg", //
         element: <PdfToImg></PdfToImg>
       },
       {
