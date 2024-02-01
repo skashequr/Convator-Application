@@ -11,16 +11,6 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import "./Testimonials.css";
 
 const Testimonials = () => {
-  // const slideImages = [
-  //   "https://t4.ftcdn.net/jpg/06/13/35/31/240_F_613353190_sozuPsAzQLmggUJfwiBRt0bTCqUnB1aL.jpg",
-  //   "https://t4.ftcdn.net/jpg/00/95/11/47/240_F_95114739_nlxM48WSlHeLeR6ORivepbVTzyjgyxPb.jpg",
-  //   "https://t3.ftcdn.net/jpg/06/13/02/92/240_F_613029262_nIrEZdHDTjlHjvbtetcZ7o5ZP0Nqv6sQ.jpg",
-  //   "https://t3.ftcdn.net/jpg/06/84/13/88/240_F_684138844_6eNwg8IdZWmGYkyIKmsE8Lj0QcfU1TlP.jpg",
-  //   "https://t4.ftcdn.net/jpg/06/88/20/13/240_F_688201384_vqVs1exkFaSin09EPHPrdG1FLJ1jgiZP.jpg",
-  //   "https://t3.ftcdn.net/jpg/06/26/03/12/240_F_626031210_ZdDbsnsqTTjV9qRueIxtwlViuKbeFaEG.jpg",
-  //   "https://t3.ftcdn.net/jpg/03/01/86/24/240_F_301862438_rXxpfbeJNBftrUtwFqPojMLkvBD4YODF.jpg",
-  // ];
-
   const slideReviews = [
     {
       id: 1,
@@ -108,13 +98,13 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="bg-white ">
+    <section className=" ">
       <div className="container px-6 mx-auto">
-        <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
-          What our <span className="text-blue-500 ">clients</span> say
+        <h1 className="text-2xl font-semibold text-center text-titleColor capitalize lg:text-3xl ">
+          What our <span className="text-spanTextColor">clients</span> say
         </h1>
 
-        <p className="max-w-2xl mx-auto mt-6 text-center text-gray-500 dark:text-gray-300">
+        <p className="max-w-2xl mx-auto mt-6 text-center text-textColor">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
           ex placeat modi magni quia error alias, adipisci rem similique, at
           omnis eligendi optio eos harum.

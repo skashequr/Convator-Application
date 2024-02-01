@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FaCaretDown } from "react-icons/fa";
 import { IoReorderThree } from "react-icons/io5";
-
 import "./NavBar.css";
+import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovider";
+import { WiDaySunnyOvercast } from "react-icons/wi";
+import { GiNightSky } from "react-icons/gi";
 
 const NavBar = () => {
+  const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
 
   const navLinks = (
@@ -15,7 +18,7 @@ const NavBar = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#bd6363] underline" : ""
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
         >
           Home
@@ -25,7 +28,7 @@ const NavBar = () => {
         <NavLink
           to="/aboutUs"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
         >
           About Us
@@ -35,7 +38,7 @@ const NavBar = () => {
         <NavLink
           to="/feateres"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
         >
           Feateres
@@ -59,7 +62,7 @@ const NavBar = () => {
                         isPending
                           ? "pending"
                           : isActive
-                          ? "text-[#FFFFFF] underline"
+                          ? "text-[#1EEFE9] underline"
                           : ""
                       }
                     >
@@ -74,7 +77,7 @@ const NavBar = () => {
                         isPending
                           ? "pending"
                           : isActive
-                          ? "text-[#FFFFFF] underline"
+                          ? "text-[#1EEFE9] underline"
                           : ""
                       }
                     >
@@ -91,7 +94,7 @@ const NavBar = () => {
                         isPending
                           ? "pending"
                           : isActive
-                          ? "text-[#FFFFFF] underline"
+                          ? "text-[#1EEFE9] underline"
                           : ""
                       }
                     >
@@ -108,7 +111,7 @@ const NavBar = () => {
                         isPending
                           ? "pending"
                           : isActive
-                          ? "text-[#FFFFFF] underline"
+                          ? "text-[#1EEFE9] underline"
                           : ""
                       }
                     >
@@ -125,7 +128,7 @@ const NavBar = () => {
         <NavLink
           to="/editimg"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
         >
           Edit Image
@@ -135,18 +138,28 @@ const NavBar = () => {
         <NavLink
           to="/massage"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#FFFFFF] underline" : ""
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
         >
           Massage
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/imgToWord"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
+          }
+        >
+          Img To Word
         </NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="relative z-50 w-full">
-      <nav className="backdrop-blur-sm w-full fixed text-sm font-semibold flex px-6 sm:px-10 py-6 justify-between items-center">
+    <div className="relative z-50 w-full text-white">
+      <nav className="backdrop-blur-lg bg-slate-700 bg-opacity-20 w-full fixed text-sm font-semibold flex px-6 sm:px-10 py-6 justify-between items-center">
         <ul
           className={`py-5 ${
             drawer ? "left-0" : "-left-40"
@@ -177,14 +190,21 @@ const NavBar = () => {
               name=""
               id=""
             />
-            <CiSearch className="absolute hidden sm:inline-block text-2xl left-4" />
+            <CiSearch className="absolute text-black hidden sm:inline-block text-2xl left-4" />
           </div>
           <CiSearch className="inline-block sm:hidden text-2xl left-4" />
+          <label className="relative inline-flex items-center me-5 cursor-pointer"></label>
+          <div onClick={toggleMode}>
+            {" "}
+            <button className="h-12 w-12 rounded-lg p-2 text-3xl">
+              {mode ? <GiNightSky /> : <WiDaySunnyOvercast />}
+            </button>
+          </div>
           <button className="hidden lg:inline-block">
             <Link to="/login">Login</Link>
           </button>
           <Link to="/signup">
-            <button className="bg-black hover:bg-zinc-700 text-nowrap text-white text-sm rounded-full px-5 py-2 ">
+            <button className="bg-btnBgColor  dark:hover:bg-[#E94BFE] text-nowrap text-white text-sm rounded-full px-5 py-2 ">
               Signup Now
             </button>
           </Link>

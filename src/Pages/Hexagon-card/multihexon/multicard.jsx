@@ -54,7 +54,7 @@ const MultiHexon = () => {
           </li>
         </Link>
 
-        {/* -----------------4-------------------------- */}
+        {/* -----------------watermark-------------------------- */}
         <Link to="/watermark">
           <li className="hexagon hexagon-yellow">
             <div className="hexagon-inner">
@@ -65,14 +65,16 @@ const MultiHexon = () => {
           </li>
         </Link>
 
-        {/* ---------------- */}
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
-        </li>
+        {/* ---------------- text-vouice-------*/}
+        <Link to="/text">
+          <li className="hexagon hexagon-yellow">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src="" />
+              <span className="hexagon-name">Text-to-Voice</span>
+              <span className="hexagon-metric-label">Text-to-voice</span>
+            </div>
+          </li>
+        </Link>
         {/* ---------------5------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
