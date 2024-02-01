@@ -1,9 +1,10 @@
 import { Skeleton } from "keep-react";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { Pagination } from "keep-react";
 import { useQuery } from "@tanstack/react-query";
 // import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const Users = () => {
    
     // const [data , setData] = useState("");
@@ -30,6 +31,17 @@ const Users = () => {
         }
     });
     console.log(allUsers);
+
+
+
+    // useEffect(() => {
+    //     axios.post("http://localhost:5000/chat/send")
+    // }, [])
+    
+
+
+
+
     if (isLoading) return <div className="max-w-xl py-36 flex justify-center items-center mx-auto">
     <Skeleton animation={true}>
       <div className="w-11/12">
@@ -133,7 +145,7 @@ const Users = () => {
                         </div>
                     </th>
                     <td className="px-6 py-4">
-                        UI/UX Engineer
+                        <Link to={`massage/shearefile/${user._id}`}><button>Share A File</button></Link>
                     </td>
                     <td className="px-6 py-4">
                         <div className="flex items-center">
@@ -143,7 +155,7 @@ const Users = () => {
                     <td className="px-6 py-4">
                         <a href="#" type="button" data-modal-show="editUserModal" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                     </td>
-                </tr>
+                    </tr>
                    
                 ))}
             

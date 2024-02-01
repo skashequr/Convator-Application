@@ -6,7 +6,7 @@ const Downloadimg = ({ url, index, fileName, handleClose }) => {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    handleClose();
+    // handleClose();
   };
 
   return (

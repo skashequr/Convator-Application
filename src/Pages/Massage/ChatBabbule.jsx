@@ -1,9 +1,29 @@
+import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router";
+
 const ChatBabbule = () => {
+  const params = useParams() ;
+  const userId = params?._id;
+  useEffect(() => {
+    axios.post('http://localhost:5000/chat/send', { userId })
+      .then(response => {
+        console.log("Chat created successfully:", response.data);
+      })
+      .catch(error => {
+        console.error("Error creating chat:", error);
+      });
+  }, [userId]);
+  
+  
+  
+  
+  console.log(userId);
   return (
     <div>
-      <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen">
+      <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">
         {/* Headder */}
-        <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
+        <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200 pt-24">
           <div className="relative flex items-center space-x-4">
             <div className="relative">
               <span className="absolute text-green-500 right-0 bottom-0">
