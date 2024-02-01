@@ -23,16 +23,16 @@ import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
-import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
+// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
-import Converterimg from "../Pages/PdfToJpj/Conveter";
+// import Converterimg from "../Pages/PdfToJpj/Conveter";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-
+// import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -114,23 +114,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "/pdfToText",
-        element: <PdfEditor></PdfEditor>
+        element: <PdfEditor></PdfEditor>,
       },
       {
         path: "/pdfToImg",
-        element: <PdfToImg></PdfToImg>
+        element: <PdfToImg></PdfToImg>,
       },
       {
         path: "/pngtojpg",
-        element: <PngToJpgConverter></PngToJpgConverter>
+        element: <PngToJpgConverter></PngToJpgConverter>,
       },
       {
         path: "/jpgtopng",
-        element: <JpgToPngConverter></JpgToPngConverter>
+        element: <JpgToPngConverter></JpgToPngConverter>,
       },
       {
         path: "/tifftojpg",
-        element: <TIFFtoJPGConverter></TIFFtoJPGConverter>
+        element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
       },
       // ---------------- Massageing routes --------------------
       {
@@ -147,7 +147,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "massage/users/massage/shearefile/:_id",
-        element: <OpenChat></OpenChat>
+        element: <OpenChat></OpenChat>,
       },
       {
         path: "/massage/users",
