@@ -49,10 +49,10 @@ const SpeechToText = () => {
   }
 
   return (
-    <Card className="md:p-6 p-5 max-w-lg ">
+    <Card className="md:p-6 max-w-lg">
       <div className="pt-24 mt-14 ">
         <div className="text-center">
-          <div className="mt-4">
+          <div className="mt-36 pt-36">
             {/* Conditionally render microphone icon based on 'listening' state */}
             <h1>
               Micophone is{" "}

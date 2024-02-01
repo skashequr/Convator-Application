@@ -20,20 +20,20 @@ import MassageLogin from "../Pages/Massage/MassageLogin";
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
-import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
+// import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
+// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
-import Converterimg from "../Pages/PdfToJpj/Conveter";
+// import Converterimg from "../Pages/PdfToJpj/Conveter";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
-import TextToVoice from "../Pages/textToVoice/TextToVoice";
-import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
+// import TextToVoice from "../Pages/textToVoice/TextToVoice";
+// import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
