@@ -106,7 +106,7 @@ const SpeechToText = () => {
         <div className="mt-4">
           {/* ------Conditionally render microphone icon based on 'listening' state -----*/}
           <h1>
-            Micophone Condition{" "}
+            Micophone Conditions{" "}
             <FontAwesomeIcon
               icon={listening ? faMicrophone : faMicrophoneSlash}
             />
