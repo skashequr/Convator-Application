@@ -20,6 +20,10 @@ export default {
         spanTextColor: "var(--spanText-color)",
         btnTextColor: "var(--btn-text-color)",
         btnBgColor: "var(--btn-bg-color)",
+        cardBgHexa: "var(--bg-hexaprimary-color)",
+        cardBgHexaPrimary: "var(--bg-hexaprimary-color)",
+        cardBgHexaSecondary: "var(--bg-hexasecondary-color)",
+
       },
     },
     darkTheme: "class",
