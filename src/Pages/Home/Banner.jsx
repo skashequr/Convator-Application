@@ -23,14 +23,15 @@ const Banner = () => {
   }, []);
 
   const items = [
-    "https://i.ibb.co/X7bKFHn/2.png",
-    "https://i.ibb.co/K0Ysmyj/1.png",
+    "https://i.ibb.co/XFPnXCt/welcome-page-1.gif",
+    "https://i.ibb.co/Y0NGz8w/page-3.gif",
+    "https://i.ibb.co/xqyHKcm/page-2.gif",
 
-    "https://i.ibb.co/RgmjxFT/1.png",
-    "https://i.ibb.co/rmN8qjC/3.png",
-    "https://i.ibb.co/NjQmn7j/2.png",
+    "https://i.ibb.co/ZLnKXbm/user-of-pdf-most.gif",
+    "https://i.ibb.co/5hDPDpv/speech-document.png",
+    "https://i.ibb.co/Rh96FZ9/3.png",
 
-    "https://i.ibb.co/TwQCBgJ/4.png",
+    "https://i.ibb.co/MNYn3gF/5.png",
 
     // "https://i.ibb.co/0M0pFtS/5.png",
 
