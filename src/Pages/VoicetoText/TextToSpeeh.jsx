@@ -49,57 +49,6 @@ const SpeechToText = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <Card className="md:p-6 max-w-lg">
-      <div className="pt-24 mt-14 ">
-        <div className="text-center">
-          <div className="mt-36 pt-36">
-            {/* Conditionally render microphone icon based on 'listening' state */}
-            <h1>
-              Micophone is{" "}
-              <FontAwesomeIcon
-                icon={listening ? faMicrophone : faMicrophoneSlash}
-              />
-            </h1>
-          </div>
-
-          {/* ---------------------------------button -area------------ */}
-          <Card.Container className="circled gap-4 items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
-            <div className="mx-auto gap-4 inline-flex ">
-              {/* ------------start button--------- */}
-              <Button
-                onClick={SpeechRecognition.startListening}
-                type="primary"
-                size="md"
-              >
-                <span className="pr-2">
-                  <FaMicrophone size={16} />
-                </span>
-                Start
-              </Button>
-              {/* -------stop----------- */}
-
-              {/* <Button
-                onClick={SpeechRecognition.stopListening}
-                type="primary"
-                size="md"
-              >
-                <span className="pr-2">
-                  <FaMicrophoneSlash size={16} />
-                </span>
-                Stop
-              </Button> */}
-
-              {/* --------------resert--------- */}
-              <Button onClick={resetTranscript} type="primary" size="md">
-                <span className="pr-2">
-                  <FaWindowRestore size={16} />
-                </span>
-                Reset
-              </Button>
-            </div>
-          </Card.Container>
-=======
     <div className="pt-28">
       {/* ----------------to and card---------------- */}
       <div className="text-center">
@@ -111,7 +60,6 @@ const SpeechToText = () => {
               icon={listening ? faMicrophone : faMicrophoneSlash}
             />
           </h1>
->>>>>>> ced11766a137566246cadf07d31608a951fed3ab
         </div>
 
         {/* --------------------------------- button-area ------------ */}
