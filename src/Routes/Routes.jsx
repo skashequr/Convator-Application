@@ -28,6 +28,7 @@ import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
 import Converterimg from "../Pages/PdfToJpj/Conveter";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
+import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -118,6 +119,10 @@ export const router = createBrowserRouter([
       {
         path: "/jpgtopng",
         element: <JpgToPngConverter></JpgToPngConverter>
+      },
+      {
+        path: "/tifftojpg",
+        element: <TIFFtoJPGConverter></TIFFtoJPGConverter>
       },
       // ---------------- Massageing routes --------------------
       {
