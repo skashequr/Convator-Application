@@ -4,8 +4,8 @@ import Loader from './Loader'
 import { MdCloudUpload, MdDelete } from 'react-icons/md'
 import Copy from './Coppy';
 import toast from 'react-hot-toast';
-
-
+import { Button } from "keep-react";
+import { Progress } from "keep-react";
 function ImgToText() {
   const [image, setImage] = useState(null);
   const [text, setText] = useState(null);
@@ -80,42 +80,52 @@ function ImgToText() {
 
       </div>
       <header>
-        <h1 className=''>Image to Text Converter</h1>
+        <h1 className='text-center font-semibold text-4xl  from-violet-950'>Image to Text Converter</h1>
       </header>
       <div className=''>
-        <div className=''>
-            <button onClick={()=>setlan(!lan)}>
-                {
+        <div  className='flex justify-center items-center flex-col p-6' >
+        <Button onClick={()=>setlan(!lan)} size="md" color="info">{
                     lan? <span>English text Img Scan</span> : <span>Bangla text Img Scan</span>
-                }
-            </button>
+                }</Button>
+                
           {isLoading ? <Loader /> : <>
             {!image ? <>
               <label className='label'>
                 <div className='file-inner-container'>
-                  <MdCloudUpload className='upload-icon' />
-                  <p className='upload-text'>Click here to upload</p>
+                  <div className='flex justify-center items-center'>
+                  <MdCloudUpload className='upload-icon text-7xl' />
+                  </div>
+                  <p className='upload-text text-center'>Click here to upload</p>
                 </div>
-                <input type='file' name='uploadimage' onChange={handleChange} className='upload' />
+                <input type='file' name='uploadimage' onChange={handleChange} className='upload hidden' />
               </label>
             </> : <>
-              <div className='dispaly-image'>
-                <img src={image} alt="uploaded" className='uploaded-image' />
-                 < MdDelete className='delete-icon' onClick={deleteImage} />
+              <div className=''>
+                <img src={image} alt="uploaded" className='h-[500px] w-auto p-3' />
+                <div className='flex justify-center items-center'> < MdDelete className='text-5xl' onClick={deleteImage} /></div>
               </div>
             </>}
           </>}
         </div>
-         <button onClick={handleClick} className='btn'>Convert to text</button>
+         <div className='flex items-center justify-center'>
+         <button onClick={handleClick} className='btn p-3 bg-violet-950 rounded-xl mb-2'>Convert to text</button>
+         </div>
         {progress < 100 && progress > 0 && <div>
-          <div className="progress-label">Progress ({progress}%)</div>
+          <div className=""> <Progress
+                progress={progress}
+                color="info"
+                rounded={true}
+                showPopupLabelProgress={true}
+              /></div>
           <div className="progress-bar">
             <div className="progress" style={{ width: `${progress}%` }} ></div>
           </div>
         </div>}
 
 
-        {text && <Copy text={text} />}
+        <div className='px-15'>
+        {text && <div className="flex justify-center items-center p-5"> <Copy  text={text} /></div>}
+        </div>
       </div>
     </div>
   );
