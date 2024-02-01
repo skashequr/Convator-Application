@@ -7,13 +7,13 @@ import voicetotext from "../../../assets/icons/Textg.png";
 // import massage from "../../../assets/icons";
 const MultiHexon = () => {
   return (
-    <div className="#DAF5FF">
+    <div className="">
       <ul className="hexagon-grid-container text-black">
         {/* -----------------img edit----------------- */}
         
           <li className="hexagon hexagon-green">
           <Link to="/editimg">
-            <div className="hexagon-inner">
+            <div className="hexagon-inner bg-[cardBgHexaPrimary]">
               <img className="hexagon-avatar-img" src={imgedit} />
               <span className="hexagon-name">Image editing</span>
               <span className="hexagon-metric-label">

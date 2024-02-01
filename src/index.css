@@ -12,6 +12,9 @@
     --spanText-color: #35D0A8;
     --btn-text-color: #3e1b47;
     --btn-bg-color: #1FF5E7;
+      /* hexgon card */
+      --bg-hexaprimary-color: #5a5d90;
+      --bg-hexasecondary-color: #875e97;
 
 }
 
@@ -23,4 +26,8 @@
     --spanText-color: #F768BB;
     --btn-text-color: #cc00ff;
     --btn-bg-color: #0398FD;
+    /* hexgon card */
+    --bg-hexaprimary-color: #010758;
+    --bg-hexasecondary-color: #490d61;
+
 }
