@@ -36,6 +36,23 @@ const TextToVoice = () => {
     speech.text = inputText;
     window.speechSynthesis.speak(speech);
   };
+  speech.onend = () => {
+    const audioBlob = new Blob([new Uint8Array(speech.audioBuffer)]);
+    const audioUrl = URL.createObjectURL(audioBlob);
+
+    // Create a link element for download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = audioUrl;
+    downloadLink.download = "speech_audio.wav";
+
+    // Append the link to the document and trigger the click event
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+
+    // Clean up by removing the link
+    document.body.removeChild(downloadLink);
+    URL.revokeObjectURL(audioUrl);
+  };
 
   return (
     <div className="hero pt-12">
@@ -68,8 +85,7 @@ const TextToVoice = () => {
         </select>
 
         <button className="button" onClick={handleButtonClick}>
-          <img src="https://img.icons8.com/ios-glyphs/30/play--v1.png" alt="" />{" "}
-          Listen
+          Listen & Download
         </button>
       </div>
     </div>

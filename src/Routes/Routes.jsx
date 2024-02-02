@@ -32,6 +32,8 @@ import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
+import Testing from "../Pages/test";
+
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
@@ -132,6 +134,11 @@ export const router = createBrowserRouter([
         path: "/tifftojpg",
         element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
       },
+      {
+        path: "/test",
+        element: <Testing></Testing>,
+      },
+
       // ---------------- Massageing routes --------------------
       {
         path: "/massage",

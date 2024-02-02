@@ -13,13 +13,15 @@
     --btn-text-color: #3e1b47;
     --btn-bg-color: #1FF5E7;
       /* hexgon card */
-      --bg-hexaprimary-color: #5a5d90;
-      --bg-hexasecondary-color: #875e97;
+      --bg-hexaprimary-color: #F1EAFF;
+      --bg-hexasecondary-color: #CDF5FD;
+      /* -----text------ */
+      --text-allcard: #000000
 
 }
 
 .dark {
-    --grape: #2c0835;
+    --grape: #161439;
     --grape2: #3b1f69;
     --tittle-color: #FDF2F2;
     --text-color: #e6b8f1;
@@ -27,7 +29,9 @@
     --btn-text-color: #cc00ff;
     --btn-bg-color: #0398FD;
     /* hexgon card */
-    --bg-hexaprimary-color: #010758;
-    --bg-hexasecondary-color: #490d61;
+    --bg-hexaprimary-color: #050611;
+    --bg-hexasecondary-color: #35326c;
+    /*------- text----- */
+   --text-allcard: #fff
 
 }

@@ -6,6 +6,7 @@ import jpjtopng from "../../../assets/icons/jpj-to-png.png";
 import pngtojpeg from "../../../assets/icons/jpeg-to-png.png";
 import voicetotext from "../../../assets/icons/Textg.png";
 import textVoice from "../../../assets/icons/speeck to tex.png";
+import imgTotext from "../../../assets/icons/img-text.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -42,7 +43,7 @@ const MultiHexon = () => {
             </div>
           </li>
         </Link>
-        {/* --------------voice to text----------- */}
+        {/* -------------- voice to text ----------- */}
         <Link to="/speech">
           <li className="hexagon hexagon-blue">
             <div className="hexagon-inner">
@@ -58,7 +59,7 @@ const MultiHexon = () => {
           <li className="hexagon hexagon-yellow">
             <div className="hexagon-inner">
               <img className="hexagon-avatar-img" src={pngtojpeg} />
-              <span className="hexagon-name">Png to jpj</span>
+              <span className="hexagon-name">Png to jpeg</span>
               <span className="hexagon-metric-label">Progress easy way</span>
             </div>
           </li>
@@ -74,13 +75,13 @@ const MultiHexon = () => {
             </div>
           </li>
         </Link>
-        {/* ---------------5------------- */}
+        {/* ---------------image to text ------------- */}
         <li className="hexagon hexagon-yellow">
-          <Link to="/jpgtopng">
+          <Link to="/imgToWord">
             <div className="hexagon-inner">
-              <img className="hexagon-avatar-img" src="" />
-              <span className="hexagon-name">Bruce Wayne</span>
-              <span className="hexagon-metric-label">Progress to Goal</span>
+              <img className="hexagon-avatar-img" src={imgTotext} />
+              <span className="hexagon-name">Image to word</span>
+              <span className="hexagon-metric-label">Image to document</span>
             </div>
           </Link>
         </li>

@@ -49,7 +49,7 @@ const SpeechToText = () => {
   }
 
   return (
-    <div className="pt-28">
+    <div className="pt-28 text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary">
       {/* ----------------to and card---------------- */}
       <div className="text-center">
         <div className="mt-4">
@@ -89,22 +89,19 @@ const SpeechToText = () => {
 
       {/* -------------text area---------- */}
 
-      <div className="w-full mb-4 border border-gray-200 rounded-lg   dark:border-gray-600">
+      <div className="w-full mb-4 border border-gray-200 rounded-lg   ">
         <div className="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
           <div className="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600"></div>
 
           {/* -------------language dropdown---------- */}
           <div className="mb-4">
-            <label
-              htmlFor="language"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="language" className="block text-lg font-medium ">
               Select Language:
             </label>
             <select
               id="language"
               name="language"
-              className="mt-1 block w-full p-2 border border-gray-300 rounded-md  dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md bg-blue-300 dark:border-gray-600 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               onChange={handleChangeLanguage}
             >
               <option value="en-US">English (US)</option>
@@ -116,6 +113,10 @@ const SpeechToText = () => {
               <option value="zh-CN">中文 (Chinese)</option>
               <option value="ru-RU">русский (Russian)</option>
               <option value="ja-JP">日本語 (Japanese)</option>
+              <option value="fr-FR">Français (French)</option>
+              <option value="de-DE">Deutsch (German)</option>
+
+              <option value="it-IT">Italiano (Italian)</option>
             </select>
           </div>
           {/* ----------copy button------- */}
@@ -148,8 +149,8 @@ const SpeechToText = () => {
             id="editor"
             rows="8"
             value={transcript}
-            className="block w-full px-0 text-sm text-gray-800  border-0  focus:ring-0 dark:text-white dark:placeholder-gray-400"
-            placeholder="Write an article..."
+            className="block w-full  text-sm border-0  focus:ring-0 "
+            placeholder="voice listing..."
             required
           ></textarea>
         </div>
