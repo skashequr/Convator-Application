@@ -190,20 +190,19 @@ const EditImg = () => {
     link.click();
   };
   return (
-    <div>
+    <div className="text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary">
       <Helmet>
         <title>image-Edit</title>
       </Helmet>
-      <div >
-        
-        <div className="flex items-center justify-center gap-6">
+      <div>
+        <div className="flex  items-center justify-center gap-6">
           <div className="mt-32">
-          <div>
-          <h2 className="text-center font-extralight text-3xl  mb-6">
-            {" "}
-            Image Editor{" "}
-          </h2>
-        </div>
+            <div>
+              <h2 className="text-center font-extralight text-3xl  mb-6">
+                {" "}
+                Image Editor{" "}
+              </h2>
+            </div>
             <div>
               <div className="filter_section">
                 <span className="font-bold text-3xl text-center">Filters</span>

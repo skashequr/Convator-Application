@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const JpgToPngConverter = () => {
-  const [imageUrl, setImageUrl] = useState('');
-  const [convertedUrl, setConvertedUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState("");
+  const [convertedUrl, setConvertedUrl] = useState("");
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -18,18 +18,18 @@ const JpgToPngConverter = () => {
   const convertToPng = () => {
     const img = new Image();
     img.onload = () => {
-      const canvas = document.createElement('canvas');
+      const canvas = document.createElement("canvas");
       canvas.width = img.width;
       canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0);
-      const pngUrl = canvas.toDataURL('image/png');
+      const pngUrl = canvas.toDataURL("image/png");
       setConvertedUrl(pngUrl);
 
       // Create a download link for the converted PNG image
-      const downloadLink = document.createElement('a');
+      const downloadLink = document.createElement("a");
       downloadLink.href = pngUrl;
-      downloadLink.download = 'converted_image.png';
+      downloadLink.download = "converted_image.png";
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
@@ -38,7 +38,7 @@ const JpgToPngConverter = () => {
   };
 
   return (
-    <div className='p-36'>
+    <div className="p-36 text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary ">
       <input type="file" accept="image/jpeg" onChange={handleFileChange} />
       <button onClick={convertToPng}>Convert to PNG</button>
       {imageUrl && (
