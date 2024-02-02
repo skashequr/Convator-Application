@@ -13,11 +13,11 @@ function ImgToText() {
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState("eng");
 
-  const handleChange = (files) => {
-    setIsLoading(true);
-    setImage(files[0]);
-    setIsLoading(false);
-  };
+  // const handleChange = (files) => {
+  //   setIsLoading(true);
+  //   setImage(files[0]);
+  //   setIsLoading(false);
+  // };
 
   const deleteImage = () => {
     setIsLoading(true);
@@ -73,16 +73,22 @@ function ImgToText() {
   };
 
   return (
-    <div className="text-textColor py-32">
+    <div className="text-textColor py-24 flex flex-col">
       <header>
-        <h1 className="">Image to Text Converter</h1>
+        <h1 className="text-center pt-32 text-5xl text-titleColor font-extrabold">
+          Image to Text Converter
+        </h1>
       </header>
-      <div>
-        <button onClick={() => setLanguage(language === "eng" ? "ben" : "eng")}>
-          {language === "eng"
-            ? "English text Img Scan"
-            : "Bangla text Img Scan"}
-        </button>
+      <div className="flex flex-col justify-center items-center my-4">
+        <div className="flex gap-4 my-4">
+          <p>Click the button for Change the language</p>
+          <button
+            onClick={() => setLanguage(language === "eng" ? "ben" : "eng")}
+            className="bg-btnBgColor  dark:hover:bg-[#E94BFE] text-nowrap text-white text-sm rounded-full px-5 py-2 "
+          >
+            {language === "eng" ? "English" : "Bangla"}
+          </button>
+        </div>
         {isLoading ? (
           <Loader />
         ) : (
@@ -123,20 +129,29 @@ function ImgToText() {
                 </label>
               </>
             ) : (
-              <div>
+              <div className="flex flex-col justify-center items-center my-5">
                 <img
                   src={image}
                   alt="uploaded"
-                  className="uploaded-image w-64"
+                  className="uploaded-image w-92"
                 />
-                <MdDelete className="delete-icon" onClick={deleteImage} />
+                <MdDelete
+                  className="delete-icon w-10 h-10 bg-red-500 hover:bg-yellow-400 rounded-2xl"
+                  onClick={deleteImage}
+                />
               </div>
             )}
           </>
         )}
-        <button onClick={handleClick} className="btn">
-          Convert to text
-        </button>
+        {image && (
+          <button
+            onClick={handleClick}
+            className="bg-btnBgColor  dark:hover:bg-[#E94BFE] text-nowrap text-white text-sm rounded-full px-5 py-2 "
+          >
+            Convert to text
+          </button>
+        )}
+
         {progress < 100 && progress > 0 && (
           <div>
             <div className="progress-label">Progress ({progress}%)</div>
