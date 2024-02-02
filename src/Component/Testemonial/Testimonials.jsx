@@ -158,10 +158,36 @@ const Testimonials = () => {
                       </div>
                     </div>
                     <div className="back w-full rounded-2xl h-full absolute bg-titleColor text-white">
-                      <p>{review.comment}</p>
-                      <p>Rating: {review.rating}</p>
-                      <p>Likes: {review.likes}</p>
-                      <p>Dislikes: {review.dislikes}</p>
+                      <div className="text-textColor">
+                        <div className="p-6 md:p-8 shadow-md rounded-2xl  space-y-8">
+                          <div className="pt-8 text-center space-y-1">
+                            <h1 className="text-xl md:text-2xl">Md hasan</h1>
+                            <p className=" text-sm">{review.comment}</p>
+                          </div>
+                          {/* post , followers following  */}
+                          <div className="flex  px-4 justify-between items-center">
+                            <div className="text-center">
+                              <h5 className="font-medium text-xl">
+                                {review.rating}
+                              </h5>
+                              <p className="text-sm  text-gray-400">Rating</p>
+                            </div>
+                            <div className="text-center">
+                              <h5 className="font-medium text-xl">
+                                {review.likes}
+                              </h5>
+                              <p className="text-sm  text-gray-400">Like</p>
+                            </div>
+                            <div className="text-center">
+                              <h5 className="font-medium text-xl">
+                                {review.dislikes}
+                              </h5>
+                              <p className="text-sm  text-gray-400">Dislike</p>
+                            </div>
+                          </div>
+                          <div className="flex justify-center"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

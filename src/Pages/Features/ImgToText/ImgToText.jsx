@@ -13,11 +13,11 @@ function ImgToText() {
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState("eng");
 
-  const handleChange = (files) => {
-    setIsLoading(true);
-    setImage(files[0]);
-    setIsLoading(false);
-  };
+  // const handleChange = (files) => {
+  //   setIsLoading(true);
+  //   setImage(files[0]);
+  //   setIsLoading(false);
+  // };
 
   const deleteImage = () => {
     setIsLoading(true);
@@ -73,7 +73,7 @@ function ImgToText() {
   };
 
   return (
-    <div className="text-textColor py-32">
+    <div className="text-textColor py-24 flex flex-col">
       <header>
         <h1 className=''>Image to Text Converter</h1>
       </header>

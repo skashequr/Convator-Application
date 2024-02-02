@@ -29,14 +29,15 @@ const Banner = () => {
     "https://i.ibb.co/Y0NGz8w/page-3.gif",
     "https://i.ibb.co/xqyHKcm/page-2.gif",
     "https://i.ibb.co/ZLnKXbm/user-of-pdf-most.gif",
-    "https://i.ibb.co/5hDPDpv/speech-document.png",
     "https://i.ibb.co/MNYn3gF/5.png",
+    "https://i.ibb.co/5hDPDpv/speech-document.png",
   ];
 
   const items2 = [
     "https://i.ibb.co/Jr4TSNS/page-1-start.gif",
+    " https://i.ibb.co/HHgM6wd/page-3-start-1.gif",
     "https://i.ibb.co/xDfKKjk/page-2-image-edit.gif",
-    "https://i.ibb.co/HHgM6wd/page-3-start-1.gif",
+
     "https://i.ibb.co/6gSBLCt/page-3-start-ne.gif",
     "https://i.ibb.co/k6F251z/page-5-start-ne.gif",
     "https://i.ibb.co/dQ5HJ4d/page-6-alledit.gif",
