@@ -1,8 +1,10 @@
 // import { Carousel } from "keep-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Banner.css";
+import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 
 const Banner = () => {
+  const { mode } = useContext(AuthContext);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -23,19 +25,22 @@ const Banner = () => {
   }, []);
 
   const items = [
+    "https://i.ibb.co/XFPnXCt/welcome-page-1.gif",
+    "https://i.ibb.co/Y0NGz8w/page-3.gif",
+    "https://i.ibb.co/xqyHKcm/page-2.gif",
+    "https://i.ibb.co/ZLnKXbm/user-of-pdf-most.gif",
+    "https://i.ibb.co/MNYn3gF/5.png",
+    "https://i.ibb.co/5hDPDpv/speech-document.png",
+  ];
+
+  const items2 = [
     "https://i.ibb.co/Jr4TSNS/page-1-start.gif",
+    " https://i.ibb.co/HHgM6wd/page-3-start-1.gif",
     "https://i.ibb.co/xDfKKjk/page-2-image-edit.gif",
-    "https://i.ibb.co/HHgM6wd/page-3-start-1.gif",
 
     "https://i.ibb.co/6gSBLCt/page-3-start-ne.gif",
     "https://i.ibb.co/k6F251z/page-5-start-ne.gif",
     "https://i.ibb.co/dQ5HJ4d/page-6-alledit.gif",
-
-    // "https://i.ibb.co/0M0pFtS/5.png",
-
-    // "https://i.ibb.co/HVTx3vY/7.png",
-    // "https://i.ibb.co/gyHRSX4/8.png",
-    // "https://i.ibb.co/Z1v61tT/6.png",
   ];
 
   const nextSlide = () => {
@@ -51,17 +56,29 @@ const Banner = () => {
   return (
     <div className="banner-div">
       <ul className="slider">
-        {items.map((item, index) => (
-          <li
-            key={index}
-            className={` ${index === currentIndex ? "active" : ""} item`}
-            style={{ backgroundImage: `url('${item}')` }}
-          >
-            {/* <div className="content bg-transparent">
-              <button className="bg-[#F1E9D5]">Read More</button>
-            </div> */}
-          </li>
-        ))}
+        {mode
+          ? items.map((item, index) => (
+              <li
+                key={index}
+                className={` ${index === currentIndex ? "active" : ""} item`}
+                style={{ backgroundImage: `url('${item}')` }}
+              >
+                <div className="content bg-transparent">
+                  <button className="bg-[#F1E9D5]">Read More</button>
+                </div>
+              </li>
+            ))
+          : items2.map((item, index) => (
+              <li
+                key={index}
+                className={` ${index === currentIndex ? "active" : ""} item`}
+                style={{ backgroundImage: `url('${item}')` }}
+              >
+                <div className="content bg-transparent">
+                  <button className="bg-[#F1E9D5]">Read More</button>
+                </div>
+              </li>
+            ))}
       </ul>
       <nav className="nav">
         <button

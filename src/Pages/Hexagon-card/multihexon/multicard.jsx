@@ -2,9 +2,10 @@ import "./multaicard.css";
 import imgedit from "../../../assets/icons/image edit.png";
 import pdfview from "../../../assets/icons/pdf.png";
 import { Link } from "react-router-dom";
-import imgpdf from "../../../assets/icons/ybdodnload.png";
+import jpjtopng from "../../../assets/icons/jpj-to-png.png";
+import pngtojpeg from "../../../assets/icons/jpeg-to-png.png";
 import voicetotext from "../../../assets/icons/Textg.png";
-// import massage from "../../../assets/icons";
+import textVoice from "../../../assets/icons/speeck to tex.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -26,20 +27,18 @@ const MultiHexon = () => {
           <li className="hexagon hexagon-green">
             <div className="hexagon-inner">
               <img className="hexagon-avatar-img" src={pdfview} />
-              <span className="hexagon-name">Pdf view</span>
+              <span className="hexagon-name">Image to pdf</span>
               <span className="hexagon-metric-label">Easy way pdf view</span>
             </div>
           </li>
         </Link>
-        {/* ------------------------ yb download ------------------------ */}
-        <Link>
+        {/* ------------------------ jPJ TO PNG ------------------------ */}
+        <Link to="/jpgtopng">
           <li className="hexagon hexagon-green">
             <div className="hexagon-inner">
-              <img className="hexagon-avatar-img" src={imgpdf} />
-              <span className="hexagon-name">Youtube video mp3 </span>
-              <span className="hexagon-metric-label">
-                Yb Video mp3 download
-              </span>
+              <img className="hexagon-avatar-img" src={jpjtopng} />
+              <span className="hexagon-name">JPEG Convert PNG</span>
+              <span className="hexagon-metric-label">easy convert in png</span>
             </div>
           </li>
         </Link>
@@ -54,22 +53,22 @@ const MultiHexon = () => {
           </li>
         </Link>
 
-        {/* -----------------watermark-------------------------- */}
-        <Link to="/watermark">
+        {/* -----------------/pngtojpg-------------------------- */}
+        <Link to="/pngtojpg">
           <li className="hexagon hexagon-yellow">
             <div className="hexagon-inner">
-              <img className="hexagon-avatar-img" src="" />
-              <span className="hexagon-name">watermarked-Pdf</span>
-              <span className="hexagon-metric-label">Progress to Goal</span>
+              <img className="hexagon-avatar-img" src={pngtojpeg} />
+              <span className="hexagon-name">Png to jpj</span>
+              <span className="hexagon-metric-label">Progress easy way</span>
             </div>
           </li>
         </Link>
 
-        {/* ---------------- text-vouice-------*/}
+        {/* ---------------- text-voice-------*/}
         <Link to="/text">
           <li className="hexagon hexagon-yellow">
             <div className="hexagon-inner">
-              <img className="hexagon-avatar-img" src="" />
+              <img className="hexagon-avatar-img" src={textVoice} />
               <span className="hexagon-name">Text-to-Voice</span>
               <span className="hexagon-metric-label">Text-to-voice</span>
             </div>
@@ -77,11 +76,13 @@ const MultiHexon = () => {
         </Link>
         {/* ---------------5------------- */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/jpgtopng">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src="" />
+              <span className="hexagon-name">Bruce Wayne</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
         </li>
         {/* ------------------6--------------- */}
         <li className="hexagon hexagon-yellow">
