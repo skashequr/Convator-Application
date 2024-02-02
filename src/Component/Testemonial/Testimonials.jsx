@@ -69,7 +69,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t4.ftcdn.net/jpg/06/88/20/13/240_F_688201384_vqVs1exkFaSin09EPHPrdG1FLJ1jgiZP.jpg",
+        "https://t3.ftcdn.net/jpg/05/19/83/42/240_F_519834227_8QCyGJ11nEl3qeodKBosCwNUcSFSteKL.jpg",
     },
     {
       id: 3,
@@ -81,7 +81,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/06/26/03/12/240_F_626031210_ZdDbsnsqTTjV9qRueIxtwlViuKbeFaEG.jpg",
+        "https://t3.ftcdn.net/jpg/06/34/28/82/240_F_634288213_hwJvHUm8WHNpoywHSfA9V9yzmhth2X1N.jpg",
     },
     {
       id: 3,
@@ -93,7 +93,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/03/01/86/24/240_F_301862438_rXxpfbeJNBftrUtwFqPojMLkvBD4YODF.jpg",
+        "https://t3.ftcdn.net/jpg/06/34/28/82/240_F_634288212_teev7cHew05ETCk7yAkgwrFGKu9pRsu3.jpg",
     },
   ];
 
@@ -148,9 +148,8 @@ const Testimonials = () => {
                       <div className="relative pb-8 pt-1">
                         <div className="relative z-30 text-white">
                           <h2 className="text-base font-bold">
-                            This is Tanvir
+                            {review.client_name}
                           </h2>
-                          <p className="text-base">Web Developer</p>
                           <button className="border border-cyan-50 rounded-full w-fit py-1 px-5 text-base">
                             Hover Me
                           </button>
@@ -158,8 +157,7 @@ const Testimonials = () => {
                         <div className="bg-black w-full h-full absolute bg-opacity-60 bottom-0"></div>
                       </div>
                     </div>
-                    <div className="back w-full rounded-2xl h-full absolute bg-white">
-                      <h2>{review.client_name}</h2>
+                    <div className="back w-full rounded-2xl h-full absolute bg-titleColor text-white">
                       <p>{review.comment}</p>
                       <p>Rating: {review.rating}</p>
                       <p>Likes: {review.likes}</p>
