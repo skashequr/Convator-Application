@@ -10,19 +10,19 @@ import {
 const FooterR = () => {
   return (
     <Footer>
-      <div className="w-full bg-[#C9A2D2] text-[#0C3E2F]">
-        <div className="text-[#0C3E2F] grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
+      <div className="border w-full p-6 font-sans mx-4 rounded-xl mt-4 mb-10  bg-[#161439] bg-clip-border shadow-md">
+        <div className="grid bg-[#1C1A3F] text-2xl font-bold text-[#ffffff] w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
           <div>
-            <Footer.Title title="Company" className="text-[#0C3E2F]" />
-            <Footer.LinkGroup col className="text-[#0C3E2F]">
-              <Footer.Link href="#" >About</Footer.Link>
+            <Footer.Title title="Company" className="" />
+            <Footer.LinkGroup col className="">
+              <Footer.Link href="#">About</Footer.Link>
               <Footer.Link href="#">Careers</Footer.Link>
-              <Footer.Link href="#">Brand Center</Footer.Link>
+
               <Footer.Link href="#">Blog</Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div>
-            <Footer.Title title="help center"/>
+            <Footer.Title title="help center" />
             <Footer.LinkGroup col>
               <Footer.Link href="#">Discord Server</Footer.Link>
               <Footer.Link href="#">Twitter</Footer.Link>
@@ -44,7 +44,6 @@ const FooterR = () => {
               <Footer.Link href="#">iOS</Footer.Link>
               <Footer.Link href="#">Android</Footer.Link>
               <Footer.Link href="#">Windows</Footer.Link>
-              <Footer.Link href="#">MacOS</Footer.Link>
             </Footer.LinkGroup>
           </div>
         </div>
