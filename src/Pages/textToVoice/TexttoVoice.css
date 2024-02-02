@@ -76,7 +76,7 @@ button img{
     border: 0;
     border-radius: 35px;
     appearance: none;
-    background-image: url(../../assets/icons/dopdown.png);
+    /* background-image: url(../../assets/icons/dopdown.png); */
     background-size: 29px;
     
    

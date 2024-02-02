@@ -32,7 +32,7 @@ export const Faq = () => {
     setIsOpen((prevIdx) => (prevIdx === idx ? null : idx));
   };
   return (
-    <div className="border  p-6 font-sans mx-4 rounded-xl mt-4 mb-10 bg-white bg-clip-border shadow-md">
+    <div className="border text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary  p-6 font-sans mx-4 rounded-xl mt-4 mb-10  bg-clip-border shadow-md">
       {accordions.map((PerAccordion, idx) => (
         <div key={idx} className="p-4 border-b">
           <button
@@ -67,7 +67,7 @@ export const Faq = () => {
             </svg>
           </button>
           <div
-            className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-600  ${
+            className={`grid overflow-hidden transition-all duration-300 ease-in-out  ${
               isOpen === idx
                 ? "grid-rows-[1fr] opacity-100"
                 : "grid-rows-[0fr] opacity-0"

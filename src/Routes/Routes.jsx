@@ -21,17 +21,15 @@ import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
-
-// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
-// import Converterimg from "../Pages/PdfToJpj/Conveter";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-import CreatePdf from "../Pages/CreatePdf/CreatePdf";
+import Testing from "../Pages/test";
+
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
@@ -48,7 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "createpdf",
-        element: <CreatePdf></CreatePdf>
+        // element: <CreatePdf></CreatePdf>
       },
       {
         path: "/aboutUs",
@@ -135,6 +133,11 @@ export const router = createBrowserRouter([
         path: "/tifftojpg",
         element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
       },
+      {
+        path: "/test",
+        element: <Testing></Testing>,
+      },
+
       // ---------------- Massageing routes --------------------
       {
         path: "/massage",

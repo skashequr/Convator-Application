@@ -23,7 +23,8 @@ export default {
         cardBgHexa: "var(--bg-hexaprimary-color)",
         cardBgHexaPrimary: "var(--bg-hexaprimary-color)",
         cardBgHexaSecondary: "var(--bg-hexasecondary-color)",
-
+          // ----------text---------
+            TextColor: "var(--text-allcard)",
       },
     },
     darkTheme: "class",
