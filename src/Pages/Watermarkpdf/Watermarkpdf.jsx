@@ -1,11 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import jsPDF from "jspdf";
 import { Button } from "keep-react";
-// import { TextInput } from "keep-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Watermark from "react-awesome-watermark";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -23,11 +21,11 @@ const PdfWatermarkApp = () => {
   const onFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
+    setPageNumber(1); // Reset page number when a new file is selected
   };
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
-    setPageNumber(1);
   };
 
   const addWatermark = async () => {
@@ -35,19 +33,12 @@ const PdfWatermarkApp = () => {
       const pdfDoc = new jsPDF();
 
       for (let i = 1; i <= numPages; i++) {
-        pdfDoc.setPage(i);
-        pdfDoc.text(20, pdfDoc.internal.pageSize.height - 20, watermarkText);
+        pdfDoc.addPage();
+        pdfDoc.text(20, 20, watermarkText);
         await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for a short time between pages
       }
 
-      // Log the number of pages and the watermark text
-      console.log("Number of Pages:", numPages);
-      console.log("Watermark Text:", watermarkText);
-
-      // Log the generated PDF content
-      console.log("Generated PDF Content:", pdfDoc.output());
-
-      const blob = await pdfDoc.output("blob");
+      const blob = pdfDoc.output("blob");
 
       const url = URL.createObjectURL(blob);
 
@@ -85,20 +76,19 @@ const PdfWatermarkApp = () => {
       {file && (
         <div className="mt-2">
           <div className="flex items-center gap-4 justify-center">
-            {/* <TextInput
+            <input
               type="text"
               placeholder="Enter Watermark Text"
               value={watermarkText}
               onChange={(e) => setWatermarkText(e.target.value)}
-            /> */}
+            />
 
             <Button size="md" onClick={addWatermark} type="primary" pill={true}>
               Add Watermark
             </Button>
           </div>
-          {/*------------  swiper slider ---------- */}
+
           <div className=" mt-10 ">
-            {/* ------------- */}
             <Swiper
               pagination={{ clickable: true }}
               navigation={true}
