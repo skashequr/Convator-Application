@@ -6,25 +6,19 @@ import { GiNightSky } from "react-icons/gi";
 import { WiNightAltCloudyWindy } from "react-icons/wi";
 import { useEffect, useState } from "react";
 import { FiSunrise } from "react-icons/fi";
+import axios from "axios";
 
 const SideBar = () => {
   const [night, setNight] = useState(false);
   const [users, setUsers] = useState([]);
+  const data = {_id: "65b4bbbed044e658116c5eba"};
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://file-convator-backend.vercel.app/user/fetchUsers"
-        );
-        const data = await response.json();
-        setUsers(data); // Assuming the response is an array of user objects
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    axios.get("http://localhost:5000/chat/chat", { params: data }).then((response) => {
+      setUsers(response.data);
+    }).catch((error) => {
+      console.error('Error fetching data:', error);
+    });
   }, []);
   console.log(users);
   return (

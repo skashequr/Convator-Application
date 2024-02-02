@@ -16,12 +16,11 @@ import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
 import MassageLogin from "../Pages/Massage/MassageLogin";
-
+import PptFile from "../Pages/Features/PptToPdf/PptFile";
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
-import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
@@ -32,6 +31,7 @@ import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
+import CreatePdf from "../Pages/CreatePdf/CreatePdf";
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
@@ -46,7 +46,10 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-
+      {
+        path: "createpdf",
+        element: <CreatePdf></CreatePdf>
+      },
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -110,7 +113,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ee",
-        element: <MyComponent></MyComponent>,
+        element: <PptFile></PptFile>
       },
       {
         path: "/pdfToText",
