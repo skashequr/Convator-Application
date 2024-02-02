@@ -1,12 +1,3 @@
-/* *,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-} */
-
 
 :root {
     --primary: #6a59ff;
@@ -37,7 +28,7 @@
     max-width: 124rem;
     padding: 4rem 1rem;
     margin: 0 auto;
-    
+
 }
 
 .heading {
@@ -60,7 +51,7 @@
     position: relative;
     overflow: hidden;
     /* border: #222224; */
-    /* background-color: aqua; */
+    background-color: transparent !important;;
 }
 
 
@@ -135,7 +126,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -193,4 +184,27 @@
         left: 20% !important;
         transform: translateX(-20%) !important;
     }
+}
+
+
+
+/* Card Style */
+
+.card-inner {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+}
+
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.card2:hover .card-inner {
+    transform: rotateY(180deg);
 }
