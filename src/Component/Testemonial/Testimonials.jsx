@@ -21,7 +21,7 @@ const Testimonials = () => {
       likes: 15,
       dislikes: 2,
       profile_picture:
-        "https://t4.ftcdn.net/jpg/06/13/35/31/240_F_613353190_sozuPsAzQLmggUJfwiBRt0bTCqUnB1aL.jpg",
+        "https://t4.ftcdn.net/jpg/06/32/75/57/240_F_632755741_SJ2jnBOzuSje5gnvFIjD3HRl3rwQhAr9.jpg",
     },
     {
       id: 2,
@@ -33,7 +33,7 @@ const Testimonials = () => {
       likes: 8,
       dislikes: 1,
       profile_picture:
-        "https://t4.ftcdn.net/jpg/00/95/11/47/240_F_95114739_nlxM48WSlHeLeR6ORivepbVTzyjgyxPb.jpg",
+        "https://t4.ftcdn.net/jpg/07/18/04/99/240_F_718049910_Om4Qj3ixFrCa6jBeUUBWbSdkhe13aThM.jpg",
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/06/13/02/92/240_F_613029262_nIrEZdHDTjlHjvbtetcZ7o5ZP0Nqv6sQ.jpg",
+        "https://t3.ftcdn.net/jpg/06/72/66/64/240_F_672666463_H5ThiNHfPRnsX1Yj5c5qp7RCMKDXGnN2.jpg",
     },
     {
       id: 3,
@@ -57,7 +57,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/06/84/13/88/240_F_684138844_6eNwg8IdZWmGYkyIKmsE8Lj0QcfU1TlP.jpg",
+        "https://t4.ftcdn.net/jpg/06/63/31/27/240_F_663312737_C8NX3yxfMPfHMCDNIXuAi0vQ7y19zItw.jpg",
     },
     {
       id: 3,
@@ -99,7 +99,7 @@ const Testimonials = () => {
 
   return (
     <section className=" ">
-      <div className="container px-6 mx-auto">
+      <div className="my-20 px-6 mx-auto">
         <h1 className="text-2xl font-semibold text-center text-titleColor capitalize lg:text-3xl ">
           What our <span className="text-spanTextColor">clients</span> say
         </h1>
@@ -133,21 +133,39 @@ const Testimonials = () => {
             className="swiper_container"
           >
             {slideReviews.map((review, index) => (
-              <SwiperSlide className="rounded-3xl" key={index}>
-                <div
-                  className={`text-yellow-200 img flex flex-col justify-center bg-cover bg-center  text-sz`}
-                  style={{
-                    backgroundImage: `url(${review.profile_picture})`,
-                  }}
-                >
-                  <div className="z-10 text-body-1">
-                    <h2>{review.client_name}</h2>
-                    <p>{review.comment}</p>
-                    <p>Rating: {review.rating}</p>
-                    <p>Likes: {review.likes}</p>
-                    <p>Dislikes: {review.dislikes}</p>
+              <SwiperSlide className="rounded-3xl card2 bg-white" key={index}>
+                <div className="img flex flex-col justify-center bg-cover bg-center text-sz relative">
+                  <div className="z-10 text-body-1 card-inner relative w-full h-full">
+                    <div
+                      style={{
+                        backgroundImage: `url(${review.profile_picture})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                      }}
+                      className="front rounded-2xl w-full h-full flex flex-col justify-end   text-white absolute"
+                    >
+                      <div className="relative pb-8 pt-1">
+                        <div className="relative z-30 text-white">
+                          <h2 className="text-base font-bold">
+                            This is Tanvir
+                          </h2>
+                          <p className="text-base">Web Developer</p>
+                          <button className="border border-cyan-50 rounded-full w-fit py-1 px-5 text-base">
+                            Hover Me
+                          </button>
+                        </div>
+                        <div className="bg-black w-full h-full absolute bg-opacity-60 bottom-0"></div>
+                      </div>
+                    </div>
+                    <div className="back w-full rounded-2xl h-full absolute bg-white">
+                      <h2>{review.client_name}</h2>
+                      <p>{review.comment}</p>
+                      <p>Rating: {review.rating}</p>
+                      <p>Likes: {review.likes}</p>
+                      <p>Dislikes: {review.dislikes}</p>
+                    </div>
                   </div>
-                  <div className="bg-black w-full h-full absolute opacity-40"></div>
                 </div>
               </SwiperSlide>
             ))}

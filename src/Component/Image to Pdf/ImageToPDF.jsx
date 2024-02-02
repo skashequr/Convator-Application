@@ -1,16 +1,46 @@
 import jsPDF from "jspdf";
 import { useState } from "react";
-// import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import { Helmet } from "react-helmet-async";
-const Pdfimg = () => {
-  const [photos, setPhotos] = useState([]);
+import "./ImageToPDF.css";
+import Dropzone from "react-dropzone";
+import { RingLoader } from "react-spinners";
 
-  const onChangePhotos = (e) => {
-    const selectedPhotos = Array.from(e.target.files);
-    setPhotos(selectedPhotos);
+const Pdfimg = () => {
+  const [photos, setPhotos] = useState(false);
+  const [loading, setLoading] = useState(false);
+  // const [file, setFile] = useState(null);
+
+  const handleUpload = (acceptedFiles) => {
+    setLoading(true);
+
+    console.log("logging drop/selected file", acceptedFiles);
+    const url = "https://api.escuelajs.co/api/v1/files/upload";
+    const formData = new FormData();
+    formData.append("file", acceptedFiles[0]);
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          setPhotos(acceptedFiles);
+          // setFile(acceptedFiles[0]);
+          setLoading(false);
+        } else {
+          console.error(response);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  console.log(photos);
+  // const onChangePhotos = (e) => {
+  //   const selectedPhotos = Array.from(e.target.files);
+  //   setPhotos(selectedPhotos);
+  //   setFile(selectedPhotos[0]);
+  // };
 
   const pdfGenerate = () => {
     var doc = new jsPDF("p", "pt", "a4");
@@ -34,84 +64,74 @@ const Pdfimg = () => {
       <Helmet>
         <title>Image-pdf</title>
       </Helmet>
-      <div className="">
-      <h2 className="text-center pt-32 text-5xl text-titleColor font-extrabold">Image to Pdf</h2>
-      <div className="row ">
-        <div className="col-lg-3">
-          {photos && (
-            <div>
-              <br />
-            </div>
-          )}
-        </div>
-        <div>
-          <div className="flex justify-center items-center">
-            <div className="">
-              {" "}
-              <div className="form-group mt-5">
-                <input
-                  type="file"
-                  name="photo"
-                  id="img"
-                  className="form-control"
-                  multiple
-                  hidden
+      <h2 className="text-center pt-32 text-5xl text-titleColor font-extrabold">
+        Image to Pdf
+      </h2>
+      <div className="my-10 flex flex-row-reverse justify-center items-center">
+        <div className="form-group mt-5"></div>
+        <Dropzone
+          onDrop={handleUpload}
+          accept="image/*"
+          minSize={1024}
+          maxSize={3072000}
+        >
+          {({
+            getRootProps,
+            getInputProps,
+            isDragActive,
+            isDragAccept,
+            isDragReject,
+          }) => {
+            const additionalClass = isDragAccept
+              ? "accept"
+              : isDragReject
+              ? "reject"
+              : "";
+
+            return (
+              <div
+                {...getRootProps({
+                  className: `dropzone ${additionalClass}`,
+                })}
+              >
+                <input {...getInputProps()} />
+                <img
+                  className="w-64"
+                  src="https://cdn.dribbble.com/users/527271/screenshots/6090255/media/c8f4598d29e31001516bc06721fe4f49.gif"
+                  alt=""
                 />
-
-                <div className="flex justify-center items-center">
-                  <div>
-                    <input
-                      className="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                      id="img"
-                      type="file"
-                      onChange={onChangePhotos}
-                      multiple
-                      accept="image/png, image/png, image/jpeg, image/jpg"
-                    ></input>
-                  </div>
-                  <div>
-                    <div className="col-lg">
-                      {" "}
-                      <button
-                        className="btn btn-outline-primary mt-5 bg-orange-500 p-3 m-2 rounded"
-                        onClick={pdfGenerate}
-                        disabled={!photos}
-                      >
-                        Download pdf
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <div className="hidden md:block w-96  bg-indigo-500 py-10 px-10">
+            );
+          }}
+        </Dropzone>
+      </div>
+      <div className="flex justify-center items-center w-full text-5xl">
+        {loading === true && <RingLoader color="#36d7b7" size={200} />}
+      </div>
+      {photos !== false && (
+        <div className="flex flex-col justify-center">
+          <h2 className="text-center text-textColor text-3xl font-semibold">
+            Preview of The Created PDF
+          </h2>
+          <div className="grid grid-cols-6 gap-7 p-6">
+            {photos.map((photo, index) => (
               <img
-                src="https://cdn.dribbble.com/users/527271/screenshots/6090255/media/c8f4598d29e31001516bc06721fe4f49.gif"
-                alt=""
+                className="h-60 border w-60 p-3 bg-black rounded-sm border-red-900"
+                key={index}
+                src={URL.createObjectURL(photo)}
+                alt={`Image ${index}`}
               />
-            </div>
+            ))}
           </div>
+          <button
+            className="btn btn-outline-primary mt-5 bg-btnBgColor font-bold p-3 m-2 rounded"
+            onClick={pdfGenerate}
+            disabled={!photos.length}
+          >
+            Download pdf
+          </button>
         </div>
-      </div>
-      <div>
-        <h2 className="text-center ">Output</h2>
-        <div className="grid grid-cols-6 gap-7 p-6">
-          {photos.map((photo) => (
-            <img
-              className="h-60 border w-60 p-3 bg-black rounded-sm border-red-900"
-              key={photo.id}
-              src={URL.createObjectURL(photo)}
-              alt={photo.altText}
-            />
-          ))}
-        </div>
-      </div>
-
-      <footer>
-        <p className="text-center"></p>
-      </footer>
-      </div>
+      )}
     </div>
   );
 };
