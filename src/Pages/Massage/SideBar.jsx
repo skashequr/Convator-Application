@@ -7,10 +7,34 @@ import { WiNightAltCloudyWindy } from "react-icons/wi";
 import { useEffect, useState } from "react";
 import { FiSunrise } from "react-icons/fi";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 
 const SideBar = () => {
   const [night, setNight] = useState(false);
   const [users, setUsers] = useState([]);
+  const {user} = useContext(AuthContext)
+  console.log(user?.email);
+  const email = user?.email;
+
+  useEffect(() => {
+    if (email) {
+      axios.get(`http://localhost:5000/user?email=${email}`)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  }, [email]);
+  
+  
+  
+
+
+
+
   const data = {_id: "65b4bbbed044e658116c5eba"};
 
   useEffect(() => {

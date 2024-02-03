@@ -96,6 +96,7 @@ const Authprovider = ({ children }) => {
       console.log("user in the auth changed".currentUser);
       setUser(currentUser);
       setLoading(false);
+      console.log(currentUser);
     });
     return () => unSubcribe();
   }, []);
