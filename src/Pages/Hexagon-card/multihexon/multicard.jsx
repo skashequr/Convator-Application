@@ -85,21 +85,25 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
-        {/* ------------------6--------------- */}
+        {/* ------------------test--------------- */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/test">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src="" />
+              <span className="hexagon-name">test --</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
         </li>
-        {/* ---------------------7------------------ */}
+        {/* ---------------------Qr code------------------ */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/qrcode">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src="" />
+              <span className="hexagon-name">QR Code </span>
+              <span className="hexagon-metric-label">QR Code Generator</span>
+            </div>
+          </Link>
         </li>
         {/* --------------8----------------------- */}
         <li className="hexagon hexagon-yellow">

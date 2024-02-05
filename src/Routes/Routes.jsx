@@ -10,24 +10,32 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
-import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
+// import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
 import MassageLogin from "../Pages/Massage/MassageLogin";
+
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
-import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
+// import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
+// import MyComponent from "../Pages/Features/PptToPdf/PptFile";
+
+// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
+// import Converterimg from "../Pages/PdfToJpj/Conveter";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-import Testing from "../Pages/test";
+import ImageResizer from "../Pages/Image-Resize/ImageResize";
+import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
+
+import Dashboard from "../Pages/Dashboad/Dashboad/Dashboard";
 import PdfToPPT from "../Pages/Features/PdfToPPT/PdfToPPT";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
@@ -44,10 +52,7 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      {
-        path: "createpdf",
-        // element: <CreatePdf></CreatePdf>
-      },
+
       {
         path: "/aboutUs",
         element: <AboutUs></AboutUs>,
@@ -90,7 +95,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/watermark",
-        element: <PdfWatermark></PdfWatermark>,
+        // element: <PdfWatermark></PdfWatermark>,
       },
       {
         path: "/text",
@@ -107,11 +112,11 @@ export const router = createBrowserRouter([
 
       {
         path: "/watermark",
-        element: <PdfWatermarkApp></PdfWatermarkApp>,
+        // element: <PdfWatermarkApp></PdfWatermarkApp>,
       },
       {
         path: "/ee",
-        element: <PdfToPPT></PdfToPPT>
+        // element: <MyComponent></MyComponent>,
       },
       {
         path: "/pdfToText",
@@ -135,7 +140,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/test",
-        element: <Testing></Testing>,
+        element: <ImageResizer></ImageResizer>,
+      },
+      {
+        path: "/qrcode",
+        element: <QRCodeGenerator></QRCodeGenerator>,
       },
 
       // ---------------- Massageing routes --------------------
@@ -168,5 +177,11 @@ export const router = createBrowserRouter([
         element: "",
       },
     ],
+  },
+  // -----------DashBoad router---------------
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [],
   },
 ]);
