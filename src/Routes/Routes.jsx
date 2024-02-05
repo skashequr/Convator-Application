@@ -35,6 +35,8 @@ import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 import ImageResizer from "../Pages/Image-Resize/ImageResize";
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
+import Dashboard from "../Pages/Dashboad/Dashboad/Dashboard";
+
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
@@ -135,10 +137,10 @@ export const router = createBrowserRouter([
         path: "/tifftojpg",
         element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
       },
-      // {
-      //   path: "/test",
-      //   element: <ImageResizer></ImageResizer>,
-      // },
+      {
+        path: "/test",
+        element: <ImageResizer></ImageResizer>,
+      },
       {
         path: "/qrcode",
         element: <QRCodeGenerator></QRCodeGenerator>,
@@ -174,5 +176,11 @@ export const router = createBrowserRouter([
         element: "",
       },
     ],
+  },
+  // -----------DashBoad router---------------
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [],
   },
 ]);
