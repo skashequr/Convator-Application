@@ -13,15 +13,17 @@ import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 const SideBar = () => {
   const [night, setNight] = useState(false);
   const [users, setUsers] = useState([]);
-  const {user} = useContext(AuthContext)
-  console.log(user?.email);
+  const {user} = useContext(AuthContext);
+  const [singleUser , setSingleUser] = useState([]);
+  // console.log(users);
   const email = user?.email;
-
+  console.log(email);
   useEffect(() => {
     if (email) {
       axios.get(`http://localhost:5000/user?email=${email}`)
         .then(response => {
           console.log(response);
+          setSingleUser(response)
         })
         .catch(error => {
           console.error('Error fetching data:', error);
@@ -29,22 +31,22 @@ const SideBar = () => {
     }
   }, [email]);
   
+  const id = singleUser?._id
   
+
+
+
+console.log(id);
+  const data = {id};
   
-
-
-
-
-  const data = {_id: "65b4bbbed044e658116c5eba"};
-
   useEffect(() => {
-    axios.get("http://localhost:5000/chat/chat", { params: data }).then((response) => {
+    axios.get("http://localhost:5000/chat/chat").then((response) => {
       setUsers(response.data);
     }).catch((error) => {
       console.error('Error fetching data:', error);
     });
   }, []);
-  console.log(users);
+  // console.log(users);
   return (
     <div>
       <div className="flex justify-between bg-slate-300 rounded-full">
@@ -105,7 +107,7 @@ const SideBar = () => {
         {/* -------------------- */}
         <div>
           {users.map((user) => (
-            <Link to={`/massage/${user.id}`} key={user._id}>
+            <Link to={`/massage/${user?._id}`} key={user?._id}>
               <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl hover:bg-[#a2d1f7] bg-[#F1F2F3]">
                 <div className="h-10 w-10 hover:h-14 hover:w-14">
                   <img

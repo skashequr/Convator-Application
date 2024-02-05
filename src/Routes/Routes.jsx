@@ -16,7 +16,6 @@ import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 import Pdfview from "../Pages/PdfViwer/PdfViwer";
 import MassageLogin from "../Pages/Massage/MassageLogin";
-import PptFile from "../Pages/Features/PptToPdf/PptFile";
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
@@ -29,6 +28,7 @@ import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 import Testing from "../Pages/test";
+import PdfToPPT from "../Pages/Features/PdfToPPT/PdfToPPT";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -111,7 +111,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ee",
-        element: <PptFile></PptFile>
+        element: <PdfToPPT></PdfToPPT>
       },
       {
         path: "/pdfToText",

@@ -12,6 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../../../Firebase/firebase.config";
+import axios from "axios";
 
 // context
 export const AuthContext = createContext(null);
@@ -21,6 +22,7 @@ const Authprovider = ({ children }) => {
   const [mode, setMode] = useState(false);
   const [user, setUser] = useState(null);
   const [load, setLoading] = useState(true);
+  const [singleUser , setSingleUser] = useState([]);
   // --------------
   const createUser = async (email, password) => {
     try {
@@ -96,15 +98,32 @@ const Authprovider = ({ children }) => {
       console.log("user in the auth changed".currentUser);
       setUser(currentUser);
       setLoading(false);
-      console.log(currentUser);
+      // console.log(currentUser);
     });
     return () => unSubcribe();
   }, []);
-
-  //------------------ data send child---------------------
+  
+  // console.log(users);
+  const email = user?.email;
+  console.log(email);
+  useEffect(() => {
+    if (email) {
+      axios.get(`http://localhost:5000/user?email=${email}`)
+  .then(response => {
+    // handle success
+    console.log(response.data);
+  })
+  .catch(error => {
+    // handle error
+    console.log(error);
+  });
+    }
+  }, [email]);
+  //------------------ data send child--------------------- setSingleUser(response) `http://localhost:5000/user?email=${email}`
 
   const authInfo = {
     user,
+    singleUser,
     createUser,
     signIn,
     logOut,
@@ -114,6 +133,7 @@ const Authprovider = ({ children }) => {
     mode,
     setMode,
     toggleMode,
+    load
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
