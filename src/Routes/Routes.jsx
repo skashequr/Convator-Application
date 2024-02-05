@@ -36,6 +36,7 @@ import ImageResizer from "../Pages/Image-Resize/ImageResize";
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
 import Dashboard from "../Pages/Dashboad/Dashboad/Dashboard";
+import DashboadHome from "../Pages/Dashboad/Dashboad/ElementDahboad/HomeDashboad/DashboadHome";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -179,8 +180,13 @@ export const router = createBrowserRouter([
   },
   // -----------DashBoad router---------------
   {
-    path: "dashboard",
+    path: "/dashboad",
     element: <Dashboard></Dashboard>,
-    children: [],
+    children: [
+      {
+        path: "homedes",
+        element: <DashboadHome></DashboadHome>,
+      },
+    ],
   },
 ]);
