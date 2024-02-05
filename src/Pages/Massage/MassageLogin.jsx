@@ -51,7 +51,7 @@ function MassageLogin() {
     setLoading(false);
   };
 
-  const signUpHandler = async () => {
+  const signUpHandler = async (e) => {
     setLoading(true);
     event.preventDefault();
     const userName = e.target.userName.value;

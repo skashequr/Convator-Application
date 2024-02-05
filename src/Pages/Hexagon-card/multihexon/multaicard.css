@@ -9,7 +9,7 @@
 :root {
     --xv-secondary-light-gray: #c9c9c9;
     --xv-secondary-dark-gray: #9fa0a2;
-    --xv-secondary-green: #EEEEEE;
+    --xv-secondary-green: #585c8a;
     --xv-secondary-ltgreen: #EEEEEE;
     --xv-secondary-dkgreen: #EEEEEE;
     --xv-secondary-blue: rgba(47, 155, 167, 1);
@@ -42,9 +42,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.3s ease-in-out;
 }
 
-.hexagon:before, .hexagon:after {
+.hexagon:hover {
+    transform: scale(1.1) rotate(5deg); 
+    background-color: #ad3f96;
+}
+.hexagon:before,.hexagon:after {
     content: "";
     position: absolute;
     width: 0;
@@ -63,7 +68,7 @@
     border-top: 40.41px solid var(--xv-secondary-dark-gray);
 }
 
-/* Inner Hexagon */
+/* ----------------Inner Hexagon -----------*/
 .hexagon-inner {
     position: relative;
     width: 136px;
@@ -94,7 +99,7 @@
     border-top: 39.26px solid var(--xv-secondary-light-gray);
 }
 
-/* Media queries */
+/* --------------Media queries -------------*/
 @media (min-width: 1920px) {
     .hexagon-grid-container {
         width: 1600px;
@@ -155,7 +160,7 @@
     }
 }
 
-/* Avatar */
+/*----------------- Avatar -------------------*/
 .hexagon-avatar-img {
     position: absolute;
     width: 42px;
@@ -165,7 +170,7 @@
     z-index: 1;
 }
 
-/* Name */
+/*------------- Name -----------------*/
 .hexagon-name {
     position: absolute;
     width: 130px;
@@ -278,15 +283,15 @@
 }
 
 .hexagon.hexagon-blue .hexagon-inner {
-    background-color: var(--xv-secondary-ltblue);
+    background-color: #eeee;
 }
 
 .hexagon.hexagon-blue .hexagon-inner:before {
-    border-bottom: 39.26px solid var(--xv-secondary-ltblue);
+    border-bottom: 39.26px solid #c9c9c9;
 }
 
 .hexagon.hexagon-blue .hexagon-inner:after {
-    border-top: 39.26px solid var(--xv-secondary-ltblue);
+    border-top: 39.26px solid #EEEEEE;
 }
 
 .hexagon.hexagon-blue .hexagon-featured-score {

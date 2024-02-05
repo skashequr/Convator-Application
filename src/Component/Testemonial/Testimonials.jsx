@@ -11,16 +11,6 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import "./Testimonials.css";
 
 const Testimonials = () => {
-  // const slideImages = [
-  //   "https://t4.ftcdn.net/jpg/06/13/35/31/240_F_613353190_sozuPsAzQLmggUJfwiBRt0bTCqUnB1aL.jpg",
-  //   "https://t4.ftcdn.net/jpg/00/95/11/47/240_F_95114739_nlxM48WSlHeLeR6ORivepbVTzyjgyxPb.jpg",
-  //   "https://t3.ftcdn.net/jpg/06/13/02/92/240_F_613029262_nIrEZdHDTjlHjvbtetcZ7o5ZP0Nqv6sQ.jpg",
-  //   "https://t3.ftcdn.net/jpg/06/84/13/88/240_F_684138844_6eNwg8IdZWmGYkyIKmsE8Lj0QcfU1TlP.jpg",
-  //   "https://t4.ftcdn.net/jpg/06/88/20/13/240_F_688201384_vqVs1exkFaSin09EPHPrdG1FLJ1jgiZP.jpg",
-  //   "https://t3.ftcdn.net/jpg/06/26/03/12/240_F_626031210_ZdDbsnsqTTjV9qRueIxtwlViuKbeFaEG.jpg",
-  //   "https://t3.ftcdn.net/jpg/03/01/86/24/240_F_301862438_rXxpfbeJNBftrUtwFqPojMLkvBD4YODF.jpg",
-  // ];
-
   const slideReviews = [
     {
       id: 1,
@@ -31,7 +21,7 @@ const Testimonials = () => {
       likes: 15,
       dislikes: 2,
       profile_picture:
-        "https://t4.ftcdn.net/jpg/06/13/35/31/240_F_613353190_sozuPsAzQLmggUJfwiBRt0bTCqUnB1aL.jpg",
+        "https://t4.ftcdn.net/jpg/06/32/75/57/240_F_632755741_SJ2jnBOzuSje5gnvFIjD3HRl3rwQhAr9.jpg",
     },
     {
       id: 2,
@@ -43,7 +33,7 @@ const Testimonials = () => {
       likes: 8,
       dislikes: 1,
       profile_picture:
-        "https://t4.ftcdn.net/jpg/00/95/11/47/240_F_95114739_nlxM48WSlHeLeR6ORivepbVTzyjgyxPb.jpg",
+        "https://t4.ftcdn.net/jpg/07/18/04/99/240_F_718049910_Om4Qj3ixFrCa6jBeUUBWbSdkhe13aThM.jpg",
     },
     {
       id: 3,
@@ -55,7 +45,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/06/13/02/92/240_F_613029262_nIrEZdHDTjlHjvbtetcZ7o5ZP0Nqv6sQ.jpg",
+        "https://t3.ftcdn.net/jpg/06/72/66/64/240_F_672666463_H5ThiNHfPRnsX1Yj5c5qp7RCMKDXGnN2.jpg",
     },
     {
       id: 3,
@@ -67,7 +57,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/06/84/13/88/240_F_684138844_6eNwg8IdZWmGYkyIKmsE8Lj0QcfU1TlP.jpg",
+        "https://t4.ftcdn.net/jpg/06/63/31/27/240_F_663312737_C8NX3yxfMPfHMCDNIXuAi0vQ7y19zItw.jpg",
     },
     {
       id: 3,
@@ -79,7 +69,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t4.ftcdn.net/jpg/06/88/20/13/240_F_688201384_vqVs1exkFaSin09EPHPrdG1FLJ1jgiZP.jpg",
+        "https://t3.ftcdn.net/jpg/05/19/83/42/240_F_519834227_8QCyGJ11nEl3qeodKBosCwNUcSFSteKL.jpg",
     },
     {
       id: 3,
@@ -91,7 +81,7 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/06/26/03/12/240_F_626031210_ZdDbsnsqTTjV9qRueIxtwlViuKbeFaEG.jpg",
+        "https://t3.ftcdn.net/jpg/06/34/28/82/240_F_634288213_hwJvHUm8WHNpoywHSfA9V9yzmhth2X1N.jpg",
     },
     {
       id: 3,
@@ -103,24 +93,24 @@ const Testimonials = () => {
       likes: 20,
       dislikes: 0,
       profile_picture:
-        "https://t3.ftcdn.net/jpg/03/01/86/24/240_F_301862438_rXxpfbeJNBftrUtwFqPojMLkvBD4YODF.jpg",
+        "https://t3.ftcdn.net/jpg/06/34/28/82/240_F_634288212_teev7cHew05ETCk7yAkgwrFGKu9pRsu3.jpg",
     },
   ];
 
   return (
-    <section className="bg-white ">
-      <div className="container px-6 mx-auto">
-        <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
-          What our <span className="text-blue-500 ">clients</span> say
+    <section className=" ">
+      <div className="my-20 px-6 mx-auto">
+        <h1 className="text-2xl font-semibold text-center text-titleColor capitalize lg:text-3xl ">
+          What our <span className="text-spanTextColor">clients</span> say
         </h1>
 
-        <p className="max-w-2xl mx-auto mt-6 text-center text-gray-500 dark:text-gray-300">
+        <p className="max-w-2xl mx-auto mt-6 text-center text-textColor">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
           ex placeat modi magni quia error alias, adipisci rem similique, at
           omnis eligendi optio eos harum.
         </p>
 
-        <div className="container">
+        <div className="container ">
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
@@ -143,15 +133,63 @@ const Testimonials = () => {
             className="swiper_container"
           >
             {slideReviews.map((review, index) => (
-              <SwiperSlide key={index}>
-                <div
-                  className={`text-yellow-200 img flex flex-col justify-center border-[5px] bg-cover bg-center bg-[url('${review.profile_picture}')] bg-black bg-opacity-50`}
-                >
-                  <h2>{review.client_name}</h2>
-                  <p>{review.comment}</p>
-                  <p>Rating: {review.rating}</p>
-                  <p>Likes: {review.likes}</p>
-                  <p>Dislikes: {review.dislikes}</p>
+              <SwiperSlide className="rounded-3xl card2 bg-white" key={index}>
+                <div className="img flex flex-col justify-center bg-cover bg-center text-sz relative">
+                  <div className="z-10 text-body-1 card-inner relative w-full h-full">
+                    <div
+                      style={{
+                        backgroundImage: `url(${review.profile_picture})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                      }}
+                      className="front rounded-2xl w-full h-full flex flex-col justify-end   text-white absolute"
+                    >
+                      <div className="relative pb-8 pt-1">
+                        <div className="relative z-30 text-white">
+                          <h2 className="text-base font-bold">
+                            {review.client_name}
+                          </h2>
+                          <button className="border border-cyan-50 rounded-full w-fit py-1 px-5 text-base">
+                            Hover Me
+                          </button>
+                        </div>
+                        <div className="bg-black w-full h-full absolute bg-opacity-60 bottom-0"></div>
+                      </div>
+                    </div>
+                    <div className="back w-full rounded-2xl h-full absolute bg-titleColor text-white">
+                      <div className="text-textColor">
+                        <div className="p-6 md:p-8 shadow-md rounded-2xl  space-y-8">
+                          <div className="pt-8 text-center space-y-1">
+                            <h1 className="text-xl md:text-2xl">Md hasan</h1>
+                            <p className=" text-sm">{review.comment}</p>
+                          </div>
+                          {/* post , followers following  */}
+                          <div className="flex  px-4 justify-between items-center">
+                            <div className="text-center">
+                              <h5 className="font-medium text-xl">
+                                {review.rating}
+                              </h5>
+                              <p className="text-sm  text-gray-400">Rating</p>
+                            </div>
+                            <div className="text-center">
+                              <h5 className="font-medium text-xl">
+                                {review.likes}
+                              </h5>
+                              <p className="text-sm  text-gray-400">Like</p>
+                            </div>
+                            <div className="text-center">
+                              <h5 className="font-medium text-xl">
+                                {review.dislikes}
+                              </h5>
+                              <p className="text-sm  text-gray-400">Dislike</p>
+                            </div>
+                          </div>
+                          <div className="flex justify-center"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}

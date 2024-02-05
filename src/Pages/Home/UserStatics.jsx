@@ -58,11 +58,11 @@ const UserStatics = () => {
         <div className="flex flex-col justify-center">
           <div className="max-w-xl mb-6">
             <div>
-              <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+              <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-titleColor uppercase rounded-full bg-teal-accent-400">
                 Assalamuwlaicum
               </p>
             </div>
-            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-titleColor sm:text-4xl sm:leading-none">
               LAst 6 month our user analytics
               <br className="hidden md:block" />
               that you{" "}
@@ -70,7 +70,7 @@ const UserStatics = () => {
                 will love
               </span>
             </h2>
-            <p className="text-base text-gray-700 md:text-lg">
+            <p className="text-base text-textColor md:text-lg">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
               quae. explicabo.
@@ -79,7 +79,7 @@ const UserStatics = () => {
           <a
             href="/"
             aria-label=""
-            className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+            className="inline-flex items-center font-semibold transition-colors duration-200 text-btnTextColor "
           >
             Learn more
             <svg
@@ -93,8 +93,8 @@ const UserStatics = () => {
         </div>
         <div className="relative flex justify-center items-center">
           <div id="chart" className="card lg:w-[800px] md:w-[600px]">
-            <h2>Registration</h2>
-            <p>Month-to-month Comparison</p>
+            <h2 className="text-titleColor">Registration</h2>
+            <p className="text-textColor">Month-to-month Comparison</p>
             <div className="pulse"></div>
             <div className="chart-area relative">
               <div className="grid2 "></div>

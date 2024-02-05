@@ -4,10 +4,29 @@ import { FaUserFriends, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { GiNightSky } from "react-icons/gi";
 import { WiNightAltCloudyWindy } from "react-icons/wi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiSunrise } from "react-icons/fi";
+
 const SideBar = () => {
   const [night, setNight] = useState(false);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://file-convator-backend.vercel.app/user/fetchUsers"
+        );
+        const data = await response.json();
+        setUsers(data); // Assuming the response is an array of user objects
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(users);
   return (
     <div>
       <div className="flex justify-between bg-slate-300 rounded-full">
@@ -65,46 +84,30 @@ const SideBar = () => {
             <FaSearch className=" absolute end-2.5 h-8 w-8 bottom-2.5 rounded-lg "></FaSearch>
           </div>
         </form>
-        {/*---------------- user--------- */}
+        {/* -------------------- */}
         <div>
-          <Link to="/massage/:massa">
-            <div>
-              <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl  hover:bg-[#a2d1f7] bg-[#F1F2F3]">
+          {users.map((user) => (
+            <Link to={`/massage/${user.id}`} key={user._id}>
+              <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl hover:bg-[#a2d1f7] bg-[#F1F2F3]">
                 <div className="h-10 w-10 hover:h-14 hover:w-14">
                   <img
                     className="h-full w-full rounded-full object-cover object-center ring ring-white"
-                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
+                    src={user.profileImageUrl}
+                    alt={`Profile of ${user.name}`}
                   />
                 </div>
                 <div className="font-medium dark:text-white">
-                  <div className="hover:text-white">Jese Leos</div>
-                  <div className="text-sm  dark:text-gray-400">
-                    Joined in August 2014
+                  <div className="hover:text-white">{user.name}</div>
+                  <div className="text-sm dark:text-gray-400">
+                    Joined in {user.email}
                   </div>
                 </div>
               </div>
-            </div>
-          </Link>
-          {/* 2 */}
-          <div>
-            <div className="flex items-center gap-4 w-full mt-3 p-8 hover:bg-[#a2d1f7] bg-[#F1F2F3]">
-              <div className="h-10 w-10 hover:h-14 hover:w-14">
-                <img
-                  className="h-full w-full rounded-full object-cover object-center ring ring-white"
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
-              </div>
-              <div className="font-medium dark:text-white">
-                <div className="hover:text-white">Jese Leos</div>
-                <div className="text-sm  dark:text-gray-400">
-                  Joined in August 2014
-                </div>
-              </div>
-            </div>
-          </div>
+            </Link>
+          ))}
         </div>
+        {/* 2  user*/}
+        <div></div>
       </div>
     </div>
   );

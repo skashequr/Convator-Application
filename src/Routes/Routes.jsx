@@ -21,6 +21,23 @@ import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
 import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
+import MyComponent from "../Pages/Features/PptToPdf/PptFile";
+
+// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
+import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
+import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
+// import Converterimg from "../Pages/PdfToJpj/Conveter";
+import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
+import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
+import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
+import TextToVoice from "../Pages/textToVoice/TextToVoice";
+import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
+import ImageResizer from "../Pages/Image-Resize/ImageResize";
+import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
+
+import Dashboard from "../Pages/Dashboad/Dashboad/Dashboard";
+
+// import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 // import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
@@ -68,12 +85,20 @@ export const router = createBrowserRouter([
         element: <YbVideoToaudio></YbVideoToaudio>,
       },
       {
+        path: "/speech",
+        element: <SpeechToText></SpeechToText>,
+      },
+      {
         path: "pdfview",
         element: <Pdfview></Pdfview>,
       },
       {
         path: "/watermark",
         element: <PdfWatermark></PdfWatermark>,
+      },
+      {
+        path: "/text",
+        element: <TextToVoice></TextToVoice>,
       },
       {
         path: "/youtubemp3",
@@ -88,6 +113,39 @@ export const router = createBrowserRouter([
         path: "/watermark",
         element: <PdfWatermarkApp></PdfWatermarkApp>,
       },
+      {
+        path: "/ee",
+        element: <MyComponent></MyComponent>,
+      },
+      {
+        path: "/pdfToText",
+        element: <PdfEditor></PdfEditor>,
+      },
+      {
+        path: "/pdfToImg",
+        element: <PdfToImg></PdfToImg>,
+      },
+      {
+        path: "/pngtojpg",
+        element: <PngToJpgConverter></PngToJpgConverter>,
+      },
+      {
+        path: "/jpgtopng",
+        element: <JpgToPngConverter></JpgToPngConverter>,
+      },
+      {
+        path: "/tifftojpg",
+        element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
+      },
+      {
+        path: "/test",
+        element: <ImageResizer></ImageResizer>,
+      },
+      {
+        path: "/qrcode",
+        element: <QRCodeGenerator></QRCodeGenerator>,
+      },
+
       // ---------------- Massageing routes --------------------
       {
         path: "/massage",
@@ -99,6 +157,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/massage/dehed/swgs",
+        element: <OpenChat></OpenChat>,
+      },
+      {
+        path: "massage/users/massage/shearefile/:_id",
         element: <OpenChat></OpenChat>,
       },
       {
@@ -114,5 +176,11 @@ export const router = createBrowserRouter([
         element: "",
       },
     ],
+  },
+  // -----------DashBoad router---------------
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [],
   },
 ]);

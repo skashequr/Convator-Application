@@ -1,367 +1,195 @@
 import "./multaicard.css";
 import imgedit from "../../../assets/icons/image edit.png";
-// import pdfview from "../../../assets/icons";
-// import imgpdf from "../../../assets/icons";
-// import ybvid from "../../../assets/icons";
-// import massage from "../../../assets/icons";
+import pdfview from "../../../assets/icons/pdf.png";
+import { Link } from "react-router-dom";
+import jpjtopng from "../../../assets/icons/jpj-to-png.png";
+import pngtojpeg from "../../../assets/icons/jpeg-to-png.png";
+import voicetotext from "../../../assets/icons/Textg.png";
+import textVoice from "../../../assets/icons/speeck to tex.png";
+import imgTotext from "../../../assets/icons/img-text.png";
 const MultiHexon = () => {
   return (
-    <div>
-      <ul className="hexagon-grid-container">
-        {/* -----------------1----------------- */}
-        <li className="hexagon hexagon-green">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src={imgedit} />
-            <span className="hexagon-name">Image editing</span>
-            <span className="hexagon-metric-label">
-              Image file to pdf convert easliy
-            </span>
-          </div>
-        </li>
-        {/* ----------------2--------------- */}
-        <li className="hexagon hexagon-green">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-yellow">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-blue">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
-        {/* -----------------------3------------------------- */}
-        <li className="hexagon hexagon-green">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-yellow">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-blue">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
+    <div className="">
+      <ul className="hexagon-grid-container text-black">
+        {/* -----------------img edit----------------- */}
+        <Link to="/editimg">
+          <li className="hexagon hexagon-green">
+            <div className="hexagon-inner bg-[cardBgHexaPrimary]">
+              <img className="hexagon-avatar-img" src={imgedit} />
+              <span className="hexagon-name">Image editing</span>
+              <span className="hexagon-metric-label">
+                Image file to pdf convert
+              </span>
+            </div>
+          </li>
+        </Link>
+        {/* ---------------- image to pdf--------------- */}
+        <Link to="/imgtopdf">
+          <li className="hexagon hexagon-green">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={pdfview} />
+              <span className="hexagon-name">Image to pdf</span>
+              <span className="hexagon-metric-label">Easy way pdf view</span>
+            </div>
+          </li>
+        </Link>
+        {/* ------------------------ jPJ TO PNG ------------------------ */}
+        <Link to="/jpgtopng">
+          <li className="hexagon hexagon-green">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={jpjtopng} />
+              <span className="hexagon-name">JPEG Convert PNG</span>
+              <span className="hexagon-metric-label">easy convert in png</span>
+            </div>
+          </li>
+        </Link>
+        {/* -------------- voice to text ----------- */}
+        <Link to="/speech">
+          <li className="hexagon hexagon-blue">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={voicetotext} />
+              <span className="hexagon-name">Voice to text</span>
+              <span className="hexagon-metric-label">Voice convert text</span>
+            </div>
+          </li>
+        </Link>
 
-        <li className="hexagon hexagon-blue">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
+        {/* -----------------/pngtojpg-------------------------- */}
+        <Link to="/pngtojpg">
+          <li className="hexagon hexagon-yellow">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={pngtojpeg} />
+              <span className="hexagon-name">Png to jpeg</span>
+              <span className="hexagon-metric-label">Progress easy way</span>
+            </div>
+          </li>
+        </Link>
 
+        {/* ---------------- text-voice-------*/}
+        <Link to="/text">
+          <li className="hexagon hexagon-yellow">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={textVoice} />
+              <span className="hexagon-name">Text-to-Voice</span>
+              <span className="hexagon-metric-label">Text-to-voice</span>
+            </div>
+          </li>
+        </Link>
+        {/* ---------------image to text ------------- */}
+        <li className="hexagon hexagon-yellow">
+          <Link to="/imgToWord">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={imgTotext} />
+              <span className="hexagon-name">Image to word</span>
+              <span className="hexagon-metric-label">Image to document</span>
+            </div>
+          </Link>
+        </li>
+        {/* ------------------test--------------- */}
+        <li className="hexagon hexagon-yellow">
+          <Link to="/test">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src="" />
+              <span className="hexagon-name">test --</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
+        </li>
+        {/* ---------------------Qr code------------------ */}
+        <li className="hexagon hexagon-yellow">
+          <Link to="/qrcode">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src="" />
+              <span className="hexagon-name">QR Code </span>
+              <span className="hexagon-metric-label">QR Code Generator</span>
+            </div>
+          </Link>
+        </li>
+        {/* --------------8----------------------- */}
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
-          </div>
-        </li>
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
 
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-green">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-red">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
 
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-blue">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-yellow">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-blue">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-yellow">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-blue">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-yellow">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-blue">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-yellow">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-blue">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-yellow">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
-            <img
-              className="hexagon-avatar-img"
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-            />
+            <img className="hexagon-avatar-img" src="" />
             <span className="hexagon-name">Bruce Wayne</span>
             <span className="hexagon-metric-label">Coachability</span>
-            <span className="hexagon-featured-score">97</span>
-            <span className="hexagon-icon-left hexagon-icon-blue">
-              <i className="fa fa-money-bill-alt"></i>
-            </span>
-            <span className="hexagon-icon-right hexagon-icon-yellow">
-              <i className="fa fa-list-ol"></i>
-            </span>
           </div>
         </li>
       </ul>

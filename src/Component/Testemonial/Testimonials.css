@@ -1,12 +1,3 @@
-/* *,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-} */
-
 
 :root {
     --primary: #6a59ff;
@@ -37,6 +28,7 @@
     max-width: 124rem;
     padding: 4rem 1rem;
     margin: 0 auto;
+
 }
 
 .heading {
@@ -59,7 +51,7 @@
     position: relative;
     overflow: hidden;
     /* border: #222224; */
-    /* background-color: aqua; */
+    background-color: transparent !important;;
 }
 
 
@@ -79,11 +71,11 @@
 
 .slider-controler {
     position: relative;
-    bottom: 1rem;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10 !important;
+    z-index: 50 !important;
 }
 
 .slider-controler .swiper-button-next {
@@ -117,7 +109,7 @@
 
 .slider-controler .slider-arrow {
     /* background: var(--white); */
-    background: red;
+    /* background: red; */
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -134,7 +126,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -192,4 +184,27 @@
         left: 20% !important;
         transform: translateX(-20%) !important;
     }
+}
+
+
+
+/* Card Style */
+
+.card-inner {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+}
+
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.card2:hover .card-inner {
+    transform: rotateY(180deg);
 }

@@ -13,7 +13,7 @@ const Converterimg = (props) => {
     const imagesList = [];
     const canvas = document.createElement("canvas");
     canvas.setAttribute("class", "canv");
-    const pdf = await pdfjsLib.getDocument({ data }).promise;
+    const pdf = await pdfjsLib?.getDocument({ data }).promise;
 
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
