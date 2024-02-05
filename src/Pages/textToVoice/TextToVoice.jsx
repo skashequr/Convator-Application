@@ -32,18 +32,22 @@ const TextToVoice = () => {
     setInputText(e.target.value);
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     speech.text = inputText;
-    window.speechSynthesis.speak(speech);
-  };
-  speech.onend = () => {
-    const audioBlob = new Blob([new Uint8Array(speech.audioBuffer)]);
-    const audioUrl = URL.createObjectURL(audioBlob);
+
+    // Convert speech to audio blob
+    const audioBlob = await new Promise((resolve) => {
+      speech.onend = () => {
+        resolve(new Blob([new Uint8Array(speech.audioBuffer)]));
+      };
+      window.speechSynthesis.speak(speech);
+    });
 
     // Create a link element for download
+    const audioUrl = URL.createObjectURL(audioBlob);
     const downloadLink = document.createElement("a");
     downloadLink.href = audioUrl;
-    downloadLink.download = "speech_audio.wav";
+    downloadLink.download = "speech_audio.mp3";
 
     // Append the link to the document and trigger the click event
     document.body.appendChild(downloadLink);
@@ -65,23 +69,16 @@ const TextToVoice = () => {
         onChange={handleTextChange}
       ></textarea>
       <div className="row">
-        {/* <select value={selectedVoice} onChange={handleVoiceChange}>
-          {voices.map((voice, i) => (
-            <option key={i} value={i}>
-              {voice.name}
-            </option>
-          ))}
-        </select> */}
         <select
           value={selectedVoice}
           onChange={handleVoiceChange}
           className="block select-language appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-500"
         >
-          {voices.map((voice, i) => (
+          {/* {voices.map((voice, i) => (
             <option key={i} value={i} className="text-gray-800">
               {voice.name}
             </option>
-          ))}
+          ))} */}
         </select>
 
         <button className="button" onClick={handleButtonClick}>

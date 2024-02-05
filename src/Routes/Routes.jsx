@@ -32,7 +32,8 @@ import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-import Testing from "../Pages/test";
+import ImageResizer from "../Pages/Image-Resize/ImageResize";
+import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -134,9 +135,13 @@ export const router = createBrowserRouter([
         path: "/tifftojpg",
         element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
       },
+      // {
+      //   path: "/test",
+      //   element: <ImageResizer></ImageResizer>,
+      // },
       {
-        path: "/test",
-        element: <Testing></Testing>,
+        path: "/qrcode",
+        element: <QRCodeGenerator></QRCodeGenerator>,
       },
 
       // ---------------- Massageing routes --------------------
