@@ -8,6 +8,7 @@ import voicetotext from "../../../assets/icons/Textg.png";
 import textVoice from "../../../assets/icons/speeck to tex.png";
 import imgTotext from "../../../assets/icons/img-text.png";
 import scanner from "../../../assets/icons/scanner.png";
+import resizeimg from "../../../assets/icons/resizeimage.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -86,13 +87,13 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
-        {/* ------------------test--------------- */}
+        {/* ------------------Resize image--------------- */}
         <li className="hexagon hexagon-yellow">
-          <Link to="/test">
+          <Link to="/imagresize">
             <div className="hexagon-inner">
-              <img className="hexagon-avatar-img" src="" />
-              <span className="hexagon-name">test --</span>
-              <span className="hexagon-metric-label">Progress to Goal</span>
+              <img className="hexagon-avatar-img" src={resizeimg} />
+              <span className="hexagon-name">Image-Resize</span>
+              <span className="hexagon-metric-label">Image quality change</span>
             </div>
           </Link>
         </li>
