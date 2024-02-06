@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
-import { FaCaretDown } from "react-icons/fa";
+import { SquaresFour } from "phosphor-react";
 import { IoReorderThree } from "react-icons/io5";
 import "./NavBar.css";
 import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovider";
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
+
+import { Button } from "keep-react";
 
 const NavBar = () => {
   const { mode, toggleMode } = useContext(AuthContext);
@@ -52,6 +54,22 @@ const NavBar = () => {
           }
         >
           Massage
+        </NavLink>
+      </li>
+      <li>
+        {/* ------dashboad--------- */}
+        <NavLink
+          to="/dashboad/homedes"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
+          }
+        >
+          <Button type="success" size="md">
+            Dashboad
+            <span className="pl-2">
+              <SquaresFour size={24} />
+            </span>
+          </Button>
         </NavLink>
       </li>
     </>

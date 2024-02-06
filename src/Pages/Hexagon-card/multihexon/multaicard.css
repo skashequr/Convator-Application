@@ -7,11 +7,11 @@
 
 /* XV SCSS Variables */
 :root {
-    --xv-secondary-light-gray: #c9c9c9;
-    --xv-secondary-dark-gray: #9fa0a2;
-    --xv-secondary-green: #585c8a;
-    --xv-secondary-ltgreen: #EEEEEE;
-    --xv-secondary-dkgreen: #EEEEEE;
+    --xv-secondary-light-gray: #fcf1f1;
+    --xv-secondary-dark-gray: #babaf3;
+    --xv-secondary-green: #dee1ff;
+    --xv-secondary-ltgreen: #f8f8f8;
+    --xv-secondary-dkgreen: #9f9393;
     --xv-secondary-blue: rgba(47, 155, 167, 1);
     --xv-secondary-ltblue: #6DB9C1;
     --xv-secondary-dkblue: rgba(37, 124, 133, 1);
@@ -47,7 +47,7 @@
 
 .hexagon:hover {
     transform: scale(1.1) rotate(5deg); 
-    background-color: #ad3f96;
+    background-color: #3f93ad;
 }
 .hexagon:before,.hexagon:after {
     content: "";
@@ -163,9 +163,9 @@
 /*----------------- Avatar -------------------*/
 .hexagon-avatar-img {
     position: absolute;
-    width: 42px;
-    border-radius: 42px;
-    border: 2px solid #fff;
+    width: 52px;
+    border-radius: 53px;
+    border: 2px solid #91b4d0;
     top: -24px;
     z-index: 1;
 }
@@ -283,7 +283,7 @@
 }
 
 .hexagon.hexagon-blue .hexagon-inner {
-    background-color: #eeee;
+    background-color: #f4ececee;
 }
 
 .hexagon.hexagon-blue .hexagon-inner:before {

@@ -12,6 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../../../Firebase/firebase.config";
+import axios from "axios";
 
 // context
 export const AuthContext = createContext(null);
@@ -101,7 +102,22 @@ const Authprovider = ({ children }) => {
   }, []);
 
   //------------------ data send child---------------------
-
+  const email = user?.email;
+  console.log(email);
+  useEffect(() => {
+    if (email) {
+      axios
+        .get(`http://localhost:5000/user?email=${email}`)
+        .then((response) => {
+          // handle success
+          console.log(response.data);
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        });
+    }
+  }, [email]);
   const authInfo = {
     user,
     createUser,
