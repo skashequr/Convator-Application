@@ -12,6 +12,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../../../Firebase/firebase.config";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 // context
 export const AuthContext = createContext(null);
@@ -100,10 +102,34 @@ const Authprovider = ({ children }) => {
     return () => unSubcribe();
   }, []);
 
+  console.log(user?.email);
+
+  console.log();
+
+  const [singleUser, setSingleUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/user?email=${user?.email}`
+        );
+        const data = await response.json();
+        setSingleUsers(data); // Assuming the response is an array of user objects
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [user?.email]);
+  console.log(singleUser);
   //------------------ data send child---------------------
 
   const authInfo = {
+    singleUser,
     user,
+    load,
     createUser,
     signIn,
     logOut,

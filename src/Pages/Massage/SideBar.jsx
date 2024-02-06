@@ -85,8 +85,9 @@ const SideBar = () => {
           </div>
         </form>
         {/* -------------------- */}
-        <div>
-          {users.map((user) => (
+        { users? (
+          <div>
+          {users?.map((user) => (
             <Link to={`/massage/${user.id}`} key={user._id}>
               <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl hover:bg-[#a2d1f7] bg-[#F1F2F3]">
                 <div className="h-10 w-10 hover:h-14 hover:w-14">
@@ -105,7 +106,8 @@ const SideBar = () => {
               </div>
             </Link>
           ))}
-        </div>
+        </div> ) : " "
+        }
         {/* 2  user*/}
         <div></div>
       </div>

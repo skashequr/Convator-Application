@@ -1,24 +1,39 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
+import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
+import { useQuery } from "@tanstack/react-query";
 
 const ChatBabbule = () => {
+  const {singleUser} = useContext(AuthContext);
+  const singleuserId = singleUser?._id
   const params = useParams() ;
-  const userId = params?._id;
+  const  userId = params?._id;
+
+
   useEffect(() => {
-    axios.post('http://localhost:5000/chat/send', { userId })
-      .then(response => {
-        console.log("Chat created successfully:", response.data);
-      })
-      .catch(error => {
+    const sendChat = async () => {
+      try {
+        if (singleuserId && userId) {
+          console.log(singleuserId);
+          const response = await axios.post('http://localhost:5000/chat/send', {
+            userId,
+            singleuserId
+          });
+          console.log("Chat created successfully:", response.data);
+        }
+      } catch (error) {
         console.error("Error creating chat:", error);
-      });
-  }, [userId]);
+      }
+    };
+
+    sendChat();
+  }, [userId , singleuserId]);
+  
+ 
   
   
-  
-  
-  console.log(userId);
+  console.log("userId" , userId , "dingleUser: " , singleuserId);
   return (
     <div>
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">
