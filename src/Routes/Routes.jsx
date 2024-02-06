@@ -35,8 +35,8 @@ import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 import ImageResizer from "../Pages/Image-Resize/ImageResize";
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
-import Dashboard from "../Pages/Dashboad/Dashboad/Dashboard";
-import DashboadHome from "../Pages/Dashboad/Dashboad/ElementDahboad/HomeDashboad/DashboadHome";
+import Dashboard from "../Pages/Dashboad/Dashboad/Dashboad";
+import DashboadHome from "../Pages/Dashboad/ElementDashboad/HomeDeshboad/HomeDeshboad";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
