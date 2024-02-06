@@ -7,6 +7,7 @@ import pngtojpeg from "../../../assets/icons/jpeg-to-png.png";
 import voicetotext from "../../../assets/icons/Textg.png";
 import textVoice from "../../../assets/icons/speeck to tex.png";
 import imgTotext from "../../../assets/icons/img-text.png";
+import scanner from "../../../assets/icons/scanner.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -99,7 +100,7 @@ const MultiHexon = () => {
         <li className="hexagon hexagon-yellow">
           <Link to="/qrcode">
             <div className="hexagon-inner">
-              <img className="hexagon-avatar-img" src="" />
+              <img className="hexagon-avatar-img" src={scanner} />
               <span className="hexagon-name">QR Code </span>
               <span className="hexagon-metric-label">QR Code Generator</span>
             </div>
