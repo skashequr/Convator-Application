@@ -30,8 +30,8 @@ const QRCodeGenerator = () => {
   };
 
   return (
-    <div className="bg- cardBgHexaPrimary min-h-screen flex items-center justify-center  ">
-      <div className="bg-white p-8 gap-4 rounded shadow-md max-w-md w-full mx-auto">
+    <div className="bg-cardBgHexaPrimary min-h-screen flex items-center justify-center">
+      <div className=" p-8 gap-4 rounded shadow-md max-w-md w-full mx-auto">
         {/* ----------input------- */}
         <div className="mt-4">
           <label
