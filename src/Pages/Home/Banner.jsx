@@ -37,7 +37,6 @@ const Banner = () => {
     "https://i.ibb.co/Jr4TSNS/page-1-start.gif",
     " https://i.ibb.co/HHgM6wd/page-3-start-1.gif",
     "https://i.ibb.co/xDfKKjk/page-2-image-edit.gif",
-
     "https://i.ibb.co/6gSBLCt/page-3-start-ne.gif",
     "https://i.ibb.co/k6F251z/page-5-start-ne.gif",
     "https://i.ibb.co/dQ5HJ4d/page-6-alledit.gif",
