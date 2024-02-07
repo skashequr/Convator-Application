@@ -60,7 +60,8 @@
     "sweetalert2": "^11.10.3",
     "swiper": "^11.0.5",
     "tesseract.js": "^5.0.4",
-    "webpack": "^5.26.3"
+    "webpack": "^5.26.3",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
