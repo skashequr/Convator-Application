@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
-import { FaCaretDown } from "react-icons/fa";
 import { IoReorderThree } from "react-icons/io5";
 import "./NavBar.css";
 import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovider";
