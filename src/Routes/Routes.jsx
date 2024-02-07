@@ -10,7 +10,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
-import PdfWatermark from "../Pages/Watermarkpdf/Watermarkpdf";
+
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
@@ -32,10 +32,13 @@ import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
 import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-import ImageResizer from "../Pages/Image-Resize/ImageResize";
+
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
-import Dashboard from "../Pages/Dashboad/Dashboad/Dashboard";
+import Dashboard from "../Pages/Dashboad/Dashboad/Dashboad";
+import DashboadHome from "../Pages/Dashboad/ElementDashboad/HomeDeshboad/HomeDeshboad";
+import ImageResizeTool from "../Image-Resize/ImageResize";
+import ExcelToJson from "../Pages/ExcelTojson/ExcelTojson";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -93,8 +96,8 @@ export const router = createBrowserRouter([
         element: <Pdfview></Pdfview>,
       },
       {
-        path: "/watermark",
-        element: <PdfWatermark></PdfWatermark>,
+        path: "/exceltojson",
+        element: <ExcelToJson></ExcelToJson>,
       },
       {
         path: "/text",
@@ -137,13 +140,14 @@ export const router = createBrowserRouter([
         path: "/tifftojpg",
         element: <TIFFtoJPGConverter></TIFFtoJPGConverter>,
       },
-      {
-        path: "/test",
-        element: <ImageResizer></ImageResizer>,
-      },
+
       {
         path: "/qrcode",
         element: <QRCodeGenerator></QRCodeGenerator>,
+      },
+      {
+        path: "/imagresize",
+        element: <ImageResizeTool></ImageResizeTool>,
       },
 
       // ---------------- Massageing routes --------------------
@@ -179,8 +183,13 @@ export const router = createBrowserRouter([
   },
   // -----------DashBoad router---------------
   {
-    path: "dashboard",
+    path: "/dashboad",
     element: <Dashboard></Dashboard>,
-    children: [],
+    children: [
+      {
+        path: "homedes",
+        element: <DashboadHome></DashboadHome>,
+      },
+    ],
   },
 ]);
