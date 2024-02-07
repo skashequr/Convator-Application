@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { SquaresFour } from "phosphor-react";
 import { IoReorderThree } from "react-icons/io5";
@@ -13,6 +13,79 @@ import { Button } from "keep-react";
 const NavBar = () => {
   const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (event) => {
+    if (event.key === "Enter") {
+      // Trigger search action here, for now, let's just log the query
+      console.log("Search Query:", query);
+      if (query === "img to pdf" || query === "image to pdf") {
+        navigate("/imgtopdf");
+      } else if (query === "text to voice" || query === "t to v") {
+        navigate("/text");
+      } else if (
+        query === "image edit" ||
+        query === "image editing" ||
+        query === "img edit" ||
+        query === "i e" ||
+        query === "img"
+      ) {
+        navigate("/editimg");
+      } else if (
+        query === "jpeg to png" ||
+        query === "jpg to png" ||
+        query === "j to p"
+      ) {
+        navigate("/jpgtopng");
+      } else if (
+        query === "voice to text" ||
+        query === "v to t" ||
+        query === "speech to text" ||
+        query === "s to t"
+      ) {
+        navigate("/speech");
+      } else if (
+        query === "png to jpg" ||
+        query === "p to j" ||
+        query === "png to jpeg"
+      ) {
+        navigate("/pngtojpg");
+      } else if (
+        query === "img to word" ||
+        query === "i to w" ||
+        query === "image to word"
+      ) {
+        navigate("/imgToWord");
+      } else if (
+        query === "img resize" ||
+        query === "i r" ||
+        query === "image resize" ||
+        query === "image quality change" ||
+        query === "img quality change" ||
+        query === "i q c" ||
+        query === "img kb change" ||
+        query === "image kb change" ||
+        query === "i kb c"
+      ) {
+        navigate("/imagresize");
+      } else if (
+        query === "qr code" ||
+        query === "qr code generator" ||
+        query === "word to qr" ||
+        query === "word to qr code" ||
+        query === "qr cd gn"
+      ) {
+        navigate("/qrcode");
+      } else if (query === "xl to json" || query === "excel to json") {
+        navigate("/exceltojson");
+      }
+    }
+  };
+
+  const handleChange = (event) => {
+    setQuery(event.target.value.toLowerCase());
+  };
 
   const navLinks = (
     <>
@@ -111,13 +184,16 @@ const NavBar = () => {
           <img src="https://i.ibb.co/9v8RZsr/Logo.png" alt="" />
         </div>
         <div className="relative flex items-center gap-4 w-fit h-fit">
-          <div className="relative flex items-center ">
+          <div className="relative flex items-center form">
             <input
-              className="rounded-full  w-full h-10 pl-10 pr-2 text-gray-400 border-none"
+              className="rounded-full w-full h-10 pl-10 pr-2 text-gray-400 border-none"
               placeholder="Search..."
               type="search"
               name=""
-              id=""
+              id="search"
+              value={query}
+              onChange={handleChange}
+              onKeyPress={handleSearch}
             />
             <CiSearch className="absolute text-gray-400 text-2xl left-4" />
           </div>
