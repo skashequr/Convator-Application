@@ -1,11 +1,15 @@
-import { Button, Card } from "flowbite-react";
 import { useState } from "react";
+import { Button, FileInput, Card, Label } from "flowbite-react";
 import * as XLSX from "xlsx";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { FaCopy } from "react-icons/fa";
+import Swal from "sweetalert2";
+
 const ExcelToJson = () => {
   const [file, setFile] = useState(null);
   const [jsonData, setJsonData] = useState("");
   const [sucessupload, setsucessupload] = useState(false);
+  const [fileName, setFileName] = useState("");
 
   const handleConvert = () => {
     if (file) {
@@ -35,27 +39,90 @@ const ExcelToJson = () => {
     URL.revokeObjectURL(url);
   };
 
+  const handleFileChange = (e) => {
+    const uploadedFile = e.target.files[0];
+    setFile(uploadedFile);
+    setFileName(uploadedFile.name);
+  };
+  // ---------------drang and drop --------------
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const uploadedFile = e.dataTransfer.files[0];
+    setFile(uploadedFile);
+    setFileName(uploadedFile.name);
+  };
+  // ----------copy to keypad--------------
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(jsonData);
+    Swal.fire({
+      icon: "success",
+      title: "json Copy ",
+      text: "Json text has been copy to the clipboard.",
+    });
+  };
+
   return (
     <div>
       <div className="p-28 w-full">
         <Card href="#" className="w-full">
-          <input
-            type="file"
-            accept=".xls,.xlsx"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          {/* --------button----- */}
-          <div className="inline-flex justify-around ">
+          <div className="flex w-full items-center justify-center">
+            <Label
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              htmlFor="dropzone-file"
+              className="dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            >
+              <div className="flex flex-col items-center justify-center pb-6 pt-5">
+                <svg
+                  className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                  />
+                </svg>
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="font-semibold">Click to upload</span> or drag
+                  and drop
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Only Excel file upload
+                </p>
+              </div>
+              <FileInput
+                type="file"
+                accept=".xls,.xlsx"
+                onChange={handleFileChange}
+                id="dropzone-file"
+                className="hidden"
+              />
+              {fileName && (
+                <div className="text-center mt-4">
+                  <p className="text-red-400 ">Uploaded File: {fileName}</p>
+                </div>
+              )}
+            </Label>
+          </div>
+          <div className="inline-flex justify-around">
             <Button className="w-fit" onClick={handleConvert}>
               Convert Json
               <HiOutlineArrowRight className="ml-2 h-5 w-5" />
             </Button>
-
             {sucessupload && (
               <button
                 onClick={handleDownload}
-                className="text-xl box-border border-4 border-sky-900 
-              w-48 h-16 bg-sky-600 text-white relative group"
+                className="text-xl box-border border-4 border-sky-900 w-48 h-16 bg-sky-600 text-white relative group"
               >
                 <span className="pr-8">Download</span>
                 <span className="bg-sky-900 absolute right-0 top-0  h-full flex items-center justify-center px-1 group-hover:duration-300 group-hover:w-full w-10 duration-300">
@@ -92,16 +159,30 @@ const ExcelToJson = () => {
               </button>
             )}
           </div>
-
-          {/* --------- */}
-
           <div className="min-w-screen min-h-screen bg-gray-50 gird  items-center justify-center">
             <div className=" lg:w-full bg-gray-800  rounded-lg overflow-hidden">
-              <div id="header-buttons" className="py-3 px-4 flex">
-                <div className="rounded-full w-3 h-3 bg-red-500 mr-2"></div>
-                <div className="rounded-full w-3 h-3 bg-yellow-500 mr-2"></div>
-                <div className="rounded-full w-3 h-3 bg-green-500"></div>
+              {/* -------------3 color dote--------- */}
+              <div className="flex justify-between">
+                <div id="header-buttons" className="py-3 px-4 flex">
+                  <div className="rounded-full w-3 h-3 bg-red-500 mr-2"></div>
+                  <div className="rounded-full w-3 h-3 bg-yellow-500 mr-2"></div>
+                  <div className="rounded-full w-3 h-3 bg-green-500"></div>
+                </div>
+                {/* -------copy --------- */}
+                <div className="p-3 ">
+                  <Button
+                    onClick={copyToClipboard}
+                    size="md"
+                    type="primary"
+                    circle={true}
+                  >
+                    <span>
+                      <FaCopy size={24} />
+                    </span>
+                  </Button>
+                </div>
               </div>
+
               <div
                 id="code-area"
                 className="py-4 px-4 mt-1 text-yellow-500 text-xl"

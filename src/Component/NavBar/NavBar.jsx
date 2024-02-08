@@ -10,15 +10,20 @@ import { GiNightSky } from "react-icons/gi";
 
 import { Button } from "keep-react";
 
+// -------------------------speech recognition-------------------
+
 const NavBar = () => {
   const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
+  // --------search voice-------------------
+
+  // --------search manual---------------
   const handleSearch = (event) => {
     if (event.key === "Enter") {
-      // Trigger search action here, for now, let's just log the query
+      //-------------- Trigger  let's just log the query-------------------
       console.log("Search Query:", query);
       if (query === "img to pdf" || query === "image to pdf") {
         navigate("/imgtopdf");
@@ -99,6 +104,7 @@ const NavBar = () => {
           Home
         </NavLink>
       </li>
+      {/* --------about us----------- */}
       <li>
         <NavLink
           to="/aboutUs"
@@ -109,6 +115,7 @@ const NavBar = () => {
           About Us
         </NavLink>
       </li>
+      {/* --------Feature------------------ */}
       <li>
         <NavLink
           to="/feateres"
@@ -119,6 +126,7 @@ const NavBar = () => {
           Feateres
         </NavLink>
       </li>
+      {/* --------------message--------- */}
       <li>
         <NavLink
           to="/massage"
@@ -130,7 +138,7 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        {/* ------dashboad--------- */}
+        {/* -----------------------dashboad----------------- */}
         <NavLink
           to="/dashboad/homedes"
           className={({ isActive, isPending }) =>
@@ -180,10 +188,13 @@ const NavBar = () => {
         <div className="hidden xl:inline-block">
           <ul className="flex items-center gap-10 ">{navLinks}</ul>
         </div>
+        {/* -----------------logo image---------- */}
         <div className="text-3xl hidden xl:inline-block">
           <img src="https://i.ibb.co/9v8RZsr/Logo.png" alt="" />
         </div>
         <div className="relative flex items-center gap-4 w-fit h-fit">
+          {/* ------------------search button-------- */}
+
           <div className="relative flex items-center form">
             <input
               className="rounded-full w-full h-10 pl-10 pr-2 text-gray-400 border-none"
@@ -195,14 +206,20 @@ const NavBar = () => {
               onChange={handleChange}
               onKeyPress={handleSearch}
             />
+            {/* <p>{transcript}</p> */}
             <CiSearch className="absolute text-gray-400 text-2xl left-4" />
           </div>
+
+          {/* ---------------------- Dark-Night------------------------ */}
+
           <div onClick={toggleMode}>
             {" "}
             <button className="h-12 w-12 rounded-lg p-2 text-3xl">
               {mode ? <GiNightSky /> : <WiDaySunnyOvercast />}
             </button>
           </div>
+
+          {/* --------------------login/signup------------------------- */}
           <button className="hidden lg:inline-block">
             <Link to="/login">Login</Link>
           </button>

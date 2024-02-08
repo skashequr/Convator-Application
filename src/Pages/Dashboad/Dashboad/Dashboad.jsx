@@ -3,19 +3,6 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 const Dashboard = () => {
   return (
     <div>
-      {/* ----------    header    ------- */}
-      <div className="">
-        <div className="w-full flex items-center justify-between h-14 text-white z-10">
-          <div className="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 border-none">
-            <img
-              className="w-7 h-7 md:w-7 md:h- mr-2 rounded-md overflow-hidden"
-              src="https://i.ibb.co/Q836XZ2/scanner.png"
-            />
-            <span className="hidden md:block">Dashboad</span>
-          </div>
-        </div>
-      </div>
-
       {/* ----------  sidebar  ----- */}
 
       <div className="flex">
@@ -26,13 +13,25 @@ const Dashboard = () => {
           <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <ul className="flex flex-col py-4 space-y-1">
               <li className="px-5 hidden md:block">
-                <div className="flex flex-row items-center h-8">
-                  <div className="text-sm font-light tracking-wide text-gray-400 uppercase">
-                    Main Dasgboad
+                {/* ----------      Header      ------- */}
+                <div className="">
+                  <div className="w-full  items-center jh-14 text-white z-10">
+                    <div className="items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 border-none">
+                      {/* <img
+                        className="w-7 h-7 md:w-7 md:h- mr-2 rounded-md overflow-hidden"
+                        src="https://i.ibb.co/Q836XZ2/scanner.png"
+                      />
+                      <span className="hidden md:block">Dashboad</span> */}
+                      <img
+                        className="w-full h-14"
+                        src="https://i.ibb.co/YT03y3K/DASHBOAD-best-1.gif"
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
               </li>
-              {/* ------------------ Home dashboad--------- */}
+              {/* ------------------ Home dashboad --------- */}
               <li>
                 <NavLink
                   to="/dashboad/homedes"
