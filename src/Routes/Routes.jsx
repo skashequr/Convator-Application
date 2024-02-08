@@ -25,7 +25,7 @@ import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
-import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
+// import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
 // import Converterimg from "../Pages/PdfToJpj/Conveter";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
@@ -39,6 +39,8 @@ import Dashboard from "../Pages/Dashboad/Dashboad/Dashboad";
 import DashboadHome from "../Pages/Dashboad/ElementDashboad/HomeDeshboad/HomeDeshboad";
 import ImageResizeTool from "../Image-Resize/ImageResize";
 import ExcelToJson from "../Pages/ExcelTojson/ExcelTojson";
+import DocToPpt from "../Pages/DocToPpt/DocToPpt";
+import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -114,7 +116,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/watermark",
-        element: <PdfWatermarkApp></PdfWatermarkApp>,
+        element: <AddWatermarkToPDF></AddWatermarkToPDF>,
       },
       {
         path: "/ee",
@@ -123,10 +125,6 @@ export const router = createBrowserRouter([
       {
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
-      },
-      {
-        path: "/pdfToImg",
-        element: <PdfToImg></PdfToImg>,
       },
       {
         path: "/pngtojpg",
@@ -149,6 +147,15 @@ export const router = createBrowserRouter([
         path: "/imagresize",
         element: <ImageResizeTool></ImageResizeTool>,
       },
+      {
+        path:"/docToPpt",
+        element: <DocToPpt></DocToPpt>
+      },
+      // Water mark
+      // {
+      //   path: "watermark",
+      //   element: 
+      // },
 
       // ---------------- Massageing routes --------------------
       {
