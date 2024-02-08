@@ -14,7 +14,7 @@ import Features from "../Pages/Features/Features";
 import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
-import Pdfview from "../Pages/PdfViwer/PdfViwer";
+
 import MassageLogin from "../Pages/Massage/MassageLogin";
 
 import Users from "../Pages/Massage/Users";
@@ -27,7 +27,7 @@ import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 // import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
 // import Converterimg from "../Pages/PdfToJpj/Conveter";
-import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
+
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
@@ -39,8 +39,10 @@ import Dashboard from "../Pages/Dashboad/Dashboad/Dashboad";
 import DashboadHome from "../Pages/Dashboad/ElementDashboad/HomeDeshboad/HomeDeshboad";
 import ImageResizeTool from "../Image-Resize/ImageResize";
 import ExcelToJson from "../Pages/ExcelTojson/ExcelTojson";
-import DocToPpt from "../Pages/DocToPpt/DocToPpt";
-import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
+import ExcelToHtmlTable from "../Pages/ExcelToHtml/ExcelToHtml";
+import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
+import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
+import DsahAllUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -93,10 +95,7 @@ export const router = createBrowserRouter([
         path: "/speech",
         element: <SpeechToText></SpeechToText>,
       },
-      {
-        path: "pdfview",
-        element: <Pdfview></Pdfview>,
-      },
+
       {
         path: "/exceltojson",
         element: <ExcelToJson></ExcelToJson>,
@@ -116,7 +115,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/watermark",
-        element: <AddWatermarkToPDF></AddWatermarkToPDF>,
+        element: <PdfWatermarkApp></PdfWatermarkApp>,
       },
       {
         path: "/ee",
@@ -125,6 +124,9 @@ export const router = createBrowserRouter([
       {
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
+      },
+      {
+        path: "/pdfToImg",
       },
       {
         path: "/pngtojpg",
@@ -148,14 +150,13 @@ export const router = createBrowserRouter([
         element: <ImageResizeTool></ImageResizeTool>,
       },
       {
-        path:"/docToPpt",
-        element: <DocToPpt></DocToPpt>
+        path: "/exceltohtml",
+        element: <ExcelToHtmlTable></ExcelToHtmlTable>,
       },
-      // Water mark
-      // {
-      //   path: "watermark",
-      //   element: 
-      // },
+      {
+        path: "PdfToImage",
+        element: <PdftoImage></PdftoImage>,
+      },
 
       // ---------------- Massageing routes --------------------
       {
@@ -197,6 +198,10 @@ export const router = createBrowserRouter([
         path: "homedes",
         element: <DashboadHome></DashboadHome>,
       },
+      {
+        path: "controlUser",
+        element: <DsahAllUsers></DsahAllUsers>
+      }
     ],
   },
 ]);

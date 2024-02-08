@@ -10,6 +10,7 @@ import imgTotext from "../../../assets/icons/img-text.png";
 import scanner from "../../../assets/icons/scanner.png";
 import resizeimg from "../../../assets/icons/resizeimage.png";
 import excelTojson from "../../../assets/icons/exceltojson.png";
+import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -118,12 +119,15 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
+        {/* ---------Excel to HTML------------ */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/exceltohtml">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={exceltohtml} />
+              <span className="hexagon-name">Excel to HTML</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
         </li>
 
         <li className="hexagon hexagon-yellow">
