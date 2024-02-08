@@ -7,13 +7,14 @@ import "./NavBar.css";
 import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovider";
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
-
 import { Button } from "keep-react";
+import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 
 const NavBar = () => {
   const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
+  const [mic, setMic] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = (event) => {
@@ -186,7 +187,7 @@ const NavBar = () => {
         <div className="relative flex items-center gap-4 w-fit h-fit">
           <div className="relative flex items-center form">
             <input
-              className="rounded-full w-full h-10 pl-10 pr-2 text-gray-400 border-none"
+              className="rounded-full w-full h-10 pl-10 pr-5 text-gray-400 border-none"
               placeholder="Search..."
               type="search"
               name=""
@@ -195,6 +196,22 @@ const NavBar = () => {
               onChange={handleChange}
               onKeyPress={handleSearch}
             />
+            <div
+              onClick={() => setMic(!mic)}
+              className="z-20 flex justify-center items-center"
+            >
+              {mic ? (
+                <FaMicrophone
+                  // onClick={startListening}
+                  className="absolute text-gray-400 text-xl right-3"
+                />
+              ) : (
+                <FaMicrophoneSlash
+                  // onClick={SpeechRecognition.stopListening()}
+                  className="absolute text-gray-400 text-xl right-3"
+                />
+              )}
+            </div>
             <CiSearch className="absolute text-gray-400 text-2xl left-4" />
           </div>
           <div onClick={toggleMode}>
