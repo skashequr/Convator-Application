@@ -84,6 +84,8 @@ const SpeechToText = () => {
             </span>
             Reset
           </Button>
+
+          <button onClick={SpeechRecognition.stopListening}>Stop</button>
         </div>
       </div>
 
