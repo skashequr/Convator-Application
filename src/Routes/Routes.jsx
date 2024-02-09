@@ -15,7 +15,6 @@ import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 
-import MassageLogin from "../Pages/Massage/MassageLogin";
 
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
@@ -159,10 +158,6 @@ export const router = createBrowserRouter([
       },
 
       // ---------------- Massageing routes --------------------
-      {
-        path: "/massage",
-        element: <MassageLogin></MassageLogin>,
-      },
       {
         path: "/massage/welcome",
         element: <WelcomeMassage></WelcomeMassage>,

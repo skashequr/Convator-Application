@@ -123,6 +123,7 @@ const Authprovider = ({ children }) => {
     fetchData();
   }, [user?.email]);
   console.log(singleUser);
+  console.log(user);
   //------------------ data send child---------------------
   const email = user?.email;
   console.log(email);

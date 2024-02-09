@@ -21,7 +21,7 @@ const NavBar = () => {
   const [query, setQuery] = useState("");
   const [mic, setMic] = useState(false);
   const navigate = useNavigate();
-
+  const {user} = useContext(AuthContext);
   // --------search voice-------------------
 
   // --------search manual---------------
@@ -165,16 +165,18 @@ const NavBar = () => {
         </NavLink>
       </li>
       {/* --------------message--------- */}
-      <li>
+      {
+        user ? (<li>
         <NavLink
-          to="/massage"
+          to="/massage/welcome"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
         >
           Massage
         </NavLink>
-      </li>
+      </li>) : " "
+      }
       <li>
         {/* -----------------------dashboad----------------- */}
         <NavLink
