@@ -6,14 +6,19 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import useAuth from "../../../Hooks/useAuth";
 import Googlelogin from "../GoogleLogin/Googlelogin";
 import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
-import { useState } from "react";
+import React, { useState } from "react";
 import GithubAuth from "../GithubAuth/GithubAuth";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 const Signup = () => {
   const { createUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [logInStatus, setLogInStatus] = React.useState("");
+  const [signInStatus, setSignInStatus] = React.useState("");
   const navigate = useNavigate();
-  const handleRegister = (e) => {
+  const handleRegister = async(e) => {
     e.preventDefault();
 
     const form = new FormData(e.currentTarget);
@@ -21,8 +26,7 @@ const Signup = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(email, password, name);
-
-    //------------ cheak length 6 character-----------------
+      //------------ cheak length 6 character-----------------
     if (password.length < 6) {
       Swal.fire({
         icon: "error",
@@ -47,6 +51,40 @@ const Signup = () => {
       });
       return;
     }
+    const data = { name , password, email}
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const response = await axios.post(
+        "http://localhost:5000/user/register",
+        data,
+        config
+      );
+      console.log(response);
+      setSignInStatus({ msg: "Success", key: Math.random() });
+      navigate("/");
+      localStorage.setItem("userData", JSON.stringify(response));
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 405) {
+        setLogInStatus({
+          msg: "User with this email ID already Exists",
+          key: Math.random(),
+        });
+      }
+      if (error.response.status === 406) {
+        setLogInStatus({
+          msg: "User Name already Taken, Please take another one",
+          key: Math.random(),
+        });
+      }
+      setLoading(false);
+    }
 
     // registation user create
 
@@ -70,7 +108,6 @@ const Signup = () => {
           text: "Something worng please try again ",
         });
       });
-    navigate();
   };
   return (
     <div>

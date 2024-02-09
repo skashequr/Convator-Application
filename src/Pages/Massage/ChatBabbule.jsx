@@ -1,24 +1,43 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router";
+import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
+import { useQuery } from "@tanstack/react-query";
 
 const ChatBabbule = () => {
+  const {singleUser} = useContext(AuthContext);
+  const singleuserId = singleUser?._id
   const params = useParams() ;
-  const userId = params?._id;
+  const  userId = params?._id;
+
+
   useEffect(() => {
-    axios.post('http://localhost:5000/chat/send', { userId })
-      .then(response => {
-        console.log("Chat created successfully:", response.data);
-      })
-      .catch(error => {
+    const sendChat = async () => {
+      try {
+        if (singleuserId && userId) {
+          console.log(singleuserId);
+          const response = await axios.post('http://localhost:5000/chat/send', {
+            userId,
+            singleuserId
+          });
+          console.log("Chat created successfully:", response.data);
+        }
+      } catch (error) {
         console.error("Error creating chat:", error);
-      });
-  }, [userId]);
+      }
+    };
+
+    sendChat();
+  }, [userId , singleuserId]);
   
+ 
+  const sendMassage = e =>{
+    e.preventDefault();
+    const massage = e.target.massage.value
+    console.log(massage);
+  }
   
-  
-  
-  console.log(userId);
+  console.log("userId" , userId , "dingleUser: " , singleuserId);
   return (
     <div>
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">
@@ -198,7 +217,7 @@ const ChatBabbule = () => {
               <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
                 <div>
                   <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                    Thanks for your message David. I thought I'm alone with this
+                    Thanks for your message David. I thought I`&lsquo;`m alone with this
                     issue. Please, ? the issue to support it :)
                   </span>
                 </div>
@@ -212,7 +231,8 @@ const ChatBabbule = () => {
           </div>
 
           {/* Write Massage  */}
-
+          
+          <form onSubmit={sendMassage}>
           <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
             <div className="relative flex">
               <span className="absolute inset-y-0 flex items-center">
@@ -238,9 +258,11 @@ const ChatBabbule = () => {
               </span>
               <textarea
                 type="text"
+                name="massage"
                 placeholder="Write your message!"
                 className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
               />
+              
               <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
                 <button
                   type="button"
@@ -306,7 +328,7 @@ const ChatBabbule = () => {
                   </svg>
                 </button>
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
                 >
                   <span className="font-bold">Send</span>
@@ -322,6 +344,7 @@ const ChatBabbule = () => {
               </div>
             </div>
           </div>
+          </form>
         </div>
       </div>
     </div>

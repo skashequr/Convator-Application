@@ -9,6 +9,9 @@ import textVoice from "../../../assets/icons/speeck to tex.png";
 import imgTotext from "../../../assets/icons/img-text.png";
 import scanner from "../../../assets/icons/scanner.png";
 import resizeimg from "../../../assets/icons/resizeimage.png";
+import excelTojson from "../../../assets/icons/exceltojson.png";
+import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
+import watermarkImg from "../../../assets/5084242.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -97,7 +100,7 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
-        {/* ---------------------Qr code------------------ */}
+        {/* --------------------- qr code  ------------------ */}
         <li className="hexagon hexagon-yellow">
           <Link to="/qrcode">
             <div className="hexagon-inner">
@@ -107,28 +110,36 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
-        {/* --------------8----------------------- */}
+        {/* --------------EXCEL TO JSON----------------------- */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/exceltojson">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={excelTojson} />
+              <span className="hexagon-name">Excel to Json</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
         </li>
+        {/* ---------Excel to HTML------------ */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/exceltohtml">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={exceltohtml} />
+              <span className="hexagon-name">Excel to HTML</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
         </li>
 
         <li className="hexagon hexagon-yellow">
+          <Link to="/watermark">         
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <img className="hexagon-avatar-img" src={watermarkImg} />
+            <span className="hexagon-name">Watermark</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
+          </Link>
+ 
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">

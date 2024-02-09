@@ -96,7 +96,7 @@ function MassageLogin() {
 
   return (
     <>
-      <div className="login-container  w-full mx-auto lg:w-[500px] drop-shadow-lg  ">
+      <div className="login-container  w-full mx-auto lg:w-[500px] drop-shadow-lg pt-28  ">
         {showlogin && (
           // ----------------login ----------------
           <div className="flex flex-col  w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
