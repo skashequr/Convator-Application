@@ -9,6 +9,9 @@ import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
 import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
+import { Alert } from "flowbite-react";
+import { HiInformationCircle } from "react-icons/hi";
+import Swal from "sweetalert2";
 
 // -------------------------speech recognition-------------------
 
@@ -28,8 +31,10 @@ const NavBar = () => {
       console.log("Search Query:", query);
       if (query === "img to pdf" || query === "image to pdf") {
         navigate("/imgtopdf");
+        setQuery("");
       } else if (query === "text to voice" || query === "t to v") {
         navigate("/text");
+        setQuery("");
       } else if (
         query === "image edit" ||
         query === "image editing" ||
@@ -38,12 +43,14 @@ const NavBar = () => {
         query === "img"
       ) {
         navigate("/editimg");
+        setQuery("");
       } else if (
         query === "jpeg to png" ||
         query === "jpg to png" ||
         query === "j to p"
       ) {
         navigate("/jpgtopng");
+        setQuery("");
       } else if (
         query === "voice to text" ||
         query === "v to t" ||
@@ -51,18 +58,21 @@ const NavBar = () => {
         query === "s to t"
       ) {
         navigate("/speech");
+        setQuery("");
       } else if (
         query === "png to jpg" ||
         query === "p to j" ||
         query === "png to jpeg"
       ) {
         navigate("/pngtojpg");
+        setQuery("");
       } else if (
         query === "img to word" ||
         query === "i to w" ||
         query === "image to word"
       ) {
         navigate("/imgToWord");
+        setQuery("");
       } else if (
         query === "img resize" ||
         query === "i r" ||
@@ -75,6 +85,7 @@ const NavBar = () => {
         query === "i kb c"
       ) {
         navigate("/imagresize");
+        setQuery("");
       } else if (
         query === "qr code" ||
         query === "qr code generator" ||
@@ -83,8 +94,34 @@ const NavBar = () => {
         query === "qr cd gn"
       ) {
         navigate("/qrcode");
+        setQuery("");
       } else if (query === "xl to json" || query === "excel to json") {
         navigate("/exceltojson");
+        setQuery("");
+      } else if (
+        query === "xl to html" ||
+        query === "excel to html" ||
+        query === "exl to html"
+      ) {
+        navigate("/exceltohtml");
+        setQuery("");
+      } else if (
+        query === "water mark" ||
+        query === "watermark" ||
+        query === "watermark remove" ||
+        query === "watermark remover"
+      ) {
+        navigate("/watermark");
+        setQuery("");
+      } else {
+        setQuery("");
+        return Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "Search by Correct word",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     }
   };
@@ -208,7 +245,6 @@ const NavBar = () => {
               onKeyPress={handleSearch}
             />
 
-           
             <CiSearch className="absolute text-gray-400 text-2xl left-4" />
           </div>
 

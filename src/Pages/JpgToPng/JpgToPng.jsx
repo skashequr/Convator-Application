@@ -38,7 +38,7 @@ const JpgToPngConverter = () => {
   };
 
   return (
-    <div className="p-36 text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary ">
+    <div className="p-36 text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary h-screen">
       <input type="file" accept="image/jpeg" onChange={handleFileChange} />
       <button onClick={convertToPng}>Convert to PNG</button>
       {imageUrl && (
