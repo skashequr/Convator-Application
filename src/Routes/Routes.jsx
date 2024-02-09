@@ -20,7 +20,6 @@ import MassageLogin from "../Pages/Massage/MassageLogin";
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
-import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
 import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
@@ -43,6 +42,7 @@ import ExcelToHtmlTable from "../Pages/ExcelToHtml/ExcelToHtml";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 import DsahAllUsers from "../Pages/Dashboad/Dashboad/AllUsers";
+import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -115,7 +115,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/watermark",
-        element: <PdfWatermarkApp></PdfWatermarkApp>,
+        element: <AddWatermarkToPDF></AddWatermarkToPDF> ,
       },
       {
         path: "/ee",
