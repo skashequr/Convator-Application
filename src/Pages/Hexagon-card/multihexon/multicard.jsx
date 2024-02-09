@@ -11,6 +11,7 @@ import scanner from "../../../assets/icons/scanner.png";
 import resizeimg from "../../../assets/icons/resizeimage.png";
 import excelTojson from "../../../assets/icons/exceltojson.png";
 import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
+import watermarkImg from "../../../assets/5084242.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -133,7 +134,7 @@ const MultiHexon = () => {
         <li className="hexagon hexagon-yellow">
           <Link to="/watermark">         
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
+            <img className="hexagon-avatar-img" src={watermarkImg} />
             <span className="hexagon-name">Watermark</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
