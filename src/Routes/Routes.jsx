@@ -115,7 +115,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/watermark",
-        element: <AddWatermarkToPDF></AddWatermarkToPDF> ,
+        element: <AddWatermarkToPDF></AddWatermarkToPDF>,
       },
       {
         path: "/ee",
@@ -200,8 +200,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "controlUser",
-        element: <DsahAllUsers></DsahAllUsers>
-      }
+        element: <DsahAllUsers></DsahAllUsers>,
+      },
     ],
   },
 ]);

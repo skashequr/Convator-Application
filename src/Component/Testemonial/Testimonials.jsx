@@ -194,7 +194,7 @@ const Testimonials = () => {
               </SwiperSlide>
             ))}
 
-            <div className="slider-controler">
+            <div className="slider-controler bottom-10">
               <div className="swiper-button-prev slider-arrow">
                 <ion-icon name="arrow-back-outline"></ion-icon>
               </div>
