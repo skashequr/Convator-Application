@@ -131,11 +131,14 @@ const MultiHexon = () => {
         </li>
 
         <li className="hexagon hexagon-yellow">
+          <Link to="/watermark">         
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Watermark</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
+          </Link>
+ 
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">

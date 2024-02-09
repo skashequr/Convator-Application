@@ -106,7 +106,7 @@ const SideBar = () => {
                 <div className="h-10 w-10 hover:h-14 hover:w-14">
                   <img
                     className="h-full w-full rounded-full object-cover object-center ring ring-white"
-                    src={user.profileImageUrl}
+                    src="https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg"
                     alt={`Profile of ${user.name}`}
                   />
                 </div>
