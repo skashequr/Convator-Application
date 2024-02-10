@@ -9,6 +9,7 @@ const ChatBabbule = () => {
   const params = useParams() ;
   const  userId = params?._id;
   const [userData, setUserData] = useState(null);
+  const [chat_id , setChat_id] = useState(null);
   const secUser = userData?.name;          // jake ami massage pathabo tar nam
   const friUser = singleUser?.name;        // je massage pathabe.
   useEffect(() => {
@@ -17,6 +18,7 @@ const ChatBabbule = () => {
         const response = await axios.get(`http://localhost:5000/user/userbyId?id=${userId}`);
         console.log(response.data); // This will log the response data to the console
         setUserData(response.data); // Set the response data to state
+        
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -40,6 +42,7 @@ const ChatBabbule = () => {
             friUser
           });
           console.log("Chat created successfully:", response.data);
+          setChat_id(response?.data._id);
         }
       } catch (error) {
         console.error("Error creating chat:", error);
@@ -49,13 +52,29 @@ const ChatBabbule = () => {
     sendChat();
   }, [userId , singleuserId, secUser, friUser]);
   
- 
+
+      //Send massage
+      // console.log(chat_id);
   const sendMassage = e =>{
     e.preventDefault();
-    const massage = e.target.massage.value
-    console.log(massage);
+    const massageContent = e.target.massage.value
+    console.log(massageContent);
+
+    axios.post(
+      "http://localhost:5000/message",
+      {
+        content: massageContent,
+        chatId: chat_id,
+      },
+    )
+    .then(({ data }) => {
+      console.log("Message Fired" , data);
+    });
+ 
   }
   
+
+
   console.log("userId" , userId , "dingleUser: " , singleuserId);
   return (
     <div>
