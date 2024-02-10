@@ -89,21 +89,21 @@ const Authprovider = ({ children }) => {
     setMode(!mode);
   };
 
-  console.log("mode", mode);
+  // console.log("mode", mode);
 
   //------------- user manage -----------------------
   useEffect(() => {
     const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("user in the auth changed".currentUser);
+      // console.log("user in the auth changed", currentUser);
       setUser(currentUser);
       setLoading(false);
     });
     return () => unSubcribe();
   }, []);
 
-  console.log(user?.email);
+  // console.log(user?.email);
 
-  console.log();
+  // console.log();
 
   const [singleUser, setSingleUsers] = useState([]);
 
@@ -122,11 +122,11 @@ const Authprovider = ({ children }) => {
 
     fetchData();
   }, [user?.email]);
-  console.log(singleUser);
-  console.log(user);
+  // console.log(singleUser);
+  // console.log(user);
   //------------------ data send child---------------------
   const email = user?.email;
-  console.log(email);
+  // console.log(email);
   useEffect(() => {
     if (email) {
       axios

@@ -2,24 +2,15 @@ import { Skeleton } from "keep-react";
 import {  useState } from "react";
 import { Pagination } from "keep-react";
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import axios from "axios";
 import { Link } from "react-router-dom";
 const DashUsers = () => {
    
-    // const [data , setData] = useState("");
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/user/fetchUsers')
-    //         .then( (response) => response.json() )
-    //         .then( (data) => setData(data) )
-    // }, []); 
-    // console.log(data);
-    
    
-    const [currentPage, setCurrentPage] = useState(1);
+    
 
-    const { data: allUsers, isLoading, error } = useQuery({
+    const [currentPage, setCurrentPage] = useState(1);
+    const { data: DashallUsers, isLoading, error } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             try {
@@ -30,7 +21,7 @@ const DashUsers = () => {
             }
         }
     });
-    console.log(allUsers);
+    console.log(DashallUsers);
 
 
 
@@ -129,7 +120,7 @@ const DashUsers = () => {
         </thead>
         <tbody>
 
-        {allUsers.map((user, index) => (
+        {DashallUsers.map((user, index) => (
                     <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
                         <div className="flex items-center">
@@ -145,7 +136,7 @@ const DashUsers = () => {
                         </div>
                     </th>
                     <td className="px-6 py-4">
-                        <Link to={`massage/shearefile/${user._id}`}><button>Share A File</button></Link>
+                        <Link to={`massage/shearefile/${user._id}`}><button >Share File</button></Link>
                     </td>
                     <td className="px-6 py-4">
                         <div className="flex items-center">
