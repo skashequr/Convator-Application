@@ -82,8 +82,11 @@ const Signup = () => {
           msg: "User Name already Taken, Please take another one",
           key: Math.random(),
         });
+       
+        
       }
       setLoading(false);
+      return
     }
 
     // registation user create
@@ -109,6 +112,7 @@ const Signup = () => {
         });
       });
   };
+  // console.log(signInStatus);
   return (
     <div>
       <Helmet>
@@ -213,6 +217,7 @@ const Signup = () => {
                         </span>
                       </div>
                     </div>
+                    {/* <p className="text-red-500">{signInStatus} fdhd</p> */}
                     <div className="relative mt-4">
                       <button
                         className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
