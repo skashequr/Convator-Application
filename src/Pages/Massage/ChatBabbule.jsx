@@ -1,15 +1,34 @@
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
-import { useQuery } from "@tanstack/react-query";
 
 const ChatBabbule = () => {
   const {singleUser} = useContext(AuthContext);
   const singleuserId = singleUser?._id
   const params = useParams() ;
   const  userId = params?._id;
+  const [userData, setUserData] = useState(null);
+  const [chat_id , setChat_id] = useState(null);
+  const secUser = userData?.name;          // jake ami massage pathabo tar nam
+  const friUser = singleUser?.name;        // je massage pathabe.
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/user/userbyId?id=${userId}`);
+        console.log(response.data); // This will log the response data to the console
+        setUserData(response.data); // Set the response data to state
+        
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
 
+    fetchData();
+  }, [userId]);
+  
+
+//Create chate
 
   useEffect(() => {
     const sendChat = async () => {
@@ -18,9 +37,12 @@ const ChatBabbule = () => {
           console.log(singleuserId);
           const response = await axios.post('http://localhost:5000/chat/send', {
             userId,
-            singleuserId
+            singleuserId,
+            secUser,
+            friUser
           });
           console.log("Chat created successfully:", response.data);
+          setChat_id(response?.data._id);
         }
       } catch (error) {
         console.error("Error creating chat:", error);
@@ -28,15 +50,31 @@ const ChatBabbule = () => {
     };
 
     sendChat();
-  }, [userId , singleuserId]);
+  }, [userId , singleuserId, secUser, friUser]);
   
- 
+
+      //Send massage
+      // console.log(chat_id);
   const sendMassage = e =>{
     e.preventDefault();
-    const massage = e.target.massage.value
-    console.log(massage);
+    const massageContent = e.target.massage.value
+    console.log(massageContent);
+
+    axios.post(
+      "http://localhost:5000/message",
+      {
+        content: massageContent,
+        chatId: chat_id,
+      },
+    )
+    .then(({ data }) => {
+      console.log("Message Fired" , data);
+    });
+ 
   }
   
+
+
   console.log("userId" , userId , "dingleUser: " , singleuserId);
   return (
     <div>
@@ -58,9 +96,9 @@ const ChatBabbule = () => {
             </div>
             <div className="flex flex-col leading-tight">
               <div className="text-2xl mt-1 flex items-center">
-                <span className="text-gray-700 mr-3">Anderson Vanhron</span>
+                <span className="text-gray-700 mr-3">{secUser}</span>
               </div>
-              <span className="text-lg text-gray-600">Junior Developer</span>
+              <span className="text-lg text-gray-600">{userData?.email}</span>
             </div>
           </div>
           <div className="flex items-center space-x-2">
@@ -126,26 +164,8 @@ const ChatBabbule = () => {
 
         {/* chat */}
 
-        <div
-          id="messages"
-          className="flex flex-col overflow-scroll  space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
-        >
-          <div className="chat-message">
-            <div className="flex items-end">
-              <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                <div>
-                  <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                    Can be verified on any platform using docker
-                  </span>
-                </div>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                alt="My profile"
-                className="w-6 h-6 rounded-full order-1"
-              />
-            </div>
-          </div>
+        <div id="messages" className="flex flex-col overflow-scroll  space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch" >
+          
           <div className="chat-message">
             <div className="flex items-end justify-end">
               <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
@@ -166,24 +186,15 @@ const ChatBabbule = () => {
           <div className="chat-message">
             <div className="flex items-end">
               <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+                
                 <div>
                   <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
-                    Command was run with root privileges. I'm sure about that.
-                  </span>
-                </div>
-                <div>
-                  <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
-                    I've update the description so it's more obviously now
-                  </span>
-                </div>
-                <div>
-                  <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
-                    FYI https://askubuntu.com/a/700266/510172
+                    I have update the description so it is more obviously now
                   </span>
                 </div>
                 <div>
                   <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                    Check the line above (it ends with a # so, I'm running it as
+                    Check the line above (it ends with a # so, I am running it as
                     root )<pre># npm install -g @vue/devtools</pre>
                   </span>
                 </div>
@@ -195,40 +206,7 @@ const ChatBabbule = () => {
               />
             </div>
           </div>
-          <div className="chat-message">
-            <div className="flex items-end justify-end">
-              <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-                <div>
-                  <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
-                    Any updates on this issue? I'm getting the same error when
-                    trying to install devtools. Thanks
-                  </span>
-                </div>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                alt="My profile"
-                className="w-6 h-6 rounded-full order-2"
-              />
-            </div>
-          </div>
-          <div className="chat-message">
-            <div className="flex items-end">
-              <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                <div>
-                  <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                    Thanks for your message David. I thought I`&lsquo;`m alone with this
-                    issue. Please, ? the issue to support it :)
-                  </span>
-                </div>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                alt="My profile"
-                className="w-6 h-6 rounded-full order-1"
-              />
-            </div>
-          </div>
+          
 
           {/* Write Massage  */}
           

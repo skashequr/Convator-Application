@@ -15,12 +15,10 @@ import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 
-import MassageLogin from "../Pages/Massage/MassageLogin";
 
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
-import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
@@ -43,6 +41,7 @@ import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 import DsahAllUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
+import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -119,7 +118,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ee",
-        element: <MyComponent></MyComponent>,
+        element: <PptPdf></PptPdf>
       },
       {
         path: "/pdfToText",
@@ -159,10 +158,6 @@ export const router = createBrowserRouter([
       },
 
       // ---------------- Massageing routes --------------------
-      {
-        path: "/massage",
-        element: <MassageLogin></MassageLogin>,
-      },
       {
         path: "/massage/welcome",
         element: <WelcomeMassage></WelcomeMassage>,
