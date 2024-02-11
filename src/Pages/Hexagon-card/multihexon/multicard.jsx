@@ -1,11 +1,11 @@
 import "./multaicard.css";
 import imgedit from "../../../assets/icons/image edit.png";
-import pdfview from "../../../assets/icons/pdf.png";
+import pdfview from "../../../assets/banner-image/file-pdf-solid-240.png";
 import { Link } from "react-router-dom";
 import jpjtopng from "../../../assets/icons/jpj-to-png.png";
 import pngtojpeg from "../../../assets/icons/jpeg-to-png.png";
 import voicetotext from "../../../assets/icons/Textg.png";
-import textVoice from "../../../assets/icons/speeck to tex.png";
+import textVoice from "../../../assets/icons/text to speech.png";
 import imgTotext from "../../../assets/icons/img-text.png";
 import scanner from "../../../assets/icons/scanner.png";
 import resizeimg from "../../../assets/icons/resizeimage.png";
@@ -14,7 +14,7 @@ import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
 const MultiHexon = () => {
   return (
     <div className="">
-      <ul className="hexagon-grid-container text-black">
+      <ul className="hexagon-grid-container text-white ">
         {/* -----------------img edit----------------- */}
         <Link to="/editimg">
           <li className="hexagon hexagon-green">
@@ -58,7 +58,7 @@ const MultiHexon = () => {
           </li>
         </Link>
 
-        {/* -----------------/pngtojpg-------------------------- */}
+        {/* -----------------png-to-jpg-------------------------- */}
         <Link to="/pngtojpg">
           <li className="hexagon hexagon-yellow">
             <div className="hexagon-inner">
@@ -133,28 +133,28 @@ const MultiHexon = () => {
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
         </li>
@@ -162,42 +162,42 @@ const MultiHexon = () => {
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>
         <li className="hexagon hexagon-red">
-          <div className="hexagon-inner">
+          <div className="hexagon-inner ">
             <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Bruce Wayne</span>
+            <span className="hexagon-name">Conveter app</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
         </li>

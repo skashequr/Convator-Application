@@ -42,6 +42,7 @@ import ExcelToJson from "../Pages/ExcelTojson/ExcelTojson";
 import ExcelToHtmlTable from "../Pages/ExcelToHtml/ExcelToHtml";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
+import UserManage from "../Pages/Dashboad/ElementDashboad/Usermanage/UserManage";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -188,7 +189,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // -----------DashBoad router---------------
+  // -----------  DashBoad Router ---------------
   {
     path: "/dashboad",
     element: <Dashboard></Dashboard>,
@@ -196,6 +197,10 @@ export const router = createBrowserRouter([
       {
         path: "homedes",
         element: <DashboadHome></DashboadHome>,
+      },
+      {
+        path: "usermanage",
+        element: <UserManage></UserManage>,
       },
     ],
   },

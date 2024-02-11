@@ -25,6 +25,11 @@ export default {
         cardBgHexaSecondary: "var(--bg-hexasecondary-color)",
           // ----------text---------
             TextColor: "var(--text-allcard)",
+
+            // ----------all card and text new color------------
+            AllCard: "var(--bg-allcard)",
+            AllTitle: "var(--text-alltitle)",
+            AllSubtitle: "var(--text-allsubtitle)",
       },
     },
     darkTheme: "class",

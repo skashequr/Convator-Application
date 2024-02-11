@@ -18,9 +18,7 @@ const NavBar = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  // --------search voice-------------------
-
-  // --------search manual---------------
+  // --------   search manual   ---------------
   const handleSearch = (event) => {
     if (event.key === "Enter") {
       //-------------- Trigger  let's just log the query-------------------
@@ -206,7 +204,7 @@ const NavBar = () => {
               onChange={handleChange}
               onKeyPress={handleSearch}
             />
-            {/* <p>{transcript}</p> */}
+
             <CiSearch className="absolute text-gray-400 text-2xl left-4" />
           </div>
 
