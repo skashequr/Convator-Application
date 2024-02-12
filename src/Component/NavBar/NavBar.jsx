@@ -8,7 +8,7 @@ import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovide
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
-import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
+// import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 
 // -------------------------speech recognition-------------------
 
@@ -206,10 +206,6 @@ const NavBar = () => {
               onKeyPress={handleSearch}
             />
 
-<<<<<<< HEAD
-=======
-           
->>>>>>> 77add1996a8dfa5e1f9cf93b66b99dda48c763ae
             <CiSearch className="absolute text-gray-400 text-2xl left-4" />
           </div>
 
@@ -222,7 +218,7 @@ const NavBar = () => {
             </button>
           </div>
 
-          {/* --------------------login/signup------------------------- */}
+          {/* -------------------- login/signup ------------------------- */}
           <button className="hidden lg:inline-block">
             <Link to="/login">Login</Link>
           </button>

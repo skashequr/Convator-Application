@@ -5,20 +5,19 @@ import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 import { useQuery } from "@tanstack/react-query";
 
 const ChatBabbule = () => {
-  const {singleUser} = useContext(AuthContext);
-  const singleuserId = singleUser?._id
-  const params = useParams() ;
-  const  userId = params?._id;
-
+  const { singleUser } = useContext(AuthContext);
+  const singleuserId = singleUser?._id;
+  const params = useParams();
+  const userId = params?._id;
 
   useEffect(() => {
     const sendChat = async () => {
       try {
         if (singleuserId && userId) {
           console.log(singleuserId);
-          const response = await axios.post('http://localhost:5000/chat/send', {
+          const response = await axios.post("http://localhost:5000/chat/send", {
             userId,
-            singleuserId
+            singleuserId,
           });
           console.log("Chat created successfully:", response.data);
         }
@@ -28,12 +27,9 @@ const ChatBabbule = () => {
     };
 
     sendChat();
-  }, [userId , singleuserId]);
-  
- 
-  
-  
-  console.log("userId" , userId , "dingleUser: " , singleuserId);
+  }, [userId, singleuserId]);
+
+  console.log("userId", userId, "dingleUser: ", singleuserId);
   return (
     <div>
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">

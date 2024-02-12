@@ -43,6 +43,7 @@ import ExcelToHtmlTable from "../Pages/ExcelToHtml/ExcelToHtml";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 import UserManage from "../Pages/Dashboad/ElementDashboad/Usermanage/UserManage";
+import WordToPdf from "../Pages/WordtoPdf/WordToPdf";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -156,6 +157,10 @@ export const router = createBrowserRouter([
       {
         path: "PdfToImage",
         element: <PdftoImage></PdftoImage>,
+      },
+      {
+        path: "WordToPdf",
+        element: <WordToPdf></WordToPdf>,
       },
 
       // ---------------- Massageing routes --------------------
