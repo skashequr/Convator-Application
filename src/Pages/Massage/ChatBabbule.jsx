@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 import MassageSelf from "./MassgaeContent/MassageSelf";
 import MassageOthers from "./MassgaeContent/MassageOthers";
-
+import { IoCreateOutline } from "react-icons/io5";
 const ChatBabbule = () => {
   const { singleUser } = useContext(AuthContext);
   const singleuserId = singleUser?._id;
@@ -32,44 +32,45 @@ const ChatBabbule = () => {
   }, [userId]);
 
   //Create chate
-
+  
+ 
   useEffect(() => {
-    const sendChat = async () => {
-      try {
-        if (singleuserId && userId) {
-          console.log(singleuserId);
-          const response = await axios.post("http://localhost:5000/chat/send", {
-            userId,
-            singleuserId,
-            secUser,
-            friUser,
-          });
-          console.log("Chat created successfully:", response.data);
-          setChat_id(response?.data._id);
-        }
-      } catch (error) {
-        console.error("Error creating chat:", error);
-      }
-    };
+    axios.post("http://localhost:5000/chat/send", {
+      userId,
+      singleuserId,
+      secUser,
+      friUser,
+    })
+    .then(response => {
+      console.log("Chat created successfully:", response.data);
+      setChat_id(response.data._id);
+    })
+    .catch(error => {
+      console.error("Error creating chat:", error);
+      // Handle error state or show error message to the user
+    });
+  }, [friUser, secUser, singleuserId, userId]);
+  
+  
+ 
 
-    sendChat();
-  }, [userId, singleuserId, secUser, friUser]);
 
   //Send massage
-  // console.log(chat_id);
+  console.log(chat_id);
   const sendMassage = (e) => {
     e.preventDefault();
     const massageContent = e.target.massage.value;
     console.log(massageContent);
-
-    axios
-      .post("http://localhost:5000/message", {
-        content: massageContent,
-        chatId: chat_id,
-      })
-      .then(({ data }) => {
-        console.log("Message Fired", data);
-      });
+  axios.post("http://localhost:5000/message", {
+      content: massageContent,
+      chatId: chat_id,
+    })
+    .then(({ data }) => {
+      console.log("Message Fired", data);
+    })
+    .catch((error) => {
+      console.error("error", error);
+    });
   };
 
   // Fetch Message
@@ -111,24 +112,11 @@ const ChatBabbule = () => {
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <button
+            <button // onClick={createChate}
               type="button"
               className="inline-flex items-center justify-center rounded-lg border h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                ></path>
-              </svg>
+              <IoCreateOutline className="h-12 w-12"></IoCreateOutline>
             </button>
             <button
               type="button"
