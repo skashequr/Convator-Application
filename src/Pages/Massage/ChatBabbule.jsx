@@ -5,6 +5,7 @@ import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 import MassageSelf from "./MassgaeContent/MassageSelf";
 import MassageOthers from "./MassgaeContent/MassageOthers";
 import { IoCreateOutline } from "react-icons/io5";
+import { useQuery } from "@tanstack/react-query";
 const ChatBabbule = () => {
   const { singleUser } = useContext(AuthContext);
   const singleuserId = singleUser?._id;
@@ -74,6 +75,16 @@ const ChatBabbule = () => {
   };
 
   // Fetch Message
+  // const { data: fetchMessage = [], refetch } = useQuery({
+  //   queryKey: ["usersData"],
+  //   queryFn: async () => {
+  //     const res = await axios.get(`http://localhost:5000/message/${chat_id}`);
+  //     return res.data;
+  //   },
+  // });
+
+  // refetch();
+  // console.log(fetchMessage);
   useEffect(() => {
     console.log("Users refreshed");
 
