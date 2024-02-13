@@ -7,20 +7,12 @@
 
 /* XV SCSS Variables */
 :root {
-    --xv-secondary-light-gray: #fcf1f1;
-    --xv-secondary-dark-gray: #babaf3;
-    --xv-secondary-green: #dee1ff;
-    --xv-secondary-ltgreen: #f8f8f8;
-    --xv-secondary-dkgreen: #9f9393;
-    --xv-secondary-blue: rgba(47, 155, 167, 1);
-    --xv-secondary-ltblue: #6DB9C1;
-    --xv-secondary-dkblue: rgba(37, 124, 133, 1);
-    --xv-secondary-yellow: rgba(227, 169, 40, 1);
-    --xv-secondary-ltyellow: #EBC268;
-    --xv-secondary-dkyellow: rgba(181, 135, 32, 1);
-    --xv-secondary-red: rgba(204, 55, 77, 1);
-    --xv-secondary-ltred: #DB7382;
-    --xv-secondary-dkred: rgba(163, 44, 61, 1);
+    --xv-secondary-light-gray: #2f3557;
+    --xv-secondary-dark-gray: #272f68;
+    --xv-secondary-green: #81689D;
+    --xv-secondary-ltgreen: #FFD0EC;
+   
+    
 }
 
 /* Outer Hexagon */
@@ -38,6 +30,7 @@
     width: 140px;
     height: 80.83px;
     background-color: var(--xv-secondary-dark-gray);
+   
     margin: 44px 2px 0;
     display: flex;
     justify-content: center;
@@ -46,8 +39,8 @@
 }
 
 .hexagon:hover {
-    transform: scale(1.1) rotate(5deg); 
-    background-color: #3f93ad;
+    transform: scale(1.1) rotate(180deg); 
+    
 }
 .hexagon:before,.hexagon:after {
     content: "";
@@ -73,7 +66,8 @@
     position: relative;
     width: 136px;
     height: 78.52px;
-    background-color: var(--xv-secondary-light-gray);
+   
+   
     margin: 39.26px 0;
     display: flex;
     justify-content: center;
@@ -165,7 +159,7 @@
     position: absolute;
     width: 52px;
     border-radius: 53px;
-    border: 2px solid #91b4d0;
+    border: 2px solid #3611cdee;
     top: -24px;
     z-index: 1;
 }
@@ -182,7 +176,7 @@
     z-index: 1;
 }
 
-/* Metric */
+/*------- Metric---------- */
 .hexagon-metric-label {
     position: absolute;
     width: 130px;
@@ -208,9 +202,9 @@
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
     font-size: 12px;
-    color: #fff;
+    /* color: #fff; */
     background: lighten(var(--xv-secondary-dark-gray), 8%);
-    border-color: var(--xv-secondary-dark-gray);
+    border-color: var(--xv-secondary-ltgreen);
 }
 
 /* Right / Left Icons */
@@ -221,7 +215,7 @@
     width: 24px;
     height: 24px;
     border-radius: 24px;
-    border: 1px solid var(--xv-secondary-dark-gray);
+    border: 1px solid var(var(--xv-secondary-ltgreen));
     background: lighten(var(--xv-secondary-dark-gray), 8%);
     color: var(--xv-secondary-dark-gray);
     text-align: center;
@@ -239,29 +233,34 @@
     right: 3px;
 }
 
-/* Hexagon Color Coding */
-.hexagon.hexagon-green {
-    background-color: var(--xv-secondary-green);
-}
+/*--------- Hexagon 1st 3 position Color Coding----------- */
 
+/* middle */
+.hexagon.hexagon-green {
+    background-color: var(--xv-secondary-light-gray);
+   
+}
+/* -----top bodder-------- */
 .hexagon.hexagon-green:before {
     border-bottom: 40.41px solid var(--xv-secondary-green);
 }
-
+/* ---------bottom border------- */
 .hexagon.hexagon-green:after {
-    border-top: 40.41px solid var(--xv-secondary-green);
+    border-top: 40.41px solid var(--xv-secondary-ltgreen);
 }
-
+/* -----------full bg---- */
 .hexagon.hexagon-green .hexagon-inner {
-    background-color: var(--xv-secondary-ltgreen);
+    background-color: var(--xv-secondary-light-gray);
 }
 
+/* -----top----------- */
 .hexagon.hexagon-green .hexagon-inner:before {
-    border-bottom: 39.26px solid var(--xv-secondary-ltgreen);
+    border-bottom: 39.26px solid var(--xv-secondary-dark-gray);
 }
 
+/* ---------bottom--------- */
 .hexagon.hexagon-green .hexagon-inner:after {
-    border-top: 39.26px solid var(--xv-secondary-ltgreen);
+    border-top: 39.26px solid var(--xv-secondary-dark-gray);
 }
 
 .hexagon.hexagon-green .hexagon-featured-score {
@@ -269,56 +268,59 @@
     border-color: var(--xv-secondary-green);
 }
 
-/* Repeat similar styles for other color-coded hexagons */
+/* ----------Repeat similar styles for other color-coded hexagons------------ */
+
+
+/* --------------4 number card---------- */
+/* --- middle----*/
 .hexagon.hexagon-blue {
     background-color: var(--xv-secondary-blue);
 }
 
+/* -----top border---- */
 .hexagon.hexagon-blue:before {
-    border-bottom: 40.41px solid var(--xv-secondary-blue);
+    border-bottom: 40.41px solid var(--xv-secondary-ltgreen);
 }
 
+/* ------ bottom boder--------*/
 .hexagon.hexagon-blue:after {
-    border-top: 40.41px solid var(--xv-secondary-blue);
+    border-top: 40.41px solid var(--xv-secondary-green);
 }
 
 .hexagon.hexagon-blue .hexagon-inner {
-    background-color: #f4ececee;
+    background-color: var(--xv-secondary-dark-gray);
 }
 
+/* ---------top area-------- */
 .hexagon.hexagon-blue .hexagon-inner:before {
-    border-bottom: 39.26px solid #c9c9c9;
+    border-bottom: 39.26px solid var(--xv-secondary-light-gray);
 }
 
+/* ----------botton area-------- */
 .hexagon.hexagon-blue .hexagon-inner:after {
-    border-top: 39.26px solid #EEEEEE;
+    border-top: 39.26px solid var(--xv-secondary-light-gray);
 }
 
 .hexagon.hexagon-blue .hexagon-featured-score {
     background: lighten(var(--xv-secondary-blue), 5%);
     border-color: var(--xv-secondary-blue);
 }
-/* Icon Color Coding */
+/* ------------Icon Color Coding--------------- */
 .hexagon-icon-green {
     background: lighten(var(--xv-secondary-green), 5%);
-    border-color: var(--xv-secondary-green);
-    color: var(--xv-secondary-dkgreen);
-}
-.hexagon-icon-blue {
-    background: lighten(var(--xv-secondary-blue), 5%);
-    border-color: var(--xv-secondary-blue);
-    color: var(--xv-secondary-dkblue);
+    border-color: var(--xv-secondary-dark-gray);
+    color: var(--xv-secondary-ltgreen);
 }
 
-.hexagon-icon-yellow {
-    background: lighten(var(--xv-secondary-yellow), 5%);
-    border-color: var(--xv-secondary-yellow);
-    color: var(--xv-secondary-dkyellow);
+/* ----------------------yellow--------------- */
+/* -----top border---- */
+.hexagon.hexagon-yellow:before {
+    border-bottom: 40.41px solid var(--xv-secondary-ltgreen);
 }
 
-.hexagon-icon-red {
-    background: lighten(var(--xv-secondary-red), 5%);
-    border-color: var(--xv-secondary-red);
-    color: var(--xv-secondary-dkred);
+/* --------------------- bottom boder--------*/
+.hexagon.hexagon-yellow:after {
+    border-top: 40.41px solid var(--xv-secondary-green);
 }
-/* Repeat similar styles for other color-coded icons */
+
+

@@ -33,28 +33,24 @@ const ChatBabbule = () => {
   }, [userId]);
 
   //Create chate
-  
- 
-  useEffect(() => {
-    axios.post("http://localhost:5000/chat/send", {
-      userId,
-      singleuserId,
-      secUser,
-      friUser,
-    })
-    .then(response => {
-      console.log("Chat created successfully:", response.data);
-      setChat_id(response.data._id);
-    })
-    .catch(error => {
-      console.error("Error creating chat:", error);
-      // Handle error state or show error message to the user
-    });
-  }, [friUser, secUser, singleuserId, userId]);
-  
-  
- 
 
+  useEffect(() => {
+    axios
+      .post("http://localhost:5000/chat/send", {
+        userId,
+        singleuserId,
+        secUser,
+        friUser,
+      })
+      .then((response) => {
+        console.log("Chat created successfully:", response.data);
+        setChat_id(response.data._id);
+      })
+      .catch((error) => {
+        console.error("Error creating chat:", error);
+        // Handle error state or show error message to the user
+      });
+  }, [friUser, secUser, singleuserId, userId]);
 
   //Send massage
   console.log(chat_id);
@@ -62,16 +58,17 @@ const ChatBabbule = () => {
     e.preventDefault();
     const massageContent = e.target.massage.value;
     console.log(massageContent);
-  axios.post("http://localhost:5000/message", {
-      content: massageContent,
-      chatId: chat_id,
-    })
-    .then(({ data }) => {
-      console.log("Message Fired", data);
-    })
-    .catch((error) => {
-      console.error("error", error);
-    });
+    axios
+      .post("http://localhost:5000/message", {
+        content: massageContent,
+        chatId: chat_id,
+      })
+      .then(({ data }) => {
+        console.log("Message Fired", data);
+      })
+      .catch((error) => {
+        console.error("error", error);
+      });
   };
 
   // Fetch Message
@@ -178,59 +175,64 @@ const ChatBabbule = () => {
         >
           {/* Write Massage  */}
           <div>
-            {allMessages? allMessages
-              .slice(0)
-              // .reverse() i can reverse it
-              .map((message, index) => {
-                const sender = message?.sender;
-                const self_id = userData?.data?._id;
-                if (sender?._id === self_id) {
-                  // console.log("I sent it ");
-                  return( <div className="chat-message" key={index}>
-                  <div className="flex items-end justify-end">
-                    <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-                      <div>
-                        <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
-                         {message?.content}
-                        </span>
-                      </div>
-                    </div>
-                    <img
-                      src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                      alt="My profile"
-                      className="w-6 h-6 rounded-full order-2"
-                    />
-                  </div>
-                </div>)
-                } else {
-                  // console.log("Someone Sent it");
-                  return (
-                    <div className="chat-message" key={index}>
-                        <div className="flex items-end">
-                          <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                            
-                            <div>
-                              <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
-                                I have update the description so it is more obviously now
-                              </span>
+            {allMessages
+              ? allMessages
+                  .slice(0)
+                  // .reverse() i can reverse it
+                  .map((message, index) => {
+                    const sender = message?.sender;
+                    const self_id = userData?.data?._id;
+                    if (sender?._id === self_id) {
+                      // console.log("I sent it ");
+                      return (
+                        <div className="chat-message" key={index}>
+                          <div className="flex items-end justify-end">
+                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
+                              <div>
+                                <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
+                                  {message?.content}
+                                </span>
+                              </div>
                             </div>
-                            <div>
-                              <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                                Check the line above (it ends with a # so, I am running it as
-                                root )<pre># npm install -g @vue/devtools</pre>
-                              </span>
-                            </div>
+                            <img
+                              src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                              alt="My profile"
+                              className="w-6 h-6 rounded-full order-2"
+                            />
                           </div>
-                          <img
-                            src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                            alt="My profile"
-                            className="w-6 h-6 rounded-full order-1"
-                          />
                         </div>
-                      </div>
-                );
-                }
-              }) : " "}
+                      );
+                    } else {
+                      // console.log("Someone Sent it");
+                      return (
+                        <div className="chat-message" key={index}>
+                          <div className="flex items-end">
+                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+                              <div>
+                                <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
+                                  I have update the description so it is more
+                                  obviously now
+                                </span>
+                              </div>
+                              <div>
+                                <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
+                                  Check the line above (it ends with a # so, I
+                                  am running it as root )
+                                  <pre># npm install -g @vue/devtools</pre>
+                                </span>
+                              </div>
+                            </div>
+                            <img
+                              src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                              alt="My profile"
+                              className="w-6 h-6 rounded-full order-1"
+                            />
+                          </div>
+                        </div>
+                      );
+                    }
+                  })
+              : " "}
           </div>
           <form onSubmit={sendMassage}>
             <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">

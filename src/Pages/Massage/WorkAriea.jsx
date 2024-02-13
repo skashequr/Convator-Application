@@ -1,6 +1,5 @@
-import { MdDelete } from "react-icons/md";
 import ChatComponent from "./ChatBabbule";
-import { useState } from "react";
+
 import SideBar from "./SideBar";
 const WorkAriea = () => {
   return (

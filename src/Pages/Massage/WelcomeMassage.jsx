@@ -15,7 +15,7 @@ function WelcomeMassage() {
 
   return (
     <div className=" flex col-span-12 bg-[#F1F2F7] gap-4 pt-28">
-      {/* --------sidebar */}
+      {/* --------sidebar------------ */}
       <div className="col-span-4 p-4 ml-2 rounded-2xl h-full bg-[#FFFFFF]">
         <SideBar></SideBar>
       </div>

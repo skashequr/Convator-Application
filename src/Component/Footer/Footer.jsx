@@ -9,8 +9,7 @@ import {
 
 const FooterR = () => {
   return (
-    <Footer className=" text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary">
-      {/* <div className="border  w-full p-6 font-sans mx-4 rounded-xl mt-4 mb-10  bg-clip-border shadow-md"> */}
+    <Footer className=" bg-AllCard bg-clip-border text-AllSubtitle font-sans  rounded-xl mt-4 mb-4">
       <div className="grid  text-2xl font-bold  w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
         <div>
           <Footer.Title title="Company" className="" />

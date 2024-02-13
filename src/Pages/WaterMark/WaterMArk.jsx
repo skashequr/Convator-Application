@@ -73,7 +73,7 @@ const AddWatermarkToPDF = () => {
   };
 
   return (
-    <div className='p-28 '>
+    <div className='p-28 bg-AllCard text-AllTitle'>
       <h3 className='text-center font-extrabold text-3xl'>Add Watermark</h3>
       <input type="file" onChange={handleFileChange} />
       <input type="text" placeholder="Enter watermark text" value={watermarkText} onChange={handleWatermarkTextChange} />
