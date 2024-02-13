@@ -101,7 +101,7 @@ const SideBar = () => {
         { users? (
           <div>
           {users?.map((user) => (
-            <Link to={`/massage/users/massage/shearefile/${user?.users[1]._id}`} key={user._id}>
+            <Link to={`/massage/users/massage/shearefile/${user?.users[1]?._id}`} key={user._id}>
               <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl hover:bg-[#a2d1f7] bg-[#F1F2F3]">
                 <div className="h-10 w-10 hover:h-14 hover:w-14">
                   <img
@@ -111,7 +111,7 @@ const SideBar = () => {
                   />
                 </div>
                 <div className="font-medium dark:text-white">
-                  <div className="hover:text-white">{user?.users[1].name}</div>
+                  <div className="hover:text-white">{user?.users[1]?.name}</div>
                   <div className="text-sm dark:text-gray-400">
                     Joined in {user?.email}
                   </div>
