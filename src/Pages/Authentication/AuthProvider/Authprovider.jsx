@@ -107,23 +107,7 @@ const Authprovider = ({ children }) => {
 
   const [singleUser, setSingleUsers] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:5000/user?email=${user?.email}`
-        );
-        const data = await response.json();
-        setSingleUsers(data); // Assuming the response is an array of user objects
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchData();
-  }, [user?.email]);
-  // console.log(singleUser);
-  // console.log(user);
   //------------------ data send child---------------------
   const email = user?.email;
   // console.log(email);
@@ -134,6 +118,7 @@ const Authprovider = ({ children }) => {
         .then((response) => {
           // handle success
           console.log(response.data);
+          setSingleUsers(response.data);
         })
         .catch((error) => {
           // handle error
@@ -141,6 +126,14 @@ const Authprovider = ({ children }) => {
         });
     }
   }, [email]);
+
+
+
+
+
+  
+
+
   const authInfo = {
     singleUser,
     user,

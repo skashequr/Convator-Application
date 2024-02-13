@@ -31,13 +31,6 @@ const Users = () => {
             }
         }
     });
-    // console.log(allUsers);
-
-
-
-    // useEffect(() => {
-    //     axios.post("http://localhost:5000/chat/send")
-    // }, [])
     
 
 
