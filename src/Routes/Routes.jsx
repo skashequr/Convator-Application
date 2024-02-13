@@ -15,13 +15,8 @@ import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 
-import MassageLogin from "../Pages/Massage/MassageLogin";
-
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
-
-import PdfWatermarkApp from "../Pages/Watermarkpdf/Watermarkpdf";
-import MyComponent from "../Pages/Features/PptToPdf/PptFile";
 
 // import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
@@ -44,6 +39,11 @@ import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 import UserManage from "../Pages/Dashboad/ElementDashboad/Usermanage/UserManage";
 import WordToPdf from "../Pages/WordtoPdf/WordToPdf";
+import DsahAllUsers from "../Pages/Dashboad/Dashboad/AllUsers";
+import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
+import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
+
+import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -116,11 +116,11 @@ export const router = createBrowserRouter([
 
       {
         path: "/watermark",
-        element: <PdfWatermarkApp></PdfWatermarkApp>,
+        element: <AddWatermarkToPDF></AddWatermarkToPDF>,
       },
       {
         path: "/ee",
-        element: <MyComponent></MyComponent>,
+        element: <PptPdf></PptPdf>,
       },
       {
         path: "/pdfToText",
@@ -163,11 +163,12 @@ export const router = createBrowserRouter([
         element: <WordToPdf></WordToPdf>,
       },
 
-      // ---------------- Massageing routes --------------------
       {
-        path: "/massage",
-        element: <MassageLogin></MassageLogin>,
+        path: "html",
+        element: <HtmlToPdf></HtmlToPdf>,
       },
+
+      // ---------------- Massageing routes --------------------
       {
         path: "/massage/welcome",
         element: <WelcomeMassage></WelcomeMassage>,
@@ -202,10 +203,6 @@ export const router = createBrowserRouter([
       {
         path: "homedes",
         element: <DashboadHome></DashboadHome>,
-      },
-      {
-        path: "usermanage",
-        element: <UserManage></UserManage>,
       },
     ],
   },

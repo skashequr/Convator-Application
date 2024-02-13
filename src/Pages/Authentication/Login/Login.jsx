@@ -3,27 +3,64 @@ import { Card } from "keep-react";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
-import { useState } from "react";
+import React, { useState } from "react";
 import Googlelogin from "../GoogleLogin/Googlelogin";
 import { Link, useNavigate } from "react-router-dom";
 import GithubAuth from "../GithubAuth/GithubAuth";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showlogin, setShowLogin] = useState(false);
+  // const [data, setData] = useState({ name: "", email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+
+  const [logInStatus, setLogInStatus] = React.useState("");
   const { signIn } = useAuth();
   // -----location state-------
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
   console.log("state in the location login page", location.state);
-  const HandeLogin = (e) => {
+  const HandeLogin = async (e) => {
     // -----------------loading off-----------------------------//
     e.preventDefault();
 
-    console.log(e.currentTarget);
-    const form = new FormData(e.currentTarget);
-    const email = form.get("email");
-    const password = form.get("password");
 
+    setLoading(true);
+
+  
+
+    setLoading(false);
+    console.log(e.currentTarget);
+    const email = e.target.email.value;
+    const userName = e.target.userName.value;
+    const password = e.target.password.value;
+    const data = { name: userName, password };
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const response = await axios.post(
+        "http://localhost:5000/user/login/",
+        data,
+        config
+      );
+      console.log("Login : ", response);
+
+      setLogInStatus({ msg: "Success", key: Math.random() });
+      setLoading(false);
+
+      localStorage.setItem("userData", JSON.stringify(response));
+      navigate("/");
+    } catch (error) {
+      setLogInStatus({
+        msg: "Invalid User name or Password",
+        key: Math.random(),
+      });
+    }
     signIn(email, password)
       .then((result) => {
         console.log(result.user);
@@ -82,7 +119,24 @@ const Login = () => {
               <form onSubmit={HandeLogin}>
                 <div>
                   {/* ----------Name------ */}
-
+                  <div className="flex -mx-3">
+                    <div className="w-full px-3 mb-5">
+                      <label htmlFor="" className="text-xs font-semibold px-1">
+                        User Name
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          type="text"
+                          name="userName"
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                          placeholder="Mr.Xyz"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   {/* ----------- email ------------- */}
                   <div className="flex -mx-3">
                     <div className="w-full px-3 mb-5">
@@ -95,8 +149,9 @@ const Login = () => {
                         </div>
                         <input
                           type="email"
+                          name="email"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="ssjoy@example.com"
+                          placeholder="xyz@example.com"
                         />
                       </div>
                     </div>
@@ -113,6 +168,7 @@ const Login = () => {
                         </div>
                         <input
                           type={showPassword ? "text" : "password"}
+                          name="password"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="************"
                         ></input>
@@ -135,6 +191,7 @@ const Login = () => {
                       </label>
                     </div>
                   </div>
+                  
                   <div className="flex -mx-3">
                     {/* --------button------- */}
                     <div className="w-full px-3 mb-5">
