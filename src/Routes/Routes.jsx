@@ -204,6 +204,10 @@ export const router = createBrowserRouter([
         path: "homedes",
         element: <DashboadHome></DashboadHome>,
       },
+      {
+        path: "controlUser",
+        element: <DsahAllUsers></DsahAllUsers>,
+      },
     ],
   },
 ]);
