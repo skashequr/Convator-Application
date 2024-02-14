@@ -44,6 +44,7 @@ import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
 import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
+import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -166,6 +167,10 @@ export const router = createBrowserRouter([
       {
         path: "html",
         element: <HtmlToPdf></HtmlToPdf>,
+      },
+      {
+        path: "word",
+        element: <HtmlToWord></HtmlToWord>,
       },
 
       // ---------------- Massageing routes --------------------

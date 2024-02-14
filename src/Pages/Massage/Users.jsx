@@ -19,23 +19,23 @@ const Users = () => {
   // console.log(data);
 
   // console.log(currentPage);
-  const {
-    data: allUsers,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/user/fetchUsers"
-        );
-        return response.data;
-      } catch (error) {
-        throw new Error("Error fetching data");
-      }
-    },
-  });
+  // const {
+  //   data: allUsers,
+  //   isLoading,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ["users"],
+  //   queryFn: async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:5000/user/fetchUsers"
+  //       );
+  //       return response.data;
+  //     } catch (error) {
+  //       throw new Error("Error fetching data");
+  //     }
+  //   },
+  // });
   // console.log(allUsers);
 
   const {
