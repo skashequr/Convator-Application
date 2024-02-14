@@ -62,6 +62,7 @@ const ChatBabbule = () => {
       .post("http://localhost:5000/message", {
         content: massageContent,
         chatId: chat_id,
+        data: [friUser , secUser]
       })
       .then(({ data }) => {
         console.log("Message Fired", data);
@@ -93,7 +94,26 @@ const ChatBabbule = () => {
   }, [chat_id]);
 
   console.log(allMessages);
+ 
+useEffect(() => {
+  allMessages?.forEach(item => {
+    // Check if the first element in the users array matches x
+    console.log();
+    if (item.chat.users[0] === singleUser?._id) {
+        // If yes, display the content and determine position
+        console.log("Content:", item.content);
+        const index = allMessages.indexOf(item);
+        if (index === 0) {
+            console.log("Position: Display to the right");
+        } else {
+            console.log("Position: Display to the left");
+        }
+    }
+});
 
+}, [allMessages,singleUser])
+
+  
   return (
     <div>
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">
@@ -175,65 +195,54 @@ const ChatBabbule = () => {
         >
           {/* Write Massage  */}
           <div>
-            {allMessages
-              ? allMessages
-                  .slice(0)
-                  // .reverse() i can reverse it
-                  .map((message, index) => {
-                    const sender = message?.sender;
-                    const self_id = userData?.data?._id;
-                    if (sender?._id === self_id) {
-                      // console.log("I sent it ");
-                      return (
-                        <div className="chat-message" key={index}>
-                          <div className="flex items-end justify-end">
-                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-                              <div>
-                                <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white ">
-                                  {message?.content}
-                                </span>
-                              </div>
-                            </div>
-                            <img
-                              src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                              alt="My profile"
-                              className="w-6 h-6 rounded-full order-2"
-                            />
-                          </div>
-                        </div>
-                      );
-                    } else {
-                      // console.log("Someone Sent it");
-                      return (
-                        <div className="chat-message" key={index}>
-                          <div className="flex items-end">
-                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                              <div>
-                                <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
-                                  I have update the description so it is more
-                                  obviously now
-                                </span>
-                              </div>
-                              <div>
-                                <span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-                                  Check the line above (it ends with a # so, I
-                                  am running it as root )
-                                  <pre># npm install -g @vue/devtools</pre>
-                                </span>
-                              </div>
-                            </div>
-                            <img
-                              src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                              alt="My profile"
-                              className="w-6 h-6 rounded-full order-1"
-                            />
-                          </div>
-                        </div>
-                      );
-                    }
-                  })
-              : " "}
-          </div>
+      {allMessages
+        ? allMessages.map((message , index) => {
+            const sender = message?.sender;
+            
+            if (message.data[0] !== secUser) {
+              return (
+                <div className="chat-message" key={index}>
+                  <div className="flex items-end justify-end">
+                    <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
+                      <div>
+                        <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white">
+                          {message?.content}
+                        </span>
+                      </div>
+                    </div>
+                    <img
+                      src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                      alt="My profile"
+                      className="w-6 h-6 rounded-full order-2"
+                    />
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div className="chat-message" key={index}>
+                  <div className="flex items-end">
+                    <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+                      <div>
+                        <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
+                          {message?.content}
+                        </span>
+                      </div>
+                    </div>
+                    <img
+                      src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                      alt="My profile"
+                      className="w-6 h-6 rounded-full order-1"
+                    />
+                  </div>
+                </div>
+              );
+            }
+          })
+        : null /* Render null if allMessages is not yet available */
+      }
+    </div>
+
           <form onSubmit={sendMassage}>
             <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
               <div className="relative flex">
