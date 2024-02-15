@@ -35,7 +35,7 @@ const Signup = () => {
       });
       return;
     }
-
+    const isAdmin = false
     if (!/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)) {
       Swal.fire({
         icon: "error",
@@ -51,7 +51,7 @@ const Signup = () => {
       });
       return;
     }
-    const data = { name , password, email}
+    const data = { name , password, email , isAdmin}
     try {
       const config = {
         headers: {

@@ -181,13 +181,15 @@ const DashUsers = () => {
                 </th>
                 <td className="px-6 py-4">
                   <Link to={`massage/shearefile/${user._id}`}>
-                    <button>Share File</button>
+                    <button>Share Files</button>
                   </Link>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{" "}
-                    Online
+                    {
+                      user?.isAdmin? "Admin" : "User"
+                    }
                   </div>
                 </td>
                 <td className="px-6 py-4">

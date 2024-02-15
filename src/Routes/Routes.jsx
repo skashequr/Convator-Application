@@ -45,6 +45,7 @@ import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
+import { AdminePannelTableComponent } from "../Pages/Dashboad/AdminePanelComponent/AdminPannelComponent";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -213,6 +214,10 @@ export const router = createBrowserRouter([
         path: "controlUser",
         element: <DsahAllUsers></DsahAllUsers>,
       },
+      {
+        path: "adminePannel",
+        element: <AdminePannelTableComponent></AdminePannelTableComponent>
+      }
     ],
   },
 ]);
