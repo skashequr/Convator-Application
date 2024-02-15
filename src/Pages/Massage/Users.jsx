@@ -42,6 +42,7 @@ const Users = () => {
     data: allUsers,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
