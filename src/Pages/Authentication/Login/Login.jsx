@@ -3,34 +3,32 @@ import { Card } from "keep-react";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
-import React, { useState } from "react";
+import { useState } from "react";
 import Googlelogin from "../GoogleLogin/Googlelogin";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GithubAuth from "../GithubAuth/GithubAuth";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showlogin, setShowLogin] = useState(false);
+  // const [showlogin, setShowLogin] = useState(false);
   // const [data, setData] = useState({ name: "", email: "", password: "" });
   const [loading, setLoading] = useState(false);
 
-  const [logInStatus, setLogInStatus] = React.useState("");
+  const [logInStatus, setLogInStatus] = useState("");
   const { signIn } = useAuth();
   // -----location state-------
   const navigate = useNavigate();
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   console.log("state in the location login page", location.state);
   const HandeLogin = async (e) => {
     // -----------------loading off-----------------------------//
     e.preventDefault();
 
+    // setLoading(true);
 
-    setLoading(true);
-
-  
-
-    setLoading(false);
+    // setLoading(false);
     console.log(e.currentTarget);
     const email = e.target.email.value;
     const userName = e.target.userName.value;
@@ -54,7 +52,6 @@ const Login = () => {
       setLoading(false);
 
       localStorage.setItem("userData", JSON.stringify(response));
-      navigate("/");
     } catch (error) {
       setLogInStatus({
         msg: "Invalid User name or Password",
@@ -67,8 +64,8 @@ const Login = () => {
 
         if (result.user.email) {
           Swal.fire("Login success!", "Welcome to my Website", "success");
-          navigate(from, { replace: true });
         }
+        navigate(from, { replace: true });
       })
 
       .catch((error) => {
@@ -109,34 +106,15 @@ const Login = () => {
                   Login now our conveter
                 </h1>
               </div>
-              {/*----------------- social login---------- */}
-              <Card.Container className="circled mx-auto flex items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
-                <Googlelogin />
-                <GithubAuth />
-              </Card.Container>
 
               {/* ------------ form----------*/}
               <form onSubmit={HandeLogin}>
                 <div>
-                  {/* ----------Name------ */}
-                  <div className="flex -mx-3">
-                    <div className="w-full px-3 mb-5">
-                      <label htmlFor="" className="text-xs font-semibold px-1">
-                        User Name
-                      </label>
-                      <div className="flex">
-                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                          <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
-                        </div>
-                        <input
-                          type="text"
-                          name="userName"
-                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="Mr.Xyz"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  {/*----------------- social login---------- */}
+                  <Card.Container className="circled mx-auto flex items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                    <Googlelogin />
+                    <GithubAuth />
+                  </Card.Container>
                   {/* ----------- email ------------- */}
                   <div className="flex -mx-3">
                     <div className="w-full px-3 mb-5">
@@ -171,6 +149,7 @@ const Login = () => {
                           name="password"
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                           placeholder="************"
+                          required
                         ></input>
                         <span
                           className="mt-3 relative -ml-10"
@@ -191,7 +170,7 @@ const Login = () => {
                       </label>
                     </div>
                   </div>
-                  
+
                   <div className="flex -mx-3">
                     {/* --------button------- */}
                     <div className="w-full px-3 mb-5">

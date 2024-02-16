@@ -13,6 +13,7 @@ import excelTojson from "../../../assets/icons/exceltojson.png";
 import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
 import watermarkImg from "../../../assets/5084242.png";
 import htmltopdf from "../../../assets/icons/htmltopdf.png";
+import exceltopdf from "../../../assets/icons/excel to pdf.png";
 const MultiHexon = () => {
   return (
     <div className="">
@@ -153,12 +154,15 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
+        {/* ------------Excel to pdf------------ */}
         <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/ExcelToPdf">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={exceltopdf} />
+              <span className="hexagon-name">Excel to pdf</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-yellow">
           <div className="hexagon-inner">
