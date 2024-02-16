@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 import app from "../../../Firebase/firebase.config";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 // context
 export const AuthContext = createContext(null);
@@ -41,6 +42,13 @@ const Authprovider = ({ children }) => {
   //------------------- signOut------------------
   const logOut = () => {
     setLoading(true);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "You sign out successfully",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     return signOut(auth);
   };
   //  googlr login ----------

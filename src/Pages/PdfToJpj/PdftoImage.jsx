@@ -1,50 +1,92 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+const PDFJS = window.pdfjsLib;
 
-const VideoToMp3Converter = () => {
-  const [youtubeUrl, setYoutubeUrl] = useState("");
-  const [conversionMessage, setConversionMessage] = useState("");
+const PdftoImage = () => {
+  const [pdf, setPdf] = useState("");
+  const [width, setWidth] = useState(0);
+  const [images, setImages] = useState([]);
+  const [height, setHeight] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pdfRendering, setPdfRendering] = useState("");
+  const [pageRendering, setPageRendering] = useState("");
 
-  const handleConvert = async () => {
+  async function showPdf(event) {
     try {
-      const response = await axios.post("http://localhost:5000/convert", {
-        youtube_url: youtubeUrl,
-      });
-      setConversionMessage(response.data.message);
+      setPdfRendering(true);
+      const file = event.target.files[0];
+      const uri = URL.createObjectURL(file);
+      var _PDF_DOC = await PDFJS.getDocument({ url: uri });
+      setPdf(_PDF_DOC);
+      setPdfRendering(false);
+      document.getElementById("file-to-upload").value = "";
     } catch (error) {
-      console.error("Error:", error);
-      setConversionMessage("Failed to convert audio.");
+      alert(error.message);
     }
-  };
-  const handleDownload = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/download", {
-        responseType: "blob", // Ensure response is treated as a binary object
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "output_audio.mp3");
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.error("Error:", error);
-      setConversionMessage("Failed to download audio.");
+  }
+
+  function changePage() {
+    setCurrentPage();
+  }
+
+  async function renderPage() {
+    setPageRendering(true);
+    const imagesList = [];
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute("className", "canv");
+    let canv = document.querySelector(".canv");
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      var page = await pdf.getPage(i);
+      var viewport = page.getViewport({ scale: 1 });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      var render_context = {
+        canvasContext: canvas.getContext("2d"),
+        viewport: viewport,
+      };
+      console.log("page length", pdf.numPages);
+      setWidth(viewport.width);
+      setHeight(viewport.height);
+      await page.render(render_context).promise;
+      let img = canvas.toDataURL("image/png");
+      imagesList.push(img);
     }
-  };
+    setImages(imagesList);
+    setPageRendering(false);
+  }
+
+  useEffect(() => {
+    pdf && renderPage();
+    // eslint-disable-next-line
+  }, [pdf, currentPage]);
+
   return (
-    <div className="pt-28 text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary">
-      <input
-        type="text"
-        value={youtubeUrl}
-        onChange={(e) => setYoutubeUrl(e.target.value)}
-        placeholder="Enter YouTube URL"
-      />
-      <button onClick={handleConvert}>Convert to Audio</button>
-      <button onClick={handleDownload}>Download Audio</button>
-      {conversionMessage && <p>{conversionMessage}</p>}
+    <div className="pt-28">
+      <div className="container mx-auto">
+        <input
+          type="file"
+          id="file-to-upload"
+          onChange={showPdf}
+          className="my-4"
+        />
+        {pdfRendering && <div>Loading PDF...</div>}
+        {!pdfRendering && (
+          <div>
+            {/* Display PDF pages here */}
+            {images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Page ${index + 1}`}
+                className="my-4"
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default VideoToMp3Converter;
+export default PdftoImage;
