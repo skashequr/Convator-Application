@@ -8,9 +8,9 @@ import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovide
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
-import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
-import { Alert } from "flowbite-react";
-import { HiInformationCircle } from "react-icons/hi";
+// import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
+// import { Alert } from "flowbite-react";
+// import { HiInformationCircle } from "react-icons/hi";
 import Swal from "sweetalert2";
 
 // -------------------------speech recognition-------------------
@@ -19,11 +19,12 @@ const NavBar = () => {
   const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
-  const [mic, setMic] = useState(false);
+  // const [mic, setMic] = useState(false);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  // --------search voice-------------------
 
+  // --------search voice-------------------
+  console.log("USERIFO", user);
   // --------search manual---------------
   const handleSearch = (event) => {
     if (event.key === "Enter") {
@@ -179,8 +180,9 @@ const NavBar = () => {
       ) : (
         " "
       )}
+
+      {/* -----------------------dashboad----------------- */}
       <li>
-        {/* -----------------------dashboad----------------- */}
         <NavLink
           to="/dashboad/homedes"
           className={({ isActive, isPending }) =>
