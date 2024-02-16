@@ -123,13 +123,16 @@ const Pdfimg = () => {
               />
             ))}
           </div>
-          <button
-            className="btn btn-outline-primary mt-5 bg-btnBgColor font-bold p-3 m-2 rounded"
-            onClick={pdfGenerate}
-            disabled={!photos.length}
-          >
-            Download pdf
-          </button>
+          {/* -----------download button----------------- */}
+          <div className="circled gap-4 mx-auto flex  items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+            <button
+              className="text-white justify-center w-fit  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              onClick={pdfGenerate}
+              disabled={!photos.length}
+            >
+              Download pdf
+            </button>
+          </div>
         </div>
       )}
     </div>

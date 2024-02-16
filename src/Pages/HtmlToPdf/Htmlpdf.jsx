@@ -2,66 +2,56 @@ import { useState } from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { Button, Card, FileInput, Label } from "flowbite-react";
+import Swal from "sweetalert2";
 
 const HtmlToPdf = () => {
   const [file, setFile] = useState(null);
   const [pdfUrl, setPdfUrl] = useState(null);
   const [fileName, setFileName] = useState("");
-  // --------------upload file-------------
+  const [loading, setLoading] = useState(false); // Corrected spelling
+
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
     setFile(uploadedFile);
     setFileName(uploadedFile.name);
-
     setPdfUrl(null);
   };
-  // ------------------- convert file------------------
+
   const convertToPdf = async () => {
     if (!file) {
       alert("Please upload an HTML file.");
       return;
     }
+    setLoading(true); // Start loading
 
     const reader = new FileReader();
     reader.onload = async () => {
       const htmlString = reader.result;
       const pdf = new jsPDF();
-      // Create a new div
       const tempDiv = document.createElement("div");
-      // Set inner HTML to the HTML string
       tempDiv.innerHTML = htmlString;
 
-      // Add a container div and apply CSS to center text
       const containerDiv = document.createElement("div");
-      // Center align text
       containerDiv.style.textAlign = "center";
-      // Center horizontally
       containerDiv.style.margin = "0 auto";
-      // Append the original content
       containerDiv.appendChild(tempDiv);
-      // Append the container div to the document body
       document.body.appendChild(containerDiv);
 
       try {
-        // Capture the div content as canvas
         const canvas = await html2canvas(containerDiv);
         const imgData = canvas.toDataURL("image/png");
-        // A4 width in mm
         const imgWidth = 210;
-        // Calculate height according to aspect ratio
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-        // Generate PDF blob
         const pdfBlob = pdf.output("blob");
-        // Create URL for the blob
         const pdfUrl = URL.createObjectURL(pdfBlob);
-        // Set PDF URL to state
         setPdfUrl(pdfUrl);
       } catch (error) {
         console.error("Error capturing canvas:", error);
       } finally {
-        // Remove the temporary div
         document.body.removeChild(containerDiv);
+        // Turn off loading
+        setLoading(false);
       }
     };
     reader.readAsText(file);
@@ -69,7 +59,7 @@ const HtmlToPdf = () => {
 
   const downloadPdf = () => {
     if (!pdfUrl) {
-      alert("PDF is not generated yet.");
+      Swal.fire("Login failed", "Email or password is incorrect", "error");
       return;
     }
 
@@ -80,7 +70,7 @@ const HtmlToPdf = () => {
     a.click();
     document.body.removeChild(a);
   };
-  // ----------drag and drop-------
+
   const handleDragOver = (e) => {
     e.preventDefault();
   };
@@ -91,6 +81,7 @@ const HtmlToPdf = () => {
     setFile(uploadedFile);
     setFileName(uploadedFile.name);
   };
+
   return (
     <div className="pt-28">
       <Card href="#" className="w-full">
@@ -141,14 +132,18 @@ const HtmlToPdf = () => {
             </div>
           </Label>
         </div>
+        {/* ----------button---------- */}
+        <div className="circled gap-4  mx-auto flex  items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+          {loading ? (
+            <Button type="outlinePrimary" size="md" disabled>
+              <span className="pr-2">Loading...</span>
+            </Button>
+          ) : (
+            <Button onClick={convertToPdf}>Convert into Pdf</Button>
+          )}
+          <Button onClick={downloadPdf}>Download Pdf</Button>
+        </div>
       </Card>
-
-      <div className="justify-between mt-4 inline-flex  gap-4">
-        <Button onClick={convertToPdf}>convert Pdf</Button>
-        <Button onClick={() => downloadPdf("rootElementId")}>
-          Download Pdf
-        </Button>
-      </div>
     </div>
   );
 };
