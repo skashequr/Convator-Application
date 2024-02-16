@@ -100,8 +100,9 @@ const Signup = () => {
             "Welcome to my Our Conveter ",
             "success"
           );
-          navigate("/");
+          
         }
+        navigate("/");
       })
       .catch((error) => {
         // console.error(error);
@@ -111,6 +112,7 @@ const Signup = () => {
           text: "Something worng please try again ",
         });
       });
+   
   };
   // console.log(signInStatus);
   return (

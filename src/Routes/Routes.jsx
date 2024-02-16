@@ -37,15 +37,17 @@ import ExcelToJson from "../Pages/ExcelTojson/ExcelTojson";
 import ExcelToHtmlTable from "../Pages/ExcelToHtml/ExcelToHtml";
 import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
-import UserManage from "../Pages/Dashboad/ElementDashboad/Usermanage/UserManage";
-import WordToPdf from "../Pages/WordtoPdf/WordToPdf";
-import DsahAllUsers from "../Pages/Dashboad/Dashboad/AllUsers";
+
 import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
 import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
 import { AdminePannelTableComponent } from "../Pages/Dashboad/AdminePanelComponent/AdminPannelComponent";
+import App from "../Pages/Yb-vid-mp3/App";
+import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
+import LockPdf from "../Pages/Lock-Pdf/LockPdf";
+import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -109,7 +111,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/youtubemp3",
-        element: <YbVideoToaudio></YbVideoToaudio>,
+        element: <App></App>,
       },
       {
         path: "/imgToWord",
@@ -161,19 +163,23 @@ export const router = createBrowserRouter([
         element: <PdftoImage></PdftoImage>,
       },
       {
-        path: "WordToPdf",
-        element: <WordToPdf></WordToPdf>,
+        path: "/ExcelToPdf",
+        element: <ExcelToPdf></ExcelToPdf>,
       },
 
       {
-        path: "html",
+        path: "/html",
         element: <HtmlToPdf></HtmlToPdf>,
       },
       {
-        path: "word",
+        path: "/word",
         element: <HtmlToWord></HtmlToWord>,
       },
 
+      {
+        path: "/lock",
+        element: <LockPdf></LockPdf>,
+      },
       // ---------------- Massageing routes --------------------
       {
         path: "/massage/welcome",
@@ -212,7 +218,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "controlUser",
-        element: <DsahAllUsers></DsahAllUsers>,
+        element: <DashUsers></DashUsers>,
       },
       {
         path: "adminePannel",

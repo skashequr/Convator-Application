@@ -8,6 +8,9 @@ import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovide
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
+import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
+import { Alert } from "flowbite-react";
+import { HiInformationCircle } from "react-icons/hi";
 import Swal from "sweetalert2";
 
 // -------------------------speech recognition-------------------
@@ -16,11 +19,12 @@ const NavBar = () => {
   const { mode, toggleMode , user , logOut} = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
+  const [mic, setMic] = useState(false);
   const navigate = useNavigate();
   const { singleUser } = useContext(AuthContext);
   // console.log("user", user);
   // --------search voice-------------------
-
+  console.log("USERIFO", user);
   // --------search manual---------------
   // console.log(singleUser);
   const handleSearch = (event) => {
@@ -177,6 +181,8 @@ const NavBar = () => {
       ) : (
         " "
       )}
+
+      {/* -----------------------dashboad----------------- */}
       <li>
         {/* -----------------------dashboad----------------- */}
         {
