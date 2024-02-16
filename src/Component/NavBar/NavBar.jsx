@@ -18,7 +18,7 @@ const NavBar = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
-  console.log("user", user);
+  // console.log("user", user);
   // --------search voice-------------------
 
   // --------search manual---------------
