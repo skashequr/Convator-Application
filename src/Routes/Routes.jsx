@@ -48,6 +48,7 @@ import App from "../Pages/Yb-vid-mp3/App";
 import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
 import LockPdf from "../Pages/Lock-Pdf/LockPdf";
 import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
+import PaidUser from "../Pages/Dashboad/PaidUser/PaidUser";
 
 // import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
@@ -223,6 +224,10 @@ export const router = createBrowserRouter([
       {
         path: "adminePannel",
         element: <AdminePannelTableComponent></AdminePannelTableComponent>
+      },
+      {
+        path: "/dashboad/paidUser",
+        element: <PaidUser></PaidUser>
       }
     ],
   },
