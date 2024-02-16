@@ -3,15 +3,55 @@ import { IoPersonAddSharp, IoAddCircleOutline } from "react-icons/io5";
 import { FaUserFriends, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { GiNightSky } from "react-icons/gi";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FiSunrise } from "react-icons/fi";
 import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
+import axios from "axios";
+// import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy } from 'react-scroll';
 
 const SideBar = () => {
   const [night, setNight] = useState(false);
   const [users, setUsers] = useState([]);
+  const [searchQuery, setQuery] = useState('');
   const { singleUser } = useContext(AuthContext);
   // fetch user
+ 
+  
+  
+  // const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const containerRef = useRef(null);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios.get(`http://localhost:5000/user/infinityScrolling?page=${page}`)
+  //     .then(response => {
+  //       setItems(prevItems => [...prevItems, ...response.data]);
+  //       setLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching items:', error);
+  //       setLoading(false);
+  //     });
+  // }, [page]);
+
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (container.scrollTop + container.clientHeight >= container.scrollHeight && !loading) {
+      setPage(prevPage => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
+
+
   useEffect(() => {
     const fetchData = async () => {
       if (!singleUser || !singleUser._id) {
@@ -21,7 +61,7 @@ const SideBar = () => {
   
       try {
         const response = await fetch(
-          `http://localhost:5000/chat/chat?userId=${singleUser._id}`
+          `http://localhost:5000/chat/chat?userId=${singleUser._id}&page=${page}&searchQuery=${searchQuery}`
         );
   
         if (!response.ok) {
@@ -37,9 +77,7 @@ const SideBar = () => {
     };
   
     fetchData();
-  }, [singleUser]);
-  
-  console.log(users);
+  }, [singleUser,page,searchQuery]);
   return (
     <div>
       <div className="flex justify-between bg-slate-300 rounded-full">
@@ -90,6 +128,7 @@ const SideBar = () => {
             <input
               type="search"
               id="default-search"
+              value={searchQuery} onChange={(e) => setQuery(e.target.value)}
               className="block w-full  rounded-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search"
               required
@@ -97,8 +136,9 @@ const SideBar = () => {
             <FaSearch className=" absolute end-2.5 h-8 w-8 bottom-2.5 rounded-lg "></FaSearch>
           </div>
         </form>
-        {/* -------------------- */}
-        { users? (
+        {/* heare add scroling */}
+       <div ref={containerRef} style={{ height: '300px', overflow: 'auto' }}>
+       { users? (
           <div>
           {users?.map((user) => (
             <Link to={`/massage/users/massage/shearefile/${user?.users[1]?._id}`} key={user._id}>
@@ -121,6 +161,7 @@ const SideBar = () => {
           ))}
         </div> ) : " "
         }
+       </div>
         {/* 2  user*/}
         <div></div>
       </div>
