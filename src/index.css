@@ -5,43 +5,40 @@
 
 
 .light {
-    --grape:#FFFFFF;
-    --grape2: #F8FAFC;
-    
-    --tittle-color: #2c0835;
-    --text-color: #7e3c8f;
-    --spanText-color: #35D0A8;
-    --btn-text-color: #3e1b47;
-    --btn-bg-color: #1FF5E7;
-      /* hexgon card */
-      --bg-hexaprimary-color: #F1EAFF;
-      --bg-hexasecondary-color: #CDF5FD;
-      /* -----text------ */
-      --text-allcard: #000000;
-      /* all light card backgroud */
-      --bg-allcard: #FFFFFF;
-      --text-alltitle: #171a22;
-      --text-allsubtitle: #718095
-      
+  --grape: #FFFFFF;
+  --grape2: #F8FAFC;
 
-
+  --tittle-color: #2c0835;
+  --text-color: #7e3c8f;
+  --spanText-color: #35D0A8;
+  --btn-text-color: #3e1b47;
+  --btn-bg-color: #1FF5E7;
+  /* hexgon card */
+  --bg-hexaprimary-color: #F1EAFF;
+  --bg-hexasecondary-color: #CDF5FD;
+  /* -----text------ */
+  --text-allcard: #000000;
+  /* all light card backgroud */
+  --bg-allcard: #FFFFFF;
+  --text-alltitle: #171a22;
+  --text-allsubtitle: #718095
 }
 
 .dark {
-    --grape: #020420;
-    --grape2: #020420;
-    --tittle-color: #FDF2F2;
-    --text-color: #e6b8f1;
-    --spanText-color: #F768BB;
-    --btn-text-color: #cc00ff;
-    --btn-bg-color: #0398FD;
-    /* hexgon card */
-    --bg-hexaprimary-color: #0F0F0F;
-    --bg-hexasecondary-color: #232D3F;
-    /*------- text----- */
-   --text-allcard: #fff;
-/* all dark card backgroud */
---bg-allcard: #10172E;
---text-alltitle: #FFFFFF;
---text-allsubtitle: #cdc4c4
+  --grape: #020420;
+  --grape2: #020420;
+  --tittle-color: #FDF2F2;
+  --text-color: #e6b8f1;
+  --spanText-color: #F768BB;
+  --btn-text-color: #cc00ff;
+  --btn-bg-color: #0398FD;
+  /* hexgon card */
+  --bg-hexaprimary-color: #0F0F0F;
+  --bg-hexasecondary-color: #232D3F;
+  /*------- text----- */
+  --text-allcard: #fff;
+  /* all dark card backgroud */
+  --bg-allcard: #10172E;
+  --text-alltitle: #FFFFFF;
+  --text-allsubtitle: #cdc4c4
 }
