@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Card, Checkbox, FileInput, Label } from "flowbite-react";
-import Button from "../Component/Shared/Button";
+
 function ImageResizeTool() {
   const [previewImage, setPreviewImage] = useState("");
   const [originalImageRatio, setOriginalImageRatio] = useState(0);
@@ -104,7 +104,7 @@ function ImageResizeTool() {
 
         {/* ----------------input text data ------------------ */}
         <div className=" mt-8 grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
-          {/* width */}
+          {/*----------------------------------------- width -----------------*/}
           <div className="flex flex-col">
             <label>Width:</label>
 
@@ -168,43 +168,19 @@ function ImageResizeTool() {
           </div>
           {/* ----------download------------- */}
 
-          <div className="text-center">
+          <div className="text-center justify-center mx-auto">
             <button
               onClick={resizeAndDownload}
-              className="text-xl  box-border border-4 border-sky-900 w-48 h-16 bg-sky-600 text-white relative group"
+              className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center"
             >
-              <span className="pr-8">Download</span>
-              <span className="bg-sky-900 absolute right-0 top-0  h-full flex items-center justify-center px-1 group-hover:duration-300 group-hover:w-full w-10 duration-300">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="w-8 inline mx-auto"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path
-                      d="M12 3V16M12 16L16 11.625M12 16L8 11.625"
-                      stroke="#ffffff"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                    <path
-                      d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
-                      stroke="#ffffff"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                  </g>
-                </svg>
-              </span>
+              <svg
+                className="w-4 h-4 mr-2 "
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+              </svg>
+              <span>Download</span>
             </button>
           </div>
         </div>

@@ -32,7 +32,7 @@ export const Faq = () => {
     setIsOpen((prevIdx) => (prevIdx === idx ? null : idx));
   };
   return (
-    <div className="border text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary  p-6 font-sans mx-4 rounded-xl mt-4 mb-10  bg-clip-border shadow-md">
+    <div className="border text-TextColor bg-AllCard  p-6 font-sans mx-4 rounded-xl mt-4 mb-10  bg-clip-border shadow-md">
       {accordions.map((PerAccordion, idx) => (
         <div key={idx} className="p-4 border-b">
           <button
