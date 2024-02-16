@@ -1,27 +1,13 @@
 import React from "react";
 import OneCard from "./OneCard";
+import useAccessCard from "../../Hooks/useAccessCard";
+import { SyncLoader } from "react-spinners";
 
 const AccessCard = () => {
-  const cards = [
-    {
-      plan: "Basic Plan",
-      price_per_month: 19,
-      access_limit: "5 days",
-      plan_id: "34564fasfas",
-    },
-    {
-      plan: "Standard Plan",
-      price_per_month: 49,
-      access_limit: "10 days",
-      plan_id: "345asdf64fasfas",
-    },
-    {
-      plan: "Premium Plan",
-      price_per_month: 99,
-      access_limit: "1 Year",
-      plan_id: "3uy54564fasfas",
-    },
-  ];
+  const [allAccessCard, reload, isLoading] = useAccessCard();
+
+  // console.log("allAccessCard", allAccessCard);
+
   return (
     <div className="container mx-auto p-4 sm:p-10">
       <div className="mb-16 space-y-4 text-center">
@@ -39,11 +25,21 @@ const AccessCard = () => {
           </button>
         </div>
       </div>
-      <div className="grid max-w-md grid-cols-1 gap-6 auto-rows-fr lg:max-w-full lg:gap-2 xl:gap-6 lg:grid-cols-3 mx-32">
-        {cards.map((card, idx) => (
-          <OneCard key={idx} card={card}></OneCard>
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-64 w-full">
+          <SyncLoader color="#36d7b7" />
+        </div>
+      ) : (
+        <div className="grid max-w-md grid-cols-1 gap-6 auto-rows-fr lg:max-w-full lg:gap-2 xl:gap-6 lg:grid-cols-3 mx-32">
+          {allAccessCard && allAccessCard.length > 0 ? (
+            allAccessCard.map((card, idx) => (
+              <OneCard key={idx} card={card}></OneCard>
+            ))
+          ) : (
+            <p>No cards available</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

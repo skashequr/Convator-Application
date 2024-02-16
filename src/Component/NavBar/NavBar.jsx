@@ -21,7 +21,8 @@ const NavBar = () => {
   const [query, setQuery] = useState("");
   const [mic, setMic] = useState(false);
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  // console.log("user", user);
   // --------search voice-------------------
   console.log("USERIFO", user);
   // --------search manual---------------
