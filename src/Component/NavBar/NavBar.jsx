@@ -201,7 +201,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="relative z-50 w-full text-white">
+    <div className="relative z-50 w-full text-AllTitle">
       <nav className="backdrop-blur-lg bg-slate-700 bg-opacity-20 w-full fixed text-sm font-semibold flex px-3 sm:px-10 py-2 sm:py-6 justify-between items-center">
         <ul
           className={`py-5 ${
