@@ -16,17 +16,16 @@ import Swal from "sweetalert2";
 // -------------------------speech recognition-------------------
 
 const NavBar = () => {
-  const { mode, toggleMode , user , logOut} = useContext(AuthContext);
+  const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
   const [mic, setMic] = useState(false);
   const navigate = useNavigate();
-  const { singleUser } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   // console.log("user", user);
   // --------search voice-------------------
   console.log("USERIFO", user);
   // --------search manual---------------
-  // console.log(singleUser);
   const handleSearch = (event) => {
     if (event.key === "Enter") {
       //-------------- Trigger  let's just log the query-------------------
@@ -184,9 +183,7 @@ const NavBar = () => {
 
       {/* -----------------------dashboad----------------- */}
       <li>
-        {/* -----------------------dashboad----------------- */}
-        {
-          singleUser?.isAdmin? (<NavLink
+        <NavLink
           to="/dashboad/homedes"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
@@ -198,9 +195,7 @@ const NavBar = () => {
               <SquaresFour size={24} />
             </span>
           </Button>
-        </NavLink>) : " "
-        }
-        
+        </NavLink>
       </li>
     </>
   );
