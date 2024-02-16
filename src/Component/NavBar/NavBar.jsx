@@ -8,24 +8,21 @@ import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovide
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
-import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
-import { Alert } from "flowbite-react";
-import { HiInformationCircle } from "react-icons/hi";
 import Swal from "sweetalert2";
 
 // -------------------------speech recognition-------------------
 
 const NavBar = () => {
-  const { mode, toggleMode , user} = useContext(AuthContext);
+  const { mode, toggleMode , user , logOut} = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
-  const [mic, setMic] = useState(false);
   const navigate = useNavigate();
   const { singleUser } = useContext(AuthContext);
+  // console.log("user", user);
   // --------search voice-------------------
 
   // --------search manual---------------
-  console.log(singleUser);
+  // console.log(singleUser);
   const handleSearch = (event) => {
     if (event.key === "Enter") {
       //-------------- Trigger  let's just log the query-------------------
@@ -266,14 +263,26 @@ const NavBar = () => {
           </div>
 
           {/* -------------------- login/signup ------------------------- */}
-          <button className="hidden lg:inline-block">
-            <Link to="/login">Login</Link>
-          </button>
-          <Link to="/signup" className="hidden sm:inline-block">
-            <button className="bg-btnBgColor  dark:hover:bg-[#E94BFE] text-nowrap text-white text-sm rounded-full px-5 py-2 ">
-              Signup Now
+
+          {!user ? (
+            <>
+              <button className="hidden lg:inline-block">
+                <Link to="/login">Login</Link>
+              </button>
+              <Link to="/signup" className="hidden sm:inline-block">
+                <button className="bg-btnBgColor dark:hover:bg-[#E94BFE] text-nowrap text-white text-sm rounded-full px-5 py-2">
+                  Sign up
+                </button>
+              </Link>
+            </>
+          ) : (
+            <button
+              onClick={() => logOut()}
+              className="bg-btnBgColor dark:hover:bg-[#E94BFE] text-nowrap text-white text-sm rounded-full px-5 py-2"
+            >
+              Sign out
             </button>
-          </Link>
+          )}
         </div>
       </nav>
     </div>
