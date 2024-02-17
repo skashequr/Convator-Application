@@ -25,6 +25,7 @@ const TBody = ({ info, index, reload }) => {
     pay_time,
     tran_id,
     paidStatus,
+    access_limit_day,
   } = info;
   // console.log("pay_time", pay_time);
   // Define the given date
@@ -57,7 +58,7 @@ const TBody = ({ info, index, reload }) => {
     function logTimeLeft() {
       // Calculate the expiration date (two days from the given date)
       const expirationDate = new Date(givenDate);
-      expirationDate.setDate(givenDate.getDate() + 1); // Adding 2 days and fixing the date setting
+      expirationDate.setDate(givenDate.getDate() + access_limit_day); // Adding 2 days and fixing the date setting
       // expirationDate.setHours(23, 59, 59); // Setting time to end of day
       // console.log("givenDate, expirationDate", givenDate, expirationDate);
 
@@ -71,15 +72,32 @@ const TBody = ({ info, index, reload }) => {
       if (difference <= 0) {
         console.log("The user should be Removed");
         // Perform your removal logic here, e.g., displaying an alert
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "The user should be Removed",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        axiosPublic
+          .put("/payment", { id })
+          .then((response) => {
+            // console.log("User has been removed", response);
+            setShowAccessModal(!showAccessModal);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "The user has been removed",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            reload();
+          })
+          .catch((error) => {
+            console.error("Error removing user:", error);
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "Failed to remove user",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
         // Clear the interval if the expiration date has passed
-        clearInterval(intervalId);
+        // clearInterval(intervalId);
         return;
       }
 

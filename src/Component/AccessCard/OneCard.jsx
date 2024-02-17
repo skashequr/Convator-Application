@@ -11,7 +11,7 @@ const OneCard = ({ card }) => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const { user } = useContext(AuthContext);
-  const { plan, price, access_limit, _id } = card;
+  const { plan, price, access_limit, _id, access_limit_day } = card;
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   console.log("productId", _id);
@@ -27,7 +27,7 @@ const OneCard = ({ card }) => {
       phone,
       email: user.email,
       name,
-      // dateTime,
+      access_limit_day,
     };
 
     axiosPublic
