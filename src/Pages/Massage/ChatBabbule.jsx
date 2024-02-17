@@ -72,36 +72,41 @@ const ChatBabbule = () => {
       });
   };
 
-  // Fetch Message
-  // const { data: fetchMessage = [], refetch } = useQuery({
-  //   queryKey: ["usersData"],
-  //   queryFn: async () => {
-  //     const res = await axios.get(`http://localhost:5000/message/${chat_id}`);
-  //     return res.data;
-  //   },
-  // });
-
   // refetch();
   // console.log(fetchMessage);
-  useEffect(() => {
-    console.log("Users refreshed");
+  // useEffect(() => {
+  //   console.log("Users refreshed");
 
-    axios.get(`http://localhost:5000/message/${chat_id}`).then(({ data }) => {
-      setAllMessages(data);
-      console.log("Data from Acess Chat API ", data);
-    });
-    // scrollToBottom();
-  }, [chat_id]);
+  //   axios.get(`http://localhost:5000/message/${chat_id}`).then(({ data }) => {
+  //     setAllMessages(data);
+  //     console.log("Data from Acess Chat API ", data);
+  //   });
+  //   // scrollToBottom();
+  // }, [chat_id]);
 
+  const { data: usermessage = [], refetch } = useQuery({
+    queryKey: ["usersmessage", chat_id],
+    queryFn: async () => {
+      const res = await axios.get(`http://localhost:5000/message/${chat_id}`);
+      setAllMessages(res.data);
+      return res.data;
+    },
+  });
+  console.log(usermessage);
+  const [x,setx] = useState(true)
   console.log(allMessages);
+ useEffect(() => {
+  
+  refetch();
+ }, [refetch,x])
  
 useEffect(() => {
   allMessages?.forEach(item => {
     // Check if the first element in the users array matches x
-    console.log();
+
     if (item.chat.users[0] === singleUser?._id) {
         // If yes, display the content and determine position
-        console.log("Content:", item.content);
+      
         const index = allMessages.indexOf(item);
         if (index === 0) {
             console.log("Position: Display to the right");
@@ -340,6 +345,7 @@ useEffect(() => {
                   </button>
                   <button
                     type="submit"
+                    onClick={() => setx(!x)}
                     className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
                   >
                     <span className="font-bold">Send</span>
