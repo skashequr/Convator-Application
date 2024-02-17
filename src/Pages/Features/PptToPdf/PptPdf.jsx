@@ -14,8 +14,8 @@ const FileUpload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", file);
-
+    formData.append('file', file);
+    
     try {
       // Make the Axios request
       const response = await axios.post(
