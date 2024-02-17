@@ -31,7 +31,7 @@ const DashUsers = () => {
     )
       .then((response) => response.json())
       .then((data) => setData(data));
-  }, [currentPage,defultUser]);
+  }, [currentPage, defultUser]);
   console.log(users);
   const { data, totalPages } = users;
 
@@ -41,17 +41,16 @@ const DashUsers = () => {
     console.log(event.target.value);
   };
 
-
-
-
   const deleteUser = async (id) => {
     console.log(id);
     try {
-      const response = await axios.delete(`http://localhost:5000/user/delateUser/${id}`);
+      const response = await axios.delete(
+        `http://localhost:5000/user/delateUser/${id}`
+      );
       console.log(response.data.message); // Data deleted successfully
-    //   Update your UI accordingly (e.g., remove the deleted item from the list)
+      //   Update your UI accordingly (e.g., remove the deleted item from the list)
     } catch (error) {
-      console.error('Error deleting data:', error);
+      console.error("Error deleting data:", error);
     }
   };
   if (isLoading)
@@ -80,18 +79,18 @@ const DashUsers = () => {
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg   px-10">
         <div className="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-900">
           <div>
-          <div className="flex m-6 gap-4 justify-center items-center">
-                <select
-                  className="text-white p-3 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                  value={defultUser}
-                  onChange={handleRoleChange}
-                >
-                  <option value="6">6 User</option>
-                  <option value="10">10 User</option>
-                  <option value="15">15 User</option>
-                  <option value="30">30 User</option>
-                </select>
-              </div>
+            <div className="flex m-6 gap-4 justify-center items-center">
+              <select
+                className="text-white p-3 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                value={defultUser}
+                onChange={handleRoleChange}
+              >
+                <option value="6">6 User</option>
+                <option value="10">10 User</option>
+                <option value="15">15 User</option>
+                <option value="30">30 User</option>
+              </select>
+            </div>
           </div>
           <label className="sr-only">Search</label>
           <div className="relative">

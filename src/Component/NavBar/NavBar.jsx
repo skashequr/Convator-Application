@@ -69,6 +69,7 @@ const NavBar = () => {
         setQuery("");
       } else if (
         query === "img to word" ||
+        query === "img to text" ||
         query === "i to w" ||
         query === "image to word"
       ) {

@@ -18,27 +18,27 @@ const SideBar = () => {
         // If singleUser or its _id property is not available, exit early
         return;
       }
-  
+
       try {
         const response = await fetch(
           `http://localhost:5000/chat/chat?userId=${singleUser._id}`
         );
-  
+
         if (!response.ok) {
           // Check if the response is not successful (e.g., 404 or 500 error)
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-  
+
         const data = await response.json();
         setUsers(data); // Assuming the response is an array of user objects
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
     };
-  
+
     fetchData();
   }, [singleUser]);
-  
+
   console.log(users);
   return (
     <div>
@@ -98,29 +98,36 @@ const SideBar = () => {
           </div>
         </form>
         {/* -------------------- */}
-        { users? (
+        {users ? (
           <div>
-          {users?.map((user) => (
-            <Link to={`/massage/users/massage/shearefile/${user?.users[1]?._id}`} key={user._id}>
-              <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl hover:bg-[#a2d1f7] bg-[#F1F2F3]">
-                <div className="h-10 w-10 hover:h-14 hover:w-14">
-                  <img
-                    className="h-full w-full rounded-full object-cover object-center ring ring-white"
-                    src="https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg"
-                    alt={`Profile of ${user?.name}`}
-                  />
-                </div>
-                <div className="font-medium dark:text-white">
-                  <div className="hover:text-white">{user?.users[1]?.name}</div>
-                  <div className="text-sm dark:text-gray-400">
-                    Joined in {user?.email}
+            {users?.map((user) => (
+              <Link
+                to={`/massage/users/massage/shearefile/${user?.users[1]?._id}`}
+                key={user._id}
+              >
+                <div className="flex items-center gap-4 w-full mt-3 p-8 rounded-2xl hover:bg-[#a2d1f7] bg-[#F1F2F3]">
+                  <div className="h-10 w-10 hover:h-14 hover:w-14">
+                    <img
+                      className="h-full w-full rounded-full object-cover object-center ring ring-white"
+                      src="https://banner2.cleanpng.com/20180920/yko/kisspng-computer-icons-portable-network-graphics-avatar-ic-5ba3c66df14d32.3051789815374598219884.jpg"
+                      alt={`Profile of ${user?.name}`}
+                    />
+                  </div>
+                  <div className="font-medium dark:text-white">
+                    <div className="hover:text-white">
+                      {user?.users[1]?.name}
+                    </div>
+                    <div className="text-sm dark:text-gray-400">
+                      Joined in {user?.email}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
-        </div> ) : " "
-        }
+              </Link>
+            ))}
+          </div>
+        ) : (
+          " "
+        )}
         {/* 2  user*/}
         <div></div>
       </div>
