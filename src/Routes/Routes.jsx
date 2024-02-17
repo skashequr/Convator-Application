@@ -124,7 +124,7 @@ export const router = createBrowserRouter([
         element: <AddWatermarkToPDF></AddWatermarkToPDF>,
       },
       {
-        path: "/ee",
+        path: "/wordToPdf",
         element: <PptPdf></PptPdf>,
       },
       {
