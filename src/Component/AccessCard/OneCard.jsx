@@ -14,6 +14,7 @@ const OneCard = ({ card }) => {
   const { plan, price, access_limit, _id } = card;
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  console.log("productId", _id);
 
   const paymentHandler = () => {
     console.log(price);
@@ -26,9 +27,8 @@ const OneCard = ({ card }) => {
       phone,
       email: user.email,
       name,
+      // dateTime,
     };
-
-    // console.log(userInformation);
 
     axiosPublic
       .post("/payment", userInformation)
