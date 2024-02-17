@@ -12,10 +12,10 @@ const useAllPaymentUser = () => {
     queryKey: [`allPaymentUser`],
     queryFn: () => {
       const res = axiosPublic.get("/payment").then((result) => {
-        const data = result.data.allPayment;
+        const data = result.data;
         return data;
       });
-      // console.log("result allPaymentUser", res);
+      console.log("result allPaymentUser", res);
       return res;
     },
   });

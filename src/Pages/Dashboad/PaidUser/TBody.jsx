@@ -68,6 +68,7 @@ const TBody = ({ info, index, reload }) => {
       // Calculate the difference in milliseconds
       const difference = expirationDate.getTime() - currentTime;
 
+      // console.log("difference", difference);
       // Check if the expiration date has passed
       if (difference <= 0) {
         console.log("The user should be Removed");

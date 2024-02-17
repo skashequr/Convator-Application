@@ -6,14 +6,15 @@ import MassageSelf from "./MassgaeContent/MassageSelf";
 import MassageOthers from "./MassgaeContent/MassageOthers";
 import { IoCreateOutline } from "react-icons/io5";
 import { useQuery } from "@tanstack/react-query";
+import useMessage from "../../Hooks/useMessage";
 const ChatBabbule = () => {
-  const { singleUser } = useContext(AuthContext);
+  const { singleUser, chat_id, setChat_id } = useContext(AuthContext);
   const singleuserId = singleUser?._id;
   const params = useParams();
   const userId = params?._id;
   const [userData, setUserData] = useState(null);
-  const [chat_id, setChat_id] = useState(null);
-  const [allMessages, setAllMessages] = useState(null);
+  const [chatMessage, reload, isLoading] = useMessage();
+  // const [chatMessage, setAllMessages] = useState(null);
   const secUser = userData?.name; // jake ami massage pathabo tar nam
   const friUser = singleUser?.name; // je massage pathabe.
   useEffect(() => {
@@ -62,58 +63,62 @@ const ChatBabbule = () => {
       .post("http://localhost:5000/message", {
         content: massageContent,
         chatId: chat_id,
-        data: [friUser , secUser]
+        data: [friUser, secUser],
       })
       .then(({ data }) => {
         console.log("Message Fired", data);
+        reload();
       })
       .catch((error) => {
         console.error("error", error);
       });
   };
 
-  // Fetch Message
-  // const { data: fetchMessage = [], refetch } = useQuery({
-  //   queryKey: ["usersData"],
+  // refetch();
+  // console.log(fetchMessage);
+  // useEffect(() => {
+  //   console.log("Users refreshed");
+
+  //   axios.get(`http://localhost:5000/message/${chat_id}`).then(({ data }) => {
+  //     setAllMessages(data);
+  //     console.log("Data from Acess Chat API ", data);
+  //   });
+  //   // scrollToBottom();
+  // }, [chat_id]);
+
+  // const { data: usermessage = [], refetch } = useQuery({
+  //   queryKey: ["usersmessage", chat_id],
   //   queryFn: async () => {
   //     const res = await axios.get(`http://localhost:5000/message/${chat_id}`);
+  //     setAllMessages(res.data);
   //     return res.data;
   //   },
   // });
 
-  // refetch();
-  // console.log(fetchMessage);
+  // console.log(usermessage);
+  // const [x, setx] = useState(true);
+  // console.log(allMessages);
+  // useEffect(() => {
+  //   refetch();
+  // }, [refetch, x]);
+
   useEffect(() => {
-    console.log("Users refreshed");
+    chatMessage?.forEach((item) => {
+      // Check if the first element in the users array matches x
 
-    axios.get(`http://localhost:5000/message/${chat_id}`).then(({ data }) => {
-      setAllMessages(data);
-      console.log("Data from Acess Chat API ", data);
-    });
-    // scrollToBottom();
-  }, [chat_id]);
-
-  console.log(allMessages);
- 
-useEffect(() => {
-  allMessages?.forEach(item => {
-    // Check if the first element in the users array matches x
-    console.log();
-    if (item.chat.users[0] === singleUser?._id) {
+      if (item.chat.users[0] === singleUser?._id) {
         // If yes, display the content and determine position
-        console.log("Content:", item.content);
-        const index = allMessages.indexOf(item);
+
+        const index = chatMessage.indexOf(item);
         if (index === 0) {
-            console.log("Position: Display to the right");
+          console.log("Position: Display to the right");
         } else {
-            console.log("Position: Display to the left");
+          console.log("Position: Display to the left");
         }
-    }
-});
+      }
+    });
+  }, [chatMessage, singleUser]);
 
-}, [allMessages,singleUser])
-
-  
   return (
     <div>
       <div className="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">
@@ -195,53 +200,54 @@ useEffect(() => {
         >
           {/* Write Massage  */}
           <div>
-      {allMessages
-        ? allMessages.map((message , index) => {
-            const sender = message?.sender;
-            
-            if (message.data[0] !== secUser) {
-              return (
-                <div className="chat-message" key={index}>
-                  <div className="flex items-end justify-end">
-                    <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
-                      <div>
-                        <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white">
-                          {message?.content}
-                        </span>
-                      </div>
-                    </div>
-                    <img
-                      src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                      alt="My profile"
-                      className="w-6 h-6 rounded-full order-2"
-                    />
-                  </div>
-                </div>
-              );
-            } else {
-              return (
-                <div className="chat-message" key={index}>
-                  <div className="flex items-end">
-                    <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-                      <div>
-                        <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
-                          {message?.content}
-                        </span>
-                      </div>
-                    </div>
-                    <img
-                      src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                      alt="My profile"
-                      className="w-6 h-6 rounded-full order-1"
-                    />
-                  </div>
-                </div>
-              );
+            {
+              chatMessage
+                ? chatMessage.map((message, index) => {
+                    const sender = message?.sender;
+
+                    if (message.data[0] !== secUser) {
+                      return (
+                        <div className="chat-message" key={index}>
+                          <div className="flex items-end justify-end">
+                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
+                              <div>
+                                <span className="px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white">
+                                  {message?.content}
+                                </span>
+                              </div>
+                            </div>
+                            <img
+                              src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                              alt="My profile"
+                              className="w-6 h-6 rounded-full order-2"
+                            />
+                          </div>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div className="chat-message" key={index}>
+                          <div className="flex items-end">
+                            <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
+                              <div>
+                                <span className="px-4 py-2 rounded-lg inline-block bg-gray-300 text-gray-600">
+                                  {message?.content}
+                                </span>
+                              </div>
+                            </div>
+                            <img
+                              src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+                              alt="My profile"
+                              className="w-6 h-6 rounded-full order-1"
+                            />
+                          </div>
+                        </div>
+                      );
+                    }
+                  })
+                : null /* Render null if allMessages is not yet available */
             }
-          })
-        : null /* Render null if allMessages is not yet available */
-      }
-    </div>
+          </div>
 
           <form onSubmit={sendMassage}>
             <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
@@ -340,6 +346,7 @@ useEffect(() => {
                   </button>
                   <button
                     type="submit"
+                    onClick={() => setx(!x)}
                     className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
                   >
                     <span className="font-bold">Send</span>

@@ -2,6 +2,7 @@ import useAllPaymentUser from "../../../Hooks/useAllPaymentUser";
 import TBody from "./TBody";
 const PaidUser = () => {
   const [allPaymentUser, reload, isLoading] = useAllPaymentUser();
+  console.log("allPaymentUser", allPaymentUser);
 
   return (
     <div>
@@ -85,7 +86,12 @@ const PaidUser = () => {
                     </tr>
                   </thead>
                   {allPaymentUser?.map((info, index) => (
-                    <TBody info={info} reload={reload} index={index} key={index}></TBody>
+                    <TBody
+                      info={info}
+                      reload={reload}
+                      index={index}
+                      key={index}
+                    ></TBody>
                   ))}
                 </table>
               </div>
