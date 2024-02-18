@@ -61,7 +61,7 @@ const FileUpload = () => {
     }
   };
   return (
-    <div className='p-36'>
+    <div className="p-36">
       <h2>Upload PowerPoint File</h2>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />

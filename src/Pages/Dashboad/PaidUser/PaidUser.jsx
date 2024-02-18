@@ -1,30 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Avatar, Button, Modal, CheckBox } from "keep-react";
-import { CloudArrowUp, UserPlus } from "phosphor-react";
+import useAllPaymentUser from "../../../Hooks/useAllPaymentUser";
+import TBody from "./TBody";
 const PaidUser = () => {
-  const [showHistoryModal, setShowHistoryModal] = useState(false);
-  const [showAccessModal, setShowAccessModal] = useState(false);
-  const [data, setModalData] = useState(null);
-  const onClickHistoryModal = () => {
-    setShowHistoryModal(!showHistoryModal);
-  };
-  const onClickAccessModal = (data) => {
-    setModalData(data);
-    setShowAccessModal(!showAccessModal);
-  };
+  const [allPaymentUser, reload, isLoading] = useAllPaymentUser();
+  console.log("allPaymentUser", allPaymentUser);
 
-  const handleChecked = (value) => {
-    //value
-  };
-  const [pamentInfo, setPamentInfo] = useState([]);
-  useEffect(() => {
-    axios.get("http://localhost:5000/payment").then((response) => {
-      setPamentInfo(response.data);
-    });
-  }, []);
-  console.log(pamentInfo);
-  console.log("sjgikjnmgw");
   return (
     <div>
       <section className="container px-4 mx-auto">
@@ -98,7 +77,7 @@ const PaidUser = () => {
                         scope="col"
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                       >
-                        Purchase
+                        Transaction Id
                       </th>
 
                       <th scope="col" className="relative py-3.5 px-4">
@@ -106,202 +85,19 @@ const PaidUser = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {pamentInfo?.map((info, index) => (
-                      <tr key={index}>
-                        <td className="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                          <div className="inline-flex items-center gap-x-3">
-                            <input
-                              type="checkbox"
-                              className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700"
-                            />
-
-                            <span>{index + 1}</span>
-                          </div>
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                          Jan 6, 2022
-                        </td>
-                        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                          <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                            <svg
-                              width="12"
-                              height="12"
-                              viewBox="0 0 12 12"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M10 3L4.5 8.5L2 6"
-                                stroke="currentColor"
-                              />
-                            </svg>
-
-                            <h2 className="text-sm font-normal">
-                              {info?.plan}
-                            </h2>
-                          </div>
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                          <div
-                            className="flex items-center gap-x-2"
-                            onClick={() => onClickAccessModal(info)}
-                          >
-                            <img
-                              className="object-cover w-8 h-8 rounded-full"
-                              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                              alt=""
-                            />
-                            <div>
-                              <h2 className="text-sm font-medium text-gray-800 dark:text-white ">
-                                {info?.cus_name}
-                              </h2>
-                              <p className="text-xs font-normal text-gray-600 dark:text-gray-400">
-                                {info?.cus_email}
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                          {info?.tran_id}
-                        </td>
-                        <td className="px-4 py-4 text-sm whitespace-nowrap">
-                          <div className="flex items-center gap-x-6">
-                            <button className="text-gray-500 transition-colors duration-200 dark:hover:text-indigo-500 dark:text-gray-300 hover:text-indigo-500 focus:outline-none">
-                              Archive
-                            </button>
-
-                            <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                              Download
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
+                  {allPaymentUser?.map((info, index) => (
+                    <TBody
+                      info={info}
+                      reload={reload}
+                      index={index}
+                      key={index}
+                    ></TBody>
+                  ))}
                 </table>
               </div>
             </div>
           </div>
         </div>
-        <>
-          <Modal
-            icon={<CloudArrowUp size={28} color="#1B4DFF" />}
-            size="md"
-            show={showHistoryModal}
-            // onClick={onClickAccessModal}
-          >
-            <Modal.Body>
-              <div className="space-y-6"></div>
-              <div className="mt-5 flex items-center">
-                <CheckBox
-                  size="md"
-                  variant="square"
-                  id="11"
-                  name="countries"
-                  color="info"
-                  handleChecked={handleChecked}
-                />
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button
-                type="outlineGray"
-                width="half"
-                onClick={onClickHistoryModal}
-              >
-                Cancel
-              </Button>
-              <Button type="primary" width="half" onClick={onClickHistoryModal}>
-                Confirm
-              </Button>
-            </Modal.Footer>
-          </Modal>
-          <Modal
-            icon={<UserPlus size={28} color="#5E718D" />}
-            size="lg"
-            show={showAccessModal}
-          >
-            <Modal.Body>
-              <div className="space-y-6">
-                <div className="bg-gray-200 font-sans w-full flex flex-row justify-center items-center">
-                  <div className="card w-96 mx-auto bg-white  shadow-xl hover:shadow">
-                    <img
-                      className="w-32 mx-auto rounded-full -mt-20 border-8 border-white"
-                      src="https://avatars.githubusercontent.com/u/67946056?v=4"
-                      alt=""
-                    />
-                    <div className="text-center mt-2 text-3xl font-medium">
-                      Ajo Alex
-                    </div>
-                    <div className="text-center mt-2 font-light text-sm">
-                      @devpenzil
-                    </div>
-                    <div className="text-center font-normal text-lg">
-                      Kerala
-                    </div>
-                    <div className="px-6 text-center mt-2 font-light text-sm">
-                      <p>
-                        Front end Developer, avid reader. Love to take a long
-                        walk, swim
-                      </p>
-                    </div>
-                    <hr className="mt-8" />
-                    <div className="flex p-4">
-                      <div className="w-1/2 text-center">
-                        <span className="font-bold">1.8 k</span> Followers
-                      </div>
-                      <div className="w-0 border border-gray-300"></div>
-                      <div className="w-1/2 text-center">
-                        <span className="font-bold">2.0 k</span> Following
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="md:mb-6 mb-4 flex items-center gap-2">
-                  <Avatar
-                    shape="circle"
-                    img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                    statusPosition="bottom-right"
-                    size="md"
-                  />
-                  <div>
-                    <p className="text-body-5 font-semibold text-gray-500">
-                      {data?.cus_name}
-                    </p>
-                    <p className="text-body-6 text-gray-500">
-                      {data?.cus_email}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-5 flex items-center">
-                <CheckBox
-                  size="md"
-                  variant="square"
-                  id="12"
-                  name="countries"
-                  color="info"
-                  handleChecked={handleChecked}
-                />
-                <label
-                  htmlFor="12"
-                  className="ml-2 text-body-4 font-medium text-metal-500"
-                >
-                  Save on this browser
-                </label>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button type="outlineGray" onClick={onClickAccessModal}>
-                Cancel
-              </Button>
-              <Button type="primary" onClick={onClickAccessModal}>
-                Confirm
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </>
       </section>
     </div>
   );

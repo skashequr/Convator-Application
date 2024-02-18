@@ -30,14 +30,12 @@ const QRCodeGenerator = () => {
   };
 
   return (
-    <div className="bg-cardBgHexaSecondary min-h-screen flex items-center justify-center">
-      <div className=" p-8 gap-4 rounded shadow-md max-w-md w-full mx-auto">
+    <div className="pt-28 text-AllTitle min-h-screen flex items-center justify-center border-dashed">
+      <div className=" p-8 gap-4 rounded shadow-xl max-w-md w-full mx-auto bg-AllCard  ">
         {/* ----------input------- */}
+        <h1 className="font-bold text-2xl">Create Qrcode and Download</h1>
         <div className="mt-4">
-          <label
-            htmlFor="text"
-            className="block text-sm font-medium text-TextColor"
-          >
+          <label htmlFor="text" className="block text-sm font-medium ">
             {" "}
             Input Text:
           </label>
@@ -45,15 +43,15 @@ const QRCodeGenerator = () => {
             type="text"
             value={inputText}
             onChange={handleInputChange}
-            className="mt-1 p-2 w-full border rounded-md"
+            className="mt-1 p-2 w-full bg-transparent border rounded-md"
           />
         </div>
 
         <div className="mt-5">
-          <QRCode value={inputText} />
+          <QRCode className="w-64" value={inputText} />
         </div>
 
-        <div className="mt-4 text-TextColor">
+        <div className="mt-4 ">
           <Button onClick={handleDownloadQRCode}>
             Download QR Code
             <svg

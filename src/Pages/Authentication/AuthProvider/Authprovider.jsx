@@ -23,6 +23,7 @@ const Authprovider = ({ children }) => {
   const [mode, setMode] = useState(false);
   const [user, setUser] = useState(null);
   const [load, setLoading] = useState(true);
+  const [chat_id, setChat_id] = useState(null);
   // --------------
   const createUser = async (email, password) => {
     try {
@@ -115,7 +116,6 @@ const Authprovider = ({ children }) => {
 
   const [singleUser, setSingleUsers] = useState([]);
 
-
   //------------------ data send child---------------------
   const email = user?.email;
   // console.log(email);
@@ -135,13 +135,6 @@ const Authprovider = ({ children }) => {
     }
   }, [email]);
 
-
-
-
-
-  
-
-
   const authInfo = {
     singleUser,
     user,
@@ -155,6 +148,8 @@ const Authprovider = ({ children }) => {
     mode,
     setMode,
     toggleMode,
+    chat_id,
+    setChat_id,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

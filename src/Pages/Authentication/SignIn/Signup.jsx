@@ -11,8 +11,8 @@ import GithubAuth from "../GithubAuth/GithubAuth";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 // -----------image upload--------
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+// const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+// const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const Signup = () => {
   const { createUser } = useAuth();
@@ -22,7 +22,6 @@ const Signup = () => {
   const [logInStatus, setLogInStatus] = React.useState("");
   const [signInStatus, setSignInStatus] = React.useState("");
   const navigate = useNavigate();
-
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -30,8 +29,7 @@ const Signup = () => {
     const name = form.get("name");
     const email = form.get("email");
     const password = form.get("password");
-    const profileImage = form.get("profileImage");
-    console.log(email, password, name, profileImage);
+    console.log(email, password, name);
     //------------ cheak length 6 character-----------------
     if (password.length < 6) {
       Swal.fire({
@@ -57,11 +55,9 @@ const Signup = () => {
       });
       return;
     }
-    const data = { name, password, email, isAdmin, profileImage };
+    const data = { name, password, email, isAdmin };
     // Append the profile image to the form data
-    if (profileImage) {
-      data.profileImage = profileImage;
-    }
+
     try {
       const config = {
         headers: {
