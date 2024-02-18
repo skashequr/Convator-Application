@@ -13,6 +13,8 @@ import excelTojson from "../../../assets/icons/exceltojson.png";
 import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
 import watermarkImg from "../../../assets/5084242.png";
 import htmltopdf from "../../../assets/icons/htmltopdf.png";
+import exceltopdf from "../../../assets/icons/excel to pdf.png";
+import wordToPdf from "../../../assets/icons/wordToPdf.webp"
 const MultiHexon = () => {
   return (
     <div className="">
@@ -153,20 +155,27 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
+        {/* ------------Excel to pdf------------ */}
         <li className="hexagon hexagon-yellow">
+          <Link to="/ExcelToPdf">
+            <div className="hexagon-inner">
+              <img className="hexagon-avatar-img" src={exceltopdf} />
+              <span className="hexagon-name">Excel to pdf</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
+          </Link>
+        </li>
+        
+        <li className="hexagon hexagon-yellow">
+        <Link to="/wordToPdf">
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
+            <img className="hexagon-avatar-img w-10 h-[50px]" src="https://i.gadgets360cdn.com/large/convert_word_to_pdf_1591366878562.jpg"/>
+            <span className="hexagon-name">Word to PDF</span>
             <span className="hexagon-metric-label">Progress to Goal</span>
           </div>
+          </Link>
         </li>
-        <li className="hexagon hexagon-yellow">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
-        </li>
+        
 
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">

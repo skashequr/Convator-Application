@@ -39,7 +39,7 @@
 }
 
 .hexagon:hover {
-    transform: scale(1.1) rotate(180deg); 
+    transform: scale(1.1) rotate(360deg); 
     
 }
 .hexagon:before,.hexagon:after {

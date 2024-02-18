@@ -9,30 +9,37 @@ import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
 import Swal from "sweetalert2";
+import useSearchDates from "../../Hooks/useSearchDates";
 
 // -------------------------speech recognition-------------------
 
 const NavBar = () => {
-  const { mode, toggleMode , user , logOut} = useContext(AuthContext);
+  const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
+  const [search, setSearch] = useState([]);
+  const [searchNow, setSearchNow] = useState(false);
   const navigate = useNavigate();
-  const { singleUser } = useContext(AuthContext);
-  // console.log("user", user);
+  const { user, logOut } = useContext(AuthContext);
+  const [allSearchData, reload, isLoading] = useSearchDates();
+  // console.log("allSearchData", allSearchData);
   // --------search voice-------------------
-
+  // console.log("USERIFO", user);
   // --------search manual---------------
-  // console.log(singleUser);
   const handleSearch = (event) => {
-    if (event.key === "Enter") {
+    console.log("Search Query:", query);
+    if (searchNow || event?.key === "Enter") {
       //-------------- Trigger  let's just log the query-------------------
-      console.log("Search Query:", query);
       if (query === "img to pdf" || query === "image to pdf") {
+        setSearchNow(false);
         navigate("/imgtopdf");
         setQuery("");
+        setSearch([]);
       } else if (query === "text to voice" || query === "t to v") {
         navigate("/text");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "image edit" ||
         query === "image editing" ||
@@ -42,6 +49,8 @@ const NavBar = () => {
       ) {
         navigate("/editimg");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "jpeg to png" ||
         query === "jpg to png" ||
@@ -49,6 +58,8 @@ const NavBar = () => {
       ) {
         navigate("/jpgtopng");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "voice to text" ||
         query === "v to t" ||
@@ -57,6 +68,8 @@ const NavBar = () => {
       ) {
         navigate("/speech");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "png to jpg" ||
         query === "p to j" ||
@@ -64,13 +77,20 @@ const NavBar = () => {
       ) {
         navigate("/pngtojpg");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "img to word" ||
+        query === "image to text" ||
+        query === "img to text" ||
         query === "i to w" ||
+        query === "i to t" ||
         query === "image to word"
       ) {
         navigate("/imgToWord");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "img resize" ||
         query === "i r" ||
@@ -84,6 +104,8 @@ const NavBar = () => {
       ) {
         navigate("/imagresize");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "qr code" ||
         query === "qr code generator" ||
@@ -93,9 +115,13 @@ const NavBar = () => {
       ) {
         navigate("/qrcode");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (query === "xl to json" || query === "excel to json") {
         navigate("/exceltojson");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "xl to html" ||
         query === "excel to html" ||
@@ -103,6 +129,8 @@ const NavBar = () => {
       ) {
         navigate("/exceltohtml");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "water mark" ||
         query === "watermark" ||
@@ -111,12 +139,16 @@ const NavBar = () => {
       ) {
         navigate("/watermark");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else {
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
         return Swal.fire({
           position: "center",
           icon: "warning",
-          title: "Search by Correct word",
+          title: "Please search by Suggestion",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -125,8 +157,21 @@ const NavBar = () => {
   };
 
   const handleChange = (event) => {
-    setQuery(event.target.value.toLowerCase());
+    const inputValue = event.target.value.toLowerCase();
+    if (!searchNow) {
+      if (!inputValue) {
+        setSearch([]);
+      }
+      setQuery(inputValue);
+    }
+    if (!isLoading && inputValue !== "") {
+      const filteredData = allSearchData.filter((search) =>
+        search.search.includes(inputValue)
+      );
+      setSearch(filteredData);
+    }
   };
+  // console.log("search", search);
 
   const navLinks = (
     <>
@@ -177,10 +222,10 @@ const NavBar = () => {
       ) : (
         " "
       )}
+
+      {/* -----------------------dashboad----------------- */}
       <li>
-        {/* -----------------------dashboad----------------- */}
-        {
-          singleUser?.isAdmin? (<NavLink
+        <NavLink
           to="/dashboad/homedes"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
@@ -192,15 +237,39 @@ const NavBar = () => {
               <SquaresFour size={24} />
             </span>
           </Button>
-        </NavLink>) : " "
-        }
-        
+        </NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="relative z-50 w-full text-white">
+    <div className="relative z-30 w-full text-AllTitle">
+      {search?.length > 0 && (
+        <div className="fixed backdrop-blur-2xl bg-slate-700 bg-opacity-20  w-60 h-fit z-40 right-56 top-20">
+          <ul className=" py-1 ">
+            {search?.map((item, index) => {
+              return (
+                <li
+                  className="border-b-2 px-5 text-center"
+                  key={index}
+                  onMouseEnter={() => {
+                    setSearchNow(true);
+                    setQuery(item.search);
+                  }}
+                  onClick={() => {
+                    handleSearch();
+                  }}
+                  onMouseLeave={() => {
+                    setSearchNow(true);
+                  }}
+                >
+                  {item.search}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
       <nav className="backdrop-blur-lg bg-slate-700 bg-opacity-20 w-full fixed text-sm font-semibold flex px-3 sm:px-10 py-2 sm:py-6 justify-between items-center">
         <ul
           className={`py-5 ${

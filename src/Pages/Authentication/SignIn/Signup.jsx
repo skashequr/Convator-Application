@@ -18,7 +18,7 @@ const Signup = () => {
   const [logInStatus, setLogInStatus] = React.useState("");
   const [signInStatus, setSignInStatus] = React.useState("");
   const navigate = useNavigate();
-  const handleRegister = async(e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     const form = new FormData(e.currentTarget);
@@ -26,7 +26,7 @@ const Signup = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(email, password, name);
-      //------------ cheak length 6 character-----------------
+    //------------ cheak length 6 character-----------------
     if (password.length < 6) {
       Swal.fire({
         icon: "error",
@@ -82,11 +82,9 @@ const Signup = () => {
           msg: "User Name already Taken, Please take another one",
           key: Math.random(),
         });
-       
-        
       }
       setLoading(false);
-      return
+      return;
     }
 
     // registation user create
@@ -100,8 +98,8 @@ const Signup = () => {
             "Welcome to my Our Conveter ",
             "success"
           );
-          navigate("/");
         }
+        navigate("/");
       })
       .catch((error) => {
         // console.error(error);

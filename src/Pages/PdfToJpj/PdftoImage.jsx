@@ -1,50 +1,41 @@
-import { useState } from "react";
-import axios from "axios";
 
-const VideoToMp3Converter = () => {
-  const [youtubeUrl, setYoutubeUrl] = useState("");
-  const [conversionMessage, setConversionMessage] = useState("");
+import { useState } from 'react';
+import { Document, Page } from 'react-pdf';
+const PdftoImage = () => {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
-  const handleConvert = async () => {
-    try {
-      const response = await axios.post("http://localhost:5000/convert", {
-        youtube_url: youtubeUrl,
-      });
-      setConversionMessage(response.data.message);
-    } catch (error) {
-      console.error("Error:", error);
-      setConversionMessage("Failed to convert audio.");
-    }
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
   };
-  const handleDownload = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/download", {
-        responseType: "blob", // Ensure response is treated as a binary object
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "output_audio.mp3");
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.error("Error:", error);
-      setConversionMessage("Failed to download audio.");
-    }
+  const convertToImage = () => {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    const scale = 2; // Adjust as needed
+
+    canvas.width = 595 * scale; // PDF width
+    canvas.height = 842 * scale; // PDF height
+
+    context.scale(scale, scale);
+
+    const pdf = document.querySelector('.react-pdf__Page canvas');
+    context.drawImage(pdf, 0, 0);
+
+    const imageData = canvas.toDataURL('image/jpeg');
+    console.log(imageData); // You can use imageData as needed (e.g., display or save it)
   };
   return (
-    <div className="pt-28 text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary">
-      <input
-        type="text"
-        value={youtubeUrl}
-        onChange={(e) => setYoutubeUrl(e.target.value)}
-        placeholder="Enter YouTube URL"
-      />
-      <button onClick={handleConvert}>Convert to Audio</button>
-      <button onClick={handleDownload}>Download Audio</button>
-      {conversionMessage && <p>{conversionMessage}</p>}
-    </div>
+    <div className='p-36'>
+    <Document
+      file="/path/to/your/pdf/document.pdf"
+      onLoadSuccess={onDocumentLoadSuccess}
+    >
+      <Page pageNumber={pageNumber} />
+    </Document>
+    <p>Page {pageNumber} of {numPages}</p>
+    <button onClick={convertToImage}>Convert to Image</button>
+  </div>
   );
 };
 
-export default VideoToMp3Converter;
+export default PdftoImage;

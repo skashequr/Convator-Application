@@ -1,4 +1,17 @@
+import useAllPaymentUser from "../../../../Hooks/useAllPaymentUser";
+import usePaymentUserCount from "../../../../Hooks/usePaymentUserCount";
+import useUsers from "../../../../Hooks/useUser";
+
 const DashboadHome = () => {
+  const [allPaymentUserCounts, allPaymentUserCountsReload, isLoading] =
+    usePaymentUserCount();
+  const [allPaymentUser] = useAllPaymentUser();
+  const users = useUsers();
+
+  const TotalMoney = allPaymentUser.reduce((total, paymentUser) => {
+    return total + (parseInt(paymentUser?.price) || 0); // Ensure paymentUser.price is valid
+  }, 0);
+
   return (
     <div>
       <div className="mt-12">
@@ -26,7 +39,7 @@ const DashboadHome = () => {
                 Todays Money
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                $53k
+                ${TotalMoney}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -54,10 +67,10 @@ const DashboadHome = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Todays Users
+                Total Subscription Member
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                2,300
+                {allPaymentUserCounts?.count}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -81,10 +94,10 @@ const DashboadHome = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                New Clients
+                Current Clients
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                3,462
+                {allPaymentUser?.length}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">
@@ -107,10 +120,10 @@ const DashboadHome = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Sales
+                Total Clients
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                $103,430
+                {users?.length}
               </h4>
             </div>
             <div className="border-t border-blue-gray-50 p-4">

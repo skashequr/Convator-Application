@@ -2,6 +2,7 @@ import { useState } from "react";
 import { saveAs } from "file-saver";
 import Docxtemplater from "docxtemplater";
 import JSZip from "jszip/dist/jszip.min.js"; // Import JSZip from the specific path
+import Swal from "sweetalert2";
 
 const HtmlToWord = () => {
   const [file, setFile] = useState(null);
@@ -15,7 +16,7 @@ const HtmlToWord = () => {
 
   const convertToWord = async () => {
     if (!file) {
-      alert("Please upload an HTML file.");
+      Swal.fire("Login failed", "Email or password is incorrect", "error");
       return;
     }
 

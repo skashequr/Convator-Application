@@ -190,7 +190,7 @@ const EditImg = () => {
     link.click();
   };
   return (
-    <div className="text-TextColor bg-gradient-to-r from-cardBgHexaPrimary to-cardBgHexaSecondary">
+    <div className="pt-32 text-AllTitle bg-AllCard rounded-xl shadow-lg p-4">
       <Helmet>
         <title>image-Edit</title>
       </Helmet>
@@ -211,8 +211,8 @@ const EditImg = () => {
                     <button
                       className={
                         property.name === v.name
-                          ? " bg-red-900 px-8 py-3 m-1 rounded-xl"
-                          : "bg-red-200 px-8 py-3 m-1 rounded-xl"
+                          ? " text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                          : "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                       }
                       onClick={() => {
                         setProperty(v);
@@ -274,7 +274,7 @@ const EditImg = () => {
             <div className="flex justify-center items-center ">
               <button
                 onClick={saveImage}
-                className="px-6 py-3 bg-orange-200 mt-4"
+                className="px-6 py-3 text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br mt-4"
               >
                 Save Image
               </button>
@@ -301,17 +301,23 @@ const EditImg = () => {
                   className="flex justify-center items-center flex-col"
                 >
                   <IoIosImage size={120} />
-                  <label htmlFor="choose" className="">
+                  <label htmlFor="choose" className="text-white bg-slate-500 ">
                     Choose Image
                   </label>
                 </label>
               )}
             </div>
             <div className="flex items-center justify-center mt-7 border gap-6">
-              <button onClick={undo} className="px-4 py-2 bg-slate-500">
+              <button
+                onClick={undo}
+                className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br"
+              >
                 <IoMdUndo />
               </button>
-              <button onClick={redo} className="px-4 py-2 bg-slate-500">
+              <button
+                onClick={redo}
+                className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br"
+              >
                 <IoMdRedo />
               </button>
               {crop && (
@@ -319,7 +325,10 @@ const EditImg = () => {
                   Crop Image
                 </button>
               )}
-              <label htmlFor="choose" className="px-4 py-2 bg-slate-500">
+              <label
+                htmlFor="choose"
+                className="px-4 py-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br"
+              >
                 Choose Image
               </label>
               <input
