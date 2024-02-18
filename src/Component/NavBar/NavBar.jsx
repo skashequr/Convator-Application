@@ -8,10 +8,8 @@ import { AuthContext } from "../../Pages/Authentication/AuthProvider/Authprovide
 import { WiDaySunnyOvercast } from "react-icons/wi";
 import { GiNightSky } from "react-icons/gi";
 import { Button } from "keep-react";
-import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
-import { Alert } from "flowbite-react";
-import { HiInformationCircle } from "react-icons/hi";
 import Swal from "sweetalert2";
+import useSearchDates from "../../Hooks/useSearchDates";
 
 // -------------------------speech recognition-------------------
 
@@ -19,12 +17,13 @@ const NavBar = () => {
   const { mode, toggleMode } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
-  const [mic, setMic] = useState(false);
+  const [search, setSearch] = useState([]);
   const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
-  // console.log("user", user);
+  const [allSearchData, reload, isLoading] = useSearchDates();
+  // console.log("allSearchData", allSearchData);
   // --------search voice-------------------
-  console.log("USERIFO", user);
+  // console.log("USERIFO", user);
   // --------search manual---------------
   const handleSearch = (event) => {
     if (event.key === "Enter") {
@@ -69,8 +68,10 @@ const NavBar = () => {
         setQuery("");
       } else if (
         query === "img to word" ||
+        query === "image to text" ||
         query === "img to text" ||
         query === "i to w" ||
+        query === "i to t" ||
         query === "image to word"
       ) {
         navigate("/imgToWord");
@@ -129,8 +130,27 @@ const NavBar = () => {
   };
 
   const handleChange = (event) => {
-    setQuery(event.target.value.toLowerCase());
+    const inputValue = event.target.value.toLowerCase();
+    if (!inputValue) {
+      setSearch([]);
+    }
+    setQuery(inputValue);
+
+    if (
+      !isLoading &&
+      inputValue !== "" &&
+      inputValue !== " " &&
+      inputValue !== "  "
+    ) {
+      const filteredData = allSearchData.filter((search) =>
+        search.search.includes(inputValue)
+      );
+      setSearch(filteredData);
+      // Now you can use filteredData as per your requirement
+    }
   };
+
+  console.log("search", search);
 
   const navLinks = (
     <>
@@ -202,7 +222,27 @@ const NavBar = () => {
   );
 
   return (
-    <div className="relative z-50 w-full text-AllTitle">
+    <div className="relative z-30 w-full text-AllTitle">
+      {search.length > 0 && (
+        <div className="fixed backdrop-blur-2xl bg-slate-700 bg-opacity-20  w-60 h-fit z-40 right-56 top-20">
+          <ul className=" py-1 ">
+            {search.map((item, index) => {
+              return (
+                <li
+                  className="border-b-2 px-5 text-center"
+                  key={index}
+                  onClick={() => {
+                    navigate(item.link);
+                  }}
+                >
+                  {item.search}
+                  {/* <input type="text" value={item.search} className="bg-none" /> */}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
       <nav className="backdrop-blur-lg bg-slate-700 bg-opacity-20 w-full fixed text-sm font-semibold flex px-3 sm:px-10 py-2 sm:py-6 justify-between items-center">
         <ul
           className={`py-5 ${

@@ -125,7 +125,7 @@ const Authprovider = ({ children }) => {
         .get(`http://localhost:5000/user?email=${email}`)
         .then((response) => {
           // handle success
-          console.log(response.data);
+          // console.log(response.data);
           setSingleUsers(response.data);
         })
         .catch((error) => {
