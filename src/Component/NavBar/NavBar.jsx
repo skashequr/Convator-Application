@@ -18,6 +18,7 @@ const NavBar = () => {
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState([]);
+  const [searchNow, setSearchNow] = useState(false);
   const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
   const [allSearchData, reload, isLoading] = useSearchDates();
@@ -26,15 +27,19 @@ const NavBar = () => {
   // console.log("USERIFO", user);
   // --------search manual---------------
   const handleSearch = (event) => {
-    if (event.key === "Enter") {
+    console.log("Search Query:", query);
+    if (searchNow || event?.key === "Enter") {
       //-------------- Trigger  let's just log the query-------------------
-      console.log("Search Query:", query);
       if (query === "img to pdf" || query === "image to pdf") {
+        setSearchNow(false);
         navigate("/imgtopdf");
         setQuery("");
+        setSearch([]);
       } else if (query === "text to voice" || query === "t to v") {
         navigate("/text");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "image edit" ||
         query === "image editing" ||
@@ -44,6 +49,8 @@ const NavBar = () => {
       ) {
         navigate("/editimg");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "jpeg to png" ||
         query === "jpg to png" ||
@@ -51,6 +58,8 @@ const NavBar = () => {
       ) {
         navigate("/jpgtopng");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "voice to text" ||
         query === "v to t" ||
@@ -59,6 +68,8 @@ const NavBar = () => {
       ) {
         navigate("/speech");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "png to jpg" ||
         query === "p to j" ||
@@ -66,6 +77,8 @@ const NavBar = () => {
       ) {
         navigate("/pngtojpg");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "img to word" ||
         query === "image to text" ||
@@ -76,6 +89,8 @@ const NavBar = () => {
       ) {
         navigate("/imgToWord");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "img resize" ||
         query === "i r" ||
@@ -89,6 +104,8 @@ const NavBar = () => {
       ) {
         navigate("/imagresize");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "qr code" ||
         query === "qr code generator" ||
@@ -98,9 +115,13 @@ const NavBar = () => {
       ) {
         navigate("/qrcode");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (query === "xl to json" || query === "excel to json") {
         navigate("/exceltojson");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "xl to html" ||
         query === "excel to html" ||
@@ -108,6 +129,8 @@ const NavBar = () => {
       ) {
         navigate("/exceltohtml");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else if (
         query === "water mark" ||
         query === "watermark" ||
@@ -116,12 +139,16 @@ const NavBar = () => {
       ) {
         navigate("/watermark");
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
       } else {
         setQuery("");
+        setSearchNow(false);
+        setSearch([]);
         return Swal.fire({
           position: "center",
           icon: "warning",
-          title: "Search by Correct word",
+          title: "Please search by Suggestion",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -131,26 +158,20 @@ const NavBar = () => {
 
   const handleChange = (event) => {
     const inputValue = event.target.value.toLowerCase();
-    if (!inputValue) {
-      setSearch([]);
+    if (!searchNow) {
+      if (!inputValue) {
+        setSearch([]);
+      }
+      setQuery(inputValue);
     }
-    setQuery(inputValue);
-
-    if (
-      !isLoading &&
-      inputValue !== "" &&
-      inputValue !== " " &&
-      inputValue !== "  "
-    ) {
+    if (!isLoading && inputValue !== "") {
       const filteredData = allSearchData.filter((search) =>
         search.search.includes(inputValue)
       );
       setSearch(filteredData);
-      // Now you can use filteredData as per your requirement
     }
   };
-
-  console.log("search", search);
+  // console.log("search", search);
 
   const navLinks = (
     <>
@@ -223,20 +244,26 @@ const NavBar = () => {
 
   return (
     <div className="relative z-30 w-full text-AllTitle">
-      {search.length > 0 && (
+      {search?.length > 0 && (
         <div className="fixed backdrop-blur-2xl bg-slate-700 bg-opacity-20  w-60 h-fit z-40 right-56 top-20">
           <ul className=" py-1 ">
-            {search.map((item, index) => {
+            {search?.map((item, index) => {
               return (
                 <li
                   className="border-b-2 px-5 text-center"
                   key={index}
+                  onMouseEnter={() => {
+                    setSearchNow(true);
+                    setQuery(item.search);
+                  }}
                   onClick={() => {
-                    navigate(item.link);
+                    handleSearch();
+                  }}
+                  onMouseLeave={() => {
+                    setSearchNow(true);
                   }}
                 >
                   {item.search}
-                  {/* <input type="text" value={item.search} className="bg-none" /> */}
                 </li>
               );
             })}
