@@ -64,7 +64,7 @@ const FileUpload = () => {
     <div className='p-36'>
       <h2>Upload PowerPoint File</h2>
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
+        <input accept=".doc, .docx" type="file" onChange={handleFileChange} />
         <button type="submit">Upload</button>
       </form>
       {
