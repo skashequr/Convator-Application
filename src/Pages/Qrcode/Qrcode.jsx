@@ -1,7 +1,6 @@
 import { useState } from "react";
 import QRCode from "qrcode.react";
 import { Button } from "flowbite-react";
-import { Card } from "keep-react";
 
 const QRCodeGenerator = () => {
   const [inputText, setInputText] = useState("");
@@ -48,7 +47,7 @@ const QRCodeGenerator = () => {
         </div>
 
         <div className="mt-5">
-          <QRCode className="w-64" value={inputText} />
+          <QRCode className="w-full" value={inputText} />
         </div>
 
         <div className="mt-4 ">
