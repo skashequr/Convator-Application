@@ -15,7 +15,7 @@ const useAccessCard = () => {
         const data = result.data.accessCards;
         return data;
       });
-      console.log("result", res);
+      // console.log("result", res);
       return res;
     },
   });

@@ -10,6 +10,10 @@ import React, { useState } from "react";
 import GithubAuth from "../GithubAuth/GithubAuth";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
+// -----------image upload--------
+// const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+// const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const Signup = () => {
   const { createUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +22,7 @@ const Signup = () => {
   const [logInStatus, setLogInStatus] = React.useState("");
   const [signInStatus, setSignInStatus] = React.useState("");
   const navigate = useNavigate();
-  const handleRegister = async(e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     const form = new FormData(e.currentTarget);
@@ -26,7 +30,7 @@ const Signup = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(email, password, name);
-      //------------ cheak length 6 character-----------------
+    //------------ cheak length 6 character-----------------
     if (password.length < 6) {
       Swal.fire({
         icon: "error",
@@ -35,7 +39,7 @@ const Signup = () => {
       });
       return;
     }
-    const isAdmin = false
+    const isAdmin = false;
     if (!/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)) {
       Swal.fire({
         icon: "error",
@@ -51,7 +55,9 @@ const Signup = () => {
       });
       return;
     }
-    const data = { name , password, email , isAdmin}
+    const data = { name, password, email, isAdmin };
+    // Append the profile image to the form data
+
     try {
       const config = {
         headers: {
@@ -66,7 +72,7 @@ const Signup = () => {
       );
       console.log(response);
       setSignInStatus({ msg: "Success", key: Math.random() });
-      navigate("/");
+
       localStorage.setItem("userData", JSON.stringify(response));
       setLoading(false);
     } catch (error) {
@@ -82,11 +88,9 @@ const Signup = () => {
           msg: "User Name already Taken, Please take another one",
           key: Math.random(),
         });
-       
-        
       }
       setLoading(false);
-      return
+      return;
     }
 
     // registation user create
@@ -100,7 +104,6 @@ const Signup = () => {
             "Welcome to my Our Conveter ",
             "success"
           );
-          
         }
         navigate("/");
       })
@@ -112,7 +115,6 @@ const Signup = () => {
           text: "Something worng please try again ",
         });
       });
-   
   };
   // console.log(signInStatus);
   return (
@@ -120,7 +122,7 @@ const Signup = () => {
       <Helmet>
         <title>Signup</title>
       </Helmet>
-      <div className="bg-gradient-to-br from-rose-100 to-teal-100 relative lg:py-20">
+      <div className="bg-AllCard relative lg:py-20">
         <div
           className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
       xl:px-5 lg:flex-row"
@@ -160,6 +162,7 @@ const Signup = () => {
                 <div className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
                   {/* ------------form---------- */}
                   <form onSubmit={handleRegister}>
+                    {/* -------name------------- */}
                     <div className="relative">
                       <p
                         className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
@@ -176,6 +179,9 @@ const Signup = () => {
                   border-gray-300 rounded-md"
                       />
                     </div>
+
+                    {/* -----------email -------------- */}
+
                     <div className="relative">
                       <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">
                         Email
@@ -190,6 +196,7 @@ const Signup = () => {
                         required
                       />
                     </div>
+                    {/* ------------password--------- */}
                     <div className="relative">
                       <p
                         className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
@@ -219,6 +226,19 @@ const Signup = () => {
                         </span>
                       </div>
                     </div>
+                    {/* --------profile image upload---------*/}
+
+                    <div className=" mt-3 mb-3">
+                      <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 ">
+                        Upload Profile
+                      </p>
+                      <input
+                        type="file"
+                        name="profileImage"
+                        className="file-input w-full max-w-xs"
+                      />
+                    </div>
+
                     {/* <p className="text-red-500">{signInStatus} fdhd</p> */}
                     <div className="relative mt-4">
                       <button

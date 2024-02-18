@@ -11,9 +11,10 @@ const OneCard = ({ card }) => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const { user } = useContext(AuthContext);
-  const { plan, price, access_limit, _id } = card;
+  const { plan, price, access_limit, _id, access_limit_day } = card;
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  // console.log("productId", _id);
 
   const paymentHandler = () => {
     console.log(price);
@@ -26,9 +27,8 @@ const OneCard = ({ card }) => {
       phone,
       email: user.email,
       name,
+      access_limit_day,
     };
-
-    // console.log(userInformation);
 
     axiosPublic
       .post("/payment", userInformation)

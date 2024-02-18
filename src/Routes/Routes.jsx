@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 
-// import Homepage from "../Homepage/Homepage";
 import EditImg from "../Component/EditImg";
 import Login from "../Pages/Authentication/Login/Login";
 import Signup from "../Pages/Authentication/SignIn/Signup";
@@ -11,17 +10,13 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 
-import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
-// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
-// import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
-// import Converterimg from "../Pages/PdfToJpj/Conveter";
 
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
@@ -44,16 +39,12 @@ import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
 import { AdminePannelTableComponent } from "../Pages/Dashboad/AdminePanelComponent/AdminPannelComponent";
-import App from "../Pages/Yb-vid-mp3/App";
+
 import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
 import LockPdf from "../Pages/Lock-Pdf/LockPdf";
 import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 import PaidUser from "../Pages/Dashboad/PaidUser/PaidUser";
 import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
-
-// import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
-
-// import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
 
 export const router = createBrowserRouter([
   {
@@ -94,10 +85,7 @@ export const router = createBrowserRouter([
         path: "/feateres",
         element: <Features></Features>,
       },
-      {
-        path: "/ybvidtoaudio",
-        element: <YbVideoToaudio></YbVideoToaudio>,
-      },
+
       {
         path: "/speech",
         element: <SpeechToText></SpeechToText>,
@@ -111,10 +99,7 @@ export const router = createBrowserRouter([
         path: "/text",
         element: <TextToVoice></TextToVoice>,
       },
-      {
-        path: "/youtubemp3",
-        element: <App></App>,
-      },
+
       {
         path: "/imgToWord",
         element: <ImgToText></ImgToText>,
@@ -226,12 +211,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "adminePannel",
-        element: <AdminePannelTableComponent></AdminePannelTableComponent>
+        element: <AdminePannelTableComponent></AdminePannelTableComponent>,
       },
       {
         path: "/dashboad/paidUser",
-        element: <PaidUser></PaidUser>
-      }
+        element: <PaidUser></PaidUser>,
+      },
     ],
   },
 ]);

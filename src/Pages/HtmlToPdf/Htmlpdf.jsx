@@ -59,7 +59,7 @@ const HtmlToPdf = () => {
 
   const downloadPdf = () => {
     if (!pdfUrl) {
-      Swal.fire("Login failed", "Email or password is incorrect", "error");
+      Swal.fire("Download failed", "Please upload html file", "error");
       return;
     }
 

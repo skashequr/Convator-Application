@@ -58,24 +58,24 @@ const SideBar = () => {
         // If singleUser or its _id property is not available, exit early
         return;
       }
-  
+
       try {
         const response = await fetch(
           `http://localhost:5000/chat/chat?userId=${singleUser._id}&page=${page}&searchQuery=${searchQuery}`
         );
-  
+
         if (!response.ok) {
           // Check if the response is not successful (e.g., 404 or 500 error)
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-  
+
         const data = await response.json();
         setUsers(data); // Assuming the response is an array of user objects
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
     };
-  
+
     fetchData();
   }, [singleUser,page,searchQuery]);
   return (
