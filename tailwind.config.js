@@ -23,13 +23,13 @@ export default {
         cardBgHexa: "var(--bg-hexaprimary-color)",
         cardBgHexaPrimary: "var(--bg-hexaprimary-color)",
         cardBgHexaSecondary: "var(--bg-hexasecondary-color)",
-          // ----------text---------
-            TextColor: "var(--text-allcard)",
+        // ----------text---------
+        TextColor: "var(--text-allcard)",
 
-            // ----------all card and text new color------------
-            AllCard: "var(--bg-allcard)",
-            AllTitle: "var(--text-alltitle)",
-            AllSubtitle: "var(--text-allsubtitle)",
+        // ----------all card and text new color------------
+        AllCard: "var(--bg-allcard)",
+        AllTitle: "var(--text-alltitle)",
+        AllSubtitle: "var(--text-allsubtitle)",
       },
     },
     darkTheme: "class",
