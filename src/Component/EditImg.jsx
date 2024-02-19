@@ -220,7 +220,6 @@ const EditImg = () => {
       link.download = "image_edit.jpg";
       link.href = canvas.toDataURL();
       link.click();
-      // ?email=${}
       axiosPublic
         .patch(`/user/update?email=${user?.email}`, {
           ConvertLimit: updateValue,
