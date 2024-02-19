@@ -7,6 +7,7 @@ import MultiHexon from "../Hexagon-card/multihexon/multicard";
 import { useContext } from "react";
 import { AuthContext } from "../Authentication/AuthProvider/Authprovider";
 import AccessCard from "../../Component/AccessCard/AccessCard";
+import ContuctUs from "../AboutUs/ContuctUs/ContuctUs";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
         <MultiHexon></MultiHexon>
         <Testimonials></Testimonials>
         <AccessCard></AccessCard>
+        <ContuctUs></ContuctUs>
         <Faq></Faq>
       </div>
     </div>
