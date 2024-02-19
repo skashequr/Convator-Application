@@ -53,7 +53,7 @@ const SpeechToText = () => {
       {/* ----------------to and card---------------- */}
       <div className="text-center">
         <div className="mt-4">
-          {/* ------Conditionally render microphone icon based on 'listening' state -----*/}
+          {/* ------Conditionally render microphone icon based on listening state -----*/}
           <h1>
             Micophone Conditions{" "}
             <FontAwesomeIcon
