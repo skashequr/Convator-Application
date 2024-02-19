@@ -215,8 +215,7 @@ const Signup = () => {
                     {/* ------------password--------- */}
                     <div className="relative">
                       <p
-                        className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
-                  absolute"
+                        className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
                       >
                         Password
                       </p>
@@ -226,8 +225,8 @@ const Signup = () => {
                           type={showPassword ? "text" : "password"}
                           name="password"
                           className="border placeholder-gray-400 focus:outline-none
-                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
-                  border-gray-300 rounded-md"
+                          focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+                          border-gray-300 rounded-md"
                           required
                         />
                         <span
@@ -235,9 +234,9 @@ const Signup = () => {
                           onClick={() => setShowPassword(1)}
                         >
                           {/* {showPassword ? ( */}
-                           q
+                         
                           {/* ) : ( */}
-                            p
+                            
                           {/* )} */}
                         </span>
                       </div>
@@ -251,8 +250,10 @@ const Signup = () => {
                       <input
                         type="file"
                         name="image"
-                        className="file-input w-full max-w-xs"
+                        required
+                        className="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                       />
+
                     </div>
 
                     {/* <p className="text-red-500">{signInStatus} fdhd</p> */}
