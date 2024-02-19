@@ -11,7 +11,7 @@ const usePaymentUserCount = () => {
   } = useQuery({
     queryKey: [`allPaymentUserCounts`],
     queryFn: () => {
-      const res = axiosPublic.get("/payment/all").then((result) => {
+      const res = axiosPublic.get("/payment/all-count").then((result) => {
         const data = result.data;
         return data;
       });
