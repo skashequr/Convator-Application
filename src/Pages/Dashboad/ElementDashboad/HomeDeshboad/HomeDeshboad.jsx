@@ -6,7 +6,7 @@ const DashboadHome = () => {
   const [allPaymentUserCounts, allPaymentUserCountsReload, isLoading] =
     usePaymentUserCount();
   const [allPaymentUser] = useAllPaymentUser();
-  const users = useUsers();
+  const [users] = useUsers();
 
   const TotalMoney = allPaymentUser.reduce((total, paymentUser) => {
     return total + (parseInt(paymentUser?.price) || 0); // Ensure paymentUser.price is valid
