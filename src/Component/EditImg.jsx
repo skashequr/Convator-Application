@@ -16,12 +16,12 @@ const EditImg = () => {
   const [event, setEvent] = useState("brightness");
   const [currentUserConvertLimit, setCurrentUserConvertLimit] = useState();
   const [matchPaidStatus, setMatchPaidStatus] = useState(false);
-  const [allPaymentList, reload, isLoading] = usePaymentList();
+  const [allPaymentList] = usePaymentList();
   const axiosPublic = useAxiosPublic();
-  const users = useUsers();
+  const [users, reload] = useUsers();
   const { user } = useContext(AuthContext);
-  console.log(matchPaidStatus, "matchPaidStatus");
-  // console.log("users", users);
+  // console.log(matchPaidStatus, "matchPaidStatus");
+  console.log("users", users);
 
   useEffect(() => {
     const currentUser = users?.filter(
@@ -196,7 +196,7 @@ const EditImg = () => {
   };
   // paidStatus == true
   const saveImage = () => {
-    if (currentUserConvertLimit != 0 || matchPaidStatus) {
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
       const canvas = document.createElement("canvas");
       canvas.width = details.naturalHeight;
       canvas.height = details.naturalHeight;
@@ -220,11 +220,21 @@ const EditImg = () => {
       link.download = "image_edit.jpg";
       link.href = canvas.toDataURL();
       link.click();
-
+      // ?email=${}
       axiosPublic
-        .put(link, { ConvertLimit: updateValue })
+        .patch(`/user/update?email=${user?.email}`, {
+          ConvertLimit: updateValue,
+        })
         .then((res) => {
           console.log(res);
+          reload();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You lose a Convert limitation",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         })
         .catch((err) => {
           console.log(err);
