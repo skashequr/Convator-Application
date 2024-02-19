@@ -44,7 +44,14 @@ import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
 import LockPdf from "../Pages/Lock-Pdf/LockPdf";
 import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 import PaidUser from "../Pages/Dashboad/PaidUser/PaidUser";
+<<<<<<< HEAD
+import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
+import PrivateRoute from "./Privaterouter";
+import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
+import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
+=======
 import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
+>>>>>>> d06127d073bbd877e1d510ddf933bc1a375a1061
 
 export const router = createBrowserRouter([
   {
@@ -203,7 +210,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "homedes",
-        element: <DashboadHome></DashboadHome>,
+        element: (
+          <PrivateRoute>
+            <DashboadHome></DashboadHome>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "controlUser",
@@ -216,6 +227,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/paidUser",
         element: <PaidUser></PaidUser>,
+      },
+      {
+        path: "/dashboad/UserHome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: "/dashboad/OrderSummary",
+        element: <OrderSummary></OrderSummary>,
+      },
+      {
+        path: "/dashboad/userProfile",
+        element: <UserProfile></UserProfile>,
       },
     ],
   },

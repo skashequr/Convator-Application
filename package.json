@@ -27,6 +27,7 @@
     "antd": "^5.12.8",
     "apexcharts": "^3.45.2",
     "axios": "^1.6.5",
+    "chart.js": "^4.4.1",
     "core-js": "^3.35.1",
     "docxtemplater": "^3.45.0",
     "dotenv": "^16.4.4",

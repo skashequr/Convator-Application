@@ -1,4 +1,4 @@
-/* Stuff to make codepen work */
+/*--------------- Stuff to make codepen work -----------------*/
 *, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -15,7 +15,7 @@
     
 }
 
-/* Outer Hexagon */
+/*------------- Outer Hexagon -----------------*/
 .hexagon-grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -188,7 +188,7 @@
     z-index: 1;
 }
 
-/* Score */
+/*-------------- Score --------------*/
 .hexagon-featured-score {
     position: absolute;
     z-index: 2;
