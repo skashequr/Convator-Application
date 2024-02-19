@@ -44,6 +44,11 @@ import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
 import LockPdf from "../Pages/Lock-Pdf/LockPdf";
 import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 import PaidUser from "../Pages/Dashboad/PaidUser/PaidUser";
+import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
+import PrivateRoute from "./Privaterouter";
+import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
+import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
+import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
   {
@@ -116,9 +121,7 @@ export const router = createBrowserRouter([
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
       },
-      {
-        path: "/pdfToImg",
-      },
+      
       {
         path: "/pngtojpg",
         element: <PngToJpgConverter></PngToJpgConverter>,
@@ -145,7 +148,7 @@ export const router = createBrowserRouter([
         element: <ExcelToHtmlTable></ExcelToHtmlTable>,
       },
       {
-        path: "PdfToImage",
+        path: "/PdfToImage",
         element: <PdftoImage></PdftoImage>,
       },
       {
@@ -156,6 +159,10 @@ export const router = createBrowserRouter([
       {
         path: "/html",
         element: <HtmlToPdf></HtmlToPdf>,
+      },
+      {
+        path:"/pdfToPpt",
+        element: <PdfToPpt></PdfToPpt>
       },
       {
         path: "/word",
@@ -176,7 +183,7 @@ export const router = createBrowserRouter([
         element: <OpenChat></OpenChat>,
       },
       {
-        path: "massage/users/massage/shearefile/:_id",
+        path: "/massage/users/massage/shearefile/:_id",
         element: <OpenChat></OpenChat>,
       },
       {
@@ -200,7 +207,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "homedes",
-        element: <DashboadHome></DashboadHome>,
+        element: (
+          <PrivateRoute>
+            <DashboadHome></DashboadHome>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "controlUser",
@@ -213,6 +224,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/paidUser",
         element: <PaidUser></PaidUser>,
+      },
+      {
+        path: "/dashboad/UserHome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: "/dashboad/OrderSummary",
+        element: <OrderSummary></OrderSummary>,
+      },
+      {
+        path: "/dashboad/userProfile",
+        element: <UserProfile></UserProfile>,
       },
     ],
   },

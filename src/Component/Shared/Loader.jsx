@@ -1,13 +1,14 @@
-import { SunspotLoader } from "react-awesome-loaders";
+import { Button, Spinner } from "keep-react";
+
 const Loader = () => {
   return (
     <div className="items-center justify-center">
-      <SunspotLoader
-        gradientColors={["#6366F1", "#E0E7FF"]}
-        shadowColor={"#3730A3"}
-        desktopSize={"128px"}
-        mobileSize={"100px"}
-      />
+      <Button type="primary" size="md">
+        <span className="pr-2">
+          <Spinner color="info" size="md" />
+        </span>
+        Loading...
+      </Button>
     </div>
   );
 };

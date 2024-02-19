@@ -17,7 +17,7 @@ import exceltopdf from "../../../assets/icons/excel to pdf.png";
 import wordToPdf from "../../../assets/icons/wordToPdf.webp";
 import useUsers from "../../../Hooks/useUser";
 const MultiHexon = () => {
-  const users = useUsers();
+  const [users] = useUsers();
   // console.log("users", users);
 
   return (

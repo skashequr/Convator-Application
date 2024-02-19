@@ -77,10 +77,8 @@ const AddWatermarkToPDF = () => {
     <div className="p-32 bg-AllCard gap-4 w-full grid  items-center justify-center mx-auto ">
       {/* ---------card ----------- */}
       <Card className=" rounded-lg shadow-xl">
-        <h3 className="text-center font-extrabold text-3xl">
-          Add Watermark your Pdf File
-        </h3>
-        {/* <input type="file" onChange={handleFileChange} /> */}
+        <h3 className="text-center font-extrabold text-3xl">Add Watermark</h3>
+
         <div className=" w-full items-center upload-box justify-center">
           <Label
             htmlFor="dropzone-file"
@@ -117,10 +115,10 @@ const AddWatermarkToPDF = () => {
 
         {/* -------------- input deatils--------- */}
 
-        <div className=" mt-8 grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
+        <div className=" mt-8 sm:flex grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
           {/*----------------------------------------- input watermark text -----------------*/}
           <div className="flex flex-col">
-            <label>add watermark text</label>
+            <label>add text</label>
 
             <input
               type="text"
@@ -135,7 +133,7 @@ const AddWatermarkToPDF = () => {
           </div>
           {/* --------- ROtation---------- */}
           <div className="flex flex-col">
-            <label>RotationChange</label>
+            <label>Rotation</label>
 
             <input
               type="number"
@@ -152,7 +150,7 @@ const AddWatermarkToPDF = () => {
           </div>
           {/* -------font size--------- */}
           <div className="flex flex-col">
-            <label>Font Size:</label>
+            <label>Font-Size:</label>
             <input
               type="number"
               min="10"
@@ -167,7 +165,7 @@ const AddWatermarkToPDF = () => {
 
           {/* ----------font color -------- */}
           <div className="flex flex-col">
-            <label>Font Color:</label>
+            <label>Color:</label>
             <input
               type="text"
               placeholder="Enter RGB color (e.g., 0.5,0.5,0.5)"

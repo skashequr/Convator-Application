@@ -1,4 +1,3 @@
-import React from "react";
 import OneCard from "./OneCard";
 import useAccessCard from "../../Hooks/useAccessCard";
 import { SyncLoader } from "react-spinners";
@@ -32,7 +31,7 @@ const AccessCard = () => {
           <SyncLoader color="#36d7b7" />
         </div>
       ) : (
-        <div className="grid max-w-md grid-cols-1 gap-6 auto-rows-fr lg:max-w-full lg:gap-2 xl:gap-6 lg:grid-cols-3 mx-32">
+        <div className="grid text-AllTitle bg-AllCard max-w-md sm:grid-cols-1 gap-6 auto-rows-fr lg:max-w-full sm:max-w-full lg:gap-2 xl:gap-6 lg:grid-cols-3 mx-32">
           {allAccessCard && allAccessCard.length > 0 ? (
             allAccessCard.map((card, idx) => (
               <OneCard key={idx} card={card}></OneCard>

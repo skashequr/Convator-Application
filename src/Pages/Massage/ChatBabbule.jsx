@@ -51,10 +51,10 @@ const ChatBabbule = () => {
         console.error("Error creating chat:", error);
         // Handle error state or show error message to the user
       });
-  }, [friUser, secUser, singleuserId, userId]);
+  }, [friUser, secUser, singleuserId, userId , setChat_id]);
 
   //Send massage
-  console.log(chat_id);
+  console.log(chat_id , userId);
   const sendMassage = (e) => {
     e.preventDefault();
     const massageContent = e.target.massage.value;
