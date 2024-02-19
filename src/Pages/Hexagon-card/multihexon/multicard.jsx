@@ -184,11 +184,13 @@ const MultiHexon = () => {
         </li>
 
         <li className="hexagon hexagon-red">
+          <Link to="/pdftoppt">
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
+            <img className="hexagon-avatar-img w-10 h-[50px]" src="https://cms-cdn.pdfagile.com/free_pdf_to_ppt_converter_03f71275d9.png" />
+            <span className="hexagon-name">Pdf To PPT</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
