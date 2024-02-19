@@ -104,8 +104,8 @@ const Signup = () => {
             "Welcome to my Our Conveter ",
             "success"
           );
+          navigate("/");
         }
-        navigate("/");
       })
       .catch((error) => {
         // console.error(error);
