@@ -11,7 +11,7 @@ const UserReview = () => {
   const [currentUser, setCurrentUser] = useState();
   const [inputValue, setInputValue] = useState("");
   const axiosPublic = useAxiosPublic();
-  const [reload] = useAllReviews();
+  const [, reload] = useAllReviews();
   // console.log(user);
   useEffect(() => {
     const currentUser = users?.filter(
@@ -42,8 +42,8 @@ const UserReview = () => {
     axiosPublic
       .post("/users-review", reviewsData)
       .then((res) => {
-        // console.log(res);
         reload();
+        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -96,9 +96,9 @@ const UserReview = () => {
             </div>
           </fieldset>
           {mode ? (
-            <button class="bn632-hover bn20 w-full">Button</button>
+            <button class="bn632-hover bn20 w-full">Post</button>
           ) : (
-            <button className="btn41-43 btn-41 ">Button</button>
+            <button className="btn41-43 btn-41 ">Post</button>
           )}
         </form>
       </section>

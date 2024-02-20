@@ -48,6 +48,7 @@ import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
 import PrivateRoute from "./Privaterouter";
 import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
 import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
+import OneUserReview from "../Component/UserReview/oneUserReview";
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
@@ -186,6 +187,10 @@ export const router = createBrowserRouter([
       {
         path: "/massage/users",
         element: <Users></Users>,
+      },
+      {
+        path: "/user-review/:email",
+        element: <OneUserReview></OneUserReview>,
       },
       {
         path: "massage/groups",

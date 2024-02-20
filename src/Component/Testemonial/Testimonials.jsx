@@ -9,8 +9,10 @@ import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 
 import "./Testimonials.css";
 import useAllReviews from "../../Hooks/useAllReviews";
+import { useNavigate } from "react-router-dom";
 
 const Testimonials = () => {
+  const navigate = useNavigate();
   const [allReviews] = useAllReviews();
   console.log("allReview", allReviews);
 
@@ -50,7 +52,13 @@ const Testimonials = () => {
             className="swiper_container"
           >
             {allReviews?.map((review, index) => (
-              <SwiperSlide className="rounded-3xl card2 bg-white" key={index}>
+              <SwiperSlide
+                onClick={() => {
+                  navigate(`/user-review/${review.email}`);
+                }}
+                className="rounded-3xl card2 bg-white"
+                key={index}
+              >
                 <div className="img flex flex-col justify-center bg-cover bg-center text-sz relative">
                   <div className="z-10 text-body-1 card-inner relative w-full h-full">
                     <div
