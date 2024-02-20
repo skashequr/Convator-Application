@@ -48,7 +48,7 @@ import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
 import PrivateRoute from "./Privaterouter";
 import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
 import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
-import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
+// import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
   {
@@ -121,7 +121,7 @@ export const router = createBrowserRouter([
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
       },
-      
+
       {
         path: "/pngtojpg",
         element: <PngToJpgConverter></PngToJpgConverter>,
@@ -160,10 +160,7 @@ export const router = createBrowserRouter([
         path: "/html",
         element: <HtmlToPdf></HtmlToPdf>,
       },
-      {
-        path:"/pdfToPpt",
-        element: <PdfToPpt></PdfToPpt>
-      },
+
       {
         path: "/word",
         element: <HtmlToWord></HtmlToWord>,
