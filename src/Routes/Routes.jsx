@@ -44,14 +44,10 @@ import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
 import LockPdf from "../Pages/Lock-Pdf/LockPdf";
 import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 import PaidUser from "../Pages/Dashboad/PaidUser/PaidUser";
-<<<<<<< HEAD
 import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
 import PrivateRoute from "./Privaterouter";
 import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
 import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
-=======
-import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
->>>>>>> d06127d073bbd877e1d510ddf933bc1a375a1061
 
 export const router = createBrowserRouter([
   {
@@ -124,7 +120,7 @@ export const router = createBrowserRouter([
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
       },
-      
+
       {
         path: "/pngtojpg",
         element: <PngToJpgConverter></PngToJpgConverter>,
@@ -163,10 +159,7 @@ export const router = createBrowserRouter([
         path: "/html",
         element: <HtmlToPdf></HtmlToPdf>,
       },
-      {
-        path:"/pdfToPpt",
-        element: <PdfToPpt></PdfToPpt>
-      },
+
       {
         path: "/word",
         element: <HtmlToWord></HtmlToWord>,

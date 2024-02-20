@@ -1,16 +1,41 @@
 import { useRef, useState } from "react";
 import { Card, Checkbox, FileInput, Label } from "flowbite-react";
-
+import axios from "axios";
+// import Swal from "sweetalert2";
+// import useAxiosPublic from "../Hooks/useAxiosPublic";
+// const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+// const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 function ImageResizeTool() {
   const [previewImage, setPreviewImage] = useState("");
   const [originalImageRatio, setOriginalImageRatio] = useState(0);
-
   const fileInputRef = useRef(null);
   const widthInputRef = useRef(null);
   const heightInputRef = useRef(null);
   const ratioInputRef = useRef(null);
   const qualityInputRef = useRef(null);
 
+  // ---------------modal-----------
+
+  // const [openModal, setOpenModal] = useState(false);
+  // const [email, setEmail] = useState("");
+
+  // function onCloseModal() {
+  //   setOpenModal(false);
+  //   setEmail("");
+  // }
+
+  // const axiosPublic = useAxiosPublic();
+  // const [formData, setFormData] = useState({
+  //   emailAddress: "",
+  //   name: "",
+  //   phoneConfirmation: "",
+  //   priority: "",
+  //   range: "",
+  //   date: "",
+  //   textarea: "",
+  //   fileUpload: null,
+  // });
+  // --------
   const loadFile = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -44,7 +69,8 @@ function ImageResizeTool() {
     widthInputRef.current.value = Math.floor(width);
   };
 
-  const resizeAndDownload = () => {
+  // -------------download-------------
+  const resizeAndDownload = async () => {
     const canvas = document.createElement("canvas");
     const a = document.createElement("a");
     const ctx = canvas.getContext("2d");
@@ -62,8 +88,51 @@ function ImageResizeTool() {
       a.click();
     };
     img.src = previewImage;
+
+    // Increment download count
+    try {
+      await axios.post("http://localhost:5000/api/download");
+    } catch (error) {
+      console.error("Error incrementing download count:", error);
+    }
   };
 
+  // --------------feedback---------
+  // const handleInputChange = (e) => {
+  //   const { id, value } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [id]: value,
+  //   }));
+  // };
+
+  // const handleFormSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const response = await axiosPublic.post("/task", formData);
+
+  //     if (response.status === 200) {
+  //       Swal.fire({
+  //         position: "top-end",
+  //         icon: "success",
+  //         title: "Upload successful",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     } else {
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Oops...",
+  //         text: "Something went wrong!",
+  //         footer: '<a href="#">Why do I have this issue?</a>',
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+  //
   return (
     <div className="p-32 gap-4 w-full grid  items-center justify-center mx-auto  ">
       <Card className="wrapper">
@@ -184,6 +253,27 @@ function ImageResizeTool() {
             </button>
           </div>
         </div>
+
+        {/*------------------ Send Feedback Button------------------- */}
+        <button
+          onClick={() => setOpenModal(true)}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-4 inline-flex items-center"
+        >
+          <svg
+            className="w-4 h-4 mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill="currentColor"
+              d="M10 0c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm-1.707 14.293c-.39.39-1.024.39-1.414 0l-3.293-3.293c-.39-.39-.39-1.024 0-1.414.39-.39 1.024-.39 1.414 0l2.586 2.586 6.293-6.293c.39-.39 1.024-.39 1.414 0 .39.39.39 1.024 0 1.414l-7 7z"
+            />
+          </svg>
+          <span>Send Feedback</span>
+        </button>
+
+        {/* ----------------modal box----------- */}
+        {/*  */}
       </Card>
     </div>
   );
