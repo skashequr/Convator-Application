@@ -8,9 +8,11 @@ const AccessCard = () => {
   // console.log("allAccessCard", allAccessCard);
 
   return (
-    <div className=" container mx-auto p-4 sm:p-10">
-      <div className="mb-16 grid text-AllTitle space-y-4 text-center">
-        <h1 className="text-4xl font-semibold leadi">Pricing</h1>
+    <div className="text-textColor container mx-auto p-4 sm:p-10">
+      <div className="mb-16 space-y-4 text-center">
+        <h1 className="text-titleColor text-4xl font-semibold leadi">
+          SUBSCRIPTION
+        </h1>
         <p className="px-4 sm:px-8 lg:px-24">
           Sunt suscipit eaque qui iure unde labore numquam iusto alias
           explicabo, pariatur ipsam, cupiditate aliquid modi?

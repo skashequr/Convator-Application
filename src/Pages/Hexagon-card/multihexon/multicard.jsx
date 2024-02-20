@@ -15,7 +15,11 @@ import watermarkImg from "../../../assets/5084242.png";
 import htmltopdf from "../../../assets/icons/htmltopdf.png";
 import exceltopdf from "../../../assets/icons/excel to pdf.png";
 import wordToPdf from "../../../assets/icons/wordToPdf.webp";
+import useUsers from "../../../Hooks/useUser";
 const MultiHexon = () => {
+  const [users] = useUsers();
+  // console.log("users", users);
+
   return (
     <div className="">
       <ul className="hexagon-grid-container text-white ">

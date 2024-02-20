@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 import { AuthContext } from "../Pages/Authentication/AuthProvider/Authprovider";
@@ -14,15 +15,22 @@ const useMessage = () => {
   } = useQuery({
     queryKey: [`chatMessage`],
     queryFn: () => {
-      const res = axiosPublic.get(`/message/${chat_id}`).then((result) => {
+      return axiosPublic.get(`/message/${chat_id}`).then((result) => {
         const data = result.data;
         return data;
       });
-      console.log("result chatMessage", res);
-      return res;
     },
   });
-  return [chatMessage, reload, isLoading];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      reload();
+    }, 600); // Reload every one second
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [reload]);
+
+  return [chatMessage, isLoading];
 };
 
 export default useMessage;

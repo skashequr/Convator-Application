@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
@@ -6,9 +6,39 @@ import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
 import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 import storeData from "./LinkedList";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { AuthContext } from "../Pages/Authentication/AuthProvider/Authprovider";
+import useUsers from "../Hooks/useUser";
+import Swal from "sweetalert2";
+import usePaymentList from "../Hooks/usePaymentList";
 // import ReactCrop, { type Crop } from 'react-image-crop'
 const EditImg = () => {
   const [event, setEvent] = useState("brightness");
+  const [currentUserConvertLimit, setCurrentUserConvertLimit] = useState();
+  const [matchPaidStatus, setMatchPaidStatus] = useState(false);
+  const [allPaymentList] = usePaymentList();
+  const axiosPublic = useAxiosPublic();
+  const [users, reload] = useUsers();
+  const { user } = useContext(AuthContext);
+  // console.log(matchPaidStatus, "matchPaidStatus");
+  console.log("users", users);
+
+  useEffect(() => {
+    const currentUser = users?.filter(
+      (matchUser) => matchUser?.email === user?.email
+    );
+    const currentUserPayment = allPaymentList?.filter(
+      (matchUser) => matchUser?.cus_email === user?.email
+    );
+    setCurrentUserConvertLimit(currentUser[0]?.ConvertLimit);
+    setMatchPaidStatus(currentUserPayment[0]?.paidStatus);
+  }, [user, users, allPaymentList]);
+
+  // console.log("currentUserInfo", currentUserConvertLimit);
+
+  const updateValue = currentUserConvertLimit - 1;
+
+  // console.log(updateValue, "updateValue");
   const filterElement = [
     {
       name: "brightness",
@@ -164,30 +194,59 @@ const EditImg = () => {
       image: base64Url,
     });
   };
+  // paidStatus == true
   const saveImage = () => {
-    const canvas = document.createElement("canvas");
-    canvas.width = details.naturalHeight;
-    canvas.height = details.naturalHeight;
-    const ctx = canvas.getContext("2d");
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const canvas = document.createElement("canvas");
+      canvas.width = details.naturalHeight;
+      canvas.height = details.naturalHeight;
+      const ctx = canvas.getContext("2d");
 
-    ctx.filter = `brightness(${state.brightness}%) brightness(${state.brightness}%) sepia(${state.sepia}%) saturate(${state.saturate}%) contrast(${state.contrast}%) grayscale(${state.grayscale}%) hue-rotate(${state.hueRotate}deg)`;
+      ctx.filter = `brightness(${state.brightness}%) brightness(${state.brightness}%) sepia(${state.sepia}%) saturate(${state.saturate}%) contrast(${state.contrast}%) grayscale(${state.grayscale}%) hue-rotate(${state.hueRotate}deg)`;
 
-    ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.rotate((state.rotate * Math.PI) / 180);
-    ctx.scale(state.vartical, state.horizental);
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate((state.rotate * Math.PI) / 180);
+      ctx.scale(state.vartical, state.horizental);
 
-    ctx.drawImage(
-      details,
-      -canvas.width / 2,
-      -canvas.height / 2,
-      canvas.width,
-      canvas.height
-    );
+      ctx.drawImage(
+        details,
+        -canvas.width / 2,
+        -canvas.height / 2,
+        canvas.width,
+        canvas.height
+      );
 
-    const link = document.createElement("a");
-    link.download = "image_edit.jpg";
-    link.href = canvas.toDataURL();
-    link.click();
+      const link = document.createElement("a");
+      link.download = "image_edit.jpg";
+      link.href = canvas.toDataURL();
+      link.click();
+      axiosPublic
+        .patch(`/user/update?email=${user?.email}`, {
+          ConvertLimit: updateValue,
+        })
+        .then((res) => {
+          console.log(res);
+          reload();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "You lose a Convert limitation",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
   return (
     <div className="pt-32 text-AllTitle bg-AllCard rounded-xl shadow-lg p-4">

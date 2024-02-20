@@ -134,6 +134,7 @@ const NavBar = () => {
       } else if (
         query === "water mark" ||
         query === "watermark" ||
+        query === "watermark add" ||
         query === "watermark remove" ||
         query === "watermark remover"
       ) {
