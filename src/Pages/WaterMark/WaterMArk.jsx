@@ -82,9 +82,9 @@ const AddWatermarkToPDF = () => {
         <div className=" w-full items-center upload-box justify-center">
           <Label
             htmlFor="dropzone-file"
-            className="dark:hover:bg-bray-800 flex  w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            className="dark:hover:bg-bray-800 flex p-4 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
           >
-            <div className="flex flex-col items-center justify-center pb-6 pt-5">
+            <div className="flex p-4 flex-col items-center justify-center pb-6 pt-5">
               <svg
                 className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
                 aria-hidden="true"
@@ -115,7 +115,7 @@ const AddWatermarkToPDF = () => {
 
         {/* -------------- input deatils--------- */}
 
-        <div className=" mt-8 sm:flex grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
+        <div className=" mt-8 p-3 sm:flex grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
           {/*----------------------------------------- input watermark text -----------------*/}
           <div className="flex flex-col">
             <label>add text</label>
