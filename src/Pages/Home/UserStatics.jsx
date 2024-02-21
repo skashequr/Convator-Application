@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./UserStatics.css";
 import ReactApexChart from "react-apexcharts";
+import { Date } from "core-js";
 
 const UserStatics = () => {
   const [state, setState] = useState({
@@ -51,6 +52,8 @@ const UserStatics = () => {
     },
     /*  */
   });
+
+
 
   return (
     <div className=" px-4 py-16 mx-auto  md:px-24 lg:px-32 lg:py-20">

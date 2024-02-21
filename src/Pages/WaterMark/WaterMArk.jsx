@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { PDFDocument, rgb, degrees } from "pdf-lib";
 import { Card, FileInput, Label } from "flowbite-react";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const AddWatermarkToPDF = () => {
   const [file, setFile] = useState(null);
@@ -9,6 +12,9 @@ const AddWatermarkToPDF = () => {
   const [rotation, setRotation] = useState(0);
   const [fontSize, setFontSize] = useState(50);
   const [fontColor, setFontColor] = useState(rgb(0.5, 0.5, 0.5));
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -33,44 +39,78 @@ const AddWatermarkToPDF = () => {
   };
 
   const addWatermark = async () => {
-    if (!file || !watermarkText) return;
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      if (!file || !watermarkText) return;
 
-    try {
-      const existingPdfBytes = await file.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(existingPdfBytes);
+      try {
+        const existingPdfBytes = await file.arrayBuffer();
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-      const pages = pdfDoc.getPages();
-      const firstPage = pages[0];
+        const pages = pdfDoc.getPages();
+        const firstPage = pages[0];
 
-      const { width, height } = firstPage.getSize();
-      const watermarkFontSize = fontSize;
+        const { width, height } = firstPage.getSize();
+        const watermarkFontSize = fontSize;
 
-      // Calculate the width and height of the watermark text
-      const textWidth = (watermarkFontSize * watermarkText.length) / 2;
-      const textHeight = watermarkFontSize / 2;
+        // Calculate the width and height of the watermark text
+        const textWidth = (watermarkFontSize * watermarkText.length) / 2;
+        const textHeight = watermarkFontSize / 2;
 
-      // Calculate the center position of the page
-      const centerX = width / 2;
-      const centerY = height / 2;
+        // Calculate the center position of the page
+        const centerX = width / 2;
+        const centerY = height / 2;
 
-      // Calculate the starting position for drawing the text
-      const startX = centerX - textWidth / 2;
-      const startY = centerY - textHeight / 2;
+        // Calculate the starting position for drawing the text
+        const startX = centerX - textWidth / 2;
+        const startY = centerY - textHeight / 2;
 
-      firstPage.drawText(watermarkText, {
-        x: startX,
-        y: startY,
-        size: watermarkFontSize,
-        color: fontColor,
-        rotate: degrees(rotation),
+        firstPage.drawText(watermarkText, {
+          x: startX,
+          y: startY,
+          size: watermarkFontSize,
+          color: fontColor,
+          rotate: degrees(rotation),
+        });
+
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        setOutputFile(blob);
+      } catch (error) {
+        console.error("Error adding watermark:", error);
+      }
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
       });
-
-      const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
-      setOutputFile(blob);
-    } catch (error) {
-      console.error("Error adding watermark:", error);
     }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   return (

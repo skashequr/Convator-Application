@@ -2,11 +2,18 @@ import { Card, FileInput, Label } from "flowbite-react";
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import { Button } from "keep-react";
+import Swal from "sweetalert2";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const fileTypes = ["PNG"];
 const PngToJpgConverter = () => {
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
+
   console.log(file);
   const handleChange = (file) => {
     setFile(file);
@@ -23,25 +30,58 @@ const PngToJpgConverter = () => {
   };
 
   const convertToJpg = () => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    const img = new Image();
-    img.onload = () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-      const jpgUrl = canvas.toDataURL("image/jpeg");
-      setConvertedUrl(jpgUrl);
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        const jpgUrl = canvas.toDataURL("image/jpeg");
+        setConvertedUrl(jpgUrl);
 
-      // Create a download link for the converted JPG image
-      const downloadLink = document.createElement("a");
-      downloadLink.href = jpgUrl;
-      downloadLink.download = "converted_image.jpg";
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-    };
-    img.src = imageUrl;
+        // Create a download link for the converted JPG image
+        const downloadLink = document.createElement("a");
+        downloadLink.href = jpgUrl;
+        downloadLink.download = "converted_image.jpg";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      };
+      img.src = imageUrl;
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   return (
