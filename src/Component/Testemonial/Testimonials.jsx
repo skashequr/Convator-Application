@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 const Testimonials = () => {
   const navigate = useNavigate();
   const [allReviews] = useAllReviews();
-  console.log("allReview", allReviews);
 
   return (
     <section className=" ">

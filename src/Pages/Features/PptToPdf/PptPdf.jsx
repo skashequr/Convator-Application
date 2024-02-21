@@ -4,6 +4,9 @@ import axios from "axios";
 // import {  } from "keep-react";
 import { Button, Card, FileInput, Label, Spinner } from "flowbite-react";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import Swal from "sweetalert2";
+import useUserConvertLimit from "../../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [downloading, setDownloading] = useState(false);
@@ -11,6 +14,10 @@ const FileUpload = () => {
   const [lodding, setLodding] = useState(true);
   const [lodFile, setLodFile] = useState(true);
   const [fileName, setFileName] = useState("");
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
+
   // Handle file selection
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
@@ -46,27 +53,61 @@ const FileUpload = () => {
   };
 
   const handleDownload = async () => {
-    try {
-      setDownloading(true);
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      try {
+        setDownloading(true);
 
-      const response = await axios.get("http://localhost:5000/convert", {
-        responseType: "blob",
+        const response = await axios.get("http://localhost:5000/convert", {
+          responseType: "blob",
+        });
+
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "data.pdf");
+        document.body.appendChild(link);
+        link.click();
+
+        setDownloading(false);
+      } catch (error) {
+        console.error("Error downloading file:", error);
+        setError(error.message);
+        setDownloading(false);
+      }
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
       });
-
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "data.pdf");
-      document.body.appendChild(link);
-      link.click();
-
-      setDownloading(false);
-    } catch (error) {
-      console.error("Error downloading file:", error);
-      setError(error.message);
-      setDownloading(false);
     }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
   return (
     <div className="p-36 w-full  rounded-lg shadow-2xl ">

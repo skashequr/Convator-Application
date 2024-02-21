@@ -1,9 +1,15 @@
 import { Button, Card, FileInput, Label } from "flowbite-react";
 import { useState } from "react";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const JpgToPngConverter = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -17,25 +23,59 @@ const JpgToPngConverter = () => {
   };
 
   const convertToPng = () => {
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0);
-      const pngUrl = canvas.toDataURL("image/png");
-      setConvertedUrl(pngUrl);
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        const pngUrl = canvas.toDataURL("image/png");
+        setConvertedUrl(pngUrl);
 
-      // Create a download link for the converted PNG image
-      const downloadLink = document.createElement("a");
-      downloadLink.href = pngUrl;
-      downloadLink.download = "converted_image.png";
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-    };
-    img.src = imageUrl;
+        // Create a download link for the converted PNG image
+        const downloadLink = document.createElement("a");
+        downloadLink.href = pngUrl;
+        downloadLink.download = "converted_image.png";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      };
+      img.src = imageUrl;
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   return (
@@ -75,9 +115,7 @@ const JpgToPngConverter = () => {
           id="dropzone-file"
           className="hidden"
         />
-        <Button c onClick={convertToPng}>
-          Convert to PNG
-        </Button>
+        <Button onClick={convertToPng}>Convert to PNG</Button>
         {/* --------SHOW IMAGE ----------- */}
 
         <div className="flex gap-6">
