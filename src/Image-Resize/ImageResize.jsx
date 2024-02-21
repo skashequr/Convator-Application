@@ -3,12 +3,23 @@ import { Card, Checkbox, FileInput, Label, Modal } from "flowbite-react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useFeedback from "../Hooks/useFeedback";
+import useUserConvertLimit from "../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 function ImageResizeTool() {
   const [previewImage, setPreviewImage] = useState("");
   const [originalImageRatio, setOriginalImageRatio] = useState(0);
+  const axiosPublic = useAxiosPublic();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
+
   const fileInputRef = useRef(null);
   const widthInputRef = useRef(null);
   const heightInputRef = useRef(null);
@@ -72,30 +83,64 @@ function ImageResizeTool() {
 
   // -------------download-------------
   const resizeAndDownload = async () => {
-    const canvas = document.createElement("canvas");
-    const a = document.createElement("a");
-    const ctx = canvas.getContext("2d");
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const canvas = document.createElement("canvas");
+      const a = document.createElement("a");
+      const ctx = canvas.getContext("2d");
 
-    const imgQuality = qualityInputRef.current.checked ? 0.5 : 1.0;
+      const imgQuality = qualityInputRef.current.checked ? 0.5 : 1.0;
 
-    canvas.width = widthInputRef.current.value;
-    canvas.height = heightInputRef.current.value;
+      canvas.width = widthInputRef.current.value;
+      canvas.height = heightInputRef.current.value;
 
-    const img = new Image();
-    img.onload = function () {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      a.href = canvas.toDataURL("image/jpeg", imgQuality);
-      a.download = new Date().getTime().toString();
-      a.click();
-    };
-    img.src = previewImage;
+      const img = new Image();
+      img.onload = function () {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        a.href = canvas.toDataURL("image/jpeg", imgQuality);
+        a.download = new Date().getTime().toString();
+        a.click();
+      };
+      img.src = previewImage;
 
-    // Increment download count
-    try {
-      await axios.post("http://localhost:5000/api/download");
-    } catch (error) {
-      console.error("Error incrementing download count:", error);
+      // Increment download count
+      try {
+        await axios.post("http://localhost:5000/api/download");
+      } catch (error) {
+        console.error("Error incrementing download count:", error);
+      }
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   // --------------feedback---------

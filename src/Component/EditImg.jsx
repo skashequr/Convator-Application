@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { GrRotateLeft, GrRotateRight } from "react-icons/gr";
@@ -12,8 +12,15 @@ import useUserConvertLimit from "../Hooks/useUserConvertLimit";
 const EditImg = () => {
   const [event, setEvent] = useState("brightness");
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
+  console.log(matchPaidStatus, "matchPaidStatus");
+  console.log(currentUserConvertLimit, "currentUserConvertLimit");
 
   const filterElement = [
     {

@@ -8,9 +8,13 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const QRCodeGenerator = () => {
   const [inputText, setInputText] = useState("");
   const axiosPublic = useAxiosPublic();
-const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
-
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
