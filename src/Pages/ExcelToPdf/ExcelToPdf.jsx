@@ -33,14 +33,13 @@ const ExcelToPdf = () => {
         //------------ Convert HTML to PDF--------------
         const doc = new jsPDF({
           //  'landscape'
-          orientation: "portrait",
-          unit: "mm",
-          format: "a4",
-          font: "Arial",
-          fontStyle: "normal",
-          fontSize: 10,
-          x: 10,
-          y: 10,
+          orientation: "landscape",
+          unit: "px",
+          format: [1200, 1000],
+
+          alignment: "center",
+          fontSize: 12,
+          margin: "0 auto",
         });
         doc.html(html, {
           callback: function (pdf) {
@@ -124,7 +123,7 @@ const ExcelToPdf = () => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                   />
                 </svg>
                 <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
