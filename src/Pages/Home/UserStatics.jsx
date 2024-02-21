@@ -1,59 +1,126 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./UserStatics.css";
 import ReactApexChart from "react-apexcharts";
-import { Date } from "core-js";
+import useUsers from "../../Hooks/useUser";
 
 const UserStatics = () => {
-  const [state, setState] = useState({
-    series: [
-      {
-        name: "Monthly User",
-        data: [31, 40, 28, 51, 95, 85],
-      },
-    ],
-    options: {
-      chart: {
-        height: 350,
-        type: "area",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-      },
-      xaxis: {
-        categories: ["Jan", "Fab", "Apr", "May", "Jun", "July"],
-      },
-      tooltip: {
-        x: {
-          format: "Monthly",
-        },
-      },
-      //   fill: {
-      //     colors: ["#F44336", "#E91E63", "#9C27B0"],
-      //   },
-      dataLabels: {
-        style: {
-          colors: ["#E621C9", "#E621C9", "#9C27B0"],
-        },
-      },
-      markers: {
-        colors: ["#F44336", "#E91E63", "#FFBF83"],
-      },
-      // grid: {
-      //   row: {
-      //     colors: ["#F44336", "#E91E63", "#9C27B0"],
-      //   },
-      //   column: {
-      //     colors: ["#F44336", "#E91E63", "#9C27B0"],
-      //   },
-      // },
+  const [users] = useUsers();
+  // const currentDate = new Date();
+  const currentMonth = new Date().getMonth();
+  const [valuesForLastSixMonths, setValuesForLastSixMonths] = useState([]);
+  const [lastSixMonths, setLastSixMonths] = useState([]);
+
+  const [January, setJanuary] = useState(0);
+  const [February, setFebruary] = useState(0);
+  const [March, setMarch] = useState(0);
+  const [April, setApril] = useState(0);
+  const [May, setMay] = useState(0);
+  const [June, setJune] = useState(0);
+  const [July, setJuly] = useState(0);
+  const [August, setAugust] = useState(0);
+  const [September, setSeptember] = useState(0);
+  const [October, setOctober] = useState(0);
+  const [November, setNovember] = useState(0);
+  const [December, setDecember] = useState(0);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  useEffect(() => {
+    const countsByMonth = {
+      January: 0,
+      February: 0,
+      March: 0,
+      April: 0,
+      May: 0,
+      June: 0,
+      July: 0,
+      August: 0,
+      September: 0,
+      October: 0,
+      November: 0,
+      December: 0,
+    };
+
+    users.forEach((user) => {
+      countsByMonth[user.month] += 1;
+    });
+
+    setJanuary(countsByMonth.January);
+    setFebruary(countsByMonth.February);
+    setMarch(countsByMonth.March);
+    setApril(countsByMonth.April);
+    setMay(countsByMonth.May);
+    setJune(countsByMonth.June);
+    setJuly(countsByMonth.July);
+    setAugust(countsByMonth.August);
+    setSeptember(countsByMonth.September);
+    setOctober(countsByMonth.October);
+    setNovember(countsByMonth.November);
+    setDecember(countsByMonth.December);
+
+    const lastSixMonthsArray = [];
+    for (let i = 5; i >= 0; i--) {
+      const monthIndex = (currentMonth - i + 12) % 12;
+      lastSixMonthsArray.push(monthNames[monthIndex].substring(0, 3));
+    }
+    setLastSixMonths(lastSixMonthsArray);
+
+    const valuesForLastSixMonthsArray = [];
+    for (let i = 5; i >= 0; i--) {
+      const monthIndex = (currentMonth - i + 12) % 12;
+      valuesForLastSixMonthsArray.push(countsByMonth[monthNames[monthIndex]]);
+    }
+    setValuesForLastSixMonths(valuesForLastSixMonthsArray);
+  }, [users]);
+
+  const options = {
+    chart: {
+      height: 350,
+      type: "area",
     },
-    /*  */
-  });
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "smooth",
+    },
+    xaxis: {
+      categories: lastSixMonths,
+    },
+    tooltip: {
+      x: {
+        format: "Monthly",
+      },
+    },
+    dataLabels: {
+      style: {
+        colors: ["#E621C9", "#E621C9", "#9C27B0"],
+      },
+    },
+    markers: {
+      colors: ["#F44336", "#E91E63", "#FFBF83"],
+    },
+  };
 
-
+  const series = [
+    {
+      name: "Monthly User",
+      data: valuesForLastSixMonths,
+    },
+  ];
 
   return (
     <div className=" px-4 py-16 mx-auto  md:px-24 lg:px-32 lg:py-20">
@@ -66,7 +133,7 @@ const UserStatics = () => {
               </p>
             </div>
             <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-titleColor sm:text-4xl sm:leading-none">
-              LAst 6 month our user analytics
+              Last 6 month our user analytics
               <br className="hidden md:block" />
               that you{" "}
               <span className="inline-block text-deep-purple-accent-400">
@@ -102,8 +169,8 @@ const UserStatics = () => {
             <div className="chart-area relative">
               <div className="grid2 "></div>
               <ReactApexChart
-                options={state.options}
-                series={state.series}
+                options={options}
+                series={series}
                 type="area"
                 height={350}
                 // width={100%}
