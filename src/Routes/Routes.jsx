@@ -51,6 +51,7 @@ import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile"
 import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
+import PptToPdf from "../Pages/PptToPdf/PptToPdf";
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
@@ -131,6 +132,10 @@ export const router = createBrowserRouter([
       {
         path:"/pdfToPpt",
         element: <PdfToPpt></PdfToPpt>
+      },
+      {
+        path:"/pptToPdfConvert",
+        element: <PptToPdf></PptToPdf>
       },
 
       {
