@@ -4,11 +4,16 @@ import { Helmet } from "react-helmet-async";
 import "./ImageToPDF.css";
 import Dropzone from "react-dropzone";
 import { RingLoader } from "react-spinners";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
 
 const Pdfimg = () => {
   const [photos, setPhotos] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [file, setFile] = useState(null);
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleUpload = (acceptedFiles) => {
     setLoading(true);
@@ -43,20 +48,54 @@ const Pdfimg = () => {
   // };
 
   const pdfGenerate = () => {
-    var doc = new jsPDF("p", "pt", "a4");
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      var doc = new jsPDF("p", "pt", "a4");
 
-    photos.forEach((photo, index) => {
-      if (index !== 0) {
-        doc.addPage();
+      photos.forEach((photo, index) => {
+        if (index !== 0) {
+          doc.addPage();
+        }
+
+        var width = doc.internal.pageSize.getWidth();
+        var height = doc.internal.pageSize.getHeight();
+        var img = URL.createObjectURL(photo);
+        doc.addImage(img, null, 0, 0, width, height, null, "FAST");
+      });
+
+      doc.save("images.pdf");
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
       }
-
-      var width = doc.internal.pageSize.getWidth();
-      var height = doc.internal.pageSize.getHeight();
-      var img = URL.createObjectURL(photo);
-      doc.addImage(img, null, 0, 0, width, height, null, "FAST");
-    });
-
-    doc.save("images.pdf");
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   return (

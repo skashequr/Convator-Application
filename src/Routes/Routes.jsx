@@ -50,6 +50,8 @@ import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummar
 import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
 import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
+import OneUserReview from "../Component/UserReview/oneUserReview";
+// import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
   {
@@ -126,7 +128,11 @@ export const router = createBrowserRouter([
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
       },
-      
+      {
+        path:"/pdfToPpt",
+        element: <PdfToPpt></PdfToPpt>
+      },
+
       {
         path: "/pngtojpg",
         element: <PngToJpgConverter></PngToJpgConverter>,
@@ -165,10 +171,7 @@ export const router = createBrowserRouter([
         path: "/html",
         element: <HtmlToPdf></HtmlToPdf>,
       },
-      {
-        path:"/pdfToPpt",
-        element: <PdfToPpt></PdfToPpt>
-      },
+
       {
         path: "/word",
         element: <HtmlToWord></HtmlToWord>,
@@ -194,6 +197,10 @@ export const router = createBrowserRouter([
       {
         path: "/massage/users",
         element: <Users></Users>,
+      },
+      {
+        path: "/user-review/:email",
+        element: <OneUserReview></OneUserReview>,
       },
       {
         path: "massage/groups",

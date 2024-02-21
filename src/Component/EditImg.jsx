@@ -7,38 +7,14 @@ import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 import storeData from "./LinkedList";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { AuthContext } from "../Pages/Authentication/AuthProvider/Authprovider";
-import useUsers from "../Hooks/useUser";
 import Swal from "sweetalert2";
-import usePaymentList from "../Hooks/usePaymentList";
-// import ReactCrop, { type Crop } from 'react-image-crop'
+import useUserConvertLimit from "../Hooks/useUserConvertLimit";
 const EditImg = () => {
   const [event, setEvent] = useState("brightness");
-  const [currentUserConvertLimit, setCurrentUserConvertLimit] = useState();
-  const [matchPaidStatus, setMatchPaidStatus] = useState(false);
-  const [allPaymentList] = usePaymentList();
   const axiosPublic = useAxiosPublic();
-  const [users, reload] = useUsers();
-  const { user } = useContext(AuthContext);
-  // console.log(matchPaidStatus, "matchPaidStatus");
-  console.log("users", users);
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
-  useEffect(() => {
-    const currentUser = users?.filter(
-      (matchUser) => matchUser?.email === user?.email
-    );
-    const currentUserPayment = allPaymentList?.filter(
-      (matchUser) => matchUser?.cus_email === user?.email
-    );
-    setCurrentUserConvertLimit(currentUser[0]?.ConvertLimit);
-    setMatchPaidStatus(currentUserPayment[0]?.paidStatus);
-  }, [user, users, allPaymentList]);
-
-  // console.log("currentUserInfo", currentUserConvertLimit);
-
-  const updateValue = currentUserConvertLimit - 1;
-
-  // console.log(updateValue, "updateValue");
   const filterElement = [
     {
       name: "brightness",
@@ -220,24 +196,28 @@ const EditImg = () => {
       link.download = "image_edit.jpg";
       link.href = canvas.toDataURL();
       link.click();
-      axiosPublic
-        .patch(`/user/update?email=${user?.email}`, {
-          ConvertLimit: updateValue,
-        })
-        .then((res) => {
-          console.log(res);
-          reload();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "You lose a Convert limitation",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
     } else {
       return Swal.fire({
         position: "top-end",

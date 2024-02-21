@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { PDFDocument, rgb, degrees } from "pdf-lib";
 import { Card, FileInput, Label } from "flowbite-react";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const AddWatermarkToPDF = () => {
   const [file, setFile] = useState(null);
@@ -9,6 +12,9 @@ const AddWatermarkToPDF = () => {
   const [rotation, setRotation] = useState(0);
   const [fontSize, setFontSize] = useState(50);
   const [fontColor, setFontColor] = useState(rgb(0.5, 0.5, 0.5));
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -33,44 +39,78 @@ const AddWatermarkToPDF = () => {
   };
 
   const addWatermark = async () => {
-    if (!file || !watermarkText) return;
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      if (!file || !watermarkText) return;
 
-    try {
-      const existingPdfBytes = await file.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(existingPdfBytes);
+      try {
+        const existingPdfBytes = await file.arrayBuffer();
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
-      const pages = pdfDoc.getPages();
-      const firstPage = pages[0];
+        const pages = pdfDoc.getPages();
+        const firstPage = pages[0];
 
-      const { width, height } = firstPage.getSize();
-      const watermarkFontSize = fontSize;
+        const { width, height } = firstPage.getSize();
+        const watermarkFontSize = fontSize;
 
-      // Calculate the width and height of the watermark text
-      const textWidth = (watermarkFontSize * watermarkText.length) / 2;
-      const textHeight = watermarkFontSize / 2;
+        // Calculate the width and height of the watermark text
+        const textWidth = (watermarkFontSize * watermarkText.length) / 2;
+        const textHeight = watermarkFontSize / 2;
 
-      // Calculate the center position of the page
-      const centerX = width / 2;
-      const centerY = height / 2;
+        // Calculate the center position of the page
+        const centerX = width / 2;
+        const centerY = height / 2;
 
-      // Calculate the starting position for drawing the text
-      const startX = centerX - textWidth / 2;
-      const startY = centerY - textHeight / 2;
+        // Calculate the starting position for drawing the text
+        const startX = centerX - textWidth / 2;
+        const startY = centerY - textHeight / 2;
 
-      firstPage.drawText(watermarkText, {
-        x: startX,
-        y: startY,
-        size: watermarkFontSize,
-        color: fontColor,
-        rotate: degrees(rotation),
+        firstPage.drawText(watermarkText, {
+          x: startX,
+          y: startY,
+          size: watermarkFontSize,
+          color: fontColor,
+          rotate: degrees(rotation),
+        });
+
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        setOutputFile(blob);
+      } catch (error) {
+        console.error("Error adding watermark:", error);
+      }
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
       });
-
-      const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
-      setOutputFile(blob);
-    } catch (error) {
-      console.error("Error adding watermark:", error);
     }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   return (
@@ -82,9 +122,9 @@ const AddWatermarkToPDF = () => {
         <div className=" w-full items-center upload-box justify-center">
           <Label
             htmlFor="dropzone-file"
-            className="dark:hover:bg-bray-800 flex  w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            className="dark:hover:bg-bray-800 flex p-4 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
           >
-            <div className="flex flex-col items-center justify-center pb-6 pt-5">
+            <div className="flex p-4 flex-col items-center justify-center pb-6 pt-5">
               <svg
                 className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
                 aria-hidden="true"
@@ -115,7 +155,7 @@ const AddWatermarkToPDF = () => {
 
         {/* -------------- input deatils--------- */}
 
-        <div className=" mt-8 sm:flex grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
+        <div className=" mt-8 p-3 sm:flex grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
           {/*----------------------------------------- input watermark text -----------------*/}
           <div className="flex flex-col">
             <label>add text</label>

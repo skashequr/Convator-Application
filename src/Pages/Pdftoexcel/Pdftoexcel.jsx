@@ -31,23 +31,23 @@ const PdfToExcle = () => {
   };
 
   const handleDownload = async () => {
-    // setDownloading(true);
-    // try {
-    //   const response = await axios.get('http://localhost:5000/convert/getppt', {
-    //     responseType: 'blob',
-    //   });
-    //   const url = window.URL.createObjectURL(new Blob([response.data]));
-    //   const link = document.createElement('a');
-    //   link.href = url;
-    //   link.setAttribute('download', 'converted.pptx');
-    //   document.body.appendChild(link);
-    //   link.click();
-    //   setDownloading(false);
-    // } catch (error) {
-    //   console.error('Error downloading file:', error);
-    //   setError(error.message);
-    //   setDownloading(false);
-    // }
+    setDownloading(true);
+    try {
+      const response = await axios.get('http://localhost:5000/convert/getpdftoexcle', {
+        responseType: 'blob',
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'converted.xlsx');
+      document.body.appendChild(link);
+      link.click();
+      setDownloading(false);
+    } catch (error) {
+      console.error('Error downloading file:', error);
+      setError(error.message);
+      setDownloading(false);
+    }
   };
 
   return (
