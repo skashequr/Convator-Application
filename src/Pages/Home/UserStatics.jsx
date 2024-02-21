@@ -9,19 +9,20 @@ const UserStatics = () => {
   const currentMonth = new Date().getMonth();
   const [valuesForLastSixMonths, setValuesForLastSixMonths] = useState([]);
   const [lastSixMonths, setLastSixMonths] = useState([]);
+  // console.log(users.length, "users.length");
 
-  const [January, setJanuary] = useState(0);
-  const [February, setFebruary] = useState(0);
-  const [March, setMarch] = useState(0);
-  const [April, setApril] = useState(0);
-  const [May, setMay] = useState(0);
-  const [June, setJune] = useState(0);
-  const [July, setJuly] = useState(0);
-  const [August, setAugust] = useState(0);
-  const [September, setSeptember] = useState(0);
-  const [October, setOctober] = useState(0);
-  const [November, setNovember] = useState(0);
-  const [December, setDecember] = useState(0);
+  // const [January, setJanuary] = useState(0);
+  // const [February, setFebruary] = useState(0);
+  // const [March, setMarch] = useState(0);
+  // const [April, setApril] = useState(0);
+  // const [May, setMay] = useState(0);
+  // const [June, setJune] = useState(0);
+  // const [July, setJuly] = useState(0);
+  // const [August, setAugust] = useState(0);
+  // const [September, setSeptember] = useState(0);
+  // const [October, setOctober] = useState(0);
+  // const [November, setNovember] = useState(0);
+  // const [December, setDecember] = useState(0);
 
   const monthNames = [
     "January",
@@ -54,22 +55,22 @@ const UserStatics = () => {
       December: 0,
     };
 
-    users.forEach((user) => {
+    users?.forEach((user) => {
       countsByMonth[user.month] += 1;
     });
 
-    setJanuary(countsByMonth.January);
-    setFebruary(countsByMonth.February);
-    setMarch(countsByMonth.March);
-    setApril(countsByMonth.April);
-    setMay(countsByMonth.May);
-    setJune(countsByMonth.June);
-    setJuly(countsByMonth.July);
-    setAugust(countsByMonth.August);
-    setSeptember(countsByMonth.September);
-    setOctober(countsByMonth.October);
-    setNovember(countsByMonth.November);
-    setDecember(countsByMonth.December);
+    // setJanuary(countsByMonth.January);
+    // setFebruary(countsByMonth.February);
+    // setMarch(countsByMonth.March);
+    // setApril(countsByMonth.April);
+    // setMay(countsByMonth.May);
+    // setJune(countsByMonth.June);
+    // setJuly(countsByMonth.July);
+    // setAugust(countsByMonth.August);
+    // setSeptember(countsByMonth.September);
+    // setOctober(countsByMonth.October);
+    // setNovember(countsByMonth.November);
+    // setDecember(countsByMonth.December);
 
     const lastSixMonthsArray = [];
     for (let i = 5; i >= 0; i--) {
