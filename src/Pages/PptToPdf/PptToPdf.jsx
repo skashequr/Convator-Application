@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const PdfToPpt = () => {
+const PptToPdf = () => {
   const [file, setFile] = useState(null);
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ const PdfToPpt = () => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      await axios.post('http://localhost:5000/convert/pdftoppt', formData, {
+      await axios.post('http://localhost:5000/convert/ppttopdfconvert', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -33,13 +33,13 @@ const PdfToPpt = () => {
   const handleDownload = async () => {
     setDownloading(true);
     try {
-      const response = await axios.get('http://localhost:5000/convert/getppt', {
-        responseType: 'blob',
+      const response = await axios.get('http://localhost:5000/convert/getppttopf', {
+       responseType: 'blob',
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'converted.pptx');
+      link.setAttribute('download', 'converted.pdf');
       document.body.appendChild(link);
       link.click();
       setDownloading(false);
@@ -68,4 +68,4 @@ const PdfToPpt = () => {
   );
 };
 
-export default PdfToPpt;
+export default PptToPdf;

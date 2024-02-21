@@ -48,7 +48,10 @@ import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
 import PrivateRoute from "./Privaterouter";
 import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
 import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
+import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
+import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
+import PptToPdf from "../Pages/PptToPdf/PptToPdf";
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
@@ -115,12 +118,24 @@ export const router = createBrowserRouter([
         element: <AddWatermarkToPDF></AddWatermarkToPDF>,
       },
       {
+        path: "/pdftoexcel",
+        element: <PdfToExcle></PdfToExcle>
+      },
+      {
         path: "/wordToPdf",
         element: <PptPdf></PptPdf>,
       },
       {
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
+      },
+      {
+        path:"/pdfToPpt",
+        element: <PdfToPpt></PdfToPpt>
+      },
+      {
+        path:"/pptToPdfConvert",
+        element: <PptToPdf></PptToPdf>
       },
 
       {
