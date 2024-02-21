@@ -13,8 +13,13 @@ const AddWatermarkToPDF = () => {
   const [fontSize, setFontSize] = useState(50);
   const [fontColor, setFontColor] = useState(rgb(0.5, 0.5, 0.5));
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);

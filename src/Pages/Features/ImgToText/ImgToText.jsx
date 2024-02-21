@@ -16,8 +16,13 @@ function ImgToText() {
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState("eng");
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   // const handleChange = (files) => {
   //   setIsLoading(true);

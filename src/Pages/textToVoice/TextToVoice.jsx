@@ -10,8 +10,13 @@ const TextToVoice = () => {
   const [selectedVoice, setSelectedVoice] = useState(0);
   const [inputText, setInputText] = useState("");
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   useEffect(() => {
     const handleVoicesChanged = () => {

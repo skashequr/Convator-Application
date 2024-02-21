@@ -11,8 +11,13 @@ const PngToJpgConverter = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   console.log(file);
   const handleChange = (file) => {

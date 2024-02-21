@@ -12,8 +12,13 @@ const Pdfimg = () => {
   const [photos, setPhotos] = useState(false);
   const [loading, setLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleUpload = (acceptedFiles) => {
     setLoading(true);

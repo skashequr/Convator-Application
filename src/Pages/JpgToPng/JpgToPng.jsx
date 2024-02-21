@@ -8,8 +8,13 @@ const JpgToPngConverter = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [convertedUrl, setConvertedUrl] = useState("");
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];

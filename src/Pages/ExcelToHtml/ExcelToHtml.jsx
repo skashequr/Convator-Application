@@ -9,8 +9,13 @@ const ExcelToHtmlTable = () => {
   const [file, setFile] = useState(null);
   const [htmlTable, setHtmlTable] = useState(null);
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleConvert = () => {
     if (file) {
