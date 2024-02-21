@@ -49,6 +49,7 @@ import PrivateRoute from "./Privaterouter";
 import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
 import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
 import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
+import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ export const router = createBrowserRouter([
       {
         path: "/watermark",
         element: <AddWatermarkToPDF></AddWatermarkToPDF>,
+      },
+      {
+        path: "/pdftoexcel",
+        element: <PdfToExcle></PdfToExcle>
       },
       {
         path: "/wordToPdf",
