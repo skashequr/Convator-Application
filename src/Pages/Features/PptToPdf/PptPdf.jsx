@@ -15,8 +15,13 @@ const FileUpload = () => {
   const [lodFile, setLodFile] = useState(true);
   const [fileName, setFileName] = useState("");
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   // Handle file selection
   const handleFileChange = (e) => {

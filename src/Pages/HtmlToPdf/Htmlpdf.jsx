@@ -12,8 +12,13 @@ const HtmlToPdf = () => {
   const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false); // Corrected spelling
   const axiosPublic = useAxiosPublic();
-  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
-    useUserConvertLimit();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
