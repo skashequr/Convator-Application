@@ -5,12 +5,17 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { FaCopy } from "react-icons/fa";
 import Swal from "sweetalert2";
 import html2pdf from "html2pdf.js";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const ExceltoPdf = () => {
   const [file, setFile] = useState(null);
   const [jsonData, setJsonData] = useState("");
   const [successUpload, setSuccessUpload] = useState(false);
   const [fileName, setFileName] = useState("");
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleConvert = () => {
     if (file) {
@@ -29,32 +34,98 @@ const ExceltoPdf = () => {
   };
 
   const handleDownloadJson = () => {
-    const blob = new Blob([jsonData], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "data.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const blob = new Blob([jsonData], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   const handleDownloadPdf = () => {
-    // Convert JSON data to HTML for PDF generation
-    const htmlContent = `<pre>${jsonData}</pre>`;
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      // Convert JSON data to HTML for PDF generation
+      const htmlContent = `<pre>${jsonData}</pre>`;
 
-    // Define options for pdf generation
-    const options = {
-      margin: 1,
-      filename: "data.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    };
+      // Define options for pdf generation
+      const options = {
+        margin: 1,
+        filename: "data.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      };
 
-    // Generate PDF
-    html2pdf().set(options).from(htmlContent).save();
+      // Generate PDF
+      html2pdf().set(options).from(htmlContent).save();
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   const handleFileChange = (e) => {

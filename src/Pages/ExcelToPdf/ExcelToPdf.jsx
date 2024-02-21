@@ -5,6 +5,9 @@ import * as XLSX from "xlsx";
 import { jsPDF } from "jspdf";
 
 import { Spinner } from "keep-react";
+import Swal from "sweetalert2";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const ExcelToPdf = () => {
   const [file, setFile] = useState(null);
@@ -12,6 +15,9 @@ const ExcelToPdf = () => {
   const [conversionComplete, setConversionComplete] = useState(false);
   //  loading indicator
   const [loading, setLoading] = useState(false);
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleConvert = () => {
     if (file) {
@@ -57,9 +63,42 @@ const ExcelToPdf = () => {
   };
 
   const handleDownloadPdf = () => {
-    // Trigger the download of the PDF file
-    const doc = new jsPDF();
-    doc.save("converted.pdf");
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      // Trigger the download of the PDF file
+      const doc = new jsPDF();
+      doc.save("converted.pdf");
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   return (

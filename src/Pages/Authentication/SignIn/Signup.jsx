@@ -22,10 +22,31 @@ const Signup = () => {
   const [logInStatus, setLogInStatus] = React.useState("");
   const [signInStatus, setSignInStatus] = React.useState("");
   const navigate = useNavigate();
- 
+  // Create a new Date object
+  const currentDate = new Date();
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const currentMonthName = months[currentDate.getMonth()];
+
+  // console.log(currentMonthName); // This will output the name of the current month
+
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
     const email = form.get("email");
@@ -58,20 +79,25 @@ const Signup = () => {
       return;
     }
 
-    const img_hosting_api =`https://api.imgbb.com/1/upload?key=98a68b7bd366add5d11b6e3944748d73`
+    const img_hosting_api = `https://api.imgbb.com/1/upload?key=98a68b7bd366add5d11b6e3944748d73`;
     const formData = new FormData();
-        formData.append('image', image);
-        console.log(image);
+    formData.append("image", image);
+    console.log(image);
 
-        const res = await axios.post(img_hosting_api, formData, {
-       
-        });
-  
-        console.log(res.data);
-        res.data.data.display_url
-        const imageUrl = res.data.data.display_url
+    const res = await axios.post(img_hosting_api, formData, {});
 
-    const data = { name, password, email, isAdmin , imageUrl };
+    console.log(res.data);
+    res.data.data.display_url;
+    const imageUrl = res.data.data.display_url;
+
+    const data = {
+      name,
+      password,
+      email,
+      isAdmin,
+      imageUrl,
+      month: currentMonthName,
+    };
     // Append the profile image to the form data
 
     try {
@@ -214,9 +240,7 @@ const Signup = () => {
                     </div>
                     {/* ------------password--------- */}
                     <div className="relative">
-                      <p
-                        className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute"
-                      >
+                      <p className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">
                         Password
                       </p>
                       <div className="inline-flex ">
@@ -234,9 +258,9 @@ const Signup = () => {
                           onClick={() => setShowPassword(1)}
                         >
                           {/* {showPassword ? ( */}
-                         
+
                           {/* ) : ( */}
-                            
+
                           {/* )} */}
                         </span>
                       </div>
@@ -253,7 +277,6 @@ const Signup = () => {
                         required
                         className="block w-full text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                       />
-
                     </div>
 
                     {/* <p className="text-red-500">{signInStatus} fdhd</p> */}

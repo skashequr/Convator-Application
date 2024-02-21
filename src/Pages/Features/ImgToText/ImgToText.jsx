@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Tesseract from "tesseract.js";
 import Loader from "./Loader";
 import { MdCloudUpload, MdDelete } from "react-icons/md";
 import Copy from "./Coppy";
 import toast from "react-hot-toast";
 import Dropzone from "react-dropzone";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useUserConvertLimit from "../../../Hooks/useUserConvertLimit";
 
 function ImgToText() {
   const [image, setImage] = useState(null);
@@ -12,6 +15,9 @@ function ImgToText() {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState("eng");
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   // const handleChange = (files) => {
   //   setIsLoading(true);
@@ -26,25 +32,59 @@ function ImgToText() {
   };
 
   const handleClick = () => {
-    if (!image) {
-      toast.error("Please upload the image!");
-      return;
-    }
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      if (!image) {
+        toast.error("Please upload the image!");
+        return;
+      }
 
-    setIsLoading(true);
-    Tesseract.recognize(image, language, {
-      logger: (m) => {
-        setProgress(parseInt(m.progress * 100));
-      },
-    })
-      .catch((err) => {
-        console.error(err);
+      setIsLoading(true);
+      Tesseract.recognize(image, language, {
+        logger: (m) => {
+          setProgress(parseInt(m.progress * 100));
+        },
       })
-      .then((result) => {
-        let text = result.data.text;
-        setText(text);
-        setIsLoading(false);
+        .catch((err) => {
+          console.error(err);
+        })
+        .then((result) => {
+          let text = result.data.text;
+          setText(text);
+          setIsLoading(false);
+        });
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
       });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   const handleUpload = (acceptedFiles) => {
