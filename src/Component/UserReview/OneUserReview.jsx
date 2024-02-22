@@ -37,7 +37,7 @@ const OneUserReview = () => {
       });
   };
   return (
-    <div className="flex flex-wrap py-32 gap-10">
+    <div className="flex flex-wrap py-32 mx-10 gap-10">
       {isLoading ? (
         <div className="py-32 text-center ">Loading...</div>
       ) : (
@@ -45,7 +45,7 @@ const OneUserReview = () => {
           {oneUserReview?.map((user, idx) => (
             <div
               key={idx}
-              className="container flex flex-col w-1/3 p-6 divide-y rounded-md dark:divide-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              className="container flex flex-col w-96 p-6 divide-y rounded-md dark:divide-gray-700 dark:bg-gray-900 dark:text-gray-100"
             >
               <div className="flex justify-between p-4">
                 <div className="flex space-x-4">
