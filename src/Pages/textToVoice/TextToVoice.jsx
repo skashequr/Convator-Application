@@ -3,6 +3,7 @@ import "./TexttoVoice.css";
 import Swal from "sweetalert2";
 import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Helpdesk from "../../Component/Shared/Helpdesk";
 
 const TextToVoice = () => {
   const [speech, setSpeech] = useState(new SpeechSynthesisUtterance());
@@ -104,7 +105,7 @@ const TextToVoice = () => {
   };
 
   return (
-    <div className="hero pt-12">
+    <div className="hero bg-AllCard pt-12">
       <h1>
         Text to <span>Speech Converter</span>
       </h1>
@@ -130,6 +131,7 @@ const TextToVoice = () => {
           Listen & Download
         </button>
       </div>
+      <Helpdesk></Helpdesk>
     </div>
   );
 };
