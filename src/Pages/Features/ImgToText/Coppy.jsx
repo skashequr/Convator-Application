@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { MdContentCopy } from "react-icons/md";
 // import { toast } from "react-toastify";
-import toast from 'react-hot-toast';
-
-
+import toast from "react-hot-toast";
+import { Button } from "keep-react";
 
 export default function Copy({ text }) {
   const [value, setValue] = useState("Try copy this :) Button UI will change!");
   const [isCopied, setCopied] = useState(false);
-  const notify = () => toast('coppy done',{ icon: '✅'});
+  const notify = () => toast("coppy done", { icon: "✅" });
   useEffect(() => {
     setValue(text);
     const timeout = setTimeout(() => {
@@ -21,18 +20,16 @@ export default function Copy({ text }) {
 
   return (
     <div>
-      <p >
+      <p>
         {value}
         <div role="button" tabIndex={0}>
           <CopyToClipboard text={text} onCopy={() => setCopied(true)}>
-            <MdContentCopy
-              onClick={notify}
-              style={{ cursor: "pointer" }}
-            />
+            <Button>
+              <MdContentCopy onClick={notify} style={{ cursor: "pointer" }} />
+            </Button>
           </CopyToClipboard>
         </div>
       </p>
     </div>
   );
 }
-

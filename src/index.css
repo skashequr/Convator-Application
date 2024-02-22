@@ -6,7 +6,7 @@
 
 .light {
   --grape: #FFFFFF;
-  --grape2: #F8FAFC;
+  --grape2: #FFFFFF;
 
   --tittle-color: #2c0835;
   --text-color: #7e3c8f;
@@ -19,7 +19,7 @@
   /* -----text------ */
   --text-allcard: #000000;
   /* all light card backgroud */
-  --bg-allcard: #FFFFFF;
+  --bg-allcard: #F7FAF7;
   --text-alltitle: #171a22;
   --text-allsubtitle: #718095
 }
