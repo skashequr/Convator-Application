@@ -15,7 +15,7 @@ import {
 import { Button } from "keep-react";
 import { FaCopy, FaMicrophone, FaWindowRestore } from "react-icons/fa";
 
-const SpeechToText = () => {
+const VoiceToText = () => {
   const {
     transcript,
     listening,
@@ -160,4 +160,4 @@ const SpeechToText = () => {
   );
 };
 
-export default SpeechToText;
+export default VoiceToText;

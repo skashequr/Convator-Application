@@ -21,7 +21,6 @@ import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
-import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
@@ -52,6 +51,7 @@ import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
+import VoiceToText from "../Pages/VoicetoText/VoiceTospeech";
 
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
@@ -97,7 +97,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/speech",
-        element: <SpeechToText></SpeechToText>,
+        element: <VoiceToText></VoiceToText>,
       },
 
       {
