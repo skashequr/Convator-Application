@@ -52,6 +52,7 @@ import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
+
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
@@ -119,7 +120,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/pdftoexcel",
-        element: <PdfToExcle></PdfToExcle>
+        element: <PdfToExcle></PdfToExcle>,
       },
       {
         path: "/wordToPdf",
@@ -130,12 +131,12 @@ export const router = createBrowserRouter([
         element: <PdfEditor></PdfEditor>,
       },
       {
-        path:"/pdfToPpt",
-        element: <PdfToPpt></PdfToPpt>
+        path: "/pdfToPpt",
+        element: <PdfToPpt></PdfToPpt>,
       },
       {
-        path:"/pptToPdfConvert",
-        element: <PptToPdf></PptToPdf>
+        path: "/pptToPdfConvert",
+        element: <PptToPdf></PptToPdf>,
       },
 
       {
@@ -186,6 +187,7 @@ export const router = createBrowserRouter([
         path: "/lock",
         element: <LockPdf></LockPdf>,
       },
+
       // ---------------- Massageing routes --------------------
       {
         path: "/massage/welcome",
