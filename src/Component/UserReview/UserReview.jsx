@@ -103,7 +103,7 @@ const UserReview = () => {
         </form> */}
             <div className="w-full p-4 shadow-md">
               <div className="">
-                <label htmlFor="comment" className="text-sm">
+                <label htmlFor="comment" className="text-sm ">
                   Comment
                 </label>
                 <textarea
@@ -112,7 +112,7 @@ const UserReview = () => {
                   placeholder="write something here"
                   value={inputValue}
                   onChange={handleChange}
-                  className="w-full p-3 bg-AllCard shadow-2xl rounded-md focus:ring focus:ri focus:ri border-dashed border-2 border-sky-500 "
+                  className="w-full p-3 text-AllTitle bg-AllCard shadow-2xl rounded-md focus:ring focus:ri focus:ri border-dashed border-2 border-sky-500 "
                 ></textarea>
               </div>
             </div>
