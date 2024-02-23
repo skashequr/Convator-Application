@@ -7,6 +7,7 @@ import { RingLoader } from "react-spinners";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import Helpdesk from "../Shared/Helpdesk";
 
 const Pdfimg = () => {
   const [photos, setPhotos] = useState(false);
@@ -179,6 +180,10 @@ const Pdfimg = () => {
           </div>
         </div>
       )}
+      {/* -----------issue feedback----------- */}
+      <div className="circled mx-auto flex  ml-4 m-3 items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+        <Helpdesk></Helpdesk>
+      </div>
     </div>
   );
 };
