@@ -53,6 +53,8 @@ import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
 import VoiceToText from "../Pages/VoicetoText/VoiceTospeech";
 
+import IssueFeedback from "../Pages/Dashboad/AdminePanelComponent/IssueFeedback/IssueFeed";
+
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
@@ -255,6 +257,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/userProfile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "/dashboad/issue",
+        element: <IssueFeedback></IssueFeedback>,
       },
     ],
   },
