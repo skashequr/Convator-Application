@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useUserConvertLimit from "../Hooks/useUserConvertLimit";
+import Helpdesk from "./Shared/Helpdesk";
 const EditImg = () => {
   const [event, setEvent] = useState("brightness");
   const axiosPublic = useAxiosPublic();
@@ -324,6 +325,10 @@ const EditImg = () => {
               >
                 Save Image
               </button>
+              {/* -----------issue feedback----------- */}
+              <div className="circled mx-auto flex  ml-4 m-3 items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                <Helpdesk></Helpdesk>
+              </div>
             </div>
           </div>
           <div className="w-[550px] border border-cyan-950">
