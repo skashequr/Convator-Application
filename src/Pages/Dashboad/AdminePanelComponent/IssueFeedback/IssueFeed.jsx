@@ -23,7 +23,7 @@ const IssueFeedback = () => {
   console.log(issuedata);
 
   return (
-    <div className="grid md:grid-cols-2 gap-6 text-transparent">
+    <div className="grid sm:grid-flow-col-1 md:grid-cols-2 gap-6 text-transparent">
       {/* Map through the issuedata array and render an IssueCard component for each item */}
       {issuedata.map((issuedata) => (
         <IssueCard key={issuedata._id} issue={issuedata} />

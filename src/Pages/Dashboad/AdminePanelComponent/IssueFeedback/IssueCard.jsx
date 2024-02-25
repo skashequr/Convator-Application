@@ -1,5 +1,6 @@
 import { User } from "phosphor-react";
 import { Button, Card } from "keep-react";
+import { Progress } from "flowbite-react";
 import {
   DateRange,
   Email,
@@ -22,9 +23,9 @@ const IssueCard = ({ issue }) => {
 
   console.log(issue);
   return (
-    <div className="shadow-2xl">
+    <div className="shadow-2xl w-full">
       <Card
-        className="!max-w-xs overflow-hidden rounded-md md:!max-w-[478px]"
+        className="!max-w-xs w-full overflow-hidden rounded-md md:!max-w-[478px]"
         imgSrc={fileUpload}
         imgSize="md"
         horizontal={true}
@@ -62,19 +63,31 @@ const IssueCard = ({ issue }) => {
 
           {/* /------------------- */}
 
-          <Card.Container className="flex items-center justify-between">
+          <Card.Container className="flex items-center gap-3 justify-between">
             {/*-------------- phone--------- */}
             <Card.Title className="flex items-center gap-2 !text-body-5 font-medium text-metal-500">
               <PhoneEnabled></PhoneEnabled>
               <span className="">{phoneConfirmation}</span>
             </Card.Title>
+          </Card.Container>
+
+          {/* ---- range--------- */}
+          <Card.Container className="items-center  justify-between">
             {/* ---- range--- */}
-            <Card.Title className="flex items-center gap-2 !text-body-5 font-medium text-metal-500">
-              <RamenDining size={16} color="#5E718D" />
-              <span>{range} %</span>
+            <Card.Title className=" ">
+              <Progress
+                progress={range}
+                size="lg"
+                color="indigo"
+                progressLabelPosition="inside"
+                textLabel="Flowbite"
+                textLabelPosition="outside"
+                labelProgress
+              />
             </Card.Title>
           </Card.Container>
 
+          {/* btton-------- */}
           <Card.Container className="my-3 flex items-center justify-between">
             <Button type="primary" size="sm">
               Edit

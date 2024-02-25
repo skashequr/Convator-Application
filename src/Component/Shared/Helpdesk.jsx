@@ -250,7 +250,7 @@ const Helpdesk = () => {
                           id="fileUpload"
                           name="file-upload"
                           type="file"
-                          accept="image/jpeg"
+                          accept="image/jpeg/png"
                           onChange={handleInputChange}
                         />
                       </label>

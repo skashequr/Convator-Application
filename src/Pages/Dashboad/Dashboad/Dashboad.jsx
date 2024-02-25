@@ -330,7 +330,7 @@ const Dashboard = () => {
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
-                    Issue
+                    Helpdesk Issue
                   </span>
                 </NavLink>
               </li>

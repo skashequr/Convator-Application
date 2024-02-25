@@ -23,7 +23,7 @@ const MainLayout = () => {
     <div className={mode ? "dark" : "light"}>
       {isLoading ? (
         <div className="h-screen flex justify-center items-center">
-          <div class="loader"></div>
+          <div className="loader"></div>
         </div>
       ) : (
         <div className="bg-gradient-to-r from-background to-background2">
