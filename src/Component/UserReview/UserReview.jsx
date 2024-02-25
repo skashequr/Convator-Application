@@ -103,7 +103,7 @@ const UserReview = () => {
         </form> */}
             <div className="w-full p-4 shadow-md">
               <div className="">
-                <label htmlFor="comment" className="text-sm">
+                <label htmlFor="comment" className="text-sm ">
                   Comment
                 </label>
                 <textarea

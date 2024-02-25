@@ -1,4 +1,4 @@
-// src/components/FileUpload.js
+// src/components/WordToPdf.js
 import { useState } from "react";
 import axios from "axios";
 // import {  } from "keep-react";
@@ -7,7 +7,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import Swal from "sweetalert2";
 import useUserConvertLimit from "../../../Hooks/useUserConvertLimit";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-const FileUpload = () => {
+const WordToPdf = () => {
   const [file, setFile] = useState(null);
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState(null);
@@ -206,4 +206,4 @@ const FileUpload = () => {
   );
 };
 
-export default FileUpload;
+export default WordToPdf;

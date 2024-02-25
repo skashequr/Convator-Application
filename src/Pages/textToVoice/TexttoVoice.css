@@ -9,6 +9,7 @@ width: 100%;
 min-height: 100vh;
 /* background: linear-gradient(45deg,#010758,#490d61); */
 display: flex;
+margin-top: 50px;
 align-items: center;
 justify-content: center;
 flex-direction: column;
@@ -18,7 +19,7 @@ flex-direction: column;
     font-weight: 600;
     margin-top: -50px;
     margin-bottom: 50px;
-    color: #FFF;
+    color: #765ecd;
 
 }
 .hero h1 span{

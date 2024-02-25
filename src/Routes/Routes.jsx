@@ -21,7 +21,6 @@ import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
-import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
@@ -34,7 +33,6 @@ import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 
 import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
-import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
@@ -52,6 +50,11 @@ import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
+import VoiceToText from "../Pages/VoicetoText/VoiceTospeech";
+
+import IssueFeedback from "../Pages/Dashboad/AdminePanelComponent/IssueFeedback/IssueFeed";
+import WordToPdf from "../Pages/Features/WordToPdf/WordToPdf";
+
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
@@ -96,7 +99,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/speech",
-        element: <SpeechToText></SpeechToText>,
+        element: <VoiceToText></VoiceToText>,
       },
 
       {
@@ -119,23 +122,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "/pdftoexcel",
-        element: <PdfToExcle></PdfToExcle>
+        element: <PdfToExcle></PdfToExcle>,
       },
       {
         path: "/wordToPdf",
-        element: <PptPdf></PptPdf>,
+        element: <WordToPdf></WordToPdf>,
       },
       {
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
       },
       {
-        path:"/pdfToPpt",
-        element: <PdfToPpt></PdfToPpt>
+        path: "/pdfToPpt",
+        element: <PdfToPpt></PdfToPpt>,
       },
       {
-        path:"/pptToPdfConvert",
-        element: <PptToPdf></PptToPdf>
+        path: "/pptToPdfConvert",
+        element: <PptToPdf></PptToPdf>,
       },
 
       {
@@ -186,6 +189,7 @@ export const router = createBrowserRouter([
         path: "/lock",
         element: <LockPdf></LockPdf>,
       },
+
       // ---------------- Massageing routes --------------------
       {
         path: "/massage/welcome",
@@ -253,6 +257,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/userProfile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "/dashboad/issue",
+        element: <IssueFeedback></IssueFeedback>,
       },
     ],
   },
