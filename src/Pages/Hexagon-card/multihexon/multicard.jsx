@@ -184,25 +184,31 @@ const MultiHexon = () => {
         </li>
 
         <li className="hexagon hexagon-red">
+          <Link to="/pdftoppt">
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
+            <img className="hexagon-avatar-img w-10 h-[50px]" src="https://cms-cdn.pdfagile.com/free_pdf_to_ppt_converter_03f71275d9.png" />
+            <span className="hexagon-name">Pdf To PPT</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
+          <Link to="/pdftoexcel">
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
+            <img className="hexagon-avatar-img w-10 h-[50px]" src="https://th.bing.com/th/id/OIP.ZM2IWcQ7iazkLug3ESZ3nQHaE8?rs=1&pid=ImgDetMain" />
+            <span className="hexagon-name">Pdf to Excle</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
+          <Link to="/pptToPdfConvert">
           <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
+            <img className="hexagon-avatar-img w-10 h-[50px]" src="https://freepowerpointtemplates.com/wp-content/uploads/PowerPoint-Files-To-PDF-Featured-FreePowerPointTemplates.png" />
+            <span className="hexagon-name">ppt To Pdf</span>
             <span className="hexagon-metric-label">Coachability</span>
           </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">
