@@ -3,6 +3,7 @@ import { FaCartShopping, FaUsersLine } from "react-icons/fa6";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { MdVerifiedUser } from "react-icons/md";
 import useAdmin from "../../../Hooks/useAdmin";
+
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
 
@@ -10,10 +11,7 @@ const Dashboard = () => {
     <div>
       {/* ----------  sidebar  ----- */}
 
-      <div className="flex min-h-screen">
-        {/* <div className="w-64 min-h-screen text-2xl font-bold bg-[#1d061e]">
-          
-        </div> */}
+      <div className="flex ">
         <div className="w-64 min-h-screen text-2xl font-bold top-14 hover:w-64 md:w-64 bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
           <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <ul className="flex flex-col py-4 space-y-1">
@@ -22,11 +20,6 @@ const Dashboard = () => {
                 <div className="">
                   <div className="w-full  items-center jh-14 text-white z-10">
                     <div className="items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 border-none">
-                      {/* <img
-                        className="w-7 h-7 md:w-7 md:h- mr-2 rounded-md overflow-hidden"
-                        src="https://i.ibb.co/Q836XZ2/scanner.png"
-                      />
-                      <span className="hidden md:block">Dashboad</span> */}
                       <img
                         className="w-full h-14"
                         src="https://i.ibb.co/YT03y3K/DASHBOAD-best-1.gif"
@@ -310,8 +303,8 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/dashboad/issue"
                   className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
@@ -337,9 +330,9 @@ const Dashboard = () => {
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
-                    Settings
+                    Helpdesk Issue
                   </span>
-                </a>
+                </NavLink>
               </li>
             </ul>
             {/* <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs">

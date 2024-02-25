@@ -1,73 +1,63 @@
-import { Button } from "flowbite-react";
-import { useState } from "react";
-import { pngToSvg } from "svg-png-converter";
-import Swal from "sweetalert2";
+import React, { useState } from "react";
+import { svg2png } from "svg-png-converter";
 
-const PngToSvgConverter = () => {
-  const [imageUrl, setImageUrl] = useState("");
-  const [svgCode, setSvgCode] = useState("");
+const SvgToPngConverter = () => {
+  const [svgFile, setSvgFile] = useState(null);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (event) => {
-      setImageUrl(event.target.result);
-    };
-
-    reader.readAsDataURL(file);
-  };
-
-  const convertToSvg = async () => {
-    try {
-      // Convert PNG image to SVG code
-      const svg = await pngToSvg(imageUrl); // Use pngToSvg instead of png2svg
-
-      // Set SVG code
-      setSvgCode(svg);
-    } catch (error) {
-      console.error("Error converting PNG to SVG:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Failed to convert PNG to SVG!",
-      });
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type === "image/svg+xml") {
+      setSvgFile(file);
+    } else {
+      alert("Please upload an SVG file.");
     }
   };
 
-  const downloadSvg = () => {
-    // Create a Blob object representing the data as an SVG image file
-    const blob = new Blob([svgCode], { type: "image/svg+xml" });
+  const handleConvertToPng = async () => {
+    try {
+      const outputBuffer = await svg2png({
+        input: await svgFile.arrayBuffer(),
+        encoding: "buffer",
+        format: "jpeg",
+      });
+      downloadFile(outputBuffer, "converted_image.jpeg", "image/jpeg");
+    } catch (error) {
+      console.error("Error converting SVG to JPEG:", error);
+    }
+  };
 
-    // Create a download link
-    const downloadLink = document.createElement("a");
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = "converted_image.svg";
+  const handleConvertToPngFormat = async () => {
+    try {
+      const outputBuffer = await svg2png({
+        input: await svgFile.arrayBuffer(),
+        encoding: "buffer",
+        format: "png",
+      });
+      downloadFile(outputBuffer, "converted_image.png", "image/png");
+    } catch (error) {
+      console.error("Error converting SVG to PNG:", error);
+    }
+  };
 
-    // Simulate click to trigger download
-    downloadLink.click();
-
-    // Clean up
-    URL.revokeObjectURL(downloadLink.href);
+  const downloadFile = (data, filename, type) => {
+    const blob = new Blob([data], { type });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
-    <div>
-      <input type="file" accept="image/png" onChange={handleFileChange} />
-      <Button onClick={convertToSvg}>Convert PNG to SVG</Button>
-      {svgCode && (
-        <div>
-          <textarea value={svgCode} readOnly />
-          <Button onClick={downloadSvg}>Download SVG</Button>
-        </div>
-      )}
-      {imageUrl && (
-        <div>
-          <img src={imageUrl} alt="Original PNG" />
-        </div>
-      )}
+    <div className="pt-28">
+      <h2>SVG to Image Converter</h2>
+      <input type="file" accept=".svg" onChange={handleFileChange} />
+      <button onClick={handleConvertToPng}>Convert to JPEG</button>
+      <button onClick={handleConvertToPngFormat}>Convert to PNG</button>
     </div>
   );
 };
 
-export default PngToSvgConverter;
+export default SvgToPngConverter;
