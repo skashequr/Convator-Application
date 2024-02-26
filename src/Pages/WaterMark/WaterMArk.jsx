@@ -11,8 +11,9 @@ const AddWatermarkToPDF = () => {
   const [outputFile, setOutputFile] = useState(null);
   const [rotation, setRotation] = useState(0);
   const [fontSize, setFontSize] = useState(50);
-  const [fontColor, setFontColor] = useState(rgb(0.5, 0.5, 0.5));
+
   const axiosPublic = useAxiosPublic();
+  const [fileName, setfileName] = useState();
   const {
     currentUserConvertLimit,
     matchPaidStatus,
@@ -21,26 +22,44 @@ const AddWatermarkToPDF = () => {
     user,
   } = useUserConvertLimit();
 
+  //--- Set default color to black color--
+  const [textColor, setTextColor] = useState("#000000");
+
+  const handleTextColorChange = (e) => {
+    setTextColor(e.target.value);
+  };
+  const hexToRgb = (hex) => {
+    // Remove '#' if present
+    hex = hex.replace(/^#/, "");
+
+    // Parse hex values to RGB
+    const bigint = parseInt(hex, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+
+    return [r / 255, g / 255, b / 255];
+  };
+
+  //  ------file upload---------
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const fileloaded = e.target.files[0];
+    setFile(fileloaded);
+    setfileName(fileloaded.name);
   };
 
   const handleWatermarkTextChange = (e) => {
     setWatermarkText(e.target.value);
   };
 
+  // ---------roted-----------
   const handleRotationChange = (e) => {
     setRotation(parseInt(e.target.value));
   };
 
+  //----------- font size----
   const handleFontSizeChange = (e) => {
     setFontSize(parseInt(e.target.value));
-  };
-
-  const handleFontColorChange = (e) => {
-    const color = e.target.value;
-    const [r, g, b] = color.split(",").map(parseFloat);
-    setFontColor(rgb(r, g, b));
   };
 
   const addWatermark = async () => {
@@ -73,7 +92,7 @@ const AddWatermarkToPDF = () => {
           x: startX,
           y: startY,
           size: watermarkFontSize,
-          color: fontColor,
+          color: rgb(...hexToRgb(textColor)),
           rotate: degrees(rotation),
         });
 
@@ -145,7 +164,7 @@ const AddWatermarkToPDF = () => {
                   d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                 />
               </svg>
-              <p>Upload Pdf file</p>
+              {fileName && <p>Upload Pdf file:-{fileName}</p>}
             </div>
             <FileInput
               type="file"
@@ -210,16 +229,15 @@ const AddWatermarkToPDF = () => {
 
           {/* ----------font color -------- */}
           <div className="flex flex-col">
-            <label>Color:</label>
+            <label>Text Color:</label>
             <input
-              type="text"
-              placeholder="Enter RGB color (e.g., 0.5,0.5,0.5)"
-              value={fontColor}
-              onChange={handleFontColorChange}
-              id="text"
+              type="color"
+              value={textColor}
+              onChange={handleTextColorChange}
+              id="text-color"
               className="w-full max-w-lg rounded-lg border
-               border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none 
-               focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
+      border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none 
+      focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
             />
           </div>
 

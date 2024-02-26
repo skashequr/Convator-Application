@@ -137,8 +137,8 @@ const OneCard = ({ card }) => {
             <Modal.Header />
             <Modal.Body>
               {/* <form onSubmit={}> */}
-              <div className="space-y-6">
-                <h3 className="text-xl font-medium text-gray-900 dark:text-white">
+              <div className="space-y-6 shadow-2xl p-4">
+                <h3 className="text-xl text-center font-medium text-gray-900 dark:text-white">
                   Fil up for payment
                 </h3>
                 <div>
@@ -160,6 +160,7 @@ const OneCard = ({ card }) => {
                   <TextInput
                     id="address"
                     type="text"
+                    placeholder="Dhaka,Bangladesh"
                     value={address}
                     onChange={(event) => setAddress(event.target.value)}
                     required
@@ -173,6 +174,7 @@ const OneCard = ({ card }) => {
                     id="number"
                     type="number"
                     value={phone}
+                    placeholder="+880172"
                     onChange={(event) => {
                       const inputPhone = event.target.value;
                       // Check if the input phone number has exactly 11 characters
@@ -183,8 +185,8 @@ const OneCard = ({ card }) => {
                     required
                   />
                 </div>
-                <div className="w-full">
-                  <Button onClick={paymentHandler}>pay</Button>
+                <div className="circled mx-auto flex  items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                  <Button onClick={paymentHandler}>pay now</Button>
                 </div>
               </div>
               {/* </form> */}
