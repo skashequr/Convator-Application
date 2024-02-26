@@ -113,9 +113,7 @@ const PdfToPpt = () => {
         </form>
         {loading && <div>Loading...</div>}
         {error && <div>Error: {error}</div>}
-        {/* <button onClick={handleDownload} disabled={downloading || loading}>
-          {downloading ? "Downloading..." : "Download PowerPoint"}
-        </button> */}
+
         <Button
           className=" circled mx-auto flex  items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2"
           onClick={handleDownload}

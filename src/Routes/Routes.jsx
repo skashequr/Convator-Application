@@ -189,6 +189,10 @@ export const router = createBrowserRouter([
         path: "/lock",
         element: <LockPdf></LockPdf>,
       },
+      {
+        path: "/issue",
+        element: <IssueFeedback></IssueFeedback>,
+      },
 
       // ---------------- Massageing routes --------------------
       {
@@ -257,10 +261,6 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/userProfile",
         element: <UserProfile></UserProfile>,
-      },
-      {
-        path: "/dashboad/issue",
-        element: <IssueFeedback></IssueFeedback>,
       },
     ],
   },

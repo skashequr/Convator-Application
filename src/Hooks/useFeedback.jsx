@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const axiosPublic = axios.create({
+// eslint-disable-next-line react-refresh/only-export-components
+const AxiosIssuFeedbck = axios.create({
   baseURL: "https://ourconvert.vercel.app/",
 });
 
 const useFeedback = () => {
-  return axiosPublic;
+  return AxiosIssuFeedbck;
 };
 
 export default useFeedback;
