@@ -112,7 +112,7 @@ const UserReview = () => {
                   placeholder="write something here"
                   value={inputValue}
                   onChange={handleChange}
-                  className="w-full p-3 text-AllTitle bg-AllCard shadow-2xl rounded-md focus:ring focus:ri focus:ri border-dashed border-2 border-sky-500 "
+                  className="text-textColor w-full p-3 bg-AllCard shadow-2xl rounded-md focus:ring focus:ri focus:ri border-dashed border-2 border-sky-500 "
                 ></textarea>
               </div>
             </div>

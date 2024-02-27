@@ -79,7 +79,7 @@ const Testimonials = () => {
                         <div className="bg-black w-full h-full absolute bg-opacity-60 bottom-0"></div>
                       </div>
                     </div>
-                    <div className="back w-full rounded-2xl h-full absolute bg-titleColor text-white">
+                    <div className=" back w-full rounded-2xl h-full absolute  text-white">
                       <div className="text-textColor">
                         <div className="p-6 md:p-8 shadow-md rounded-2xl  space-y-8">
                           <div className="py-4 text-center text-base space-y-1">
@@ -88,7 +88,7 @@ const Testimonials = () => {
                               <p>
                                 {" "}
                                 {review.comment.slice(0, 160) + `......   `}
-                                <span className="text-emerald-400">
+                                <span className="text-emerald-400 border-2 px-1">
                                   READ MOre
                                 </span>
                               </p>

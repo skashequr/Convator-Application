@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Helpdesk from "../../Component/Shared/Helpdesk";
+import { Card, Dropdown } from "flowbite-react";
 
 const TextToVoice = () => {
   const [speech, setSpeech] = useState(new SpeechSynthesisUtterance());
@@ -18,7 +19,18 @@ const TextToVoice = () => {
     reload,
     user,
   } = useUserConvertLimit();
-
+  // --------------text download------------
+  const handleDownloadText = () => {
+    const blob = new Blob([inputText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "input_text.txt";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
   useEffect(() => {
     const handleVoicesChanged = () => {
       setVoices(window.speechSynthesis.getVoices());
@@ -105,33 +117,47 @@ const TextToVoice = () => {
   };
 
   return (
-    <div className="hero bg-AllCard pt-12">
-      <h1>
-        Text to <span>Speech Converter</span>
-      </h1>
-      <textarea
-        placeholder="Write anything here ..."
-        value={inputText}
-        onChange={handleTextChange}
-      ></textarea>
-      <div className="row">
-        <select
-          value={selectedVoice}
-          onChange={handleVoiceChange}
-          className="block select-language appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-500"
-        >
-          {/* {voices.map((voice, i) => (
-            <option key={i} value={i} className="text-gray-800">
-              {voice.name}
-            </option>
-          ))} */}
-        </select>
+    <div className="hero p-3 bg-AllCard pt-32">
+      <Card className="shadow-lg">
+        <h1>
+          Text to <span>Speech Converter</span>
+        </h1>
+        <textarea
+          placeholder="Write anything here ..."
+          value={inputText}
+          onChange={handleTextChange}
+        ></textarea>
+        <Card>
+          <div className="row justify-between">
+            <Dropdown
+              label="Select Voice"
+              size="sm"
+              type="primary"
+              dismissOnClick={false}
+            >
+              {voices.map((voice, index) => (
+                <Dropdown.Item
+                  key={index}
+                  onClick={() => handleVoiceChange(index)}
+                >
+                  {voice.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown>
 
-        <button className="button" onClick={handleButtonClick}>
-          Listen & Download
-        </button>
-      </div>
-      <Helpdesk></Helpdesk>
+            <button className="button" onClick={handleButtonClick}>
+              Listen & Download
+            </button>
+          </div>
+        </Card>
+        <div className="flex justify-between gap-3">
+          <button className="button" onClick={handleDownloadText}>
+            Download Text
+          </button>
+
+          <Helpdesk></Helpdesk>
+        </div>
+      </Card>
     </div>
   );
 };

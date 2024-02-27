@@ -33,7 +33,6 @@ import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 
 import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
-import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
@@ -52,6 +51,9 @@ import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
 import VoiceToText from "../Pages/VoicetoText/VoiceTospeech";
+
+import IssueFeedback from "../Pages/Dashboad/AdminePanelComponent/IssueFeedback/IssueFeed";
+import WordToPdf from "../Pages/Features/WordToPdf/WordToPdf";
 
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
@@ -124,7 +126,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/wordToPdf",
-        element: <PptPdf></PptPdf>,
+        element: <WordToPdf></WordToPdf>,
       },
       {
         path: "/pdfToText",
@@ -186,6 +188,10 @@ export const router = createBrowserRouter([
       {
         path: "/lock",
         element: <LockPdf></LockPdf>,
+      },
+      {
+        path: "/issue",
+        element: <IssueFeedback></IssueFeedback>,
       },
 
       // ---------------- Massageing routes --------------------

@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
 import { Modal } from "flowbite-react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-import useFeedback from "../../Hooks/useFeedback";
-
-import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
 import useAuth from "../../Hooks/useAuth";
+import { useState } from "react";
+import useFeedback from "../../Hooks/useFeedback";
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Helpdesk = () => {
@@ -20,7 +18,7 @@ const Helpdesk = () => {
     setEmail("");
   }
 
-  const axiosFeedback = useFeedback();
+  const AxiosIssuFeedbck = useFeedback();
   // const { user } = useUserConvertLimit();
   const [formData, setFormData] = useState({
     emailAddress: user ? user.email : "",
@@ -76,7 +74,7 @@ const Helpdesk = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosFeedback.post("/task", formData);
+      const response = await AxiosIssuFeedbck.post("/task", formData);
 
       if (response.status === 200) {
         Swal.fire({
@@ -250,7 +248,7 @@ const Helpdesk = () => {
                           id="fileUpload"
                           name="file-upload"
                           type="file"
-                          accept="image/jpeg"
+                          accept="image/jpeg/png"
                           onChange={handleInputChange}
                         />
                       </label>
