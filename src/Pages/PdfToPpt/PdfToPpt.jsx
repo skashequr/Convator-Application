@@ -16,11 +16,15 @@ const PdfToPpt = () => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      await axios.post("http://localhost:5000/convert/pdftoppt", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://file-convator-backend.vercel.app/convert/pdftoppt",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setLoading(false);
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -37,9 +41,12 @@ const PdfToPpt = () => {
   const handleDownload = async () => {
     setDownloading(true);
     try {
-      const response = await axios.get("http://localhost:5000/convert/getppt", {
-        responseType: "blob",
-      });
+      const response = await axios.get(
+        "https://file-convator-backend.vercel.app/convert/getppt",
+        {
+          responseType: "blob",
+        }
+      );
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;

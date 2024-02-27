@@ -21,7 +21,7 @@ const ChatBabbule = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/user/userbyId?id=${userId}`
+          `https://file-convator-backend.vercel.app/user/userbyId?id=${userId}`
         );
         console.log(response.data); // This will log the response data to the console
         setUserData(response.data); // Set the response data to state
@@ -37,7 +37,7 @@ const ChatBabbule = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/chat/send", {
+      .post("https://file-convator-backend.vercel.app/chat/send", {
         userId,
         singleuserId,
         secUser,
@@ -51,16 +51,16 @@ const ChatBabbule = () => {
         console.error("Error creating chat:", error);
         // Handle error state or show error message to the user
       });
-  }, [friUser, secUser, singleuserId, userId , setChat_id]);
+  }, [friUser, secUser, singleuserId, userId, setChat_id]);
 
   //Send massage
-  console.log(chat_id , userId);
+  console.log(chat_id, userId);
   const sendMassage = (e) => {
     e.preventDefault();
     const massageContent = e.target.massage.value;
     console.log(massageContent);
     axios
-      .post("http://localhost:5000/message", {
+      .post("https://file-convator-backend.vercel.app/message", {
         content: massageContent,
         chatId: chat_id,
         data: [friUser, secUser],
@@ -79,7 +79,7 @@ const ChatBabbule = () => {
   // useEffect(() => {
   //   console.log("Users refreshed");
 
-  //   axios.get(`http://localhost:5000/message/${chat_id}`).then(({ data }) => {
+  //   axios.get(`https://file-convator-backend.vercel.app/message/${chat_id}`).then(({ data }) => {
   //     setAllMessages(data);
   //     console.log("Data from Acess Chat API ", data);
   //   });
@@ -89,7 +89,7 @@ const ChatBabbule = () => {
   // const { data: usermessage = [], refetch } = useQuery({
   //   queryKey: ["usersmessage", chat_id],
   //   queryFn: async () => {
-  //     const res = await axios.get(`http://localhost:5000/message/${chat_id}`);
+  //     const res = await axios.get(`https://file-convator-backend.vercel.app/message/${chat_id}`);
   //     setAllMessages(res.data);
   //     return res.data;
   //   },

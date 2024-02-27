@@ -123,7 +123,7 @@ const Authprovider = ({ children }) => {
   useEffect(() => {
     if (email) {
       axios
-        .get(`http://localhost:5000/user?email=${email}`)
+        .get(`https://file-convator-backend.vercel.app/user?email=${email}`)
         .then((response) => {
           // handle success
           // console.log(response.data);
