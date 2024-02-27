@@ -6,10 +6,13 @@ import {
   Email,
   PhoneEnabled,
   PriorityHighOutlined,
-  RamenDining,
 } from "@mui/icons-material";
+import Swal from "sweetalert2";
+
+import useFeedback from "../../../../Hooks/useFeedback";
 
 const IssueCard = ({ issue }) => {
+  const AxiosIssuFeedbck = useFeedback();
   const {
     name,
     emailAddress,
@@ -21,6 +24,40 @@ const IssueCard = ({ issue }) => {
     priority,
   } = issue;
 
+  // --------------delete-----------------
+  const handleDeleteItem = async (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await AxiosIssuFeedbck.delete(`/task/${item._id}`);
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${issue.name} has been deleted`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        } catch (error) {
+          console.error("Error deleting item:", error);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong while deleting the item!",
+          });
+        }
+      }
+    });
+  };
   console.log(issue);
   return (
     <div className="shadow-2xl w-full">
@@ -92,7 +129,7 @@ const IssueCard = ({ issue }) => {
             <Button type="primary" size="sm">
               Edit
             </Button>
-            <Button type="primary" size="sm">
+            <Button onClick={handleDeleteItem} type="primary" size="sm">
               Delete
             </Button>
           </Card.Container>
