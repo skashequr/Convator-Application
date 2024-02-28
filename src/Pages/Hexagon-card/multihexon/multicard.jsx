@@ -56,7 +56,7 @@ const MultiHexon = () => {
           </li>
         </Link>
         {/* -------------- voice to text ----------- */}
-        <Link to="/speech">
+        <Link to="/voice">
           <li className="hexagon hexagon-blue">
             <div className="hexagon-inner">
               <img className="hexagon-avatar-img" src={voicetotext} />
