@@ -16,9 +16,20 @@ import { saveAs } from "file-saver";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import { useEffect, useState } from "react";
 import Helpdesk from "../../Component/Shared/Helpdesk";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SpeechToText = () => {
   const [pdfText, setPdfText] = useState("");
+  const axiosPublic = useAxiosPublic();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
+  console.log(user);
   const {
     transcript,
     listening,
@@ -33,23 +44,60 @@ const SpeechToText = () => {
   }, [transcript]);
   //---------------------Download as text file------------
   const downloadTextFile = () => {
-    if (!transcript) {
-      Swal.fire({
-        icon: "error",
-        title: "No Text Available",
-        text: "There is no text to download.",
-      });
-      return;
-    }
+    // ---------
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      if (!transcript) {
+        Swal.fire({
+          icon: "error",
+          title: "No Text Available",
+          text: "There is no text to download.",
+        });
+        return;
+      }
 
-    const element = document.createElement("a");
-    const file = new Blob([transcript], { type: "text/plain" });
-    element.href = URL.createObjectURL(file);
-    element.download = "transcript.txt";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+      const element = document.createElement("a");
+      const file = new Blob([transcript], { type: "text/plain" });
+      element.href = URL.createObjectURL(file);
+      element.download = "transcript.txt";
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
+
+  // -----------------end text----
   const generatePdf = async () => {
     if (!pdfText) {
       Swal.fire({
