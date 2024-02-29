@@ -54,6 +54,7 @@ import VoiceToText from "../Pages/VoicetoText/VoiceTospeech";
 
 import IssueFeedback from "../Pages/Dashboad/AdminePanelComponent/IssueFeedback/IssueFeed";
 import WordToPdf from "../Pages/Features/WordToPdf/WordToPdf";
+import Mp4toMp3 from "../Pages/Mp4toMp3/Mp4toMp3";
 
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
@@ -183,6 +184,10 @@ export const router = createBrowserRouter([
       {
         path: "/word",
         element: <HtmlToWord></HtmlToWord>,
+      },
+      {
+        path: "/mp4toMp3",
+        element: <Mp4toMp3></Mp4toMp3>
       },
 
       {
