@@ -51,7 +51,7 @@ import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
 
-import IssueFeedback from "../Pages/Dashboad/AdminePanelComponent/IssueFeedback/IssueFeed";
+import IssueFeedback from "../Pages/Dashboad/UserDahboad/IssueFeedback/IssueFeed";
 import WordToPdf from "../Pages/Features/WordToPdf/WordToPdf";
 
 import SpeechToText from "../Pages/VoicetoText/SpeechToText";
@@ -190,10 +190,6 @@ export const router = createBrowserRouter([
         path: "/lock",
         element: <LockPdf></LockPdf>,
       },
-      {
-        path: "/issue",
-        element: <IssueFeedback></IssueFeedback>,
-      },
 
       // ---------------- Massageing routes --------------------
       {
@@ -262,6 +258,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/userProfile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "/dashboad/issue",
+        element: <IssueFeedback></IssueFeedback>,
       },
     ],
   },
