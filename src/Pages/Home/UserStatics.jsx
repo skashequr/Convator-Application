@@ -167,7 +167,7 @@ const UserStatics = () => {
             <h2 className="text-titleColor">Registration</h2>
             <p className="text-textColor">Month-to-month Comparison</p>
             <div className="pulse"></div>
-            <div className="chart-area relative">
+            <div className="chart-area relative text-titleColor">
               <div className="grid2 "></div>
               <ReactApexChart
                 options={options}

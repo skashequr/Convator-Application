@@ -227,7 +227,7 @@ const NavBar = () => {
       {/* -----------------------dashboad----------------- */}
       <li>
         {singleUser?.isAdmin?(<NavLink
-          to="/dashboad/homedes"
+          to="/dashboad/paidUser"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
