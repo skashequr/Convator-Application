@@ -179,143 +179,103 @@ const AddWatermarkToPDF = () => {
 
         {/* -------------- input deatils--------- */}
 
-        <div className=" mt-8 p-3 sm:flex grid grid-cols-2 gap-4 bg-gray-50  items-center justify-center">
-          {/*----------------------------------------- input watermark text -----------------*/}
-          <div className="flex flex-col">
-            <label>add text</label>
+        <div className=" mt-8 p-3 sm:flex  gap-4 bg-gray-50  items-center justify-center">
+          <div className="grid">
+            {/*----------------------------------------- input watermark text -----------------*/}
+            <div className="">
+              <label>add text</label>
 
-            <input
-              type="text"
-              placeholder="Enter watermark text"
-              value={watermarkText}
-              onChange={handleWatermarkTextChange}
-              id="text"
-              className="w-full max-w-lg rounded-lg border
+              <input
+                type="text"
+                placeholder="Enter watermark text"
+                value={watermarkText}
+                onChange={handleWatermarkTextChange}
+                id="text"
+                className="w-full max-w-lg rounded-lg border
                border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none 
                focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
-            />
-          </div>
-          {/* --------- ROtation---------- */}
-          <div className="flex flex-col">
-            <label>Rotation</label>
+              />
+            </div>
+            {/* --------- ROtation---------- */}
+            <div className="">
+              <label>Rotation</label>
 
-            <input
-              type="number"
-              min="0"
-              max="360"
-              value={rotation}
-              onChange={handleRotationChange}
-              id="text"
-              placeholder="RotationChange"
-              className="w-full max-w-lg rounded-lg border
+              <input
+                type="number"
+                min="0"
+                max="360"
+                value={rotation}
+                onChange={handleRotationChange}
+                id="text"
+                placeholder="RotationChange"
+                className="w-full max-w-lg rounded-lg border
                border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none 
                focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
-            />
+              />
+            </div>
           </div>
-          {/* -------font size--------- */}
-          <div className="flex flex-col">
-            <label>Font-Size:</label>
-            <input
-              type="number"
-              min="10"
-              value={fontSize}
-              onChange={handleFontSizeChange}
-              id="text"
-              className="w-full max-w-lg rounded-lg border
+          {/* --------- */}
+          <div className="grid">
+            {/* -------font size--------- */}
+            <div className="">
+              <label>Font-Size:</label>
+              <input
+                type="number"
+                min="10"
+                value={fontSize}
+                onChange={handleFontSizeChange}
+                id="text"
+                className="w-full max-w-lg rounded-lg border
                border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none 
                focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
-            />
-          </div>
+              />
+            </div>
 
-          {/* ----------font color -------- */}
-          <div className="flex flex-col">
-            <label>Text Color:</label>
-            <input
-              type="color"
-              value={textColor}
-              onChange={handleTextColorChange}
-              id="text-color"
-              className="w-full max-w-lg rounded-lg border
+            {/* ----------font color -------- */}
+            <div className="">
+              <label>Text Color:</label>
+              <input
+                type="color"
+                value={textColor}
+                onChange={handleTextColorChange}
+                id="text-color"
+                className="w-full max-w-lg rounded-lg border
       border-slate-200 px-2 py-1 hover:border-blue-500 focus:outline-none 
       focus:ring focus:ring-blue-500/40 active:ring active:ring-blue-500/40"
-            />
+              />
+            </div>
           </div>
-
-          {/* ----------download------------- */}
-
-          <div className="text-center flex justify-center gap-4 mx-auto">
-            <button
-              onClick={addWatermark}
-              className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center"
-            >
-              <span>Add watermark</span>
-            </button>
-
-            {/*  */}
-            {outputFile && (
-              <a
-                href={URL.createObjectURL(outputFile)}
-                download="watermarked_pdf.pdf"
-              >
-                <button className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center">
-                  <svg
-                    className="w-4 h-4 mr-2 "
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-                  </svg>
-                  <span>Download Pdf File</span>
-                </button>
-              </a>
-            )}
-          </div>
-          {/* ------------ */}
         </div>
+        {/* ----------download------------- */}
 
-        {/* <input
-          type="text"
-          placeholder="Enter watermark text"
-          value={watermarkText}
-          onChange={handleWatermarkTextChange}
-        />
-        <div>
-          <label>Rotation:</label>
-          <input
-            type="number"
-            min="0"
-            max="360"
-            value={rotation}
-            onChange={handleRotationChange}
-          />
-        </div>
-        <div>
-          <label>Font Size:</label>
-          <input
-            type="number"
-            min="10"
-            value={fontSize}
-            onChange={handleFontSizeChange}
-          />
-        </div>
-        <div>
-          <label>Font Color:</label>
-          <input
-            type="text"
-            placeholder="Enter RGB color (e.g., 0.5,0.5,0.5)"
-            value={fontColor}
-            onChange={handleFontColorChange}
-          />
-        </div>
-        <button onClick={addWatermark}>Add Watermark</button>
-        {outputFile && (
-          <a
-            href={URL.createObjectURL(outputFile)}
-            download="watermarked_pdf.pdf"
+        <div className="circled mx-auto flex items-center justify-center divide-x gap-4 divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+          <button
+            onClick={addWatermark}
+            className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center"
           >
-            Download Watermarked PDF
-          </a>
-        )} */}
+            <span>Add watermark</span>
+          </button>
+
+          {/*  */}
+          {outputFile && (
+            <a
+              href={URL.createObjectURL(outputFile)}
+              download="watermarked_pdf.pdf"
+            >
+              <button className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                <svg
+                  className="w-4 h-4 mr-2 "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+                </svg>
+                <span>Download Pdf File</span>
+              </button>
+            </a>
+          )}
+        </div>
+        {/* ------------ */}
       </Card>
     </div>
   );
