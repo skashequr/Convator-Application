@@ -74,9 +74,9 @@ const TBody = ({ info, index, reload }) => {
         console.log("The user should be Removed");
         // Perform your removal logic here, e.g., displaying an alert
         axiosPublic
-          .put("/payment", { id })
+          .put("/payment", { id: _id })
           .then((response) => {
-            // console.log("User has been removed", response);
+            console.log("User has been removed", response);
             setShowAccessModal(!showAccessModal);
             Swal.fire({
               position: "top-end",
