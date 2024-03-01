@@ -5,12 +5,17 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { FaCopy } from "react-icons/fa";
 import Swal from "sweetalert2";
 import html2pdf from "html2pdf.js";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const ExceltoPdf = () => {
   const [file, setFile] = useState(null);
   const [jsonData, setJsonData] = useState("");
   const [successUpload, setSuccessUpload] = useState(false);
   const [fileName, setFileName] = useState("");
+  const axiosPublic = useAxiosPublic();
+  const { currentUserConvertLimit, matchPaidStatus, updateValue } =
+    useUserConvertLimit();
 
   const handleConvert = () => {
     if (file) {
@@ -29,32 +34,98 @@ const ExceltoPdf = () => {
   };
 
   const handleDownloadJson = () => {
-    const blob = new Blob([jsonData], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "data.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const blob = new Blob([jsonData], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   const handleDownloadPdf = () => {
-    // Convert JSON data to HTML for PDF generation
-    const htmlContent = `<pre>${jsonData}</pre>`;
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      // Convert JSON data to HTML for PDF generation
+      const htmlContent = `<pre>${jsonData}</pre>`;
 
-    // Define options for pdf generation
-    const options = {
-      margin: 1,
-      filename: "data.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    };
+      // Define options for pdf generation
+      const options = {
+        margin: 1,
+        filename: "data.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      };
 
-    // Generate PDF
-    html2pdf().set(options).from(htmlContent).save();
+      // Generate PDF
+      html2pdf().set(options).from(htmlContent).save();
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   const handleFileChange = (e) => {
@@ -119,62 +190,49 @@ const ExceltoPdf = () => {
               )}
             </Label>
           </div>
+          {/* --------------------all buttton------------- */}
           <div className="inline-flex justify-around">
+            {/* -----------convert butt */}
             <Button className="w-fit" onClick={handleConvert}>
               Convert to Json
               <HiOutlineArrowRight className="ml-2 h-5 w-5" />
             </Button>
             {successUpload && (
-              <div className="flex">
+              <div className="flex gap-4">
+                {/* -----------download json------------ */}
                 <button
                   onClick={handleDownloadJson}
-                  className="text-xl box-border border-4 border-sky-900 w-48 h-16 bg-sky-600 text-white relative group mr-4"
+                  className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center"
                 >
-                  <span className="pr-8">Download Json</span>
-                  <span className="bg-sky-900 absolute right-0 top-0  h-full flex items-center justify-center px-1 group-hover:duration-300 group-hover:w-full w-10 duration-300">
-                    <FaCopy size={20} />
-                  </span>
+                  <svg
+                    className="w-4 h-4 mr-2 "
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+                  </svg>
+                  <span>Download Json</span>
                 </button>
+                {/* ------------download pdf---------------- */}
+
                 <button
                   onClick={handleDownloadPdf}
-                  className="text-xl box-border border-4 border-sky-900 w-48 h-16 bg-sky-600 text-white relative group"
+                  className="bg-[#5ab8ee] hover:bg-grey text-white font-bold py-2 px-4 rounded inline-flex items-center"
                 >
-                  <span className="pr-8">Download Pdf</span>
-                  <span className="bg-sky-900 absolute right-0 top-0  h-full flex items-center justify-center px-1 group-hover:duration-300 group-hover:w-full w-10 duration-300">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="w-8 inline mx-auto"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g
-                        id="SVGRepo_tracerCarrier"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></g>
-                      <g id="SVGRepo_iconCarrier">
-                        <path
-                          d="M12 3V16M12 16L16 11.625M12 16L8 11.625"
-                          stroke="#ffffff"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        ></path>
-                        <path
-                          d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
-                          stroke="#ffffff"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        ></path>
-                      </g>
-                    </svg>
-                  </span>
+                  <svg
+                    className="w-4 h-4 mr-2 "
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+                  </svg>
+                  <span>Download Pdf File</span>
                 </button>
               </div>
             )}
           </div>
+
+          {/* ------------------show json---------------w */}
           <div className="min-w-screen min-h-screen bg-gray-50 gird  items-center justify-center">
             <div className=" lg:w-full bg-gray-800  rounded-lg overflow-hidden">
               <div className="flex justify-between">

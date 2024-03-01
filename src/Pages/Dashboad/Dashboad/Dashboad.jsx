@@ -1,16 +1,17 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { FaUsersLine } from "react-icons/fa6";
+import { FaCartShopping, FaUsersLine } from "react-icons/fa6";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { MdVerifiedUser } from "react-icons/md";
+import useAdmin from "../../../Hooks/useAdmin";
+
 const Dashboard = () => {
+  const [isAdmin] = useAdmin();
+
   return (
     <div>
       {/* ----------  sidebar  ----- */}
 
-      <div className="flex">
-        {/* <div className="w-64 min-h-screen text-2xl font-bold bg-[#1d061e]">
-          
-        </div> */}
+      <div className="flex ">
         <div className="w-64 min-h-screen text-2xl font-bold top-14 hover:w-64 md:w-64 bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
           <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
             <ul className="flex flex-col py-4 space-y-1">
@@ -19,11 +20,6 @@ const Dashboard = () => {
                 <div className="">
                   <div className="w-full  items-center jh-14 text-white z-10">
                     <div className="items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 border-none">
-                      {/* <img
-                        className="w-7 h-7 md:w-7 md:h- mr-2 rounded-md overflow-hidden"
-                        src="https://i.ibb.co/Q836XZ2/scanner.png"
-                      />
-                      <span className="hidden md:block">Dashboad</span> */}
                       <img
                         className="w-full h-14"
                         src="https://i.ibb.co/YT03y3K/DASHBOAD-best-1.gif"
@@ -33,80 +29,10 @@ const Dashboard = () => {
                   </div>
                 </div>
               </li>
-              {/* ------------------ Home dashboad --------- */}
+              {/* -------------- Notifications----------*/}
               <li>
                 <NavLink
-                  to="/dashboad/homedes"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-                >
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                    Admin-Home
-                  </span>
-                </NavLink>
-              </li>
-
-              {/* --------------- */}
-              <li>
-                <NavLink
-                to="/dashboad/controlUser"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-                >
-                  <span className="inline-flex justify-center items-center ml-4">
-                      <FaUsersLine className="w-5 h-5"></FaUsersLine>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                    Users
-                  </span>
-                  <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-500 bg-indigo-50 rounded-full">
-                    cont.
-                  </span>
-                </NavLink>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-                >
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                      ></path>
-                    </svg>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                    Messages
-                  </span>
-                </a>
-              </li>
-              <li>
-                <NavLink
-                to=""
+                  to=""
                   className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
@@ -133,47 +59,194 @@ const Dashboard = () => {
                   </span>
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                to="/dashboad/adminePannel"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-                >
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <MdAdminPanelSettings className="w-5 h-5"></MdAdminPanelSettings>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                   AdminePannel
-                  </span>
-                  <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
-                    1.2k
-                  </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                to="/dashboad/paidUser"
-                  className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
-                >
-                  <span className="inline-flex justify-center items-center ml-4">
-                    <MdVerifiedUser className="w-5 h-5"></MdVerifiedUser>
-                  </span>
-                  <span className="ml-2 text-sm tracking-wide truncate">
-                   Paid User
-                  </span>
-                  <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
-                    1.2k
-                  </span>
-                </NavLink>
-              </li>
+
+              {/*------------- admin condition router -------- */}
+
+              {isAdmin ? (
+                <>
+                  {/* ----------------- normal user dashboad ------------------ */}
+
+                  {/* ------------------------ normal user Home----------*/}
+                  <li>
+                    <NavLink
+                      to="/dashboad/UserHome"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                          ></path>
+                        </svg>
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        User-Home
+                      </span>
+                    </NavLink>
+                  </li>
+
+                  {/* ----------------profile-------- */}
+
+                  <li>
+                    <NavLink
+                      to="/dashboad/userProfile"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                          ></path>
+                        </svg>
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        Profile
+                      </span>
+                    </NavLink>
+                  </li>
+                  {/* -------------------order summary--------------- */}
+                  <li>
+                    <NavLink
+                      to="/dashboad/OrderSummary"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <FaCartShopping></FaCartShopping>
+                        {/* <svg
+        className="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        ></path>
+      </svg> */}
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        Order-Summary
+                      </span>
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  {/* ------------------ admin Home dashboad --------- */}
+                  <li>
+                    <NavLink
+                      to="/dashboad/homedes"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                          ></path>
+                        </svg>
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        Admin-Home
+                      </span>
+                    </NavLink>
+                  </li>
+
+                  {/* --------------- Users manage --------- */}
+                  <li>
+                    <NavLink
+                      to="/dashboad/controlUser"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <FaUsersLine className="w-5 h-5"></FaUsersLine>
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        Users
+                      </span>
+                      <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-blue-500 bg-indigo-50 rounded-full">
+                        cont.
+                      </span>
+                    </NavLink>
+                  </li>
+
+                  {/* -------------admin pannel-------- */}
+                  <li>
+                    <NavLink
+                      to="/dashboad/adminePannel"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <MdAdminPanelSettings className="w-5 h-5"></MdAdminPanelSettings>
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        AdminePannel
+                      </span>
+                      <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+                        1.2k
+                      </span>
+                    </NavLink>
+                  </li>
+                  {/* ------------------paid user----------------- */}
+                  <li>
+                    <NavLink
+                      to="/dashboad/paidUser"
+                      className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+                    >
+                      <span className="inline-flex justify-center items-center ml-4">
+                        <MdVerifiedUser className="w-5 h-5"></MdVerifiedUser>
+                      </span>
+                      <span className="ml-2 text-sm tracking-wide truncate">
+                        Paid User
+                      </span>
+                      <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
+                        1.2k
+                      </span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
+
+              {/* --------------------shared content dashboad all user------------ */}
+
               <li className="px-5 hidden md:block">
                 <div className="flex flex-row items-center mt-5 h-8">
                   <div className="text-sm font-light tracking-wide text-gray-400 uppercase">
-                    Settings
+                    All users
                   </div>
                 </div>
               </li>
 
-              {/* ---------home---- */}
+              {/* ---------Home PAGE---- */}
               <li>
                 <Link
                   to="/"
@@ -200,6 +273,8 @@ const Dashboard = () => {
                   </span>
                 </Link>
               </li>
+
+              {/* ------------------------ massanger----------*/}
               <li>
                 <a
                   href="#"
@@ -217,19 +292,19 @@ const Dashboard = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
                       ></path>
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
-                    Profile
+                    Messages
                   </span>
                 </a>
               </li>
 
               <li>
-                <a
-                  href="#"
+                <NavLink
+                  to="/dashboad/issue"
                   className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
                 >
                   <span className="inline-flex justify-center items-center ml-4">
@@ -255,9 +330,9 @@ const Dashboard = () => {
                     </svg>
                   </span>
                   <span className="ml-2 text-sm tracking-wide truncate">
-                    Settings
+                    Helpdesk Issue
                   </span>
-                </a>
+                </NavLink>
               </li>
             </ul>
             {/* <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs">
@@ -265,7 +340,9 @@ const Dashboard = () => {
             </p> */}
           </div>
         </div>
-        ;{/*------------- dashboard content ------------------*/}
+
+        {/*------------- dashboard content ------------------*/}
+
         <div className="flex-1  p-8">
           <Outlet></Outlet>
         </div>

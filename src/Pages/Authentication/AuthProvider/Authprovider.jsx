@@ -24,6 +24,7 @@ const Authprovider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [load, setLoading] = useState(true);
   const [chat_id, setChat_id] = useState(null);
+  const [reviewerEmail, setReviewerEmail] = useState(null);
   // --------------
   const createUser = async (email, password) => {
     try {
@@ -150,6 +151,8 @@ const Authprovider = ({ children }) => {
     toggleMode,
     chat_id,
     setChat_id,
+    reviewerEmail,
+    setReviewerEmail,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

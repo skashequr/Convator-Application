@@ -14,7 +14,7 @@ import useSearchDates from "../../Hooks/useSearchDates";
 // -------------------------speech recognition-------------------
 
 const NavBar = () => {
-  const { mode, toggleMode } = useContext(AuthContext);
+  const { mode, toggleMode,singleUser } = useContext(AuthContext);
   const [drawer, setDrawer] = useState(false);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState([]);
@@ -134,6 +134,7 @@ const NavBar = () => {
       } else if (
         query === "water mark" ||
         query === "watermark" ||
+        query === "watermark add" ||
         query === "watermark remove" ||
         query === "watermark remover"
       ) {
@@ -155,7 +156,7 @@ const NavBar = () => {
       }
     }
   };
-
+  console.log(singleUser);
   const handleChange = (event) => {
     const inputValue = event.target.value.toLowerCase();
     if (!searchNow) {
@@ -225,8 +226,8 @@ const NavBar = () => {
 
       {/* -----------------------dashboad----------------- */}
       <li>
-        <NavLink
-          to="/dashboad/homedes"
+        {singleUser?.isAdmin?(<NavLink
+          to="/dashboad/paidUser"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
           }
@@ -237,7 +238,21 @@ const NavBar = () => {
               <SquaresFour size={24} />
             </span>
           </Button>
-        </NavLink>
+        </NavLink>) : 
+        (<NavLink
+          to="/dashboad/OrderSummary"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#1EEFE9] underline" : ""
+          }
+        >
+          <Button type="success" size="md">
+             User Dashboad
+            <span className="pl-2">
+              <SquaresFour size={24} />
+            </span>
+          </Button>
+        </NavLink>)
+        }
       </li>
     </>
   );

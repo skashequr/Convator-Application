@@ -6,9 +6,23 @@ import { CgMergeVertical, CgMergeHorizontal } from "react-icons/cg";
 import { IoMdUndo, IoMdRedo, IoIosImage } from "react-icons/io";
 import storeData from "./LinkedList";
 import { Helmet } from "react-helmet-async";
-// import ReactCrop, { type Crop } from 'react-image-crop'
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import useUserConvertLimit from "../Hooks/useUserConvertLimit";
+import Helpdesk from "./Shared/Helpdesk";
 const EditImg = () => {
   const [event, setEvent] = useState("brightness");
+  const axiosPublic = useAxiosPublic();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
+  console.log(matchPaidStatus, "matchPaidStatus");
+  console.log(currentUserConvertLimit, "currentUserConvertLimit");
+
   const filterElement = [
     {
       name: "brightness",
@@ -164,30 +178,63 @@ const EditImg = () => {
       image: base64Url,
     });
   };
+  // paidStatus == true
   const saveImage = () => {
-    const canvas = document.createElement("canvas");
-    canvas.width = details.naturalHeight;
-    canvas.height = details.naturalHeight;
-    const ctx = canvas.getContext("2d");
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      const canvas = document.createElement("canvas");
+      canvas.width = details.naturalHeight;
+      canvas.height = details.naturalHeight;
+      const ctx = canvas.getContext("2d");
 
-    ctx.filter = `brightness(${state.brightness}%) brightness(${state.brightness}%) sepia(${state.sepia}%) saturate(${state.saturate}%) contrast(${state.contrast}%) grayscale(${state.grayscale}%) hue-rotate(${state.hueRotate}deg)`;
+      ctx.filter = `brightness(${state.brightness}%) brightness(${state.brightness}%) sepia(${state.sepia}%) saturate(${state.saturate}%) contrast(${state.contrast}%) grayscale(${state.grayscale}%) hue-rotate(${state.hueRotate}deg)`;
 
-    ctx.translate(canvas.width / 2, canvas.height / 2);
-    ctx.rotate((state.rotate * Math.PI) / 180);
-    ctx.scale(state.vartical, state.horizental);
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate((state.rotate * Math.PI) / 180);
+      ctx.scale(state.vartical, state.horizental);
 
-    ctx.drawImage(
-      details,
-      -canvas.width / 2,
-      -canvas.height / 2,
-      canvas.width,
-      canvas.height
-    );
+      ctx.drawImage(
+        details,
+        -canvas.width / 2,
+        -canvas.height / 2,
+        canvas.width,
+        canvas.height
+      );
 
-    const link = document.createElement("a");
-    link.download = "image_edit.jpg";
-    link.href = canvas.toDataURL();
-    link.click();
+      const link = document.createElement("a");
+      link.download = "image_edit.jpg";
+      link.href = canvas.toDataURL();
+      link.click();
+
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
   return (
     <div className="pt-32 text-AllTitle bg-AllCard rounded-xl shadow-lg p-4">
@@ -278,6 +325,10 @@ const EditImg = () => {
               >
                 Save Image
               </button>
+              {/* -----------issue feedback----------- */}
+              <div className="circled mx-auto flex  ml-4 m-3 items-center justify-center divide-x divide-metal-200 rounded-md border border-metal-200 p-1 md:p-2">
+                <Helpdesk></Helpdesk>
+              </div>
             </div>
           </div>
           <div className="w-[550px] border border-cyan-950">

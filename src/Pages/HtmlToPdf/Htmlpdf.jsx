@@ -3,12 +3,22 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { Button, Card, FileInput, Label } from "flowbite-react";
 import Swal from "sweetalert2";
+import useUserConvertLimit from "../../Hooks/useUserConvertLimit";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const HtmlToPdf = () => {
   const [file, setFile] = useState(null);
   const [pdfUrl, setPdfUrl] = useState(null);
   const [fileName, setFileName] = useState("");
   const [loading, setLoading] = useState(false); // Corrected spelling
+  const axiosPublic = useAxiosPublic();
+  const {
+    currentUserConvertLimit,
+    matchPaidStatus,
+    updateValue,
+    reload,
+    user,
+  } = useUserConvertLimit();
 
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
@@ -58,17 +68,51 @@ const HtmlToPdf = () => {
   };
 
   const downloadPdf = () => {
-    if (!pdfUrl) {
-      Swal.fire("Login failed", "Email or password is incorrect", "error");
-      return;
-    }
+    if (currentUserConvertLimit > 0 || matchPaidStatus) {
+      if (!pdfUrl) {
+        Swal.fire("Download failed", "Please upload html file", "error");
+        return;
+      }
 
-    const a = document.createElement("a");
-    a.href = pdfUrl;
-    a.download = `${file.name}.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+      const a = document.createElement("a");
+      a.href = pdfUrl;
+      a.download = `${file.name}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      // --------------------------------------AccessCondition--Start-------------------------------------
+      {
+        currentUserConvertLimit > 0 &&
+          axiosPublic
+            .patch(`/user/update?email=${user?.email}`, {
+              ConvertLimit: updateValue,
+            })
+            .then((res) => {
+              console.log(res);
+              reload();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "You lose a Convert limitation",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    } else {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "You have to get Subscription",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    // --------------------------------------AccessCondition--End-------------------------------------
   };
 
   const handleDragOver = (e) => {

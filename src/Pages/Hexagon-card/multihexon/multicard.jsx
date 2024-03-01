@@ -14,8 +14,12 @@ import exceltohtml from "../../../assets/icons/htmltoexcvel.png";
 import watermarkImg from "../../../assets/5084242.png";
 import htmltopdf from "../../../assets/icons/htmltopdf.png";
 import exceltopdf from "../../../assets/icons/excel to pdf.png";
-import wordToPdf from "../../../assets/icons/wordToPdf.webp"
+import wordToPdf from "../../../assets/icons/wordToPdf.webp";
+import useUsers from "../../../Hooks/useUser";
 const MultiHexon = () => {
+  const [users] = useUsers();
+  // console.log("users", users);
+
   return (
     <div className="">
       <ul className="hexagon-grid-container text-white ">
@@ -46,13 +50,13 @@ const MultiHexon = () => {
           <li className="hexagon hexagon-green">
             <div className="hexagon-inner">
               <img className="hexagon-avatar-img" src={jpjtopng} />
-              <span className="hexagon-name">JPEG Convert PNG</span>
+              <span className="hexagon-name">JPEG to PNG</span>
               <span className="hexagon-metric-label">easy convert in png</span>
             </div>
           </li>
         </Link>
         {/* -------------- voice to text ----------- */}
-        <Link to="/speech">
+        <Link to="/voice">
           <li className="hexagon hexagon-blue">
             <div className="hexagon-inner">
               <img className="hexagon-avatar-img" src={voicetotext} />
@@ -165,38 +169,55 @@ const MultiHexon = () => {
             </div>
           </Link>
         </li>
-        
+
         <li className="hexagon hexagon-yellow">
-        <Link to="/wordToPdf">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img w-10 h-[50px]" src="https://i.gadgets360cdn.com/large/convert_word_to_pdf_1591366878562.jpg"/>
-            <span className="hexagon-name">Word to PDF</span>
-            <span className="hexagon-metric-label">Progress to Goal</span>
-          </div>
+          <Link to="/wordToPdf">
+            <div className="hexagon-inner">
+              <img
+                className="hexagon-avatar-img w-10 h-[50px]"
+                src="https://i.gadgets360cdn.com/large/convert_word_to_pdf_1591366878562.jpg"
+              />
+              <span className="hexagon-name">Word to PDF</span>
+              <span className="hexagon-metric-label">Progress to Goal</span>
+            </div>
           </Link>
         </li>
-        
 
         <li className="hexagon hexagon-red">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
-            <span className="hexagon-metric-label">Coachability</span>
-          </div>
+          <Link to="/pdftoppt">
+            <div className="hexagon-inner">
+              <img
+                className="hexagon-avatar-img w-10 h-[50px]"
+                src="https://cms-cdn.pdfagile.com/free_pdf_to_ppt_converter_03f71275d9.png"
+              />
+              <span className="hexagon-name">Pdf To PPT</span>
+              <span className="hexagon-metric-label">Coachability</span>
+            </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
-            <span className="hexagon-metric-label">Coachability</span>
-          </div>
+          <Link to="/pdftoexcel">
+            <div className="hexagon-inner">
+              <img
+                className="hexagon-avatar-img w-10 h-[50px]"
+                src="https://th.bing.com/th/id/OIP.ZM2IWcQ7iazkLug3ESZ3nQHaE8?rs=1&pid=ImgDetMain"
+              />
+              <span className="hexagon-name">Pdf to Excle</span>
+              <span className="hexagon-metric-label">Coachability</span>
+            </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
-          <div className="hexagon-inner">
-            <img className="hexagon-avatar-img" src="" />
-            <span className="hexagon-name">Conveter app</span>
-            <span className="hexagon-metric-label">Coachability</span>
-          </div>
+          <Link to="/pptToPdfConvert">
+            <div className="hexagon-inner">
+              <img
+                className="hexagon-avatar-img w-10 h-[50px]"
+                src="https://freepowerpointtemplates.com/wp-content/uploads/PowerPoint-Files-To-PDF-Featured-FreePowerPointTemplates.png"
+              />
+              <span className="hexagon-name">ppt To Pdf</span>
+              <span className="hexagon-metric-label">Coachability</span>
+            </div>
+          </Link>
         </li>
         <li className="hexagon hexagon-red">
           <div className="hexagon-inner">

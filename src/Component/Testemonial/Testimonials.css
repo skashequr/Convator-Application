@@ -41,7 +41,7 @@
     /* width: 32rem; */
     padding: 2rem 0;
     position: relative;
-    /* background-color: purple; */
+   
 }
 
 .swiper-slide {
@@ -187,6 +187,12 @@
 }
 
 
+.back {
+    border-radius: 1px;
+    /* background: #e0e0e0; */
+    box-shadow: inset 5px 5px 13px #777777,
+        inset -5px -5px 13px #ffffff;
+}
 
 /* Card Style */
 

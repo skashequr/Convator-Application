@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 
-// import Homepage from "../Homepage/Homepage";
 import EditImg from "../Component/EditImg";
 import Login from "../Pages/Authentication/Login/Login";
 import Signup from "../Pages/Authentication/SignIn/Signup";
@@ -11,22 +10,17 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Features from "../Pages/Features/Features";
 
-import YbVideoToaudio from "../Pages/Yb-vid-mp3/YbVideoToaudio";
 import OpenChat from "../Pages/Massage/OpenChat";
 import WelcomeMassage from "../Pages/Massage/WelcomeMassage";
 
 import Users from "../Pages/Massage/Users";
 import ImgToText from "../Pages/Features/ImgToText/ImgToText";
 
-// import SpeechToText from "../Pages/TextToSpeech/TextToSpeeh";
 import PdfEditor from "../Pages/Features/PdfEaditor/PdfEaditor";
-// import PdfToImg from "../Pages/PdfToJpj/PdftoImage";
-// import Converterimg from "../Pages/PdfToJpj/Conveter";
 
 import JpgToPngConverter from "../Pages/JpgToPng/JpgToPng";
 import TIFFtoJPGConverter from "../Pages/TiffImgToJpg/TiffImgToJpg";
 import TextToVoice from "../Pages/textToVoice/TextToVoice";
-import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
 
 import QRCodeGenerator from "../Pages/Qrcode/Qrcode";
 
@@ -39,20 +33,31 @@ import PngToJpgConverter from "../Pages/PngToJpg/PngToJpg";
 import PdftoImage from "../Pages/PdfToJpj/PdftoImage";
 
 import AddWatermarkToPDF from "../Pages/WaterMark/WaterMArk";
-import PptPdf from "../Pages/Features/PptToPdf/PptPdf";
 
 import HtmlToPdf from "../Pages/HtmlToPdf/Htmlpdf";
 import HtmlToWord from "../Pages/HtmlToword/HtmlToWord";
 import { AdminePannelTableComponent } from "../Pages/Dashboad/AdminePanelComponent/AdminPannelComponent";
-import App from "../Pages/Yb-vid-mp3/App";
+
 import ExcelToPdf from "../Pages/ExcelToPdf/ExcelToPdf";
 import LockPdf from "../Pages/Lock-Pdf/LockPdf";
 import DashUsers from "../Pages/Dashboad/Dashboad/AllUsers";
 import PaidUser from "../Pages/Dashboad/PaidUser/PaidUser";
+import UserHome from "../Pages/Dashboad/UserDahboad/User-Home/UserHome";
+import PrivateRoute from "./Privaterouter";
+import OrderSummary from "../Pages/Dashboad/UserDahboad/OrderSummary/OrderSummary";
+import UserProfile from "../Pages/Dashboad/UserDahboad/User-Profile/UserProfile";
+import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
+import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
+import OneUserReview from "../Component/UserReview/oneUserReview";
+import PptToPdf from "../Pages/PptToPdf/PptToPdf";
 
-// import SpeechToText from "../Pages/VoicetoText/TextToSpeeh";
+import IssueFeedback from "../Pages/Dashboad/UserDahboad/IssueFeedback/IssueFeed";
+import WordToPdf from "../Pages/Features/WordToPdf/WordToPdf";
+import Mp4toMp3 from "../Pages/Mp4toMp3/Mp4toMp3";
 
-// import PowerPointToPdf from "../Pages/PowerPointToPdf/PowerPointToPdf";
+import SpeechToText from "../Pages/VoicetoText/SpeechToText";
+
+// import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
 export const router = createBrowserRouter([
   {
@@ -93,12 +98,9 @@ export const router = createBrowserRouter([
         path: "/feateres",
         element: <Features></Features>,
       },
+
       {
-        path: "/ybvidtoaudio",
-        element: <YbVideoToaudio></YbVideoToaudio>,
-      },
-      {
-        path: "/speech",
+        path: "/voice",
         element: <SpeechToText></SpeechToText>,
       },
 
@@ -110,10 +112,7 @@ export const router = createBrowserRouter([
         path: "/text",
         element: <TextToVoice></TextToVoice>,
       },
-      {
-        path: "/youtubemp3",
-        element: <App></App>,
-      },
+
       {
         path: "/imgToWord",
         element: <ImgToText></ImgToText>,
@@ -124,16 +123,26 @@ export const router = createBrowserRouter([
         element: <AddWatermarkToPDF></AddWatermarkToPDF>,
       },
       {
+        path: "/pdftoexcel",
+        element: <PdfToExcle></PdfToExcle>,
+      },
+      {
         path: "/wordToPdf",
-        element: <PptPdf></PptPdf>,
+        element: <WordToPdf></WordToPdf>,
       },
       {
         path: "/pdfToText",
         element: <PdfEditor></PdfEditor>,
       },
       {
-        path: "/pdfToImg",
+        path: "/pdfToPpt",
+        element: <PdfToPpt></PdfToPpt>,
       },
+      {
+        path: "/pptToPdfConvert",
+        element: <PptToPdf></PptToPdf>,
+      },
+
       {
         path: "/pngtojpg",
         element: <PngToJpgConverter></PngToJpgConverter>,
@@ -160,7 +169,7 @@ export const router = createBrowserRouter([
         element: <ExcelToHtmlTable></ExcelToHtmlTable>,
       },
       {
-        path: "PdfToImage",
+        path: "/PdfToImage",
         element: <PdftoImage></PdftoImage>,
       },
       {
@@ -172,15 +181,21 @@ export const router = createBrowserRouter([
         path: "/html",
         element: <HtmlToPdf></HtmlToPdf>,
       },
+
       {
         path: "/word",
         element: <HtmlToWord></HtmlToWord>,
+      },
+      {
+        path: "/mp4toMp3",
+        element: <Mp4toMp3></Mp4toMp3>
       },
 
       {
         path: "/lock",
         element: <LockPdf></LockPdf>,
       },
+
       // ---------------- Massageing routes --------------------
       {
         path: "/massage/welcome",
@@ -191,12 +206,16 @@ export const router = createBrowserRouter([
         element: <OpenChat></OpenChat>,
       },
       {
-        path: "massage/users/massage/shearefile/:_id",
+        path: "/massage/users/massage/shearefile/:_id",
         element: <OpenChat></OpenChat>,
       },
       {
         path: "/massage/users",
         element: <Users></Users>,
+      },
+      {
+        path: "/user-review/:email",
+        element: <OneUserReview></OneUserReview>,
       },
       {
         path: "massage/groups",
@@ -215,7 +234,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "homedes",
-        element: <DashboadHome></DashboadHome>,
+        element: (
+          <PrivateRoute>
+            <DashboadHome></DashboadHome>{" "}
+          </PrivateRoute>
+        ),
       },
       {
         path: "controlUser",
@@ -223,12 +246,28 @@ export const router = createBrowserRouter([
       },
       {
         path: "adminePannel",
-        element: <AdminePannelTableComponent></AdminePannelTableComponent>
+        element: <AdminePannelTableComponent></AdminePannelTableComponent>,
       },
       {
         path: "/dashboad/paidUser",
-        element: <PaidUser></PaidUser>
-      }
+        element: <PaidUser></PaidUser>,
+      },
+      {
+        path: "/dashboad/UserHome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: "/dashboad/OrderSummary",
+        element: <OrderSummary></OrderSummary>,
+      },
+      {
+        path: "/dashboad/userProfile",
+        element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "/dashboad/issue",
+        element: <IssueFeedback></IssueFeedback>,
+      },
     ],
   },
 ]);
