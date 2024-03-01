@@ -42,7 +42,8 @@ const IssueCard = ({ issue }) => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: `${issue.name} has been deleted`,
+              // title: `${issue.name} has been deleted`,
+              title: "it has been delete",
               showConfirmButton: false,
               timer: 1500,
             });

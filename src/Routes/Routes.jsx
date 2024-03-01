@@ -50,10 +50,11 @@ import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 import PdfToExcle from "../Pages/Pdftoexcel/Pdftoexcel";
 import OneUserReview from "../Component/UserReview/oneUserReview";
 import PptToPdf from "../Pages/PptToPdf/PptToPdf";
-import VoiceToText from "../Pages/VoicetoText/VoiceTospeech";
 
-import IssueFeedback from "../Pages/Dashboad/AdminePanelComponent/IssueFeedback/IssueFeed";
+import IssueFeedback from "../Pages/Dashboad/UserDahboad/IssueFeedback/IssueFeed";
 import WordToPdf from "../Pages/Features/WordToPdf/WordToPdf";
+
+import SpeechToText from "../Pages/VoicetoText/SpeechToText";
 
 // import PdfToPpt from "../Pages/PdfToPpt/PdfToPpt";
 
@@ -98,8 +99,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/speech",
-        element: <VoiceToText></VoiceToText>,
+        path: "/voice",
+        element: <SpeechToText></SpeechToText>,
       },
 
       {
@@ -189,10 +190,6 @@ export const router = createBrowserRouter([
         path: "/lock",
         element: <LockPdf></LockPdf>,
       },
-      {
-        path: "/issue",
-        element: <IssueFeedback></IssueFeedback>,
-      },
 
       // ---------------- Massageing routes --------------------
       {
@@ -261,6 +258,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboad/userProfile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "/dashboad/issue",
+        element: <IssueFeedback></IssueFeedback>,
       },
     ],
   },

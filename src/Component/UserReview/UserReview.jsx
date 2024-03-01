@@ -60,19 +60,19 @@ const UserReview = () => {
           className="container flex flex-col mx-auto space-y-12"
         >
           <fieldset className="flex flex-col border-s-green-50 justify-center items-center gap-4 p-6 rounded-md shadow-sm ">
-            <div className="space-y-2 col-span-full lg:col-span-1 ">
+            <div className="space-y-2 col-span-full lg:col-span-1 p-2 ">
               <div className="flex flex-col  justify-center max-w-xs p-6 shadow-2xl rounded-xl sm:px-12">
                 <img
                   src={currentUser?.imageUrl}
                   alt=""
                   className="w-32 h-32 mx-auto rounded-full "
                 />
-                <div className="space-y-4 text-center divide-y ">
-                  <div className="my-2 space-y-1">
+                <div className="space-y-4 text-center divide-y p-3 ">
+                  <div className="my-2 space-y-1 ">
                     <h2 className="text-xl font-semibold sm:text-2xl">
                       {currentUser?.name}
                     </h2>
-                    <p className="px-5 text-xs sm:text-base">
+                    <p className="px-5 text-xs sm:text-base p-2">
                       {currentUser?.email}
                     </p>
                   </div>

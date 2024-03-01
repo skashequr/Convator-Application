@@ -31,9 +31,9 @@ const Login = () => {
     // setLoading(false);
     console.log(e.currentTarget);
     const email = e.target.email.value;
-    const userName = e.target.userName.value;
+    // const userName = e.target.userName.value;
     const password = e.target.password.value;
-    const data = { name: userName, password };
+    const data = { password };
     try {
       const config = {
         headers: {
