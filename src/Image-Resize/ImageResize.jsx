@@ -106,9 +106,7 @@ function ImageResizeTool() {
 
       // Increment download count
       try {
-        await axios.post(
-          "https://file-convator-backend.vercel.app/api/download"
-        );
+        await axios.post("http://localhost:5000/api/download");
       } catch (error) {
         console.error("Error incrementing download count:", error);
       }

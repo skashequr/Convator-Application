@@ -18,7 +18,7 @@ export const AdminePannelTableComponent = () => {
     (async () => {
       try {
         const response = await axios.get(
-          "https://file-convator-backend.vercel.app/user/findAdmine"
+          "http://localhost:5000/user/findAdmine"
         );
         // handle success
         console.log(response.data);

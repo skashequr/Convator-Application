@@ -21,7 +21,7 @@ const ChatBabbule = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://file-convator-backend.vercel.app/user/userbyId?id=${userId}`
+          `http://localhost:5000/user/userbyId?id=${userId}`
         );
         console.log(response.data); // This will log the response data to the console
         setUserData(response.data); // Set the response data to state
@@ -37,7 +37,7 @@ const ChatBabbule = () => {
 
   useEffect(() => {
     axios
-      .post("https://file-convator-backend.vercel.app/chat/send", {
+      .post("http://localhost:5000/chat/send", {
         userId,
         singleuserId,
         secUser,
@@ -60,7 +60,7 @@ const ChatBabbule = () => {
     const massageContent = e.target.massage.value;
     console.log(massageContent);
     axios
-      .post("https://file-convator-backend.vercel.app/message", {
+      .post("http://localhost:5000/message", {
         content: massageContent,
         chatId: chat_id,
         data: [friUser, secUser],
@@ -79,7 +79,7 @@ const ChatBabbule = () => {
   // useEffect(() => {
   //   console.log("Users refreshed");
 
-  //   axios.get(`https://file-convator-backend.vercel.app/message/${chat_id}`).then(({ data }) => {
+  //   axios.get(`http://localhost:5000/message/${chat_id}`).then(({ data }) => {
   //     setAllMessages(data);
   //     console.log("Data from Acess Chat API ", data);
   //   });
@@ -89,7 +89,7 @@ const ChatBabbule = () => {
   // const { data: usermessage = [], refetch } = useQuery({
   //   queryKey: ["usersmessage", chat_id],
   //   queryFn: async () => {
-  //     const res = await axios.get(`https://file-convator-backend.vercel.app/message/${chat_id}`);
+  //     const res = await axios.get(`http://localhost:5000/message/${chat_id}`);
   //     setAllMessages(res.data);
   //     return res.data;
   //   },
