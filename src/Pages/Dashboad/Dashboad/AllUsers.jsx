@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const DashUsers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [defultUser, setDefultUser] = useState(6);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const {
     data: DashallUsers,
     isLoading,
@@ -32,7 +32,7 @@ const DashUsers = () => {
     )
       .then((response) => response.json())
       .then((data) => setData(data));
-  }, [currentPage,defultUser,query]);
+  }, [currentPage, defultUser, query]);
   console.log(users);
   const { data, totalPages } = users;
 
@@ -112,7 +112,7 @@ const DashUsers = () => {
             <input
               type="text"
               id="table-search-users"
-              value={query} 
+              value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search for users"
@@ -186,9 +186,7 @@ const DashUsers = () => {
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{" "}
-                    {
-                      user?.isAdmin? "Admin" : "User"
-                    }
+                    {user?.isAdmin ? "Admin" : "User"}
                   </div>
                 </td>
                 <td className="px-6 py-4">

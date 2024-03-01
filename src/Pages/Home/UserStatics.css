@@ -4,102 +4,101 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 
 :root {
-    --color-primary: #00ff95;
-    --color-label: #fffb00;
-    --color-text: #901ad4;
-    --font-family: "Poppins";
+  --color-primary: #00ff95;
+  --color-label: #fffb00;
+  --color-text: #901ad4;
+  --font-family: "Poppins";
 }
 
+
 .card {
-    position: relative;
-    /* width: 800px; */
-    background: #abd6992d;
-    padding: 30px 35px ;
-    border-radius: 24px;
-    box-shadow: 0 10px 10px rgb(139, 127, 127);
+  position: relative;
+  /* width: 800px; */
+  background: #abd6992d;
+  padding: 30px 35px;
+  border-radius: 24px;
+  box-shadow: 0 10px 10px rgb(139, 127, 127);
 }
 
 
 .card h2 {
-    
-    font-size: 26px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin: 0 0 2px;
+
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin: 0 0 2px;
 }
 
 .card p {
-    font-size: 14px;
-    margin: 0 0 16px;
+  font-size: 14px;
+  margin: 0 0 16px;
 }
 
 .card .pulse {
-    position: absolute;
-    height: 14px;
-    width: 14px;
-    background: var(--color-primary);
-    top: 52px;
-    right: 40px;
-    border-radius: 50%;
-  }
-  
-  .card .pulse::after {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    border: 1px solid var(--color-primary);
-    border-radius: 50%;
-    left: -1px;
-    top: -1px;
-    animation: pulse 2s linear infinite;
-    transform-origin: center;
-    opacity: 0.8;
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  background: var(--color-primary);
+  top: 52px;
+  right: 40px;
+  border-radius: 50%;
+}
+
+.card .pulse::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+  left: -1px;
+  top: -1px;
+  animation: pulse 2s linear infinite;
+  transform-origin: center;
+  opacity: 0.8;
+  scale: 0;
+}
+
+@keyframes pulse {
+  70% {
     scale: 0;
+    opacity: 0.8;
   }
-  
-  @keyframes pulse {
-    70% {
-      scale: 0;
-      opacity: 0.8;
-    }
-  
-    100% {
-      scale: 4;
-      opacity: 0;
-    }
+
+  100% {
+    scale: 4;
+    opacity: 0;
   }
+}
 
 
 .card .chart-area {
-    position: relative;
+  position: relative;
 }
 
 .card .chart-area .grid2 {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    height: 86%;
-    width: 100%;
-    background-image: repeating-linear-gradient(to right,
-            transparent 0% 3%,
-            #f9f9f9 3% 3.5%,
-            transparent 3% 18.65%);
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 86%;
+  width: 100%;
+  background-image: repeating-linear-gradient(to right,
+      transparent 0% 3%,
+      #f9f9f9 3% 3.5%,
+      transparent 3% 18.65%);
 }
 
 .card .chart-area .grid2::after {
-    content: "";
-    position: inherit;
-    z-index: -1;
-    top: inherit;
-    bottom: inherit;
-    width: inherit;
-    height: 100%;
-    background: linear-gradient(180deg,
-            rgb(255, 211, 245),
-            rgba(202, 196, 255, 0.9),
-            rgb(255, 246, 197));
+  content: "";
+  position: inherit;
+  z-index: -1;
+  top: inherit;
+  bottom: inherit;
+  width: inherit;
+  height: 100%;
+  background: linear-gradient(180deg,
+      rgb(255, 211, 245),
+      rgba(202, 196, 255, 0.9),
+      rgb(255, 246, 197));
 }
-
-
