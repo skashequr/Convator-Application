@@ -73,27 +73,27 @@ const Banner = () => {
                 className={` ${index === currentIndex ? "active" : ""} item`}
                 style={{ backgroundImage: `url('${item}')` }}
               >
-                <div className="content bg-transparent">
+                {/* <div className="content bg-transparent">
                   <button className="bg-[#F1E9D5]">Read More</button>
-                </div>
+                </div> */}
               </li>
             ))}
       </ul>
       <nav className="nav">
         <button
           className="btn prev"
-          // name="arrow-back-outline"
+          //----------- name="arrow-back-outline"----------
           onClick={prevSlide}
         >
-          {/* Corrected: Added ion-icon class */}
+          {/* --------- Corrected: Added ion-icon class ----------*/}
           <ion-icon name="arrow-back-outline"></ion-icon>
         </button>
         <button
           className="btn next"
-          // name="arrow-forward-outline"
+          //--------- name="arrow-forward-outline"----------
           onClick={nextSlide}
         >
-          {/* Corrected: Added ion-icon class */}
+          {/*---------- Corrected: Added ion-icon class -------------*/}
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
       </nav>

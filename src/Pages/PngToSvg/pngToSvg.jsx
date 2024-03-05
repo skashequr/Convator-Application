@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { svg2png } from "svg-png-converter";
 
 const SvgToPngConverter = () => {
