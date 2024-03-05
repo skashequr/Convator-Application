@@ -14,8 +14,10 @@ const AccessCard = () => {
           SUBSCRIPTION
         </h1>
         <p className="px-4 sm:px-8 lg:px-24">
-          Sunt suscipit eaque qui iure unde labore numquam iusto alias
-          explicabo, pariatur ipsam, cupiditate aliquid modi?
+          This often comes with a discounted rate compared to paying monthly.
+          Annual subscriptions can provide businesses with more predictable
+          revenue and may encourage customer loyalty due to the longer
+          commitment.
         </p>
         <div>
           <button className="px-4 py-1 font-semibold border rounded-l-lg dark:bg-violet-400 dark:border-violet-400 dark:text-gray-900">

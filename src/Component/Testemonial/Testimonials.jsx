@@ -23,9 +23,9 @@ const Testimonials = () => {
         </h1>
 
         <p className="max-w-2xl mx-auto mt-6 text-center text-textColor">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
-          ex placeat modi magni quia error alias, adipisci rem similique, at
-          omnis eligendi optio eos harum.
+          From start to finish, Ours Conveter exceeded our expectations. Their
+          professionalism and attention to detail made the entire process
+          seamless.
         </p>
 
         <div className="container ">

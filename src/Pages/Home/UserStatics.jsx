@@ -142,9 +142,9 @@ const UserStatics = () => {
               </span>
             </h2>
             <p className="text-base text-textColor md:text-lg">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae. explicabo.
+              Number of active users: This indicates the total number of users
+              who have engaged with your product or service within a specific
+              time frame, such as the last 6 months
             </p>
           </div>
           <a
