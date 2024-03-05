@@ -10,6 +10,7 @@ import {
 import Swal from "sweetalert2";
 
 import useFeedback from "../../../../Hooks/useFeedback";
+import axios from "axios";
 
 const IssueCard = ({ issue }) => {
   const AxiosIssuFeedbck = useFeedback();
@@ -37,16 +38,23 @@ const IssueCard = ({ issue }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await AxiosIssuFeedbck.delete(`/task/${item._id}`);
-          if (res.data.deletedCount > 0) {
+          if (!item || !item._id) {
+            throw new Error("Item ID is undefined");
+          }
+          const res = await axios.delete(
+            `https://ourconvert.vercel.app/task/${item._id}`
+          );
+          if (res.status === 200) {
+            // Check if the delete request was successful
             Swal.fire({
               position: "top-end",
               icon: "success",
-              // title: `${issue.name} has been deleted`,
-              title: "it has been delete",
+              title: "Item deleted successfully",
               showConfirmButton: false,
               timer: 1500,
             });
+          } else {
+            throw new Error("Failed to delete item"); // Throw an error for unsuccessful delete
           }
         } catch (error) {
           console.error("Error deleting item:", error);
@@ -59,6 +67,7 @@ const IssueCard = ({ issue }) => {
       }
     });
   };
+
   console.log(issue);
   return (
     <div className="shadow-2xl w-full">
