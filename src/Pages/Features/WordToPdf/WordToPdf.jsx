@@ -39,7 +39,7 @@ const WordToPdf = () => {
     try {
       // Make the Axios request
       const response = await axios.post(
-        "http://localhost:5000/convert",
+        "https://file-convator-backend.vercel.app/convert",
         formData,
         {
           headers: {
@@ -62,9 +62,12 @@ const WordToPdf = () => {
       try {
         setDownloading(true);
 
-        const response = await axios.get("http://localhost:5000/convert", {
-          responseType: "blob",
-        });
+        const response = await axios.get(
+          "https://file-convator-backend.vercel.app/convert",
+          {
+            responseType: "blob",
+          }
+        );
 
         const url = window.URL.createObjectURL(new Blob([response.data]));
 

@@ -15,11 +15,15 @@ const PdfToExcle = () => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      await axios.post("http://localhost:5000/convert/pdftoexcel", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://file-convator-backend.vercel.app/convert/pdftoexcel",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setLoading(false);
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -39,7 +43,7 @@ const PdfToExcle = () => {
     setDownloading(true);
     try {
       const response = await axios.get(
-        "http://localhost:5000/convert/getpdftoexcle",
+        "https://file-convator-backend.vercel.app/convert/getpdftoexcle",
         {
           responseType: "blob",
         }

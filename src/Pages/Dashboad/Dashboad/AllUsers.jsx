@@ -17,7 +17,7 @@ const DashUsers = () => {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/user/fetchUsers"
+          "https://file-convator-backend.vercel.app/user/fetchUsers"
         );
         return response.data;
       } catch (error) {
@@ -28,7 +28,7 @@ const DashUsers = () => {
   const [users, setData] = useState("");
   useEffect(() => {
     fetch(
-      `http://localhost:5000/user/pagginate?page=${currentPage}&pageSize=${defultUser}&q=${query}`
+      `https://file-convator-backend.vercel.app/user/pagginate?page=${currentPage}&pageSize=${defultUser}&q=${query}`
     )
       .then((response) => response.json())
       .then((data) => setData(data));
@@ -46,7 +46,7 @@ const DashUsers = () => {
     console.log(id);
     try {
       const response = await axios.delete(
-        `http://localhost:5000/user/delateUser/${id}`
+        `https://file-convator-backend.vercel.app/user/delateUser/${id}`
       );
       console.log(response.data.message); // Data deleted successfully
       //   Update your UI accordingly (e.g., remove the deleted item from the list)

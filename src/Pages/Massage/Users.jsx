@@ -11,7 +11,7 @@ const Users = () => {
   const [query, setQuery] = useState("");
   useEffect(() => {
     fetch(
-      `http://localhost:5000/user/pagginate?page=${currentPage}&pageSize=${5}&q=${query}`
+      `https://file-convator-backend.vercel.app/user/pagginate?page=${currentPage}&pageSize=${5}&q=${query}`
     )
       .then((response) => response.json())
       .then((data) => setData(data));
@@ -30,7 +30,7 @@ const Users = () => {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/user/fetchUsers"
+          "https://file-convator-backend.vercel.app/user/fetchUsers"
         );
         return response.data;
       } catch (error) {

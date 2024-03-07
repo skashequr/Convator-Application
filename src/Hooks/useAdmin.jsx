@@ -11,7 +11,7 @@ const useAdmin = () => {
     enabled: !loading,
     queryFn: async () => {
       console.log("asking or checking is admin", user);
-      // const res = await axios("http://localhost:5000/user/findAdmine");
+      // const res = await axios("https://file-convator-backend.vercel.app/user/findAdmine");
       const res = await useAxiosPublic.get(`/user/findAdmine/${user.email}`);
 
       return res.data?.admin;

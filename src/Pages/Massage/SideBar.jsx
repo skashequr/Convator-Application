@@ -23,7 +23,7 @@ const SideBar = () => {
 
   // useEffect(() => {
   //   setLoading(true);
-  //   axios.get(`http://localhost:5000/user/infinityScrolling?page=${page}`)
+  //   axios.get(`https://file-convator-backend.vercel.app/user/infinityScrolling?page=${page}`)
   //     .then(response => {
   //       setItems(prevItems => [...prevItems, ...response.data]);
   //       setLoading(false);
@@ -59,7 +59,7 @@ const SideBar = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:5000/chat/chat?userId=${singleUser._id}&page=${page}&searchQuery=${searchQuery}`
+          `https://file-convator-backend.vercel.app/chat/chat?userId=${singleUser._id}&page=${page}&searchQuery=${searchQuery}`
         );
 
         if (!response.ok) {

@@ -18,7 +18,7 @@ const PptToPdf = () => {
     formData.append("file", file);
     try {
       await axios.post(
-        "http://localhost:5000/convert/ppttopdfconvert",
+        "https://file-convator-backend.vercel.app/convert/ppttopdfconvert",
         formData,
         {
           headers: {
@@ -44,7 +44,7 @@ const PptToPdf = () => {
     setDownloading(true);
     try {
       const response = await axios.get(
-        "http://localhost:5000/convert/getppttopf",
+        "https://file-convator-backend.vercel.app/convert/getppttopf",
         {
           responseType: "blob",
         }

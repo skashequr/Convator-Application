@@ -108,7 +108,7 @@ const Signup = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/user/register",
+        "https://file-convator-backend.vercel.app/user/register",
         data,
         config
       );
